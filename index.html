@@ -1,1 +1,61 @@
-<h1>test</h1>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welkom op onze website</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="product.html">Producten</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="timer-section">
+            <h2>Aftellen naar aanbieding!</h2>
+            <div id="timer">00:00:00</div>
+        </section>
+
+        <section class="content">
+            <p>Dit is de homepage van onze simpele website. Bekijk onze producten!</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mijn Website</p>
+    </footer>
+
+    <script>
+        // Timer countdown (bijvoorbeeld 1 uur vanaf nu)
+        let countDownDate = new Date().getTime() + 3600 * 1000; 
+
+        function updateTimer() {
+            let now = new Date().getTime();
+            let distance = countDownDate - now;
+
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML =
+                (hours < 10 ? "0" + hours : hours) + ":" +
+                (minutes < 10 ? "0" + minutes : minutes) + ":" +
+                (seconds < 10 ? "0" + seconds : seconds);
+
+            if (distance < 0) {
+                document.getElementById("timer").innerHTML = "AANBIEDING VERLOPEN";
+                clearInterval(timerInterval);
+            }
+        }
+
+        let timerInterval = setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+</html>
+

@@ -3,59 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Simpele Website</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
-        <h1>Welkom op onze website</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="product.html">Producten</a>
-        </nav>
+        <h1>Welkom op mijn simpele website</h1>
     </header>
 
-    <main>
-        <section class="timer-section">
-            <h2>Aftellen naar aanbieding!</h2>
-            <div id="timer">00:00:00</div>
-        </section>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Over mij</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
 
-        <section class="content">
-            <p>Dit is de homepage van onze simpele website. Bekijk onze producten!</p>
-        </section>
+    <main>
+        <h1>Over deze website</h1>
+        <p>Dit is een eenvoudige website om basis HTML en CSS te laten zien. Je kunt deze aanpassen en uitbreiden zoals je wilt.</p>
+
+        <img src="https://via.placeholder.com/600x300" alt="Voorbeeld afbeelding">
+
+        <h2>Wat je hier kunt vinden:</h2>
+        <ul>
+            <li>Een eenvoudige header en navigatie</li>
+            <li>Een hoofdsectie met tekst en afbeelding</li>
+            <li>Een overzichtelijke footer</li>
+        </ul>
     </main>
 
     <footer>
-        <p>&copy; 2026 Mijn Website</p>
+        &copy; 2026 Mijn Simpele Website
     </footer>
 
-    <script>
-        // Timer countdown (bijvoorbeeld 1 uur vanaf nu)
-        let countDownDate = new Date().getTime() + 3600 * 1000; 
-
-        function updateTimer() {
-            let now = new Date().getTime();
-            let distance = countDownDate - now;
-
-            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("timer").innerHTML =
-                (hours < 10 ? "0" + hours : hours) + ":" +
-                (minutes < 10 ? "0" + minutes : minutes) + ":" +
-                (seconds < 10 ? "0" + seconds : seconds);
-
-            if (distance < 0) {
-                document.getElementById("timer").innerHTML = "AANBIEDING VERLOPEN";
-                clearInterval(timerInterval);
-            }
-        }
-
-        let timerInterval = setInterval(updateTimer, 1000);
-        updateTimer();
-    </script>
 </body>
 </html>
-

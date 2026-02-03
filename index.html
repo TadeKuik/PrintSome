@@ -3,120 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Printsom - 3D Geprinte Creaties</title>
+    <title>Printsome - Premium 3D Geprinte Producten</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    <!-- Header en Navigatie -->
+    <!-- Header -->
     <header class="header">
         <div class="container">
             <nav class="navbar">
-                <div class="logo">
-                    <a href="index.html">
-                        <i class="fas fa-print"></i>
-                        <span class="logo-text">Print<span class="logo-highlight">som</span></span>
-                    </a>
-                </div>
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <span class="logo-text">PRINT<span class="logo-accent">SOME</span></span>
+                </a>
+                
                 <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
-                    <li class="nav-item"><a href="index.html#products" class="nav-link">Producten</a></li>
-                    <li class="nav-item"><a href="index.html#about" class="nav-link">Over Ons</a></li>
-                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#products" class="nav-link">Collectie</a></li>
+                    <li><a href="#about" class="nav-link">Over Ons</a></li>
+                    <li><a href="#process" class="nav-link">Proces</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
+                
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                
                 <div class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </nav>
         </div>
     </header>
 
     <!-- Hero Sectie -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">3D Geprinte <span class="highlight">Creaties</span> van Hoge Kwaliteit</h1>
-                <p class="hero-subtitle">Bij Printsom maken we unieke 3D-geprinte objecten, van sieraden tot praktische huishoudelijke artikelen. Alles wordt met zorg en precisie vervaardigd.</p>
+                <h1 class="hero-title">
+                    <span class="hero-title-line">Premium 3D</span>
+                    <span class="hero-title-line">Geprinte <span class="highlight">Creaties</span></span>
+                </h1>
+                <p class="hero-subtitle">
+                    Unieke, op maat gemaakte 3D-geprinte producten van de hoogste kwaliteit. 
+                    Van moderne decoratie tot praktische oplossingen.
+                </p>
                 <div class="hero-buttons">
-                    <a href="#products" class="btn btn-primary">Bekijk Onze Producten</a>
-                    <a href="#about" class="btn btn-secondary">Ontdek Printsom</a>
+                    <a href="#products" class="btn btn-primary">
+                        <span>Bekijk Collectie</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#process" class="btn btn-outline">
+                        <span>Ontdek Proces</span>
+                        <i class="fas fa-play-circle"></i>
+                    </a>
                 </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="3D printer aan het werk">
-            </div>
-        </div>
-    </section>
-
-    <!-- Over Ons Sectie -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <h2 class="section-title">Over <span class="highlight">Printsom</span></h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Welkom bij Printsom, jouw bron voor unieke 3D-geprinte creaties. Wij zijn gepassioneerd over 3D-printen en creëren een breed scala aan producten, van decoratieve objecten tot praktische oplossingen voor dagelijks gebruik.</p>
-                    <p>Onze reis begon in 2023 met een eenvoudige 3D-printer en een droom. Vandaag de dag hebben we onze werkplaats uitgebreid met geavanceerde printers en materialen om de hoogste kwaliteit producten te leveren.</p>
-                    <p>Bij Printsom geloven we in duurzaamheid. We gebruiken waar mogelijk biologisch afbreekbare filamenten en recyclen al ons printafval. Elk product wordt met zorg ontworpen en gecontroleerd voordat het onze werkplaats verlaat.</p>
-                    <div class="about-features">
-                        <div class="feature">
-                            <i class="fas fa-bolt"></i>
-                            <h3>Snel Printen</h3>
-                            <p>Snelle productie zonder kwaliteit in te leveren.</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-leaf"></i>
-                            <h3>Duurzaam</h3>
-                            <p>Biologisch afbreekbare materialen en recycling.</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-palette"></i>
-                            <h3>Aangepast</h3>
-                            <p>Mogelijkheid tot maatwerk en personalisatie.</p>
-                        </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Te klanten</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">120+</span>
+                        <span class="stat-label">Producten</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Tevredenheid</span>
                     </div>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Onze 3D print werkplaats">
+            </div>
+            
+            <div class="hero-image">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="3D Printer in actie" class="main-img">
+                    <div class="image-overlay"></div>
+                    <div class="floating-badge">
+                        <i class="fas fa-bolt"></i>
+                        <span>24-uurs service</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-scroll">
+            <a href="#products" class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Over Ons -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Over Printsome</span>
+                <h2 class="section-title">Precisie in <span class="highlight">Elk Detail</span></h2>
+                <p class="section-description">
+                    Wij combineren geavanceerde 3D-printtechnologie met artistiek vakmanschap 
+                    om unieke producten te creëren die perfect aansluiten bij jouw wensen.
+                </p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>Precisie Printen</h3>
+                    <p>Onze geavanceerde printers bieden een laaghoogte van 0.05mm voor ultieme details en gladde afwerking.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Maatwerk</h3>
+                    <p>Elk product kan worden aangepast aan jouw specifieke wensen, van kleur tot vorm en functionaliteit.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Duurzaam</h3>
+                    <p>We gebruiken biologisch afbreekbare PLA en gerecyclede materialen voor een ecologisch verantwoorde productie.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Snel Leverbaar</h3>
+                    <p>Standaard producten worden binnen 2-3 werkdagen geleverd. Maatwerk binnen 5-7 werkdagen.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Producten Sectie -->
-    <section id="products" class="products-section">
+    <!-- Product Collectie -->
+    <section class="section products" id="products">
         <div class="container">
-            <h2 class="section-title">Onze <span class="highlight">Producten</span></h2>
-            <p class="section-subtitle">Bekijk onze collectie van 3D-geprinte creaties. Klik op een product voor meer details en foto's.</p>
+            <div class="section-header">
+                <span class="section-subtitle">Onze Collectie</span>
+                <h2 class="section-title">Premium <span class="highlight">3D Producten</span></h2>
+                <p class="section-description">
+                    Ontdek onze uitgebreide collectie 3D-geprinte creaties. 
+                    Klik op een product voor gedetailleerde informatie en meer afbeeldingen.
+                </p>
+            </div>
             
-            <div class="product-filters">
-                <button class="filter-btn active" data-filter="all">Alle Producten</button>
-                <button class="filter-btn" data-filter="decoratie">Decoratie</button>
-                <button class="filter-btn" data-filter="huishouden">Huishouden</button>
-                <button class="filter-btn" data-filter="sieraden">Sieraden</button>
-                <button class="filter-btn" data-filter="gadgets">Gadgets</button>
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">Alles</button>
+                <button class="filter-tab" data-filter="decoratie">Decoratie</button>
+                <button class="filter-tab" data-filter="huishouden">Huishouden</button>
+                <button class="filter-tab" data-filter="sieraden">Sieraden</button>
+                <button class="filter-tab" data-filter="gadgets">Gadgets</button>
             </div>
             
             <div class="products-grid">
                 <!-- Product 1 -->
                 <div class="product-card" data-category="decoratie">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="3D geprinte sierlijke vaas">
+                        <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Geometrische Vaas">
+                        <div class="product-badge">Bestseller</div>
                         <div class="product-overlay">
-                            <a href="#" class="view-details" data-product="1">Bekijk Details</a>
+                            <button class="quick-view" data-product="1">
+                                <i class="fas fa-expand"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Sierlijke Vaas</h3>
-                        <p class="product-description">Een prachtige geometrische vaas, perfect voor een moderne uitstraling.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Decoratie</span>
-                            <span class="product-tag">Huiskamer</span>
+                        <div class="product-category">Decoratie</div>
+                        <h3 class="product-title">Geometrische Vaas</h3>
+                        <p class="product-description">Moderne vaas met geometrisch patroon voor een artistieke uitstraling.</p>
+                        <div class="product-meta">
+                            <div class="product-price">
+                                <span class="price">€24,95</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="rating-count">(42)</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-details" data-product="1">
+                                <span>Bekijk Details</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -124,17 +213,36 @@
                 <!-- Product 2 -->
                 <div class="product-card" data-category="huishouden">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="3D geprinte telefoonhouder">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Telefoon Standaard">
+                        <div class="product-badge new">Nieuw</div>
                         <div class="product-overlay">
-                            <a href="#" class="view-details" data-product="2">Bekijk Details</a>
+                            <button class="quick-view" data-product="2">
+                                <i class="fas fa-expand"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Telefoonhouder</h3>
-                        <p class="product-description">Praktische houder voor je telefoon tijdens het opladen of video kijken.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Huishouden</span>
-                            <span class="product-tag">Praktisch</span>
+                        <div class="product-category">Huishouden</div>
+                        <h3 class="product-title">Slimme Telefoon Standaard</h3>
+                        <p class="product-description">Verstelbare standaard met draadloze oplaadmogelijkheid.</p>
+                        <div class="product-meta">
+                            <div class="product-price">
+                                <span class="price">€29,95</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="rating-count">(18)</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-details" data-product="2">
+                                <span>Bekijk Details</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -142,17 +250,35 @@
                 <!-- Product 3 -->
                 <div class="product-card" data-category="sieraden">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1611077542186-bb8a98711346?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="3D geprinte oorbellen">
+                        <img src="https://images.unsplash.com/photo-1611077542186-bb8a98711346?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="3D Sieraden">
                         <div class="product-overlay">
-                            <a href="#" class="view-details" data-product="3">Bekijk Details</a>
+                            <button class="quick-view" data-product="3">
+                                <i class="fas fa-expand"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Geometrische Oorbellen</h3>
-                        <p class="product-description">Unieke 3D-geprinte oorbellen met een modern geometrisch ontwerp.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Sieraden</span>
-                            <span class="product-tag">Mode</span>
+                        <div class="product-category">Sieraden</div>
+                        <h3 class="product-title">Moderne Geometrische Oorbellen</h3>
+                        <p class="product-description">Lichte, hypoallergene oorbellen met uniek design.</p>
+                        <div class="product-meta">
+                            <div class="product-price">
+                                <span class="price">€16,50</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="rating-count">(36)</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-details" data-product="3">
+                                <span>Bekijk Details</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -160,17 +286,35 @@
                 <!-- Product 4 -->
                 <div class="product-card" data-category="gadgets">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="3D geprinte sleutelhanger">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Sleutelhanger">
                         <div class="product-overlay">
-                            <a href="#" class="view-details" data-product="4">Bekijk Details</a>
+                            <button class="quick-view" data-product="4">
+                                <i class="fas fa-expand"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Sleutelhanger met Logo</h3>
-                        <p class="product-description">Stevige sleutelhanger met gepersonaliseerd logo of tekst.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Gadgets</span>
-                            <span class="product-tag">Gepersonaliseerd</span>
+                        <div class="product-category">Gadgets</div>
+                        <h3 class="product-title">Gepersonaliseerde Sleutelhanger</h3>
+                        <p class="product-description">Stevige sleutelhanger met eigen tekst of logo.</p>
+                        <div class="product-meta">
+                            <div class="product-price">
+                                <span class="price">€12,95</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="rating-count">(24)</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-details" data-product="4">
+                                <span>Bekijk Details</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -178,17 +322,36 @@
                 <!-- Product 5 -->
                 <div class="product-card" data-category="decoratie">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="3D geprinte wanddecoratie">
+                        <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Wand Kunst">
+                        <div class="product-badge">Limited</div>
                         <div class="product-overlay">
-                            <a href="#" class="view-details" data-product="5">Bekijk Details</a>
+                            <button class="quick-view" data-product="5">
+                                <i class="fas fa-expand"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Abstracte Wanddecoratie</h3>
-                        <p class="product-description">Moderne wanddecoratie die elke ruimte transformeert.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Decoratie</span>
-                            <span class="product-tag">Wandkunst</span>
+                        <div class="product-category">Decoratie</div>
+                        <h3 class="product-title">Abstracte Wand Sculptuur</h3>
+                        <p class="product-description">Driedimensionale wandkunst die licht en schaduw speelt.</p>
+                        <div class="product-meta">
+                            <div class="product-price">
+                                <span class="price">€49,95</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="rating-count">(15)</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-details" data-product="5">
+                                <span>Bekijk Details</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -196,144 +359,302 @@
                 <!-- Product 6 -->
                 <div class="product-card" data-category="huishouden">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="3D geprinte plantenbak">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Organizer">
                         <div class="product-overlay">
-                            <a href="#" class="view-details" data-product="6">Bekijk Details</a>
+                            <button class="quick-view" data-product="6">
+                                <i class="fas fa-expand"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Hangende Plantenbak</h3>
-                        <p class="product-description">Moderne hangende plantenbak voor kleine tot middelgrote planten.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Huishouden</span>
-                            <span class="product-tag">Planten</span>
+                        <div class="product-category">Huishouden</div>
+                        <h3 class="product-title">Bureau Organizer Set</h3>
+                        <p class="product-description">Complete set voor een opgeruimd bureau.</p>
+                        <div class="product-meta">
+                            <div class="product-price">
+                                <span class="price">€34,95</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="rating-count">(29)</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-details" data-product="6">
+                                <span>Bekijk Details</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="text-center">
-                <a href="#all-products" class="btn btn-secondary">Alle Producten Bekijken</a>
+                <a href="#all-products" class="btn btn-secondary">
+                    <span>Bekijk Volledige Collectie</span>
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Product Detail Modal -->
-    <div id="product-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-body">
-                <div class="modal-product-images">
+    <div class="modal product-modal" id="productModal">
+        <div class="modal-container">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-content">
+                <div class="modal-gallery">
                     <div class="main-image">
-                        <img id="modal-main-img" src="" alt="Product afbeelding">
+                        <img id="modalMainImage" src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Product">
                     </div>
-                    <div class="image-thumbnails">
-                        <div class="thumbnail active"><img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Thumbnail 1"></div>
-                        <div class="thumbnail"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Thumbnail 2"></div>
-                        <div class="thumbnail"><img src="https://images.unsplash.com/photo-1611077542186-bb8a98711346?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Thumbnail 3"></div>
-                        <div class="thumbnail"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Thumbnail 4"></div>
+                    <div class="thumbnail-images">
+                        <div class="thumbnail active">
+                            <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Thumbnail 1">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Thumbnail 2">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://images.unsplash.com/photo-1611077542186-bb8a98711346?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Thumbnail 3">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Thumbnail 4">
+                        </div>
                     </div>
                 </div>
-                <div class="modal-product-info">
-                    <h2 id="modal-product-title">Product Titel</h2>
-                    <div class="product-meta">
-                        <span class="product-category" id="modal-product-category">Decoratie</span>
-                        <span class="product-date">Toegevoegd: <span id="modal-product-date">15 juni 2023</span></span>
+                
+                <div class="modal-info">
+                    <div class="modal-header">
+                        <div class="product-category" id="modalCategory">Decoratie</div>
+                        <h2 id="modalTitle">Geometrische Vaas</h2>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="review-count">(42 beoordelingen)</span>
+                        </div>
                     </div>
-                    <p id="modal-product-description">Product beschrijving komt hier. Dit is een gedetailleerde beschrijving van het product, inclusief materialen, afmetingen en bijzonderheden.</p>
+                    
+                    <div class="product-price-large">
+                        <span class="price" id="modalPrice">€24,95</span>
+                    </div>
+                    
+                    <div class="product-description-full" id="modalDescription">
+                        <p>Deze geometrische vaas combineert modern design met functionaliteit. Elk detail is zorgvuldig ontworpen en geprint met hoogwaardig PLA bioplastic.</p>
+                        <p>De vaas is 18cm hoog en heeft een diameter van 12cm. Geschikt voor zowel verse bloemen als droogboeketten.</p>
+                    </div>
                     
                     <div class="product-specs">
                         <h3>Specificaties</h3>
-                        <ul id="modal-product-specs">
-                            <li><strong>Materiaal:</strong> PLA Bioplastic</li>
-                            <li><strong>Afmetingen:</strong> 15cm x 10cm x 8cm</li>
-                            <li><strong>Gewicht:</strong> 120 gram</li>
-                            <li><strong>Kleuropties:</strong> Zwart, Geel, Wit, Rood</li>
-                            <li><strong>Printtijd:</strong> Ongeveer 6 uur</li>
-                        </ul>
+                        <div class="specs-grid">
+                            <div class="spec">
+                                <span class="spec-label">Materiaal</span>
+                                <span class="spec-value">PLA Bioplastic</span>
+                            </div>
+                            <div class="spec">
+                                <span class="spec-label">Afmetingen</span>
+                                <span class="spec-value">18 × 12 × 12 cm</span>
+                            </div>
+                            <div class="spec">
+                                <span class="spec-label">Gewicht</span>
+                                <span class="spec-value">150 gram</span>
+                            </div>
+                            <div class="spec">
+                                <span class="spec-label">Kleuren</span>
+                                <span class="spec-value">Zwart, Geel, Wit</span>
+                            </div>
+                            <div class="spec">
+                                <span class="spec-label">Printtijd</span>
+                                <span class="spec-value">6 uur</span>
+                            </div>
+                            <div class="spec">
+                                <span class="spec-label">Levertijd</span>
+                                <span class="spec-value">2-3 werkdagen</span>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="product-actions">
-                        <button class="btn btn-primary" id="prev-image"><i class="fas fa-chevron-left"></i> Vorige Foto</button>
-                        <button class="btn btn-secondary" id="next-image">Volgende Foto <i class="fas fa-chevron-right"></i></button>
+                    <div class="modal-actions">
+                        <button class="btn btn-primary btn-full" id="contactAboutProduct">
+                            <i class="fas fa-envelope"></i>
+                            <span>Vraag informatie aan</span>
+                        </button>
+                        <button class="btn btn-outline btn-full" id="shareProduct">
+                            <i class="fas fa-share-alt"></i>
+                            <span>Deel product</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Contact Sectie -->
-    <section id="contact" class="contact-section">
+    <!-- Print Proces -->
+    <section class="section process" id="process">
         <div class="container">
-            <h2 class="section-title">Neem <span class="highlight">Contact</span> Op</h2>
-            <p class="section-subtitle">Heb je vragen over onze producten of wil je meer informatie? Neem dan contact met ons op via onderstaand formulier.</p>
+            <div class="section-header">
+                <span class="section-subtitle">Onze Methode</span>
+                <h2 class="section-title">Het <span class="highlight">Printsome</span> Proces</h2>
+                <p class="section-description">
+                    Van digitaal ontwerp tot fysiek product - ontdek hoe we jouw ideeën tot leven brengen.
+                </p>
+            </div>
             
-            <div class="contact-content">
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Concept & Ontwerp</h3>
+                    <p>We bespreken jouw idee en creëren een digitaal 3D-model met precisie software.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Optimalisatie</h3>
+                    <p>Het model wordt geoptimaliseerd voor printkwaliteit, sterkte en materiaalgebruik.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3>Printen</h3>
+                    <p>Geavanceerde 3D-printers bouwen het product laag voor laag met ultieme precisie.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Afronding & Controle</h3>
+                    <p>Elk product wordt gecontroleerd, eventueel nabewerkt en zorgvuldig verpakt.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="contact-container">
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Ons Adres</h3>
-                            <p>3D Printstraat 42</p>
-                            <p>1234 AB Printstad</p>
+                    <div class="section-header">
+                        <span class="section-subtitle">Contacteer Ons</span>
+                        <h2 class="section-title">Laten we <span class="highlight">Samenwerken</span></h2>
+                        <p class="section-description">
+                            Heb je een idee voor een custom 3D-geprint product? 
+                            Of wil je meer informatie over onze diensten?
+                        </p>
+                    </div>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Bezoek Ons</h4>
+                                <p>Innovatiestraat 42</p>
+                                <p>1234 AB Printstad</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Bel Ons</h4>
+                                <p>+31 (0)20 123 4567</p>
+                                <p>Ma-Vr: 9:00 - 17:00</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>E-mail</h4>
+                                <p>info@printsome.nl</p>
+                                <p>Antwoord binnen 24u</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Telefoon</h3>
-                            <p>+31 (0)20 123 4567</p>
-                            <p>Bereikbaar op werkdagen van 9:00 - 17:00</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>E-mail</h3>
-                            <p>info@printsom.nl</p>
-                            <p>We reageren binnen 24 uur</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h3>Openingstijden</h3>
-                            <p>Maandag - Vrijdag: 9:00 - 17:00</p>
-                            <p>Zaterdag: 10:00 - 14:00</p>
-                            <p>Zondag: Gesloten</p>
-                        </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
                     </div>
                 </div>
                 
                 <div class="contact-form-container">
-                    <form id="contact-form" class="contact-form">
+                    <form class="contact-form" id="contactForm">
+                        <h3>Stuur een bericht</h3>
+                        
                         <div class="form-group">
-                            <label for="name">Naam *</label>
+                            <label for="name">Volledige Naam *</label>
                             <input type="text" id="name" name="name" required>
                         </div>
+                        
                         <div class="form-group">
                             <label for="email">E-mailadres *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
+                        
                         <div class="form-group">
                             <label for="phone">Telefoonnummer</label>
                             <input type="tel" id="phone" name="phone">
                         </div>
+                        
                         <div class="form-group">
                             <label for="subject">Onderwerp *</label>
                             <select id="subject" name="subject" required>
-                                <option value="">Kies een onderwerp</option>
-                                <option value="vraag">Vraag over product</option>
-                                <option value="maatwerk">Maatwerk aanvraag</option>
-                                <option value="samenwerking">Samenwerking</option>
-                                <option value="overig">Overig</option>
+                                <option value="">Selecteer een onderwerp</option>
+                                <option value="product">Vraag over product</option>
+                                <option value="custom">Custom aanvraag</option>
+                                <option value="collab">Samenwerking</option>
+                                <option value="other">Overig</option>
                             </select>
                         </div>
+                        
                         <div class="form-group">
                             <label for="message">Bericht *</label>
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Verstuur Bericht</button>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Verstuur Bericht</span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -345,31 +666,30 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <div class="logo">
-                        <a href="index.html">
-                            <i class="fas fa-print"></i>
-                            <span class="logo-text">Print<span class="logo-highlight">som</span></span>
-                        </a>
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <span class="logo-text">PRINT<span class="logo-accent">SOME</span></span>
                     </div>
-                    <p class="footer-description">Printsom creëert unieke 3D-geprinte producten met aandacht voor detail en duurzaamheid.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+                    <p class="footer-description">
+                        Creators van premium 3D-geprinte producten sinds 2023. 
+                        Waar innovatie en design samenkomen.
+                    </p>
                 </div>
+                
                 <div class="footer-col">
-                    <h3>Snelle Links</h3>
+                    <h4>Snel naar</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#products">Producten</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Collectie</a></li>
                         <li><a href="#about">Over Ons</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#process">Print Proces</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-col">
-                    <h3>Product Categorieën</h3>
+                    <h4>Categorieën</h4>
                     <ul class="footer-links">
                         <li><a href="#products" data-filter="decoratie">Decoratie</a></li>
                         <li><a href="#products" data-filter="huishouden">Huishouden</a></li>
@@ -377,234 +697,98 @@
                         <li><a href="#products" data-filter="gadgets">Gadgets</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-col">
-                    <h3>Nieuwsbrief</h3>
-                    <p>Blijf op de hoogte van nieuwe producten en aanbiedingen.</p>
+                    <h4>Nieuwsbrief</h4>
+                    <p>Blijf op de hoogte van nieuwe producten en exclusieve aanbiedingen.</p>
                     <form class="newsletter-form">
-                        <input type="email" placeholder="Je e-mailadres" required>
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        <div class="input-group">
+                            <input type="email" placeholder="Jouw e-mailadres" required>
+                            <button type="submit">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2023 Printsom. Alle rechten voorbehouden. | Ontworpen met <i class="fas fa-heart"></i> voor 3D print liefhebbers</p>
+                <p>&copy; 2023 Printsome. Alle rechten voorbehouden.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacybeleid</a>
+                    <a href="#">Algemene voorwaarden</a>
+                    <a href="#">Cookiebeleid</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript voor interactieve functies -->
+    <!-- JavaScript -->
     <script>
-        // Responsive navigatie menu toggle
-        document.querySelector('.hamburger').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
-            this.classList.toggle('active');
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
-
-        // Product filter functionaliteit
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                // Verwijder active class van alle buttons
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Product Filtering
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const productCards = document.querySelectorAll('.product-card');
+        
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
                 
-                // Voeg active class toe aan geklikte button
-                this.classList.add('active');
+                const filter = tab.getAttribute('data-filter');
                 
-                const filter = this.getAttribute('data-filter');
-                const productCards = document.querySelectorAll('.product-card');
-                
+                // Filter products
                 productCards.forEach(card => {
                     if (filter === 'all' || card.getAttribute('data-category') === filter) {
                         card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
                     } else {
-                        card.style.display = 'none';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
                     }
                 });
             });
         });
-
-        // Product detail modal
-        const modal = document.getElementById('product-modal');
-        const closeModal = document.querySelector('.close-modal');
-        const viewDetailsButtons = document.querySelectorAll('.view-details');
-        const productImages = [
-            "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            "https://images.unsplash.com/photo-1611077542186-bb8a98711346?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-        ];
         
-        let currentImageIndex = 0;
-        const modalMainImg = document.getElementById('modal-main-img');
+        // Product Modal
+        const productModal = document.getElementById('productModal');
+        const modalClose = document.getElementById('modalClose');
+        const quickViewButtons = document.querySelectorAll('.quick-view, .btn-details');
         const thumbnails = document.querySelectorAll('.thumbnail');
+        const modalMainImage = document.getElementById('modalMainImage');
         
-        // Functie om modal te openen met productgegevens
-        function openProductModal(productId) {
-            // Hier zou je normaal gesproken productgegevens ophalen op basis van productId
-            // Voor nu gebruiken we dummy data
-            const productTitles = [
-                "Sierlijke Vaas", 
-                "Telefoonhouder", 
-                "Geometrische Oorbellen", 
-                "Sleutelhanger met Logo",
-                "Abstracte Wanddecoratie",
-                "Hangende Plantenbak"
-            ];
-            
-            const productDescriptions = [
-                "Een prachtige geometrische vaas, perfect voor een moderne uitstraling. Deze vaas is ontworpen met ingewikkelde patronen die licht en schaduw op een unieke manier vangen. Gemaakt van hoogwaardig PLA bioplastic dat sterk en duurzaam is.",
-                "Praktische houder voor je telefoon tijdens het opladen of video kijken. Met verstelbare hoek en compatibel met de meeste smartphones. Het ontwerp zorgt voor goede ventilatie zodat je telefoon niet oververhit raakt.",
-                "Unieke 3D-geprinte oorbellen met een modern geometrisch ontwerp. Licht van gewicht maar stevig gebouwd. Beschikbaar in verschillende kleuren om bij elke outfit te passen.",
-                "Stevige sleutelhanger met gepersonaliseerd logo of tekst. Kan worden aangepast met je eigen ontwerp of tekst. Gebruikt een sterk materiaal dat bestand is tegen dagelijks gebruik.",
-                "Moderne wanddecoratie die elke ruimte transformeert. Dit abstracte ontwerp voegt een artistiek element toe aan je interieur. Kan worden gemonteerd in verschillende configuraties voor een unieke look.",
-                "Moderne hangende plantenbak voor kleine tot middelgrote planten. Met ingebouwd drainage systeem om overbewatering te voorkomen. Perfect voor het toevoegen van groen aan kleine ruimtes."
-            ];
-            
-            const productCategories = ["Decoratie", "Huishouden", "Sieraden", "Gadgets", "Decoratie", "Huishouden"];
-            
-            document.getElementById('modal-product-title').textContent = productTitles[productId - 1];
-            document.getElementById('modal-product-description').textContent = productDescriptions[productId - 1];
-            document.getElementById('modal-product-category').textContent = productCategories[productId - 1];
-            
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Voorkom scrollen achter modal
-            
-            // Reset naar eerste afbeelding
-            currentImageIndex = 0;
-            updateModalImage();
-        }
-        
-        // Functie om modal afbeelding bij te werken
-        function updateModalImage() {
-            modalMainImg.src = productImages[currentImageIndex];
-            
-            // Update actieve thumbnail
-            thumbnails.forEach((thumb, index) => {
-                if (index === currentImageIndex) {
-                    thumb.classList.add('active');
-                } else {
-                    thumb.classList.remove('active');
-                }
-            });
-        }
-        
-        // Event listeners voor modal
-        viewDetailsButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const productId = this.getAttribute('data-product');
-                openProductModal(parseInt(productId));
-            });
-        });
-        
-        closeModal.addEventListener('click', function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-        
-        // Sluit modal als er buiten geklikt wordt
-        window.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-        
-        // Vorige/volgende afbeelding knoppen
-        document.getElementById('prev-image').addEventListener('click', function() {
-            currentImageIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
-            updateModalImage();
-        });
-        
-        document.getElementById('next-image').addEventListener('click', function() {
-            currentImageIndex = (currentImageIndex + 1) % productImages.length;
-            updateModalImage();
-        });
-        
-        // Thumbnail klik events
-        thumbnails.forEach((thumb, index) => {
-            thumb.addEventListener('click', function() {
-                currentImageIndex = index;
-                updateModalImage();
-            });
-        });
-        
-        // Contact formulier validatie
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simpele validatie
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            if (name && email && subject && message) {
-                alert('Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.');
-                this.reset();
-            } else {
-                alert('Vul alle verplichte velden in (gemarkeerd met *).');
-            }
-        });
-        
-        // Smooth scroll voor navigatie links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href') !== '#') {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Sluit mobiel menu als het open is
-                        document.querySelector('.nav-menu').classList.remove('active');
-                        document.querySelector('.hamburger').classList.remove('active');
-                    }
-                }
-            });
-        });
-        
-        // Newsletter formulier
-        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            
-            if (email) {
-                alert('Bedankt voor je aanmelding! Je bent nu ingeschreven voor onze nieuwsbrief.');
-                this.reset();
-            }
-        });
-        
-        // Voeg active class toe aan nav-item op basis van scroll positie
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section');
-            const navItems = document.querySelectorAll('.nav-item');
-            
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (scrollY >= sectionTop - 100) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-            
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.querySelector('a').getAttribute('href') === `#${currentSection}`) {
-                    item.classList.add('active');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+        // Product Data
+        const products = {
+            1: {
+                title: "Geometrische Vaas",
+                category: "Decoratie",
+                price: "€24,95",
+                description: "Deze geometrische vaas combineert modern design met functionaliteit. Elk detail is zorgvuldig ontworpen en geprint met hoogwaardig PLA bioplastic. De vaas is 18cm hoog en heeft een diameter van 12cm. Geschikt voor zowel verse bloemen als droogboeketten.",
+                rating: 4.5,
+                reviews: 42,
+                images: [
+                    "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1581094794329-c

@@ -3,659 +3,523 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Printsome - Premium 3D Geprinte Producten</title>
+    <title>Printsom3D - Professionele 3D Print Service</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖨️</text></svg>">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
+    <!-- Navigatiebalk -->
+    <nav class="navbar">
         <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-cube"></i>
-                    </div>
-                    <span class="logo-text">PRINT<span class="logo-accent">SOME</span></span>
-                </a>
-                
-                <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#products" class="nav-link">Collectie</a></li>
-                    <li><a href="#about" class="nav-link">Over Ons</a></li>
-                    <li><a href="#process" class="nav-link">Proces</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-                
-                <div class="nav-actions">
-                    <button class="theme-toggle" id="themeToggle">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                </div>
-                
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </nav>
+            <a href="#" class="logo">
+                <i class="fas fa-cube"></i>
+                <span>Printsom<span class="logo-accent">3D</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#services">Diensten</a></li>
+                <li><a href="#materials">Materialen</a></li>
+                <li><a href="#pricing">Prijzen</a></li>
+                <li><a href="#about">Over Ons</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" class="btn btn-small">Offerte Aanvragen</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-    </header>
+    </nav>
 
-    <!-- Hero Sectie -->
-    <section class="hero" id="home">
+    <!-- Hoofdgedeelte/Hero -->
+    <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="hero-title-line">Premium 3D</span>
-                    <span class="hero-title-line">Geprinte <span class="highlight">Creaties</span></span>
-                </h1>
-                <p class="hero-subtitle">
-                    Unieke, op maat gemaakte 3D-geprinte producten van de hoogste kwaliteit. 
-                    Van moderne decoratie tot praktische oplossingen.
-                </p>
+                <h1 class="hero-title">Professionele <span class="highlight">3D Print</span> Services</h1>
+                <p class="hero-subtitle">Van prototype tot eindproduct - wij maken jouw ideeën werkelijkheid met precisie 3D-printen.</p>
                 <div class="hero-buttons">
-                    <a href="#products" class="btn btn-primary">
-                        <span>Bekijk Collectie</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#process" class="btn btn-outline">
-                        <span>Ontdek Proces</span>
-                        <i class="fas fa-play-circle"></i>
-                    </a>
-                </div>
-                
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Te klanten</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">120+</span>
-                        <span class="stat-label">Producten</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">Tevredenheid</span>
-                    </div>
+                    <a href="#contact" class="btn btn-primary">Start Je Project</a>
+                    <a href="#services" class="btn btn-secondary">Onze Diensten</a>
                 </div>
             </div>
-            
             <div class="hero-image">
-                <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="3D Printer in actie" class="main-img">
-                    <div class="image-overlay"></div>
-                    <div class="floating-badge">
-                        <i class="fas fa-bolt"></i>
-                        <span>24-uurs service</span>
-                    </div>
+                <div class="floating-print">
+                    <i class="fas fa-cube"></i>
+                    <i class="fas fa-robot"></i>
+                    <i class="fas fa-tools"></i>
+                    <i class="fas fa-cogs"></i>
                 </div>
             </div>
         </div>
-        
-        <div class="hero-scroll">
-            <a href="#products" class="scroll-down">
-                <i class="fas fa-chevron-down"></i>
-            </a>
-        </div>
     </section>
 
-    <!-- Over Ons -->
-    <section class="section about" id="about">
+    <!-- Diensten Sectie -->
+    <section id="services" class="section services">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Over Printsome</span>
-                <h2 class="section-title">Precisie in <span class="highlight">Elk Detail</span></h2>
-                <p class="section-description">
-                    Wij combineren geavanceerde 3D-printtechnologie met artistiek vakmanschap 
-                    om unieke producten te creëren die perfect aansluiten bij jouw wensen.
-                </p>
+                <h2 class="section-title">Onze <span class="highlight">Diensten</span></h2>
+                <p class="section-subtitle">Wij bieden een breed scala aan 3D-printdiensten voor zowel particulieren als bedrijven.</p>
             </div>
-            
-            <div class="about-grid">
-                <div class="about-card">
-                    <div class="about-card-icon">
-                        <i class="fas fa-microscope"></i>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-industry"></i>
                     </div>
-                    <h3>Precisie Printen</h3>
-                    <p>Onze geavanceerde printers bieden een laaghoogte van 0.05mm voor ultieme details en gladde afwerking.</p>
+                    <h3 class="service-title">Industrieel 3D Printen</h3>
+                    <p class="service-description">Hoogwaardige industriële prints met materialen zoals Nylon, ABS en PETG voor functionele prototypes en eindproducten.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Grote printvolume (tot 400x400x500 mm)</li>
+                        <li><i class="fas fa-check-circle"></i> Hoge precisie (laaghoogte vanaf 0.05mm)</li>
+                        <li><i class="fas fa-check-circle"></i> Ondersteuning complexe geometrieën</li>
+                    </ul>
                 </div>
-                
-                <div class="about-card">
-                    <div class="about-card-icon">
-                        <i class="fas fa-palette"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gem"></i>
                     </div>
-                    <h3>Maatwerk</h3>
-                    <p>Elk product kan worden aangepast aan jouw specifieke wensen, van kleur tot vorm en functionaliteit.</p>
+                    <h3 class="service-title">Resin 3D Printen</h3>
+                    <p class="service-description">Zeer gedetailleerde prints met resin technologie voor sieraden, miniatures en modellen met fijne details.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Uitzonderlijke detailweergave</li>
+                        <li><i class="fas fa-check-circle"></i> Gladde oppervlakte afwerking</li>
+                        <li><i class="fas fa-check-circle"></i> Geschikt voor kleine, complexe objecten</li>
+                    </ul>
                 </div>
-                
-                <div class="about-card">
-                    <div class="about-card-icon">
-                        <i class="fas fa-leaf"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
                     </div>
-                    <h3>Duurzaam</h3>
-                    <p>We gebruiken biologisch afbreekbare PLA en gerecyclede materialen voor een ecologisch verantwoorde productie.</p>
+                    <h3 class="service-title">Na-verwerking & Afwerking</h3>
+                    <p class="service-description">Professionele nabewerking zoals schuren, verven, lakken en assemblage voor een perfect eindresultaat.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Schuren en polijsten</li>
+                        <li><i class="fas fa-check-circle"></i> Verven en lakken op maat</li>
+                        <li><i class="fas fa-check-circle"></i> Montage en assemblage</li>
+                    </ul>
                 </div>
-                
-                <div class="about-card">
-                    <div class="about-card-icon">
-                        <i class="fas fa-shipping-fast"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-project-diagram"></i>
                     </div>
-                    <h3>Snel Leverbaar</h3>
-                    <p>Standaard producten worden binnen 2-3 werkdagen geleverd. Maatwerk binnen 5-7 werkdagen.</p>
+                    <h3 class="service-title">Ontwerp & Modeloptimalisatie</h3>
+                    <p class="service-description">Hulp bij 3D-modelleren, ontwerpoptimalisatie voor printen en reverse engineering van bestaande onderdelen.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> CAD-modelleren en optimalisatie</li>
+                        <li><i class="fas fa-check-circle"></i> Reverse engineering</li>
+                        <li><i class="fas fa-check-circle"></i> 3D-scan verwerking</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Product Collectie -->
-    <section class="section products" id="products">
+    <!-- Materialen Sectie -->
+    <section id="materials" class="section materials">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Onze Collectie</span>
-                <h2 class="section-title">Premium <span class="highlight">3D Producten</span></h2>
-                <p class="section-description">
-                    Ontdek onze uitgebreide collectie 3D-geprinte creaties. 
-                    Klik op een product voor gedetailleerde informatie en meer afbeeldingen.
-                </p>
+                <h2 class="section-title">Onze <span class="highlight">Materialen</span></h2>
+                <p class="section-subtitle">Kies uit een breed assortiment hoogwaardige materialen voor elk project.</p>
             </div>
-            
-            <div class="filter-tabs">
-                <button class="filter-tab active" data-filter="all">Alles</button>
-                <button class="filter-tab" data-filter="decoratie">Decoratie</button>
-                <button class="filter-tab" data-filter="huishouden">Huishouden</button>
-                <button class="filter-tab" data-filter="sieraden">Sieraden</button>
-                <button class="filter-tab" data-filter="gadgets">Gadgets</button>
-            </div>
-            
-            <div class="products-grid">
-                <!-- Product 1 -->
-                <div class="product-card" data-category="decoratie">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Geometrische Vaas">
-                        <div class="product-badge">Bestseller</div>
-                        <div class="product-overlay">
-                            <button class="quick-view" data-product="1">
-                                <i class="fas fa-expand"></i>
-                            </button>
+            <div class="materials-tabs">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="plastics">Plastics</button>
+                    <button class="tab-btn" data-tab="resins">Resins</button>
+                    <button class="tab-btn" data-tab="special">Special Materialen</button>
+                    <button class="tab-btn" data-tab="metals">Metaal Composieten</button>
+                </div>
+                <div class="tabs-content">
+                    <div class="tab-pane active" id="plastics">
+                        <div class="material-grid">
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #e0e0e0;"></div>
+                                <h4>PLA</h4>
+                                <p>Biologisch afbreekbaar, makkelijk te printen, ideale keuze voor beginners en visuele modellen.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.15/g</span>
+                                    <span class="property">Gemakkelijk</span>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #a0a0a0;"></div>
+                                <h4>ABS</h4>
+                                <p>Sterk, duurzaam en hittebestendig. Perfect voor functionele onderdelen en eindgebruik producten.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.25/g</span>
+                                    <span class="property">Gemiddeld</span>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #2a9d8f;"></div>
+                                <h4>PETG</h4>
+                                <p>Combineert gebruiksgemak van PLA met sterkte van ABS. Slijtvast en chemisch bestendig.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.28/g</span>
+                                    <span class="property">Gemiddeld</span>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #e76f51;"></div>
+                                <h4>Nylon</h4>
+                                <p>Uitzonderlijk sterk, taai en flexibel. Voor onderdelen die zware belasting moeten weerstaan.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.45/g</span>
+                                    <span class="property">Moeilijk</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="product-info">
-                        <div class="product-category">Decoratie</div>
-                        <h3 class="product-title">Geometrische Vaas</h3>
-                        <p class="product-description">Moderne vaas met geometrisch patroon voor een artistieke uitstraling.</p>
-                        <div class="product-meta">
-                            <div class="product-price">
-                                <span class="price">€24,95</span>
+                    <div class="tab-pane" id="resins">
+                        <div class="material-grid">
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #ffcc00;"></div>
+                                <h4>Standard Resin</h4>
+                                <p>Algemene resin voor gedetailleerde prints met goede sterkte en flexibiliteit.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.35/ml</span>
+                                    <span class="property">Gemiddeld</span>
+                                </div>
                             </div>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span class="rating-count">(42)</span>
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #8ac926;"></div>
+                                <h4>Tough Resin</h4>
+                                <p>Hoge slagvastheid en ductiliteit, vergelijkbaar met ABS plastic.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.55/ml</span>
+                                    <span class="property">Gemiddeld</span>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #ff6b6b;"></div>
+                                <h4>Flexible Resin</h4>
+                                <p>Rubberachtig materiaal dat kan buigen en vervormen zonder te breken.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.65/ml</span>
+                                    <span class="property">Moeilijk</span>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #7209b7;"></div>
+                                <h4>Castable Resin</h4>
+                                <p>Speciaal voor sieraden, verbrandt asvrij voor perfecte gietresultaten.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.85/ml</span>
+                                    <span class="property">Expert</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="product-actions">
-                            <button class="btn-details" data-product="1">
-                                <span>Bekijk Details</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
+                    </div>
+                    <div class="tab-pane" id="special">
+                        <div class="material-grid">
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #9d4edd;"></div>
+                                <h4>TPU</h4>
+                                <p>Flexibel filament met rubberachtige eigenschappen, ideaal voor buigzame onderdelen.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.65/g</span>
+                                    <span class="property">Moeilijk</span>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #ffafcc;"></div>
+                                <h4>Hout Composite</h4>
+                                <p>PLA met houtvezels, printbaar als plastic maar ziet eruit en voelt aan als hout.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.45/g</span>
+                                    <span class="property">Gemiddeld</span>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #3a86ff;"></div>
+                                <h4>Glow-in-the-dark</h4>
+                                <p>PLA met fosforescerende deeltjes die oplichten in het donker na blootstelling aan licht.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.55/g</span>
+                                    <span class="property">Gemiddeld</span>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #ff006e;"></div>
+                                <h4>Koolstofvezel Versterkt</h4>
+                                <p>Ultra-sterk en stijf materiaal voor onderdelen die lichte gewicht en sterkte vereisen.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.85/g</span>
+                                    <span class="property">Expert</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="metals">
+                        <div class="material-grid">
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #d3d3d3;"></div>
+                                <h4>Staal Composite</h4>
+                                <p>PLA met staaldeeltjes, ziet eruit en voelt aan als metaal, kan worden gepolijst.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.75/g</span>
+                                    <span class="property">Gemiddeld</span>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #ffd700;"></div>
+                                <h4>Bronze Composite</h4>
+                                <p>PLA met bronzepoeder, kan worden gepolijst en gepatineerd voor authentiek uiterlijk.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.95/g</span>
+                                    <span class="property">Expert</span>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #c0c0c0;"></div>
+                                <h4>Aluminium Composite</h4>
+                                <p>Lichtgewicht metaalcomposiet met uitstekende sterkte-gewichtsverhouding.</p>
+                                <div class="material-properties">
+                                    <span class="property">€0.85/g</span>
+                                    <span class="property">Expert</span>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-color" style="background-color: #b76e79;"></div>
+                                <h4>Koper Composite</h4>
+                                <p>PLA met koperdeeltjes, kan worden gepolijst voor een echte koperen uitstraling.</p>
+                                <div class="material-properties">
+                                    <span class="property">€1.10/g</span>
+                                    <span class="property">Expert</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Product 2 -->
-                <div class="product-card" data-category="huishouden">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Telefoon Standaard">
-                        <div class="product-badge new">Nieuw</div>
-                        <div class="product-overlay">
-                            <button class="quick-view" data-product="2">
-                                <i class="fas fa-expand"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Huishouden</div>
-                        <h3 class="product-title">Slimme Telefoon Standaard</h3>
-                        <p class="product-description">Verstelbare standaard met draadloze oplaadmogelijkheid.</p>
-                        <div class="product-meta">
-                            <div class="product-price">
-                                <span class="price">€29,95</span>
-                            </div>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span class="rating-count">(18)</span>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <button class="btn-details" data-product="2">
-                                <span>Bekijk Details</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 3 -->
-                <div class="product-card" data-category="sieraden">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1611077542186-bb8a98711346?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="3D Sieraden">
-                        <div class="product-overlay">
-                            <button class="quick-view" data-product="3">
-                                <i class="fas fa-expand"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Sieraden</div>
-                        <h3 class="product-title">Moderne Geometrische Oorbellen</h3>
-                        <p class="product-description">Lichte, hypoallergene oorbellen met uniek design.</p>
-                        <div class="product-meta">
-                            <div class="product-price">
-                                <span class="price">€16,50</span>
-                            </div>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span class="rating-count">(36)</span>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <button class="btn-details" data-product="3">
-                                <span>Bekijk Details</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 4 -->
-                <div class="product-card" data-category="gadgets">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Sleutelhanger">
-                        <div class="product-overlay">
-                            <button class="quick-view" data-product="4">
-                                <i class="fas fa-expand"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Gadgets</div>
-                        <h3 class="product-title">Gepersonaliseerde Sleutelhanger</h3>
-                        <p class="product-description">Stevige sleutelhanger met eigen tekst of logo.</p>
-                        <div class="product-meta">
-                            <div class="product-price">
-                                <span class="price">€12,95</span>
-                            </div>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span class="rating-count">(24)</span>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <button class="btn-details" data-product="4">
-                                <span>Bekijk Details</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 5 -->
-                <div class="product-card" data-category="decoratie">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Wand Kunst">
-                        <div class="product-badge">Limited</div>
-                        <div class="product-overlay">
-                            <button class="quick-view" data-product="5">
-                                <i class="fas fa-expand"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Decoratie</div>
-                        <h3 class="product-title">Abstracte Wand Sculptuur</h3>
-                        <p class="product-description">Driedimensionale wandkunst die licht en schaduw speelt.</p>
-                        <div class="product-meta">
-                            <div class="product-price">
-                                <span class="price">€49,95</span>
-                            </div>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span class="rating-count">(15)</span>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <button class="btn-details" data-product="5">
-                                <span>Bekijk Details</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 6 -->
-                <div class="product-card" data-category="huishouden">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Organizer">
-                        <div class="product-overlay">
-                            <button class="quick-view" data-product="6">
-                                <i class="fas fa-expand"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Huishouden</div>
-                        <h3 class="product-title">Bureau Organizer Set</h3>
-                        <p class="product-description">Complete set voor een opgeruimd bureau.</p>
-                        <div class="product-meta">
-                            <div class="product-price">
-                                <span class="price">€34,95</span>
-                            </div>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span class="rating-count">(29)</span>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <button class="btn-details" data-product="6">
-                                <span>Bekijk Details</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center">
-                <a href="#all-products" class="btn btn-secondary">
-                    <span>Bekijk Volledige Collectie</span>
-                    <i class="fas fa-long-arrow-alt-right"></i>
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Product Detail Modal -->
-    <div class="modal product-modal" id="productModal">
-        <div class="modal-container">
-            <button class="modal-close" id="modalClose">
-                <i class="fas fa-times"></i>
-            </button>
-            
-            <div class="modal-content">
-                <div class="modal-gallery">
-                    <div class="main-image">
-                        <img id="modalMainImage" src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Product">
-                    </div>
-                    <div class="thumbnail-images">
-                        <div class="thumbnail active">
-                            <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Thumbnail 1">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Thumbnail 2">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://images.unsplash.com/photo-1611077542186-bb8a98711346?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Thumbnail 3">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Thumbnail 4">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="modal-info">
-                    <div class="modal-header">
-                        <div class="product-category" id="modalCategory">Decoratie</div>
-                        <h2 id="modalTitle">Geometrische Vaas</h2>
-                        <div class="product-rating">
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <span class="review-count">(42 beoordelingen)</span>
-                        </div>
-                    </div>
-                    
-                    <div class="product-price-large">
-                        <span class="price" id="modalPrice">€24,95</span>
-                    </div>
-                    
-                    <div class="product-description-full" id="modalDescription">
-                        <p>Deze geometrische vaas combineert modern design met functionaliteit. Elk detail is zorgvuldig ontworpen en geprint met hoogwaardig PLA bioplastic.</p>
-                        <p>De vaas is 18cm hoog en heeft een diameter van 12cm. Geschikt voor zowel verse bloemen als droogboeketten.</p>
-                    </div>
-                    
-                    <div class="product-specs">
-                        <h3>Specificaties</h3>
-                        <div class="specs-grid">
-                            <div class="spec">
-                                <span class="spec-label">Materiaal</span>
-                                <span class="spec-value">PLA Bioplastic</span>
-                            </div>
-                            <div class="spec">
-                                <span class="spec-label">Afmetingen</span>
-                                <span class="spec-value">18 × 12 × 12 cm</span>
-                            </div>
-                            <div class="spec">
-                                <span class="spec-label">Gewicht</span>
-                                <span class="spec-value">150 gram</span>
-                            </div>
-                            <div class="spec">
-                                <span class="spec-label">Kleuren</span>
-                                <span class="spec-value">Zwart, Geel, Wit</span>
-                            </div>
-                            <div class="spec">
-                                <span class="spec-label">Printtijd</span>
-                                <span class="spec-value">6 uur</span>
-                            </div>
-                            <div class="spec">
-                                <span class="spec-label">Levertijd</span>
-                                <span class="spec-value">2-3 werkdagen</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="modal-actions">
-                        <button class="btn btn-primary btn-full" id="contactAboutProduct">
-                            <i class="fas fa-envelope"></i>
-                            <span>Vraag informatie aan</span>
-                        </button>
-                        <button class="btn btn-outline btn-full" id="shareProduct">
-                            <i class="fas fa-share-alt"></i>
-                            <span>Deel product</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Print Proces -->
-    <section class="section process" id="process">
+    <!-- Prijzen Sectie -->
+    <section id="pricing" class="section pricing">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Onze Methode</span>
-                <h2 class="section-title">Het <span class="highlight">Printsome</span> Proces</h2>
-                <p class="section-description">
-                    Van digitaal ontwerp tot fysiek product - ontdek hoe we jouw ideeën tot leven brengen.
-                </p>
+                <h2 class="section-title">Transparante <span class="highlight">Prijzen</span></h2>
+                <p class="section-subtitle">Eenvoudige prijsstructuur gebaseerd op materiaalgebruik, printtijd en complexiteit.</p>
             </div>
-            
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">01</div>
-                    <div class="step-icon">
-                        <i class="fas fa-lightbulb"></i>
+            <div class="pricing-calculator">
+                <div class="calculator-form">
+                    <h3>Prijs Calculator</h3>
+                    <div class="form-group">
+                        <label for="material-type">Materiaal Type</label>
+                        <select id="material-type">
+                            <option value="pla">PLA (€0.15/g)</option>
+                            <option value="abs">ABS (€0.25/g)</option>
+                            <option value="petg">PETG (€0.28/g)</option>
+                            <option value="nylon">Nylon (€0.45/g)</option>
+                            <option value="resin">Standard Resin (€0.35/ml)</option>
+                        </select>
                     </div>
-                    <h3>Concept & Ontwerp</h3>
-                    <p>We bespreken jouw idee en creëren een digitaal 3D-model met precisie software.</p>
+                    <div class="form-group">
+                        <label for="print-weight">Gewicht (gram/ml)</label>
+                        <input type="range" id="print-weight" min="10" max="1000" value="100">
+                        <div class="range-value">
+                            <span id="weight-value">100</span> g/ml
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="print-time">Printtijd (uren)</label>
+                        <input type="range" id="print-time" min="1" max="100" value="10">
+                        <div class="range-value">
+                            <span id="time-value">10</span> uur
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="complexity">Complexiteit</label>
+                        <select id="complexity">
+                            <option value="1">Eenvoudig (€5 toeslag)</option>
+                            <option value="2">Gemiddeld (€15 toeslag)</option>
+                            <option value="3">Complex (€30 toeslag)</option>
+                            <option value="4">Zeer Complex (€50 toeslag)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="finishing">Afwerking</label>
+                        <select id="finishing">
+                            <option value="0">Geen afwerking (€0)</option>
+                            <option value="1">Basisschuren (€10)</option>
+                            <option value="2">Polijsten (€25)</option>
+                            <option value="3">Verven (€40)</option>
+                        </select>
+                    </div>
                 </div>
-                
-                <div class="process-step">
-                    <div class="step-number">02</div>
-                    <div class="step-icon">
-                        <i class="fas fa-sliders-h"></i>
+                <div class="calculator-result">
+                    <h3>Kostenoverzicht</h3>
+                    <div class="cost-breakdown">
+                        <div class="cost-item">
+                            <span>Materiaal kosten</span>
+                            <span id="material-cost">€15.00</span>
+                        </div>
+                        <div class="cost-item">
+                            <span>Machinetijd (€2.50/uur)</span>
+                            <span id="machine-cost">€25.00</span>
+                        </div>
+                        <div class="cost-item">
+                            <span>Complexiteit toeslag</span>
+                            <span id="complexity-cost">€15.00</span>
+                        </div>
+                        <div class="cost-item">
+                            <span>Afwerking</span>
+                            <span id="finishing-cost">€10.00</span>
+                        </div>
+                        <div class="cost-divider"></div>
+                        <div class="cost-total">
+                            <span>Totaal (excl. BTW)</span>
+                            <span id="total-cost">€65.00</span>
+                        </div>
                     </div>
-                    <h3>Optimalisatie</h3>
-                    <p>Het model wordt geoptimaliseerd voor printkwaliteit, sterkte en materiaalgebruik.</p>
+                    <div class="calculator-note">
+                        <p><i class="fas fa-info-circle"></i> Prijzen zijn indicatief. Neem contact op voor een exacte offerte.</p>
+                    </div>
+                    <a href="#contact" class="btn btn-primary btn-block">Offerte Aanvragen</a>
                 </div>
-                
-                <div class="process-step">
-                    <div class="step-number">03</div>
-                    <div class="step-icon">
-                        <i class="fas fa-print"></i>
-                    </div>
-                    <h3>Printen</h3>
-                    <p>Geavanceerde 3D-printers bouwen het product laag voor laag met ultieme precisie.</p>
+            </div>
+            <div class="pricing-info">
+                <div class="info-card">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h4>Snelle Levering</h4>
+                    <p>Standaard levering binnen 3-5 werkdagen. Express optie beschikbaar (1-2 werkdagen).</p>
                 </div>
-                
-                <div class="process-step">
-                    <div class="step-number">04</div>
-                    <div class="step-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h3>Afronding & Controle</h3>
-                    <p>Elk product wordt gecontroleerd, eventueel nabewerkt en zorgvuldig verpakt.</p>
+                <div class="info-card">
+                    <i class="fas fa-medal"></i>
+                    <h4>Kwaliteitsgarantie</h4>
+                    <p>Al onze prints worden gecontroleerd op kwaliteit. Niet tevreden? Wij printen opnieuw.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-file-invoice"></i>
+                    <h4>Geen Verborgen Kosten</h4>
+                    <p>Transparante prijsopbouw. Geen setup kosten voor bestellingen boven €50.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section class="section contact" id="contact">
+    <!-- Over Ons Sectie -->
+    <section id="about" class="section about">
         <div class="container">
-            <div class="contact-container">
-                <div class="contact-info">
+            <div class="about-content">
+                <div class="about-text">
                     <div class="section-header">
-                        <span class="section-subtitle">Contacteer Ons</span>
-                        <h2 class="section-title">Laten we <span class="highlight">Samenwerken</span></h2>
-                        <p class="section-description">
-                            Heb je een idee voor een custom 3D-geprint product? 
-                            Of wil je meer informatie over onze diensten?
-                        </p>
+                        <h2 class="section-title">Over <span class="highlight">Printsom3D</span></h2>
+                        <p class="section-subtitle">Wij brengen innovatie tot leven met precisie 3D-printtechnologie.</p>
                     </div>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4>Bezoek Ons</h4>
-                                <p>Innovatiestraat 42</p>
-                                <p>1234 AB Printstad</p>
-                            </div>
+                    <p>Printsom3D is opgericht in 2018 met een passie voor additive manufacturing en de oneindige mogelijkheden die 3D-printen biedt. Wat begon als een hobby in een garage is uitgegroeid tot een professionele 3D-printservice met state-of-the-art apparatuur en een toegewijd team van experts.</p>
+                    <p>Onze missie is om toegankelijke, hoogwaardige 3D-printservices te bieden aan innovators, ontwerpers, ingenieurs en makers. Of je nu een enkel prototype nodig hebt of een serie productie-onderdelen, wij helpen je van concept tot eindproduct.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>2500+</h3>
+                            <p>Te projects voltooid</p>
                         </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4>Bel Ons</h4>
-                                <p>+31 (0)20 123 4567</p>
-                                <p>Ma-Vr: 9:00 - 17:00</p>
-                            </div>
+                        <div class="stat">
+                            <h3>98%</h3>
+                            <p>Tevreden klanten</p>
                         </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4>E-mail</h4>
-                                <p>info@printsome.nl</p>
-                                <p>Antwoord binnen 24u</p>
-                            </div>
+                        <div class="stat">
+                            <h3>15+</h3>
+                            <p>Industriële printers</p>
                         </div>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="#" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-pinterest-p"></i>
-                        </a>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Beschikbare materialen</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="contact-form-container">
-                    <form class="contact-form" id="contactForm">
-                        <h3>Stuur een bericht</h3>
-                        
-                        <div class="form-group">
-                            <label for="name">Volledige Naam *</label>
-                            <input type="text" id="name" name="name" required>
+                <div class="about-image">
+                    <div class="image-frame">
+                        <div class="floating-element">
+                            <i class="fas fa-print"></i>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="email">E-mailadres *</label>
-                            <input type="email" id="email" name="email" required>
+                        <div class="floating-element">
+                            <i class="fas fa-microchip"></i>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Telefoonnummer</label>
-                            <input type="tel" id="phone" name="phone">
+                        <div class="floating-element">
+                            <i class="fas fa-shapes"></i>
                         </div>
-                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Sectie -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Neem <span class="highlight">Contact</span> Op</h2>
+                <p class="section-subtitle">Laat ons je 3D-printproject bespreken. We reageren binnen 24 uur.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="project-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Naam *</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail *</label>
+                                <input type="email" id="email" required>
+                            </div>
+                        </div>
                         <div class="form-group">
-                            <label for="subject">Onderwerp *</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Selecteer een onderwerp</option>
-                                <option value="product">Vraag over product</option>
-                                <option value="custom">Custom aanvraag</option>
-                                <option value="collab">Samenwerking</option>
-                                <option value="other">Overig</option>
+                            <label for="project-type">Project Type</label>
+                            <select id="project-type">
+                                <option value="">Selecteer project type</option>
+                                <option value="prototype">Prototype</option>
+                                <option value="end-product">Eindproduct</option>
+                                <option value="spare-part">Reserveonderdeel</option>
+                                <option value="art-design">Kunst & Design</option>
+                                <option value="other">Anders</option>
                             </select>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="message">Bericht *</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Project Beschrijving *</label>
+                            <textarea id="message" rows="6" required></textarea>
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-full">
-                            <i class="fas fa-paper-plane"></i>
-                            <span>Verstuur Bericht</span>
-                        </button>
+                        <div class="form-group">
+                            <label for="file-upload">3D Bestand Uploaden (optioneel)</label>
+                            <div class="file-upload">
+                                <input type="file" id="file-upload" accept=".stl,.obj,.3mf,.step">
+                                <label for="file-upload" class="file-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Kies bestand of sleep hier</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Verstuur Projectaanvraag</button>
                     </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Bezoek Ons</h4>
+                        <p>Innovatielaan 42<br>1234 AB Printstad</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h4>Bel Ons</h4>
+                        <p>+31 (0)20 123 4567<br>Ma-Vr: 9:00 - 17:00</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>E-mail Ons</h4>
+                        <p>info@printsom3d.nl<br>offerte@printsom3d.nl</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h4>Openingstijden</h4>
+                        <p>Maandag - Vrijdag: 9:00 - 17:00<br>Zaterdag: 10:00 - 14:00</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -666,129 +530,53 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <div class="footer-logo">
-                        <div class="logo-icon">
-                            <i class="fas fa-cube"></i>
-                        </div>
-                        <span class="logo-text">PRINT<span class="logo-accent">SOME</span></span>
+                    <a href="#" class="logo">
+                        <i class="fas fa-cube"></i>
+                        <span>Printsom<span class="logo-accent">3D</span></span>
+                    </a>
+                    <p>Voor al uw 3D-printbehoeften. Van prototype tot productie, wij maken het mogelijk.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
-                    <p class="footer-description">
-                        Creators van premium 3D-geprinte producten sinds 2023. 
-                        Waar innovatie en design samenkomen.
-                    </p>
                 </div>
-                
                 <div class="footer-col">
-                    <h4>Snel naar</h4>
-                    <ul class="footer-links">
+                    <h4>Snelle Links</h4>
+                    <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#products">Collectie</a></li>
+                        <li><a href="#services">Diensten</a></li>
+                        <li><a href="#materials">Materialen</a></li>
+                        <li><a href="#pricing">Prijzen</a></li>
                         <li><a href="#about">Over Ons</a></li>
-                        <li><a href="#process">Print Proces</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-col">
-                    <h4>Categorieën</h4>
-                    <ul class="footer-links">
-                        <li><a href="#products" data-filter="decoratie">Decoratie</a></li>
-                        <li><a href="#products" data-filter="huishouden">Huishouden</a></li>
-                        <li><a href="#products" data-filter="sieraden">Sieraden</a></li>
-                        <li><a href="#products" data-filter="gadgets">Gadgets</a></li>
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">3D Printen op Aanvraag</a></li>
+                        <li><a href="#">Prototype Ontwikkeling</a></li>
+                        <li><a href="#">Productie in Kleine Series</a></li>
+                        <li><a href="#">Reverse Engineering</a></li>
+                        <li><a href="#">3D Scanning</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-col">
                     <h4>Nieuwsbrief</h4>
-                    <p>Blijf op de hoogte van nieuwe producten en exclusieve aanbiedingen.</p>
-                    <form class="newsletter-form">
-                        <div class="input-group">
-                            <input type="email" placeholder="Jouw e-mailadres" required>
-                            <button type="submit">
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </form>
+                    <p>Blijf op de hoogte van de nieuwste 3D-printtechnologieën en aanbiedingen.</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Je e-mailadres">
+                        <button class="btn btn-small">Inschrijven</button>
+                    </div>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2023 Printsome. Alle rechten voorbehouden.</p>
-                <div class="footer-bottom-links">
-                    <a href="#">Privacybeleid</a>
-                    <a href="#">Algemene voorwaarden</a>
-                    <a href="#">Cookiebeleid</a>
-                </div>
+                <p>&copy; 2023 Printsom3D. Alle rechten voorbehouden. | <a href="#">Privacybeleid</a> | <a href="#">Algemene Voorwaarden</a></p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script>
-        // Mobile Navigation
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-        
-        // Product Filtering
-        const filterTabs = document.querySelectorAll('.filter-tab');
-        const productCards = document.querySelectorAll('.product-card');
-        
-        filterTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Update active tab
-                filterTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                const filter = tab.getAttribute('data-filter');
-                
-                // Filter products
-                productCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, 10);
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
-        
-        // Product Modal
-        const productModal = document.getElementById('productModal');
-        const modalClose = document.getElementById('modalClose');
-        const quickViewButtons = document.querySelectorAll('.quick-view, .btn-details');
-        const thumbnails = document.querySelectorAll('.thumbnail');
-        const modalMainImage = document.getElementById('modalMainImage');
-        
-        // Product Data
-        const products = {
-            1: {
-                title: "Geometrische Vaas",
-                category: "Decoratie",
-                price: "€24,95",
-                description: "Deze geometrische vaas combineert modern design met functionaliteit. Elk detail is zorgvuldig ontworpen en geprint met hoogwaardig PLA bioplastic. De vaas is 18cm hoog en heeft een diameter van 12cm. Geschikt voor zowel verse bloemen als droogboeketten.",
-                rating: 4.5,
-                reviews: 42,
-                images: [
-                    "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1581094794329-c
+    <script src="script.js"></script>
+</body>
+</html>

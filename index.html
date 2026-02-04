@@ -471,14 +471,20 @@
             text-overflow: ellipsis;
         }
 
-        .product-material {
+        .product-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .product-material, .product-category {
             font-size: 11px;
             color: var(--gray-500);
             background-color: var(--gray-100);
             padding: 2px 8px;
             border-radius: 10px;
             display: inline-block;
-            margin-bottom: 8px;
         }
 
         .product-price {
@@ -897,7 +903,7 @@
             }
         }
 
-        /* Product Detail Modal */
+        /* Product Detail Modal - Nieuwe Layout */
         .product-modal {
             position: fixed;
             top: 0;
@@ -929,19 +935,22 @@
             flex: 1;
             overflow-y: auto;
             padding: 0 16px 16px;
+            display: flex;
+            flex-direction: column;
         }
 
         .product-modal-image {
-            height: 200px;
-            width: 100%;
+            height: 280px;
+            width: 280px;
             background-color: var(--gray-100);
-            border-radius: var(--border-radius);
-            margin: 16px 0;
+            border-radius: var(--border-radius-lg);
+            margin: 16px auto;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            align-self: center;
         }
 
         .product-modal-image img {
@@ -950,17 +959,49 @@
             object-fit: cover;
         }
 
+        .product-info-columns {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .product-info-columns {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            
+            .product-modal-image {
+                width: 300px;
+                height: 300px;
+                margin: 16px 0 16px 16px;
+                order: 2;
+                flex-shrink: 0;
+            }
+            
+            .product-info-content {
+                flex: 1;
+                order: 1;
+                padding-right: 16px;
+            }
+        }
+
+        .product-info-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
         .product-modal-name {
             font-size: 24px;
             font-weight: 700;
-            margin-bottom: 12px;
             color: var(--dark-color);
+            margin-bottom: 8px;
         }
 
         .product-modal-description {
             font-size: 16px;
             color: var(--gray-600);
-            margin-bottom: 20px;
             line-height: 1.5;
         }
 
@@ -968,7 +1009,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 16px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .detail-item {
@@ -994,16 +1035,16 @@
             font-weight: 700;
             color: var(--primary-color);
             text-align: center;
-            margin: 24px 0;
+            margin: 16px 0;
         }
 
         .product-modal-bonus {
-            background-color: rgba(255, 160, 0, 0.1); /* Accent color met transparantie */
+            background-color: rgba(255, 160, 0, 0.1);
             border: 2px dashed var(--accent-color);
             padding: 16px;
             border-radius: var(--border-radius);
             text-align: center;
-            margin: 20px 0;
+            margin-top: 16px;
             display: none;
         }
 
@@ -1392,39 +1433,8 @@
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="product-modal-content">
-            <div class="product-modal-image" id="productModalImage">
-                <i class="fas fa-cube"></i>
-            </div>
-            <h1 class="product-modal-name" id="productModalName"></h1>
-            <p class="product-modal-description" id="productModalDescription"></p>
-            
-            <div class="product-modal-details">
-                <div class="detail-item">
-                    <div class="detail-label">Materiaal</div>
-                    <div class="detail-value" id="productModalMaterial"></div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Categorie</div>
-                    <div class="detail-value" id="productModalCategory"></div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Beoordeling</div>
-                    <div class="detail-value" id="productModalRating"></div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Levertijd</div>
-                    <div class="detail-value">2-3 dagen</div>
-                </div>
-            </div>
-
-            <div class="product-modal-price" id="productModalPrice"></div>
-
-            <div class="product-modal-bonus" id="productModalBonus">
-                <div class="bonus-title">Jouw Exclusieve Bonuscode</div>
-                <div class="bonus-code" id="productBonusCode"></div>
-                <p style="margin-top: 8px; font-size: 12px; color: var(--gray-500);">Geldig bij je volgende bestelling</p>
-            </div>
+        <div class="product-modal-content" id="productModalContent">
+            <!-- Product content wordt hier ingeladen -->
         </div>
     </div>
 
@@ -1437,14 +1447,14 @@
     <script>
         // Firebase Configuration
         const firebaseConfig = {
-  apiKey: "AIzaSyBHmq2hPEyb2z89XIR4y-FlKJYpSObh8Iw",
-  authDomain: "printsome-b5197.firebaseapp.com",
-  projectId: "printsome-b5197",
-  storageBucket: "printsome-b5197.firebasestorage.app",
-  messagingSenderId: "558794337754",
-  appId: "1:558794337754:web:324c537a347d6e0991a4e3",
-  measurementId: "G-TL2RN2TRLR"
-};
+            apiKey: "AIzaSyBHmq2hPEyb2z89XIR4y-FlKJYpSObh8Iw",
+            authDomain: "printsome-b5197.firebaseapp.com",
+            projectId: "printsome-b5197",
+            storageBucket: "printsome-b5197.firebasestorage.app",
+            messagingSenderId: "558794337754",
+            appId: "1:558794337754:web:324c537a347d6e0991a4e3",
+            measurementId: "G-TL2RN2TRLR"
+        };
         
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
@@ -1477,6 +1487,7 @@
         const authContainer = document.getElementById('authContainer');
         const loginButton = document.getElementById('loginButton');
         const productModal = document.getElementById('productModal');
+        const productModalContent = document.getElementById('productModalContent');
         const closeProductModal = document.getElementById('closeProductModal');
         const toast = document.getElementById('toast');
         const toastMessage = document.getElementById('toastMessage');
@@ -1823,7 +1834,7 @@
                         <div class="loading">
                             <div class="loading-spinner"></div>
                             <p>Producten laden...</p>
-                        </div>
+                    </div>
                     `;
                 }
                 
@@ -1862,6 +1873,7 @@
                     price: 0.99,
                     material: 'PLA Basic',
                     category: 'fidgets',
+                    category2: 'costum', // TWEEDE CATEGORIE TOEGEVOEGD
                     featured: true,
                     rating: 4.7,
                     imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Fidget-Toggle-switch.png',
@@ -1874,6 +1886,7 @@
                     price: 19.99,
                     material: 'PETG',
                     category: 'tech',
+                    category2: 'home', // TWEEDE CATEGORIE TOEGEVOEGD
                     featured: true,
                     rating: 4.5,
                     imageUrl: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
@@ -1886,6 +1899,7 @@
                     price: 24.99,
                     material: 'PLA',
                     category: 'home',
+                    category2: null, // Geen tweede categorie
                     featured: true,
                     rating: 4.7,
                     imageUrl: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
@@ -1898,6 +1912,7 @@
                     price: 34.99,
                     material: 'ABS',
                     category: 'tech',
+                    category2: 'home', // TWEEDE CATEGORIE TOEGEVOEGD
                     featured: true,
                     rating: 4.6,
                     imageUrl: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
@@ -1910,6 +1925,7 @@
                     price: 12.99,
                     material: 'PLA',
                     category: 'home',
+                    category2: 'costum', // TWEEDE CATEGORIE TOEGEVOEGD
                     featured: false,
                     rating: 4.4,
                     imageUrl: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
@@ -1922,6 +1938,7 @@
                     price: 29.99,
                     material: 'PETG',
                     category: 'home',
+                    category2: 'tech', // TWEEDE CATEGORIE TOEGEVOEGD
                     featured: true,
                     rating: 4.9,
                     imageUrl: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
@@ -1970,7 +1987,8 @@
             if (filter === 'all') {
                 filteredProducts = [...products];
             } else {
-                filteredProducts = products.filter(p => p.category === filter);
+                // NU OOK FILTEREN OP CATEGORY2
+                filteredProducts = products.filter(p => p.category === filter || p.category2 === filter);
             }
             
             if (filteredProducts.length === 0) {
@@ -1997,6 +2015,9 @@
             card.className = 'product-card';
             card.dataset.id = product.id;
             card.dataset.category = product.category;
+            if (product.category2) {
+                card.dataset.category2 = product.category2;
+            }
             
             const isFavorite = userFavorites.includes(product.id);
             const favoriteIcon = isFavorite ? 'fas fa-heart' : 'far fa-heart';
@@ -2036,7 +2057,11 @@
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">${product.name}</h3>
-                    <div class="product-material">${product.material}</div>
+                    <div class="product-categories">
+                        <span class="product-material">${product.material}</span>
+                        <span class="product-category">${product.category}</span>
+                        ${product.category2 ? `<span class="product-category">${product.category2}</span>` : ''}
+                    </div>
                     <div class="product-price">${priceDisplay}</div>
                     <div class="bonus-badge ${bonusClass}">
                         <i class="fas fa-gift"></i> Bonus beschikbaar
@@ -2091,7 +2116,7 @@
             }
         }
         
-        // Show product details modal
+        // Show product details modal met NIEUWE LAYOUT
         async function showProductDetails(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
@@ -2101,34 +2126,62 @@
                 document.getElementById('viewedCount').textContent = viewedProducts.length;
             }
             
-            const modalImage = document.getElementById('productModalImage');
-            if (product.imageUrl) {
-                modalImage.innerHTML = `<img src="${product.imageUrl}" alt="${product.name}" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\\'fas fa-cube\\'></i>';">`;
-            } else {
-                modalImage.innerHTML = '<i class="fas fa-cube"></i>';
-            }
-            
-            document.getElementById('productModalName').textContent = product.name;
-            document.getElementById('productModalDescription').textContent = product.description;
-            document.getElementById('productModalMaterial').textContent = product.material;
-            document.getElementById('productModalCategory').textContent = product.category;
-            document.getElementById('productModalRating').textContent = product.rating || '4.5';
-            
             let priceDisplay = `€${product.price.toFixed(2)}`;
             if (product.discount > 0) {
                 const discountedPrice = product.price * (1 - product.discount / 100);
                 priceDisplay = `€${discountedPrice.toFixed(2)}`;
             }
-            document.getElementById('productModalPrice').textContent = priceDisplay;
             
-            const bonusSection = document.getElementById('productModalBonus');
             const hasBonus = userBonuses.includes(productId);
-            if (hasBonus && currentUser) {
-                bonusSection.classList.add('show');
-                document.getElementById('productBonusCode').textContent = product.bonusCode || 'BONUS10';
+            
+            // Determine image to show
+            let imageContent = '';
+            if (product.imageUrl) {
+                imageContent = `<img src="${product.imageUrl}" alt="${product.name}" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\\'fas fa-cube\\'></i>';">`;
             } else {
-                bonusSection.classList.remove('show');
+                imageContent = '<i class="fas fa-cube"></i>';
             }
+            
+            // Nieuwe layout met info links en afbeelding rechts (vierkant)
+            productModalContent.innerHTML = `
+                <div class="product-info-columns">
+                    <div class="product-info-content">
+                        <h1 class="product-modal-name">${product.name}</h1>
+                        <p class="product-modal-description">${product.description}</p>
+                        
+                        <div class="product-modal-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Materiaal</div>
+                                <div class="detail-value">${product.material}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Categorie</div>
+                                <div class="detail-value">${product.category}${product.category2 ? ', ' + product.category2 : ''}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Beoordeling</div>
+                                <div class="detail-value">${product.rating || '4.5'}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Levertijd</div>
+                                <div class="detail-value">2-3 dagen</div>
+                            </div>
+                        </div>
+
+                        <div class="product-modal-price">${priceDisplay}</div>
+
+                        <div class="product-modal-bonus ${hasBonus && currentUser ? 'show' : ''}" id="productModalBonus">
+                            <div class="bonus-title">Jouw Exclusieve Bonuscode</div>
+                            <div class="bonus-code" id="productBonusCode">${product.bonusCode || 'BONUS10'}</div>
+                            <p style="margin-top: 8px; font-size: 12px; color: var(--gray-500);">Geldig bij je volgende bestelling</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-modal-image">
+                        ${imageContent}
+                    </div>
+                </div>
+            `;
             
             productModal.classList.add('active');
             
@@ -2214,6 +2267,13 @@
                 // Update UI
                 updateBonusCount();
                 updateProductCards();
+                
+                // Update modal bonus section
+                const bonusSection = document.getElementById('productModalBonus');
+                if (bonusSection) {
+                    bonusSection.classList.add('show');
+                    document.getElementById('productBonusCode').textContent = product.bonusCode || 'BONUS10';
+                }
                 
                 // Show success message with the actual code
                 showToast(`Bonuscode ontvangen: ${product.bonusCode || 'BONUS10'}`, 5000);
@@ -2420,7 +2480,9 @@
                 const filtered = products.filter(product => 
                     product.name.toLowerCase().includes(searchTerm) ||
                     product.description.toLowerCase().includes(searchTerm) ||
-                    product.material.toLowerCase().includes(searchTerm)
+                    product.material.toLowerCase().includes(searchTerm) ||
+                    product.category.toLowerCase().includes(searchTerm) ||
+                    (product.category2 && product.category2.toLowerCase().includes(searchTerm))
                 );
                 
                 const container = document.getElementById('allProducts');

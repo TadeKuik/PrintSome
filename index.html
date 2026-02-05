@@ -391,6 +391,66 @@
             font-size: 12px;
         }
 
+        /* FAQ Styles */
+        .faq-section {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius-lg);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--gray-100);
+            padding: 16px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark-color);
+            font-size: 16px;
+        }
+
+        .faq-question i {
+            color: var(--primary-color);
+            transition: transform var(--transition);
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition);
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
+
+        .faq-answer.show {
+            max-height: 300px;
+            margin-top: 12px;
+        }
+
         /* Products Grid */
         .products-grid {
             display: grid;
@@ -721,15 +781,18 @@
 
         .contact-info p {
             margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: var(--gray-700);
+            font-size: 14px;
+            line-height: 1.4;
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
 
         .contact-info a {
             color: var(--primary-color);
             text-decoration: none;
             font-weight: 500;
+            word-break: break-all;
         }
 
         .contact-info a:hover {
@@ -1200,36 +1263,6 @@
             display: inline-block;
         }
 
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .stat-card {
-            background-color: var(--light-color);
-            border-radius: var(--border-radius);
-            padding: 20px;
-            text-align: center;
-            border: 1px solid var(--gray-100);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .stat-value {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: var(--gray-600);
-            font-weight: 500;
-        }
-
         /* Loading State */
         .loading {
             display: flex;
@@ -1385,6 +1418,44 @@
                     <div class="welcome-user" id="welcomeUser">Log in voor persoonlijke kortingscodes</div>
                 </div>
 
+                <!-- FAQ Section -->
+                <div class="faq-section">
+                    <h2 class="faq-title">
+                        <i class="fas fa-question-circle"></i>
+                        Veelgestelde vragen
+                    </h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Hoe koop ik spullen?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Helaas kan je nog niet online spullen kopen, maar wel offline.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Hoe werken de bonuscodes?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Als je de bonuscode bij je reservering plaats, krijg je korting!
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Wat voor producten verkoopt PrintSome?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            We verkopen op dit moment vooral Fidget Toys, maar we blijven uitbereiden. Neem eens een kijkje bij alle producten dan kan u zien wat wij op dit moment verkopen.
+                        </div>
+                    </div>
+                </div>
+
                 <div class="section-header">
                     <h2 class="section-title">Uitgelichte Producten</h2>
                     <a href="#" class="section-link" id="allProductsLink" data-page="products">
@@ -1397,21 +1468,6 @@
                     <div class="loading">
                         <div class="loading-spinner"></div>
                         <p>Producten laden...</p>
-                    </div>
-                </div>
-
-                <div class="section-header">
-                    <h2 class="section-title">Jouw Statistieken</h2>
-                </div>
-
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-value" id="bonusCount">0</div>
-                        <div class="stat-label">Bonuscodes</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="viewedCount">0</div>
-                        <div class="stat-label">Bekeken</div>
                     </div>
                 </div>
             </div>
@@ -1541,8 +1597,8 @@
                     
                     <h2 class="privacy-subtitle">Contactgegevens</h2>
                     <div class="contact-info">
-                        <p><i class="fas fa-globe"></i> <strong>Website:</strong> https://PrintSome.pages.dev</p>
-                        <p><i class="fas fa-envelope"></i> <strong>E-mailadres:</strong> PrintSome-webapp@outlook.com</p>
+                        <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://PrintSome.pages.dev" target="_blank">https://PrintSome.pages.dev</a></p>
+                        <p><i class="fas fa-envelope"></i> <strong>E-mailadres:</strong> <a href="mailto:PrintSome-webapp@outlook.com">PrintSome-webapp@outlook.com</a></p>
                     </div>
                     
                     <h2 class="privacy-subtitle">Persoonsgegevens die wij verwerken</h2>
@@ -1658,7 +1714,7 @@
                     </p>
                     <p class="privacy-text">
                         Meer informatie over cookies vindt u op:<br>
-                        https://veiliginternetten.nl/cookies-wat-zijn-het-en-wat-doe-ik-ermee/
+                        <a href="https://veiliginternetten.nl/cookies-wat-zijn-het-en-wat-doe-ik-ermee/" target="_blank">https://veiliginternetten.nl/cookies-wat-zijn-het-en-wat-doe-ik-ermee/</a>
                     </p>
                     
                     <h2 class="privacy-subtitle">Gegevens inzien, aanpassen of verwijderen</h2>
@@ -1667,14 +1723,14 @@
                     </p>
                     <p class="privacy-text">
                         U kunt een verzoek sturen naar:<br>
-                        PrintSome-webapp@outlook.com
+                        <a href="mailto:PrintSome-webapp@outlook.com">PrintSome-webapp@outlook.com</a>
                     </p>
                     <p class="privacy-text">
                         Om misbruik te voorkomen kunnen wij u vragen zich te identificeren. We reageren zo snel mogelijk, maar uiterlijk binnen vier weken.
                     </p>
                     <p class="privacy-text">
                         Daarnaast heeft u het recht een klacht in te dienen bij de Autoriteit Persoonsgegevens:<br>
-                        https://autoriteitpersoonsgegevens.nl/
+                        <a href="https://autoriteitpersoonsgegevens.nl/" target="_blank">https://autoriteitpersoonsgegevens.nl/</a>
                     </p>
                     
                     <h2 class="privacy-subtitle">Hoe wij persoonsgegevens beveiligen</h2>
@@ -1790,6 +1846,8 @@
         };
         
         let authMode = 'login'; // 'login' or 'signup'
+        let currentDiscountCode = null;
+        let discountCodeExpiry = null;
         
         // DOM Elements
         const appContainer = document.getElementById('appContainer');
@@ -1921,6 +1979,8 @@
                 currentUser = null;
                 userBonuses = [];
                 userFavorites = [];
+                currentDiscountCode = null;
+                discountCodeExpiry = null;
                 updateAuthUI();
                 updateProductCards();
                 showToast('Succesvol uitgelogd', 2000);
@@ -1959,6 +2019,9 @@
                     loginButton.innerHTML = '<i class="fas fa-sign-out-alt"></i> Uitloggen';
                     loginButton.onclick = logout;
                 }
+                
+                // Generate weekly discount code if needed
+                generateWeeklyDiscountCode();
             } else {
                 userAvatar.innerHTML = '<i class="fas fa-user"></i>';
                 welcomeUser.textContent = 'Log in voor persoonlijke bonussen';
@@ -1982,6 +2045,66 @@
                     renderAuthForm();
                 }
             };
+        }
+        
+        // Generate weekly discount code
+        function generateWeeklyDiscountCode() {
+            if (!currentUser) return;
+            
+            const now = new Date();
+            const storedCode = localStorage.getItem(`discountCode_${currentUser.uid}`);
+            const storedExpiry = localStorage.getItem(`discountCodeExpiry_${currentUser.uid}`);
+            
+            if (storedCode && storedExpiry) {
+                const expiryDate = new Date(storedExpiry);
+                if (now < expiryDate) {
+                    currentDiscountCode = storedCode;
+                    discountCodeExpiry = expiryDate;
+                    updateDiscountCodeDisplay();
+                    return;
+                }
+            }
+            
+            // Generate new weekly code
+            const weekNumber = Math.floor(now.getTime() / (7 * 24 * 60 * 60 * 1000));
+            const discountCodes = [
+                'WEEK10', 'PRINT15', 'SOME20', '3DSAVE', 'SHOP25',
+                'GEEF10', 'CODE20', 'SAVE15', 'GEEL25', 'PRINT10'
+            ];
+            
+            const codeIndex = weekNumber % discountCodes.length;
+            currentDiscountCode = discountCodes[codeIndex];
+            
+            // Set expiry to end of week (7 days from now)
+            discountCodeExpiry = new Date(now);
+            discountCodeExpiry.setDate(discountCodeExpiry.getDate() + 7);
+            
+            // Store in localStorage
+            localStorage.setItem(`discountCode_${currentUser.uid}`, currentDiscountCode);
+            localStorage.setItem(`discountCodeExpiry_${currentUser.uid}`, discountCodeExpiry.toISOString());
+            
+            updateDiscountCodeDisplay();
+            
+            // Show notification for new code
+            if (!storedCode) {
+                showToast(`Nieuwe weekkorting: ${currentDiscountCode}`, 5000);
+            }
+        }
+        
+        // Update discount code display in settings
+        function updateDiscountCodeDisplay() {
+            const settingsBonusCount = document.getElementById('settingsBonusCount');
+            if (!settingsBonusCount) return;
+            
+            let displayText = `${userBonuses.length} actieve codes`;
+            
+            if (currentDiscountCode) {
+                const now = new Date();
+                const timeLeft = Math.ceil((discountCodeExpiry - now) / (1000 * 60 * 60 * 24));
+                displayText = `Weekcode: ${currentDiscountCode} (${timeLeft} dagen geldig)`;
+            }
+            
+            settingsBonusCount.textContent = displayText;
         }
         
         // Render auth form
@@ -2131,6 +2254,8 @@
                 userBonuses = [];
                 userFavorites = [];
                 viewedProducts = [];
+                currentDiscountCode = null;
+                discountCodeExpiry = null;
                 updateAuthUI();
                 updateBonusCount();
                 updateFavoritesDisplay();
@@ -2395,7 +2520,7 @@
             
             if (currentUser && !viewedProducts.includes(productId)) {
                 viewedProducts.push(productId);
-                document.getElementById('viewedCount').textContent = viewedProducts.length;
+                // Not showing viewed count anymore as per requirement
             }
             
             let priceDisplay = `€${product.price.toFixed(2)}`;
@@ -2441,10 +2566,14 @@
 
                         <div class="product-modal-price">${priceDisplay}</div>
 
-                        <div class="product-modal-bonus ${hasBonus && currentUser ? 'show' : ''}" id="productModalBonus">
+                        <div class="product-modal-bonus ${(hasBonus || currentDiscountCode) && currentUser ? 'show' : ''}" id="productModalBonus">
                             <div class="bonus-title">Jouw Exclusieve Bonuscode</div>
-                            <div class="bonus-code" id="productBonusCode">${product.bonusCode || 'BONUS10'}</div>
-                            <p style="margin-top: 8px; font-size: 12px; color: var(--gray-500);">Geldig bij je volgende bestelling</p>
+                            <div class="bonus-code" id="productBonusCode">
+                                ${currentDiscountCode || product.bonusCode || 'BONUS10'}
+                            </div>
+                            <p style="margin-top: 8px; font-size: 12px; color: var(--gray-500);">
+                                ${currentDiscountCode ? 'Wekelijkse kortingscode - geldig deze week' : 'Geldig bij je volgende bestelling'}
+                            </p>
                         </div>
                     </div>
                     
@@ -2543,11 +2672,13 @@
                 const bonusSection = document.getElementById('productModalBonus');
                 if (bonusSection) {
                     bonusSection.classList.add('show');
-                    document.getElementById('productBonusCode').textContent = product.bonusCode || 'BONUS10';
+                    const codeToShow = currentDiscountCode || product.bonusCode || 'BONUS10';
+                    document.getElementById('productBonusCode').textContent = codeToShow;
                 }
                 
                 // Show success message with the actual code
-                showToast(`Bonuscode ontvangen: ${product.bonusCode || 'BONUS10'}`, 5000);
+                const codeToShow = currentDiscountCode || product.bonusCode || 'BONUS10';
+                showToast(`Bonuscode ontvangen: ${codeToShow}`, 5000);
                 
                 return true;
                 
@@ -2648,8 +2779,33 @@
         
         // Update bonus count display
         function updateBonusCount() {
-            document.getElementById('bonusCount').textContent = userBonuses.length;
-            document.getElementById('settingsBonusCount').textContent = `${userBonuses.length} actieve codes`;
+            const bonusCountElement = document.getElementById('bonusCount');
+            if (bonusCountElement) {
+                bonusCountElement.textContent = userBonuses.length;
+            }
+            updateDiscountCodeDisplay();
+        }
+        
+        // FAQ functionality
+        function setupFAQ() {
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isActive = question.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    document.querySelectorAll('.faq-question').forEach(q => {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('show');
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        question.classList.add('active');
+                        answer.classList.add('show');
+                    }
+                });
+            });
         }
         
         // Show page
@@ -2670,6 +2826,8 @@
             switch(page) {
                 case 'home':
                     headerTitle.textContent = 'PrintSome';
+                    // Setup FAQ when home page is shown
+                    setTimeout(setupFAQ, 100);
                     break;
                 case 'products':
                     headerTitle.textContent = 'Producten';
@@ -2684,6 +2842,7 @@
                     break;
                 case 'settings':
                     headerTitle.textContent = 'Instellingen';
+                    updateDiscountCodeDisplay();
                     break;
             }
         }

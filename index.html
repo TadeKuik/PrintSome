@@ -612,6 +612,7 @@
             align-items: center;
             padding: 12px 0;
             border-bottom: 1px solid var(--gray-100);
+            cursor: pointer;
         }
 
         .settings-item:last-child {
@@ -630,11 +631,11 @@
             color: var(--gray-500);
         }
 
-        /* Privacy Page */
-        .privacy-section {
+        /* Privacy Page - Telefoon vriendelijk */
+        .privacy-content {
             background-color: var(--light-color);
             border-radius: var(--border-radius);
-            padding: 20px;
+            padding: 20px 16px;
             margin-bottom: 16px;
             box-shadow: var(--shadow);
         }
@@ -657,19 +658,21 @@
             color: var(--dark-color);
             margin: 24px 0 12px 0;
             padding-bottom: 8px;
-            border-bottom: 2px solid var(--primary-light);
+            border-bottom: 2px solid var(--gray-200);
         }
 
         .privacy-text {
             line-height: 1.6;
             margin-bottom: 16px;
             color: var(--gray-700);
+            font-size: 15px;
         }
 
         .privacy-list {
             padding-left: 20px;
             margin-bottom: 16px;
             color: var(--gray-700);
+            font-size: 15px;
         }
 
         .privacy-list li {
@@ -677,24 +680,30 @@
             line-height: 1.5;
         }
 
+        .privacy-table-container {
+            overflow-x: auto;
+            margin: 16px 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
         .privacy-table {
             width: 100%;
+            min-width: 600px;
             border-collapse: collapse;
-            margin: 16px 0;
             font-size: 14px;
         }
 
         .privacy-table th {
-            background-color: var(--primary-light);
-            color: #000000;
+            background-color: var(--gray-100);
+            color: var(--dark-color);
             font-weight: 600;
-            padding: 12px;
+            padding: 12px 8px;
             text-align: left;
             border: 1px solid var(--gray-200);
         }
 
         .privacy-table td {
-            padding: 12px;
+            padding: 12px 8px;
             border: 1px solid var(--gray-200);
             color: var(--gray-700);
         }
@@ -704,7 +713,7 @@
         }
 
         .contact-info {
-            background-color: var(--primary-light);
+            background-color: var(--gray-100);
             padding: 16px;
             border-radius: var(--border-radius);
             margin: 16px 0;
@@ -725,6 +734,29 @@
 
         .contact-info a:hover {
             text-decoration: underline;
+        }
+
+        .privacy-back-btn {
+            background-color: var(--gray-100);
+            color: var(--dark-color);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            width: 100%;
+            justify-content: center;
+            transition: background-color var(--transition);
+        }
+
+        .privacy-back-btn:hover,
+        .privacy-back-btn:active {
+            background-color: var(--gray-200);
         }
 
         /* Toggle Switch */
@@ -1478,9 +1510,16 @@
                             <p>PrintSome-webapp@outlook.com</p>
                         </div>
                     </div>
-                    <div class="settings-item" style="cursor: pointer;" onclick="showPage('privacy')">
+                </div>
+
+                <div class="settings-section">
+                    <h3 class="settings-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Privacy & Beleid
+                    </h3>
+                    <div class="settings-item" onclick="showPage('privacy')">
                         <div class="settings-info">
-                            <h4>Privacyverklaring</h4>
+                            <h4>Privacybeleid</h4>
                             <p>Lees onze privacyverklaring</p>
                         </div>
                         <i class="fas fa-chevron-right" style="color: var(--gray-400);"></i>
@@ -1490,7 +1529,7 @@
 
             <!-- Privacy Page -->
             <div class="page" id="privacyPage">
-                <div class="privacy-section">
+                <div class="privacy-content">
                     <h1 class="privacy-title">
                         <i class="fas fa-shield-alt"></i>
                         Privacyverklaring PrintSome
@@ -1502,8 +1541,8 @@
                     
                     <h2 class="privacy-subtitle">Contactgegevens</h2>
                     <div class="contact-info">
-                        <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://PrintSome.pages.dev" target="_blank">https://PrintSome.pages.dev</a></p>
-                        <p><i class="fas fa-envelope"></i> <strong>E-mailadres:</strong> <a href="mailto:PrintSome-webapp@outlook.com">PrintSome-webapp@outlook.com</a></p>
+                        <p><i class="fas fa-globe"></i> <strong>Website:</strong> https://PrintSome.pages.dev</p>
+                        <p><i class="fas fa-envelope"></i> <strong>E-mailadres:</strong> PrintSome-webapp@outlook.com</p>
                     </div>
                     
                     <h2 class="privacy-subtitle">Persoonsgegevens die wij verwerken</h2>
@@ -1524,7 +1563,7 @@
                         Onze website en/of dienst heeft niet de intentie gegevens te verzamelen over websitebezoekers die jonger zijn dan 16 jaar, tenzij zij toestemming hebben van ouders of voogd. Wij kunnen echter niet controleren of een bezoeker ouder dan 16 is. Wij raden ouders aan betrokken te zijn bij de online activiteiten van hun kinderen om zo te voorkomen dat er gegevens over kinderen worden verzameld zonder ouderlijke toestemming.
                     </p>
                     <p class="privacy-text">
-                        Als u ervan overtuigd bent dat wij zonder die toestemming persoonlijke gegevens hebben verzameld over een minderjarige, neem dan contact met ons op via <a href="mailto:PrintSome-webapp@outlook.com">PrintSome-webapp@outlook.com</a>, dan verwijderen wij deze informatie.
+                        Als u ervan overtuigd bent dat wij zonder die toestemming persoonlijke gegevens hebben verzameld over een minderjarige, neem dan contact met ons op via PrintSome-webapp@outlook.com, dan verwijderen wij deze informatie.
                     </p>
                     
                     <h2 class="privacy-subtitle">Doelen en grondslagen</h2>
@@ -1556,54 +1595,56 @@
                         PrintSome deelt uw persoonsgegevens uitsluitend met derden als dit noodzakelijk is voor het functioneren van de dienst. Met deze partijen zijn verwerkersovereenkomsten gesloten.
                     </p>
                     
-                    <table class="privacy-table">
-                        <thead>
-                            <tr>
-                                <th>Categorie</th>
-                                <th>Naam</th>
-                                <th>Jurisdictie</th>
-                                <th>Doel</th>
-                                <th>Gegevens</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Hosting</td>
-                                <td>Cloudflare</td>
-                                <td>Verenigde Staten / EU</td>
-                                <td>Websitebeveiliging en -hosting</td>
-                                <td>IP-adres, browsergegevens</td>
-                            </tr>
-                            <tr>
-                                <td>Hosting & backend</td>
-                                <td>Firebase (Google)</td>
-                                <td>Verenigde Staten</td>
-                                <td>Authenticatie en opslag</td>
-                                <td>Accountgegevens</td>
-                            </tr>
-                            <tr>
-                                <td>Code & infrastructuur</td>
-                                <td>GitHub</td>
-                                <td>Verenigde Staten</td>
-                                <td>Broncodebeheer</td>
-                                <td>Technische metadata</td>
-                            </tr>
-                            <tr>
-                                <td>Analyse</td>
-                                <td>Cloudflare Analytics</td>
-                                <td>Verenigde Staten / EU</td>
-                                <td>Website-inzichten</td>
-                                <td>Geanonimiseerde gebruiksgegevens</td>
-                            </tr>
-                            <tr>
-                                <td>E-mail</td>
-                                <td>Outlook, Gmail</td>
-                                <td>Verenigde Staten / EU</td>
-                                <td>Communicatie</td>
-                                <td>E-mailadres, inhoud e-mail</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="privacy-table-container">
+                        <table class="privacy-table">
+                            <thead>
+                                <tr>
+                                    <th>Categorie</th>
+                                    <th>Naam</th>
+                                    <th>Jurisdictie</th>
+                                    <th>Doel</th>
+                                    <th>Gegevens</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Hosting</td>
+                                    <td>Cloudflare</td>
+                                    <td>Verenigde Staten / EU</td>
+                                    <td>Websitebeveiliging en -hosting</td>
+                                    <td>IP-adres, browsergegevens</td>
+                                </tr>
+                                <tr>
+                                    <td>Hosting & backend</td>
+                                    <td>Firebase (Google)</td>
+                                    <td>Verenigde Staten</td>
+                                    <td>Authenticatie en opslag</td>
+                                    <td>Accountgegevens</td>
+                                </tr>
+                                <tr>
+                                    <td>Code & infrastructuur</td>
+                                    <td>GitHub</td>
+                                    <td>Verenigde Staten</td>
+                                    <td>Broncodebeheer</td>
+                                    <td>Technische metadata</td>
+                                </tr>
+                                <tr>
+                                    <td>Analyse</td>
+                                    <td>Cloudflare Analytics</td>
+                                    <td>Verenigde Staten / EU</td>
+                                    <td>Website-inzichten</td>
+                                    <td>Geanonimiseerde gebruiksgegevens</td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail</td>
+                                    <td>Outlook, Gmail</td>
+                                    <td>Verenigde Staten / EU</td>
+                                    <td>Communicatie</td>
+                                    <td>E-mailadres, inhoud e-mail</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <p class="privacy-text" style="margin-top: 16px;">
                         PrintSome verkoopt geen persoonsgegevens aan derden.
                     </p>
@@ -1617,7 +1658,7 @@
                     </p>
                     <p class="privacy-text">
                         Meer informatie over cookies vindt u op:<br>
-                        <a href="https://veiliginternetten.nl/cookies-wat-zijn-het-en-wat-doe-ik-ermee/" target="_blank">https://veiliginternetten.nl/cookies-wat-zijn-het-en-wat-doe-ik-ermee/</a>
+                        https://veiliginternetten.nl/cookies-wat-zijn-het-en-wat-doe-ik-ermee/
                     </p>
                     
                     <h2 class="privacy-subtitle">Gegevens inzien, aanpassen of verwijderen</h2>
@@ -1626,14 +1667,14 @@
                     </p>
                     <p class="privacy-text">
                         U kunt een verzoek sturen naar:<br>
-                        <a href="mailto:PrintSome-webapp@outlook.com">PrintSome-webapp@outlook.com</a>
+                        PrintSome-webapp@outlook.com
                     </p>
                     <p class="privacy-text">
                         Om misbruik te voorkomen kunnen wij u vragen zich te identificeren. We reageren zo snel mogelijk, maar uiterlijk binnen vier weken.
                     </p>
                     <p class="privacy-text">
                         Daarnaast heeft u het recht een klacht in te dienen bij de Autoriteit Persoonsgegevens:<br>
-                        <a href="https://autoriteitpersoonsgegevens.nl/" target="_blank">https://autoriteitpersoonsgegevens.nl/</a>
+                        https://autoriteitpersoonsgegevens.nl/
                     </p>
                     
                     <h2 class="privacy-subtitle">Hoe wij persoonsgegevens beveiligen</h2>
@@ -1641,14 +1682,19 @@
                         PrintSome neemt passende maatregelen om uw gegevens te beschermen tegen misbruik, verlies, onbevoegde toegang, ongewenste openbaarmaking en ongeoorloofde wijziging.
                     </p>
                     <p class="privacy-text">
-                        Als u denkt dat uw gegevens niet goed beveiligd zijn of er sprake is van misbruik, neem dan contact op via <a href="mailto:PrintSome-webapp@outlook.com">PrintSome-webapp@outlook.com</a>.
+                        Als u denkt dat uw gegevens niet goed beveiligd zijn of er sprake is van misbruik, neem dan contact op via PrintSome-webapp@outlook.com.
                     </p>
                     
                     <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--gray-200);">
                         <p style="color: var(--gray-600); font-size: 12px;">
-                            <i class="fas fa-calendar-alt"></i> Laatst bijgewerkt: Februari 2024
+                            <i class="fas fa-calendar-alt"></i> Laatst bijgewerkt: Februari 2026
                         </p>
                     </div>
+                    
+                    <button class="privacy-back-btn" onclick="showPage('settings')">
+                        <i class="fas fa-arrow-left"></i>
+                        Terug naar Instellingen
+                    </button>
                 </div>
             </div>
         </main>
@@ -1669,11 +1715,6 @@
                 <span class="nav-indicator"></span>
                 <i class="fas fa-heart nav-icon"></i>
                 <span class="nav-label">Favorieten</span>
-            </a>
-            <a href="#" class="nav-item" data-page="privacy" id="privacyNav">
-                <span class="nav-indicator"></span>
-                <i class="fas fa-shield-alt nav-icon"></i>
-                <span class="nav-label">Privacy</span>
             </a>
             <a href="#" class="nav-item" data-page="settings">
                 <span class="nav-indicator"></span>
@@ -2680,7 +2721,7 @@
                     updateFavoritesDisplay();
                     break;
                 case 'privacy':
-                    headerTitle.textContent = 'Privacy';
+                    headerTitle.textContent = 'Privacybeleid';
                     break;
                 case 'settings':
                     headerTitle.textContent = 'Instellingen';

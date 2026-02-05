@@ -396,6 +396,7 @@
             background-color: var(--light-color);
             border-radius: var(--border-radius-lg);
             padding: 20px;
+            margin-top: 30px;
             margin-bottom: 20px;
             box-shadow: var(--shadow);
         }
@@ -1418,44 +1419,6 @@
                     <div class="welcome-user" id="welcomeUser">Log in voor persoonlijke kortingscodes</div>
                 </div>
 
-                <!-- FAQ Section -->
-                <div class="faq-section">
-                    <h2 class="faq-title">
-                        <i class="fas fa-question-circle"></i>
-                        Veelgestelde vragen
-                    </h2>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Hoe koop ik spullen?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            Helaas kan je nog niet online spullen kopen, maar wel offline.
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Hoe werken de bonuscodes?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            Als je de bonuscode bij je reservering plaats, krijg je korting!
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Wat voor producten verkoopt PrintSome?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            We verkopen op dit moment vooral Fidget Toys, maar we blijven uitbereiden. Neem eens een kijkje bij alle producten dan kan u zien wat wij op dit moment verkopen.
-                        </div>
-                    </div>
-                </div>
-
                 <div class="section-header">
                     <h2 class="section-title">Uitgelichte Producten</h2>
                     <a href="#" class="section-link" id="allProductsLink" data-page="products">
@@ -1468,6 +1431,44 @@
                     <div class="loading">
                         <div class="loading-spinner"></div>
                         <p>Producten laden...</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="faq-section">
+                    <h2 class="faq-title">
+                        <i class="fas fa-question-circle"></i>
+                        Veelgestelde vragen
+                    </h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Hoe kan ik producten kopen?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Op dit moment is het nog niet mogelijk om online te kopen. Aankopen zijn wel offline (in real life) mogelijk.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Hoe werken bonuscodes?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Bonuscodes kun je invoeren tijdens het reserveren. Zodra de code geldig is, wordt de korting automatisch verrekend.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Wat voor producten verkoopt PrintSome?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Op dit moment verkopen wij voornamelijk fidget toys. Ons assortiment wordt regelmatig uitgebreid. Neem een kijkje bij onze producten om te zien wat wij momenteel aanbieden.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1527,7 +1528,7 @@
                     <div class="settings-item">
                         <div class="settings-info">
                             <h4>Bonuscodes</h4>
-                            <p id="settingsBonusCount">0 actieve codes</p>
+                            <p id="settingsBonusCount">Log in voor bonuscodes</p>
                         </div>
                     </div>
                 </div>
@@ -1714,7 +1715,7 @@
                     </p>
                     <p class="privacy-text">
                         Meer informatie over cookies vindt u op:<br>
-                        <a href="https://veiliginternetten.nl/cookies-wat-zijn-het-en-wat-doe-ik-ermee/" target="_blank">https://veiliginternetten.nl/cookies-wat-zijn-het-en-wat-doe-ik-ermee/</a>
+                        <a href="https://veiliginternetten.nl/wat-zijn-cookies/" target="_blank">https://veiliginternetten.nl/wat-zijn-cookies/</a>
                     </p>
                     
                     <h2 class="privacy-subtitle">Gegevens inzien, aanpassen of verwijderen</h2>
@@ -1848,6 +1849,9 @@
         let authMode = 'login'; // 'login' or 'signup'
         let currentDiscountCode = null;
         let discountCodeExpiry = null;
+        
+        // Possible discount codes
+        const possibleDiscountCodes = ['KEY91', 'SWITCH64', 'HEXAGON27'];
         
         // DOM Elements
         const appContainer = document.getElementById('appContainer');
@@ -2054,40 +2058,41 @@
             const now = new Date();
             const storedCode = localStorage.getItem(`discountCode_${currentUser.uid}`);
             const storedExpiry = localStorage.getItem(`discountCodeExpiry_${currentUser.uid}`);
+            const storedWeekNumber = localStorage.getItem(`weekNumber_${currentUser.uid}`);
             
-            if (storedCode && storedExpiry) {
-                const expiryDate = new Date(storedExpiry);
-                if (now < expiryDate) {
-                    currentDiscountCode = storedCode;
-                    discountCodeExpiry = expiryDate;
-                    updateDiscountCodeDisplay();
-                    return;
-                }
-            }
-            
-            // Generate new weekly code
+            // Calculate current week number (weeks since epoch)
             const weekNumber = Math.floor(now.getTime() / (7 * 24 * 60 * 60 * 1000));
-            const discountCodes = [
-                'WEEK10', 'PRINT15', 'SOME20', '3DSAVE', 'SHOP25',
-                'GEEF10', 'CODE20', 'SAVE15', 'GEEL25', 'PRINT10'
-            ];
             
-            const codeIndex = weekNumber % discountCodes.length;
-            currentDiscountCode = discountCodes[codeIndex];
+            // Check if we need to generate a new code (every Sunday)
+            const isSunday = now.getDay() === 0; // 0 = Sunday
+            const needsNewCode = !storedCode || !storedExpiry || new Date(storedExpiry) <= now || storedWeekNumber !== weekNumber.toString();
             
-            // Set expiry to end of week (7 days from now)
-            discountCodeExpiry = new Date(now);
-            discountCodeExpiry.setDate(discountCodeExpiry.getDate() + 7);
-            
-            // Store in localStorage
-            localStorage.setItem(`discountCode_${currentUser.uid}`, currentDiscountCode);
-            localStorage.setItem(`discountCodeExpiry_${currentUser.uid}`, discountCodeExpiry.toISOString());
-            
-            updateDiscountCodeDisplay();
-            
-            // Show notification for new code
-            if (!storedCode) {
+            if (needsNewCode) {
+                // Generate random code from possible codes
+                const randomIndex = Math.floor(Math.random() * possibleDiscountCodes.length);
+                currentDiscountCode = possibleDiscountCodes[randomIndex];
+                
+                // Set expiry to end of week (next Sunday)
+                const expiryDate = new Date(now);
+                const daysUntilSunday = (7 - now.getDay()) % 7;
+                expiryDate.setDate(expiryDate.getDate() + daysUntilSunday + 1); // +1 to make it end of Sunday
+                expiryDate.setHours(23, 59, 59, 999); // End of day
+                
+                discountCodeExpiry = expiryDate;
+                
+                // Store in localStorage
+                localStorage.setItem(`discountCode_${currentUser.uid}`, currentDiscountCode);
+                localStorage.setItem(`discountCodeExpiry_${currentUser.uid}`, discountCodeExpiry.toISOString());
+                localStorage.setItem(`weekNumber_${currentUser.uid}`, weekNumber.toString());
+                
+                updateDiscountCodeDisplay();
+                
+                // Show notification for new code
                 showToast(`Nieuwe weekkorting: ${currentDiscountCode}`, 5000);
+            } else {
+                currentDiscountCode = storedCode;
+                discountCodeExpiry = new Date(storedExpiry);
+                updateDiscountCodeDisplay();
             }
         }
         
@@ -2096,15 +2101,18 @@
             const settingsBonusCount = document.getElementById('settingsBonusCount');
             if (!settingsBonusCount) return;
             
-            let displayText = `${userBonuses.length} actieve codes`;
-            
-            if (currentDiscountCode) {
+            if (currentUser && currentDiscountCode) {
                 const now = new Date();
-                const timeLeft = Math.ceil((discountCodeExpiry - now) / (1000 * 60 * 60 * 24));
-                displayText = `Weekcode: ${currentDiscountCode} (${timeLeft} dagen geldig)`;
+                const timeDiff = discountCodeExpiry - now;
+                const daysLeft = Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
+                
+                let displayText = `${currentDiscountCode} - Nog ${daysLeft} dag${daysLeft !== 1 ? 'en' : ''} geldig`;
+                settingsBonusCount.textContent = displayText;
+            } else if (currentUser) {
+                settingsBonusCount.textContent = "Geen actieve code";
+            } else {
+                settingsBonusCount.textContent = "Log in voor bonuscodes";
             }
-            
-            settingsBonusCount.textContent = displayText;
         }
         
         // Render auth form
@@ -2257,7 +2265,7 @@
                 currentDiscountCode = null;
                 discountCodeExpiry = null;
                 updateAuthUI();
-                updateBonusCount();
+                updateProductCards();
                 updateFavoritesDisplay();
             }
         });
@@ -2572,7 +2580,7 @@
                                 ${currentDiscountCode || product.bonusCode || 'BONUS10'}
                             </div>
                             <p style="margin-top: 8px; font-size: 12px; color: var(--gray-500);">
-                                ${currentDiscountCode ? 'Wekelijkse kortingscode - geldig deze week' : 'Geldig bij je volgende bestelling'}
+                                ${currentDiscountCode ? 'Wekelijkse kortingscode' : 'Geldig bij je volgende bestelling'}
                             </p>
                         </div>
                     </div>
@@ -2606,7 +2614,6 @@
                     userFavorites = favoritesDoc.data().productIds || [];
                 }
                 
-                updateBonusCount();
                 updateProductCards();
                 updateFavoritesDisplay();
                 
@@ -2665,7 +2672,6 @@
                 }, { merge: true });
                 
                 // Update UI
-                updateBonusCount();
                 updateProductCards();
                 
                 // Update modal bonus section
@@ -2775,15 +2781,6 @@
                 const productCard = createProductCard(product, false);
                 container.appendChild(productCard);
             });
-        }
-        
-        // Update bonus count display
-        function updateBonusCount() {
-            const bonusCountElement = document.getElementById('bonusCount');
-            if (bonusCountElement) {
-                bonusCountElement.textContent = userBonuses.length;
-            }
-            updateDiscountCodeDisplay();
         }
         
         // FAQ functionality

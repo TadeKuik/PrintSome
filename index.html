@@ -870,6 +870,406 @@
             transform: translateX(24px);
         }
 
+        /* Reserveringen Page */
+        .reservations-container {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .reservation-item {
+            background-color: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all var(--transition);
+        }
+
+        .reservation-item:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .reservation-info {
+            flex: 1;
+        }
+
+        .reservation-product {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 4px;
+        }
+
+        .reservation-details {
+            display: flex;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--gray-600);
+            flex-wrap: wrap;
+        }
+
+        .reservation-color {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .color-indicator {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1px solid var(--gray-300);
+        }
+
+        .color-indicator[data-color="wit"] { background-color: white; }
+        .color-indicator[data-color="zwart"] { background-color: black; }
+        .color-indicator[data-color="groen"] { background-color: green; }
+        .color-indicator[data-color="geel"] { background-color: yellow; }
+        .color-indicator[data-color="rood"] { background-color: red; }
+        .color-indicator[data-color="rainbow"] { 
+            background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+        }
+
+        .reservation-price {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .reservation-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .reservation-action-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            background-color: var(--gray-100);
+            color: var(--dark-color);
+        }
+
+        .reservation-action-btn.edit:hover {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .reservation-action-btn.delete:hover {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .empty-reservations {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray-500);
+        }
+
+        .empty-reservations i {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .empty-reservations h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--gray-600);
+        }
+
+        .empty-reservations p {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-bottom: 16px;
+        }
+
+        .product-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .product-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Reservering Modal */
+        .reservation-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--light-color);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            animation: slideUp var(--transition) forwards;
+            padding-top: var(--safe-area-top);
+            padding-bottom: var(--safe-area-bottom);
+        }
+
+        .reservation-modal.active {
+            display: flex;
+        }
+
+        .reservation-modal-header {
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .reservation-modal-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .reservation-product-info {
+            background-color: var(--gray-50);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .reservation-product-image {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--border-radius);
+            background-color: var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .reservation-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .reservation-product-details h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--dark-color);
+        }
+
+        .reservation-product-details .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .color-selection {
+            margin-bottom: 24px;
+        }
+
+        .color-selection h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--dark-color);
+        }
+
+        .color-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .color-option {
+            padding: 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .color-option:hover {
+            border-color: var(--gray-300);
+            transform: translateY(-2px);
+        }
+
+        .color-option.selected {
+            border-color: var(--primary-color);
+            background-color: var(--primary-light);
+        }
+
+        .color-preview {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1px solid var(--gray-300);
+        }
+
+        .color-name {
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .color-price {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .color-rainbow {
+            background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+        }
+
+        .color-white { background-color: white; }
+        .color-black { background-color: black; }
+        .color-green { background-color: green; }
+        .color-yellow { background-color: yellow; }
+        .color-red { background-color: red; }
+
+        .final-price {
+            background-color: var(--gray-50);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .final-price-label {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-bottom: 8px;
+        }
+
+        .final-price-amount {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .reservation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .reservation-btn {
+            padding: 16px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .reservation-btn.save {
+            background-color: var(--primary-color);
+            color: #000000; /* Zwart tekst op geel */
+        }
+
+        .reservation-btn.save:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .reservation-btn.update {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .reservation-btn.update:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .reservation-btn.cancel {
+            background-color: var(--gray-200);
+            color: var(--dark-color);
+        }
+
+        .reservation-btn.cancel:hover {
+            background-color: var(--gray-300);
+        }
+
+        /* Host Reserveringen Page */
+        .host-reservations {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .host-reservation-item {
+            background-color: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .host-reservation-user {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .host-reservation-user i {
+            color: var(--primary-color);
+        }
+
+        .host-reservation-product {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 4px;
+        }
+
+        .host-reservation-details {
+            display: flex;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--gray-600);
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .host-reservation-date {
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+
         /* Auth Modal */
         .auth-modal {
             position: fixed;
@@ -1264,6 +1664,45 @@
             display: inline-block;
         }
 
+        /* Reservation button in product modal */
+        .product-modal-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .product-modal-btn {
+            padding: 16px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .product-modal-btn.reserve {
+            background-color: var(--primary-color);
+            color: #000000; /* Zwart tekst op geel */
+        }
+
+        .product-modal-btn.reserve:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .product-modal-btn.reserve:disabled {
+            background-color: var(--gray-300);
+            color: var(--gray-500);
+            cursor: not-allowed;
+            transform: none;
+        }
+
         /* Loading State */
         .loading {
             display: flex;
@@ -1497,6 +1936,16 @@
                 </div>
             </div>
 
+            <!-- Reserveringen Page -->
+            <div class="page" id="reservationsPage">
+                <div class="reservations-container">
+                    <h2 class="section-title">Mijn Reserveringen</h2>
+                    <div id="reservationsList">
+                        <!-- Reservations will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
             <!-- Favorites Page -->
             <div class="page" id="favoritesPage">
                 <div class="section-header">
@@ -1530,6 +1979,21 @@
                             <h4>Bonuscodes</h4>
                             <p id="settingsBonusCount">Log in voor bonuscodes</p>
                         </div>
+                    </div>
+                </div>
+
+                <!-- HOST SECTION - Alleen zichtbaar voor tadekuik@gmail.com -->
+                <div class="settings-section" id="hostSettingsSection" style="display: none;">
+                    <h3 class="settings-title">
+                        <i class="fas fa-crown"></i>
+                        Host Beheer
+                    </h3>
+                    <div class="settings-item" onclick="showPage('hostReservations')">
+                        <div class="settings-info">
+                            <h4>Alle Reserveringen</h4>
+                            <p>Bekijk alle reserveringen van alle gebruikers</p>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color: var(--gray-400);"></i>
                     </div>
                 </div>
 
@@ -1754,6 +2218,16 @@
                     </button>
                 </div>
             </div>
+
+            <!-- Host Reserveringen Page (alleen voor host) -->
+            <div class="page" id="hostReservationsPage">
+                <div class="host-reservations">
+                    <h2 class="section-title">Alle Reserveringen (Host View)</h2>
+                    <div id="allReservationsList">
+                        <!-- All reservations will be loaded here -->
+                    </div>
+                </div>
+            </div>
         </main>
 
         <!-- Bottom Navigation -->
@@ -1767,6 +2241,11 @@
                 <span class="nav-indicator"></span>
                 <i class="fas fa-cube nav-icon"></i>
                 <span class="nav-label">Producten</span>
+            </a>
+            <a href="#" class="nav-item" data-page="reservations" id="reservationsNav" style="display: none;">
+                <span class="nav-indicator"></span>
+                <i class="fas fa-calendar-check nav-icon"></i>
+                <span class="nav-label">Reserveren</span>
             </a>
             <a href="#" class="nav-item" data-page="favorites" id="favoritesNav">
                 <span class="nav-indicator"></span>
@@ -1809,6 +2288,19 @@
         </div>
     </div>
 
+    <!-- Reservering Modal -->
+    <div class="reservation-modal" id="reservationModal">
+        <div class="reservation-modal-header">
+            <h2 class="auth-title" id="reservationModalTitle">Nieuwe Reservering</h2>
+            <button class="close-auth" id="closeReservationModal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="reservation-modal-content" id="reservationModalContent">
+            <!-- Reservation content wordt hier ingeladen -->
+        </div>
+    </div>
+
     <!-- Toast Notification -->
     <div class="toast" id="toast">
         <i class="fas fa-check-circle"></i>
@@ -1840,7 +2332,7 @@
         let filteredProducts = [];
         let userBonuses = [];
         let userFavorites = [];
-        let viewedProducts = [];
+        let userReservations = [];
         let userSettings = {
             darkMode: false,
             language: 'nl'
@@ -1849,8 +2341,19 @@
         let authMode = 'login'; // 'login' or 'signup'
         let currentDiscountCode = null;
         let discountCodeExpiry = null;
+        let isHost = false;
         
-        // Possible discount codes
+        // Kleuropties voor reserveringen
+        const colorOptions = [
+            { id: 'wit', name: 'Wit', priceMultiplier: 1.0 },
+            { id: 'zwart', name: 'Zwart', priceMultiplier: 1.0 },
+            { id: 'groen', name: 'Groen', priceMultiplier: 1.0 },
+            { id: 'geel', name: 'Geel', priceMultiplier: 1.0 },
+            { id: 'rood', name: 'Rood', priceMultiplier: 1.0 },
+            { id: 'rainbow', name: 'Rainbow', priceMultiplier: 1.05 } // 5% duurder
+        ];
+        
+        // Possible discount codes (één per week)
         const possibleDiscountCodes = ['KEY91', 'SWITCH64', 'HEXAGON27'];
         
         // DOM Elements
@@ -1865,8 +2368,18 @@
         const productModal = document.getElementById('productModal');
         const productModalContent = document.getElementById('productModalContent');
         const closeProductModal = document.getElementById('closeProductModal');
+        const reservationModal = document.getElementById('reservationModal');
+        const closeReservationModal = document.getElementById('closeReservationModal');
+        const reservationModalContent = document.getElementById('reservationModalContent');
         const toast = document.getElementById('toast');
         const toastMessage = document.getElementById('toastMessage');
+        const reservationsNav = document.getElementById('reservationsNav');
+        const hostSettingsSection = document.getElementById('hostSettingsSection');
+        
+        // State for current reservation being edited
+        let currentReservationProduct = null;
+        let currentReservationEditId = null;
+        let selectedColor = null;
         
         // Firebase Auth Functions
         async function signInWithGoogle() {
@@ -1880,6 +2393,7 @@
                 console.log('✅ Google login succes!', result.user.email);
                 
                 currentUser = result.user;
+                checkIfHost(currentUser.email);
                 updateAuthUI();
                 authModal.classList.remove('active');
                 showToast(`Welkom ${result.user.displayName || result.user.email}!`, 3000);
@@ -1910,6 +2424,7 @@
                 console.log('✅ Account aangemaakt!', userCredential.user.email);
                 
                 currentUser = userCredential.user;
+                checkIfHost(currentUser.email);
                 updateAuthUI();
                 authModal.classList.remove('active');
                 showToast(`Welkom bij PrintSome!`, 3000);
@@ -1947,6 +2462,7 @@
                 console.log('✅ Login succes!', userCredential.user.email);
                 
                 currentUser = userCredential.user;
+                checkIfHost(currentUser.email);
                 updateAuthUI();
                 authModal.classList.remove('active');
                 showToast(`Welkom terug ${userCredential.user.displayName || userCredential.user.email}!`, 3000);
@@ -1981,16 +2497,46 @@
                 await auth.signOut();
                 console.log('✅ Uitgelogd');
                 currentUser = null;
+                isHost = false;
                 userBonuses = [];
                 userFavorites = [];
+                userReservations = [];
                 currentDiscountCode = null;
                 discountCodeExpiry = null;
                 updateAuthUI();
                 updateProductCards();
+                hideReservationsNav();
+                hideHostSection();
                 showToast('Succesvol uitgelogd', 2000);
             } catch (error) {
                 console.error('❌ Logout error:', error);
                 showToast('Uitloggen mislukt', 2000);
+            }
+        }
+        
+        // Check if user is host - MET JOUW EMAIL
+        function checkIfHost(email) {
+            // Controleer of het een host email is
+            const hostEmails = ['tadekuik@gmail.com', 'admin@printsome.nl', 'printsome-webapp@outlook.com'];
+            isHost = hostEmails.includes(email.toLowerCase());
+            console.log(`👑 Host status voor ${email}: ${isHost ? 'YES' : 'NO'}`);
+            
+            if (isHost) {
+                updateHostUI();
+            }
+        }
+        
+        // Update host UI
+        function updateHostUI() {
+            if (isHost && hostSettingsSection) {
+                hostSettingsSection.style.display = 'block';
+            }
+        }
+        
+        // Hide host section
+        function hideHostSection() {
+            if (hostSettingsSection) {
+                hostSettingsSection.style.display = 'none';
             }
         }
         
@@ -2024,6 +2570,12 @@
                     loginButton.onclick = logout;
                 }
                 
+                // Toon reserveringen navigatie
+                showReservationsNav();
+                
+                // Load user reservations
+                loadUserReservations();
+                
                 // Generate weekly discount code if needed
                 generateWeeklyDiscountCode();
             } else {
@@ -2038,6 +2590,9 @@
                         renderAuthForm();
                     };
                 }
+                
+                // Verberg reserveringen navigatie
+                hideReservationsNav();
             }
             
             userAvatar.onclick = () => {
@@ -2049,6 +2604,19 @@
                     renderAuthForm();
                 }
             };
+        }
+        
+        // Toon/verberg reserveringen navigatie
+        function showReservationsNav() {
+            if (reservationsNav) {
+                reservationsNav.style.display = 'flex';
+            }
+        }
+        
+        function hideReservationsNav() {
+            if (reservationsNav) {
+                reservationsNav.style.display = 'none';
+            }
         }
         
         // Generate weekly discount code
@@ -2063,16 +2631,17 @@
             // Calculate current week number (weeks since epoch)
             const weekNumber = Math.floor(now.getTime() / (7 * 24 * 60 * 60 * 1000));
             
-            // Check if we need to generate a new code (every Sunday)
-            const isSunday = now.getDay() === 0; // 0 = Sunday
-            const needsNewCode = !storedCode || !storedExpiry || new Date(storedExpiry) <= now || storedWeekNumber !== weekNumber.toString();
+            // Check if we need to generate a new code (elke maandag)
+            const isMonday = now.getDay() === 1; // 1 = Monday
+            const needsNewCode = !storedCode || !storedExpiry || new Date(storedExpiry) <= now || 
+                                 (isMonday && storedWeekNumber !== weekNumber.toString());
             
             if (needsNewCode) {
                 // Generate random code from possible codes
                 const randomIndex = Math.floor(Math.random() * possibleDiscountCodes.length);
                 currentDiscountCode = possibleDiscountCodes[randomIndex];
                 
-                // Set expiry to end of week (next Sunday)
+                // Set expiry to end of week (zondag)
                 const expiryDate = new Date(now);
                 const daysUntilSunday = (7 - now.getDay()) % 7;
                 expiryDate.setDate(expiryDate.getDate() + daysUntilSunday + 1); // +1 to make it end of Sunday
@@ -2255,18 +2824,24 @@
             
             if (user) {
                 currentUser = user;
+                checkIfHost(user.email);
                 updateAuthUI();
                 loadUserData(user.uid);
+                loadUserReservations();
             } else {
                 currentUser = null;
+                isHost = false;
                 userBonuses = [];
                 userFavorites = [];
+                userReservations = [];
                 viewedProducts = [];
                 currentDiscountCode = null;
                 discountCodeExpiry = null;
                 updateAuthUI();
                 updateProductCards();
                 updateFavoritesDisplay();
+                hideReservationsNav();
+                hideHostSection();
             }
         });
         
@@ -2281,7 +2856,7 @@
                         <div class="loading">
                             <div class="loading-spinner"></div>
                             <p>Producten laden...</p>
-                    </div>
+                        </div>
                     `;
                 }
                 
@@ -2323,8 +2898,7 @@
                     featured: true,
                     rating: 4.7,
                     imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Fidget-Toggle-switch.png',
-                    discount: 0,
-                    bonusCode: 'SWITCH64'
+                    discount: 0
                 },
                 {
                     name: 'Hexagon Fidget',
@@ -2335,8 +2909,7 @@
                     featured: true,
                     rating: 4.6,
                     imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Hexagon-fidget.png',
-                    discount: 0,
-                    bonusCode: 'HEXAGON27'
+                    discount: 0
                 },
                 {
                     name: 'Sleutelhanger',
@@ -2344,12 +2917,11 @@
                     price: 1.99,
                     material: 'PLA Basic',
                     category: 'home',
-                    category2: 'costum',
+                    category2: 'custom',
                     featured: false,
                     rating: 4.5,
                     imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Binnenkort-beschikbaar_Tekst.png',
-                    discount: 0,
-                    bonusCode: 'KEY91'
+                    discount: 0
                 },
             ];
             
@@ -2426,8 +2998,6 @@
             
             const isFavorite = userFavorites.includes(product.id);
             const favoriteIcon = isFavorite ? 'fas fa-heart' : 'far fa-heart';
-            const hasBonus = userBonuses.includes(product.id);
-            const bonusClass = hasBonus ? 'show' : '';
             
             let priceDisplay = `€${product.price.toFixed(2)}`;
             let discountDisplay = '';
@@ -2468,9 +3038,6 @@
                         ${product.category2 ? `<span class="product-category">${product.category2}</span>` : ''}
                     </div>
                     <div class="product-price">${priceDisplay}</div>
-                    <div class="bonus-badge ${bonusClass}">
-                        <i class="fas fa-gift"></i> Bonus beschikbaar
-                    </div>
                 </div>
             `;
             
@@ -2507,18 +3074,10 @@
             const productId = card.dataset.id;
             const favoriteBtn = card.querySelector('.header-action-btn');
             const favoriteIcon = favoriteBtn.querySelector('i');
-            const bonusBadge = card.querySelector('.bonus-badge');
             
             const isFavorite = userFavorites.includes(productId);
             favoriteBtn.dataset.favorite = isFavorite;
             favoriteIcon.className = isFavorite ? 'fas fa-heart' : 'far fa-heart';
-            
-            const hasBonus = userBonuses.includes(productId);
-            if (hasBonus) {
-                bonusBadge.classList.add('show');
-            } else {
-                bonusBadge.classList.remove('show');
-            }
         }
         
         // Show product details modal
@@ -2526,18 +3085,11 @@
             const product = products.find(p => p.id === productId);
             if (!product) return;
             
-            if (currentUser && !viewedProducts.includes(productId)) {
-                viewedProducts.push(productId);
-                // Not showing viewed count anymore as per requirement
-            }
-            
             let priceDisplay = `€${product.price.toFixed(2)}`;
             if (product.discount > 0) {
                 const discountedPrice = product.price * (1 - product.discount / 100);
                 priceDisplay = `€${discountedPrice.toFixed(2)}`;
             }
-            
-            const hasBonus = userBonuses.includes(productId);
             
             // Determine image to show
             let imageContent = '';
@@ -2574,14 +3126,25 @@
 
                         <div class="product-modal-price">${priceDisplay}</div>
 
-                        <div class="product-modal-bonus ${(hasBonus || currentDiscountCode) && currentUser ? 'show' : ''}" id="productModalBonus">
-                            <div class="bonus-title">Jouw Exclusieve Bonuscode</div>
+                        <!-- Wekelijkse bonus code (alleen als ingelogd) -->
+                        <div class="product-modal-bonus ${currentUser && currentDiscountCode ? 'show' : ''}" id="productModalBonus">
+                            <div class="bonus-title">Jouw Weekkorting</div>
                             <div class="bonus-code" id="productBonusCode">
-                                ${currentDiscountCode || product.bonusCode || 'BONUS10'}
+                                ${currentDiscountCode || 'Log in voor korting'}
                             </div>
                             <p style="margin-top: 8px; font-size: 12px; color: var(--gray-500);">
-                                ${currentDiscountCode ? 'Wekelijkse kortingscode' : 'Geldig bij je volgende bestelling'}
+                                ${currentDiscountCode ? 'Deze code verandert elke maandag' : ''}
                             </p>
+                        </div>
+
+                        <!-- Reserveer knop -->
+                        <div class="product-modal-actions">
+                            <button class="product-modal-btn reserve" id="reserveProductBtn" 
+                                    onclick="openReservationModal('${product.id}')"
+                                    ${!currentUser ? 'disabled' : ''}>
+                                <i class="fas fa-calendar-plus"></i>
+                                ${!currentUser ? 'Log in om te reserveren' : 'Reserveer dit product'}
+                            </button>
                         </div>
                     </div>
                     
@@ -2592,13 +3155,319 @@
             `;
             
             productModal.classList.add('active');
+        }
+        
+        // Open reservation modal
+        function openReservationModal(productId, reservationId = null) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
             
-            // Automatically grant bonus code when user views product
-            if (currentUser && !hasBonus) {
-                setTimeout(() => {
-                    grantBonusToUser(productId);
-                }, 500);
+            currentReservationProduct = product;
+            currentReservationEditId = reservationId;
+            
+            // Set modal title
+            document.getElementById('reservationModalTitle').textContent = 
+                reservationId ? 'Reservering Bewerken' : 'Nieuwe Reservering';
+            
+            // Calculate base price
+            const basePrice = product.discount > 0 ? 
+                product.price * (1 - product.discount / 100) : 
+                product.price;
+            
+            // Create reservation modal content
+            reservationModalContent.innerHTML = `
+                <div class="reservation-product-info">
+                    <div class="reservation-product-image">
+                        ${product.imageUrl ? 
+                            `<img src="${product.imageUrl}" alt="${product.name}" onerror="this.onerror=null; this.innerHTML='<i class=\\'fas fa-cube\\'></i>';">` : 
+                            '<i class="fas fa-cube"></i>'}
+                    </div>
+                    <div class="reservation-product-details">
+                        <h3>${product.name}</h3>
+                        <div class="price">€${basePrice.toFixed(2)}</div>
+                    </div>
+                </div>
+                
+                <div class="color-selection">
+                    <h3>Kies een kleur:</h3>
+                    <div class="color-options" id="colorOptions">
+                        ${colorOptions.map(color => `
+                            <div class="color-option" data-color="${color.id}" onclick="selectColor('${color.id}')">
+                                <div class="color-name">${color.name}${color.id === 'rainbow' ? ' (+5%)' : ''}</div>
+                                <div class="color-preview color-${color.id}"></div>
+                                <div class="color-price">€${(basePrice * color.priceMultiplier).toFixed(2)}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div class="final-price">
+                    <div class="final-price-label">Totaalprijs:</div>
+                    <div class="final-price-amount" id="finalPriceAmount">€${basePrice.toFixed(2)}</div>
+                </div>
+                
+                <div class="reservation-buttons">
+                    <button class="reservation-btn ${reservationId ? 'update' : 'save'}" id="saveReservationBtn" onclick="saveReservation()">
+                        <i class="fas ${reservationId ? 'fa-sync-alt' : 'fa-save'}"></i>
+                        ${reservationId ? 'Reservering Bijwerken' : 'Reservering Opslaan'}
+                    </button>
+                    <button class="reservation-btn cancel" onclick="closeReservationModal()">
+                        <i class="fas fa-times"></i>
+                        Annuleren
+                    </button>
+                </div>
+            `;
+            
+            // If editing existing reservation, load the color
+            if (reservationId) {
+                const reservation = userReservations.find(r => r.id === reservationId);
+                if (reservation) {
+                    selectColor(reservation.color);
+                }
             }
+            
+            // Show modal
+            reservationModal.classList.add('active');
+        }
+        
+        // Select color in reservation modal
+        function selectColor(colorId) {
+            selectedColor = colorId;
+            
+            // Update UI
+            document.querySelectorAll('.color-option').forEach(option => {
+                option.classList.remove('selected');
+                if (option.dataset.color === colorId) {
+                    option.classList.add('selected');
+                }
+            });
+            
+            // Update price
+            if (currentReservationProduct) {
+                const basePrice = currentReservationProduct.discount > 0 ? 
+                    currentReservationProduct.price * (1 - currentReservationProduct.discount / 100) : 
+                    currentReservationProduct.price;
+                
+                const color = colorOptions.find(c => c.id === colorId);
+                const finalPrice = basePrice * color.priceMultiplier;
+                
+                document.getElementById('finalPriceAmount').textContent = `€${finalPrice.toFixed(2)}`;
+            }
+        }
+        
+        // Close reservation modal
+        function closeReservationModal() {
+            reservationModal.classList.remove('active');
+            currentReservationProduct = null;
+            currentReservationEditId = null;
+            selectedColor = null;
+        }
+        
+        // Save reservation
+        async function saveReservation() {
+            if (!currentUser || !currentReservationProduct || !selectedColor) {
+                showToast('Selecteer een kleur', 3000);
+                return;
+            }
+            
+            try {
+                // Calculate final price
+                const basePrice = currentReservationProduct.discount > 0 ? 
+                    currentReservationProduct.price * (1 - currentReservationProduct.discount / 100) : 
+                    currentReservationProduct.price;
+                
+                const color = colorOptions.find(c => c.id === selectedColor);
+                const finalPrice = basePrice * color.priceMultiplier;
+                
+                const reservationData = {
+                    userId: currentUser.uid,
+                    userEmail: currentUser.email,
+                    productId: currentReservationProduct.id,
+                    productName: currentReservationProduct.name,
+                    productImage: currentReservationProduct.imageUrl || null,
+                    basePrice: basePrice,
+                    color: selectedColor,
+                    colorName: color.name,
+                    finalPrice: finalPrice,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                };
+                
+                if (currentReservationEditId) {
+                    // Update existing reservation
+                    await db.collection('reservations').doc(currentReservationEditId).update({
+                        ...reservationData,
+                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    showToast('Reservering bijgewerkt!', 3000);
+                } else {
+                    // Create new reservation
+                    await db.collection('reservations').add(reservationData);
+                    showToast('Reservering opgeslagen!', 3000);
+                }
+                
+                // Close modal and refresh list
+                closeReservationModal();
+                loadUserReservations();
+                
+            } catch (error) {
+                console.error('Error saving reservation:', error);
+                showToast('Fout bij opslaan reservering', 3000);
+            }
+        }
+        
+        // Delete reservation
+        async function deleteReservation(reservationId) {
+            if (!confirm('Weet je zeker dat je deze reservering wilt verwijderen?')) return;
+            
+            try {
+                await db.collection('reservations').doc(reservationId).delete();
+                showToast('Reservering verwijderd', 3000);
+                loadUserReservations();
+            } catch (error) {
+                console.error('Error deleting reservation:', error);
+                showToast('Fout bij verwijderen reservering', 3000);
+            }
+        }
+        
+        // Load user reservations
+        async function loadUserReservations() {
+            if (!currentUser) return;
+            
+            try {
+                const snapshot = await db.collection('reservations')
+                    .where('userId', '==', currentUser.uid)
+                    .orderBy('createdAt', 'desc')
+                    .get();
+                
+                userReservations = [];
+                snapshot.forEach(doc => {
+                    userReservations.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
+                });
+                
+                updateReservationsDisplay();
+                
+            } catch (error) {
+                console.error('Error loading reservations:', error);
+            }
+        }
+        
+        // Update reservations display
+        function updateReservationsDisplay() {
+            const container = document.getElementById('reservationsList');
+            if (!container) return;
+            
+            if (userReservations.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-reservations">
+                        <i class="fas fa-calendar-times"></i>
+                        <h3>Geen reserveringen</h3>
+                        <p>Ga naar de <a href="#" class="product-link" onclick="showPage('products')">producten</a> om er een te maken.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            userReservations.forEach(reservation => {
+                const item = document.createElement('div');
+                item.className = 'reservation-item';
+                item.innerHTML = `
+                    <div class="reservation-info">
+                        <div class="reservation-product">${reservation.productName}</div>
+                        <div class="reservation-details">
+                            <span class="reservation-color">
+                                <span class="color-indicator" data-color="${reservation.color}"></span>
+                                ${reservation.colorName}
+                            </span>
+                            <span class="reservation-price">€${reservation.finalPrice.toFixed(2)}</span>
+                        </div>
+                    </div>
+                    <div class="reservation-actions">
+                        <button class="reservation-action-btn edit" onclick="openReservationModal('${reservation.productId}', '${reservation.id}')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="reservation-action-btn delete" onclick="deleteReservation('${reservation.id}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+        
+        // Load all reservations for host
+        async function loadAllReservations() {
+            if (!isHost) {
+                showToast('Alleen beschikbaar voor host', 3000);
+                return;
+            }
+            
+            try {
+                const snapshot = await db.collection('reservations')
+                    .orderBy('createdAt', 'desc')
+                    .get();
+                
+                const allReservations = [];
+                snapshot.forEach(doc => {
+                    allReservations.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
+                });
+                
+                updateAllReservationsDisplay(allReservations);
+                
+            } catch (error) {
+                console.error('Error loading all reservations:', error);
+                showToast('Fout bij laden reserveringen', 3000);
+            }
+        }
+        
+        // Update all reservations display for host
+        function updateAllReservationsDisplay(reservations) {
+            const container = document.getElementById('allReservationsList');
+            if (!container) return;
+            
+            if (reservations.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-reservations">
+                        <i class="fas fa-calendar-times"></i>
+                        <h3>Geen reserveringen</h3>
+                        <p>Er zijn nog geen reserveringen gemaakt.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            reservations.forEach(reservation => {
+                const item = document.createElement('div');
+                item.className = 'host-reservation-item';
+                item.innerHTML = `
+                    <div class="host-reservation-user">
+                        <i class="fas fa-user"></i>
+                        ${reservation.userEmail}
+                    </div>
+                    <div class="host-reservation-product">${reservation.productName}</div>
+                    <div class="host-reservation-details">
+                        <span class="reservation-color">
+                            <span class="color-indicator" data-color="${reservation.color}"></span>
+                            ${reservation.colorName}
+                        </span>
+                        <span class="reservation-price">€${reservation.finalPrice.toFixed(2)}</span>
+                    </div>
+                    <div class="host-reservation-date">
+                        ${reservation.createdAt ? new Date(reservation.createdAt.toDate()).toLocaleDateString('nl-NL') : 'Onbekende datum'}
+                    </div>
+                `;
+                container.appendChild(item);
+            });
         }
         
         // Load user data from Firebase
@@ -2634,7 +3503,7 @@
                     email: currentUser.email
                 }, { merge: true });
                 
-                // Save bonuses
+                // Save bonuses (niet meer nodig voor productbonussen, maar behouden voor weekcodes)
                 await db.collection('userBonuses').doc(currentUser.uid).set({
                     productIds: userBonuses,
                     lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
@@ -2645,52 +3514,6 @@
                 
             } catch (error) {
                 console.error('Error saving user data:', error);
-            }
-        }
-        
-        // Grant bonus to user when they view a product
-        async function grantBonusToUser(productId) {
-            if (!currentUser) return false;
-            
-            const product = products.find(p => p.id === productId);
-            if (!product) return false;
-            
-            // Check if user already has bonus for this product
-            if (userBonuses.includes(productId)) {
-                return true; // Already has bonus
-            }
-            
-            try {
-                // Add bonus to user's list
-                userBonuses.push(productId);
-                
-                // Save to Firebase
-                await db.collection('userBonuses').doc(currentUser.uid).set({
-                    productIds: userBonuses,
-                    lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
-                    email: currentUser.email
-                }, { merge: true });
-                
-                // Update UI
-                updateProductCards();
-                
-                // Update modal bonus section
-                const bonusSection = document.getElementById('productModalBonus');
-                if (bonusSection) {
-                    bonusSection.classList.add('show');
-                    const codeToShow = currentDiscountCode || product.bonusCode || 'BONUS10';
-                    document.getElementById('productBonusCode').textContent = codeToShow;
-                }
-                
-                // Show success message with the actual code
-                const codeToShow = currentDiscountCode || product.bonusCode || 'BONUS10';
-                showToast(`Bonuscode ontvangen: ${codeToShow}`, 5000);
-                
-                return true;
-                
-            } catch (error) {
-                console.error('Error granting bonus:', error);
-                return false;
             }
         }
         
@@ -2715,7 +3538,10 @@
                 themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
             }
             
-            document.getElementById('darkModeToggle').checked = userSettings.darkMode;
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (darkModeToggle) {
+                darkModeToggle.checked = userSettings.darkMode;
+            }
         }
         
         // Toggle favorite status
@@ -2816,8 +3642,15 @@
             });
             
             currentPage = page;
-            document.getElementById(page + 'Page').classList.add('active');
-            document.querySelector(`.nav-item[data-page="${page}"]`).classList.add('active');
+            const pageElement = document.getElementById(page + 'Page');
+            if (pageElement) {
+                pageElement.classList.add('active');
+            }
+            
+            const navItem = document.querySelector(`.nav-item[data-page="${page}"]`);
+            if (navItem) {
+                navItem.classList.add('active');
+            }
             
             const headerTitle = document.getElementById('headerTitle');
             switch(page) {
@@ -2830,6 +3663,10 @@
                     headerTitle.textContent = 'Producten';
                     displayAllProducts();
                     break;
+                case 'reservations':
+                    headerTitle.textContent = 'Reserveringen';
+                    loadUserReservations();
+                    break;
                 case 'favorites':
                     headerTitle.textContent = 'Favorieten';
                     updateFavoritesDisplay();
@@ -2840,6 +3677,15 @@
                 case 'settings':
                     headerTitle.textContent = 'Instellingen';
                     updateDiscountCodeDisplay();
+                    break;
+                case 'hostReservations':
+                    if (isHost) {
+                        headerTitle.textContent = 'Host Reserveringen';
+                        loadAllReservations();
+                    } else {
+                        showPage('settings');
+                        showToast('Alleen beschikbaar voor host', 3000);
+                    }
                     break;
             }
         }
@@ -2880,6 +3726,11 @@
             // Close product modal
             closeProductModal.addEventListener('click', () => {
                 productModal.classList.remove('active');
+            });
+            
+            // Close reservation modal
+            closeReservationModal.addEventListener('click', () => {
+                closeReservationModal();
             });
             
             // Filter chips
@@ -2936,11 +3787,14 @@
             });
             
             // Settings toggle
-            document.getElementById('darkModeToggle').addEventListener('change', (e) => {
-                userSettings.darkMode = e.target.checked;
-                applyUserSettings();
-                localStorage.setItem('printsomeSettings', JSON.stringify(userSettings));
-            });
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('change', (e) => {
+                    userSettings.darkMode = e.target.checked;
+                    applyUserSettings();
+                    localStorage.setItem('printsomeSettings', JSON.stringify(userSettings));
+                });
+            }
             
             // All products link
             const allProductsLink = document.getElementById('allProductsLink');

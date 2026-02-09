@@ -263,6 +263,9 @@
             cursor: pointer;
             font-weight: 600;
             font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         
         .edit-btn {
@@ -961,19 +964,21 @@
             });
             
             // Find and select the clicked color option
-            const colorOption = Array.from(document.querySelectorAll('.color-option')).find(option => {
-                return option.querySelector('.color-name').textContent === 
-                    colorOptions.find(c => c.id === colorId).name;
+            const colorOptionsDiv = document.querySelectorAll('.color-option');
+            colorOptionsDiv.forEach(option => {
+                const colorName = option.querySelector('.color-name').textContent;
+                const matchingColor = colorOptions.find(c => c.id === colorId);
+                if (colorName === matchingColor?.name) {
+                    option.classList.add('selected');
+                }
             });
-            
-            if (colorOption) {
-                colorOption.classList.add('selected');
-            }
             
             // Update price
             const color = colorOptions.find(c => c.id === colorId);
-            const finalPrice = basePrice * color.priceMultiplier;
-            document.getElementById('finalPriceAmount').textContent = `€${finalPrice.toFixed(2)}`;
+            if (color) {
+                const finalPrice = basePrice * color.priceMultiplier;
+                document.getElementById('finalPriceAmount').textContent = `€${finalPrice.toFixed(2)}`;
+            }
         }
         
         // Close reservation modal
@@ -994,6 +999,11 @@
             try {
                 const basePrice = currentReservationProduct.price;
                 const color = colorOptions.find(c => c.id === selectedColor);
+                if (!color) {
+                    showToast('Ongeldige kleur geselecteerd');
+                    return;
+                }
+                
                 const finalPrice = basePrice * color.priceMultiplier;
                 
                 const reservationData = {
@@ -1019,8 +1029,14 @@
                     showToast('Reservering opgeslagen!');
                 }
                 
+                // CLOSE MODAL FIRST
                 closeReservationModal();
-                loadUserReservations();
+                
+                // RELOAD RESERVATIONS FROM FIREBASE
+                await loadUserReservations();
+                
+                // AUTOMATICALLY SWITCH TO RESERVATIONS PAGE
+                showPage('reservations');
                 
             } catch (error) {
                 console.error('Error saving reservation:', error);
@@ -1030,19 +1046,37 @@
         
         // Load user reservations
         async function loadUserReservations() {
-            if (!currentUser) return;
+            if (!currentUser) {
+                // Clear display if no user
+                const container = document.getElementById('reservationsList');
+                if (container) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-calendar-times"></i>
+                            <h3>Geen reserveringen</h3>
+                            <p>Log in om je reserveringen te zien</p>
+                        </div>
+                    `;
+                }
+                return;
+            }
             
             try {
+                console.log('Loading reservations for user:', currentUser.uid);
+                
                 const snapshot = await db.collection('reservations')
                     .where('userId', '==', currentUser.uid)
                     .orderBy('createdAt', 'desc')
                     .get();
                 
+                console.log('Found', snapshot.size, 'reservations');
+                
                 userReservations = [];
                 snapshot.forEach(doc => {
+                    const data = doc.data();
                     userReservations.push({
                         id: doc.id,
-                        ...doc.data()
+                        ...data
                     });
                 });
                 
@@ -1050,6 +1084,7 @@
                 
             } catch (error) {
                 console.error('Error loading reservations:', error);
+                showToast('Fout bij laden reserveringen');
             }
         }
         
@@ -1058,12 +1093,14 @@
             const container = document.getElementById('reservationsList');
             if (!container) return;
             
+            console.log('Updating display with', userReservations.length, 'reservations');
+            
             if (userReservations.length === 0) {
                 container.innerHTML = `
                     <div class="empty-state">
                         <i class="fas fa-calendar-times"></i>
                         <h3>Geen reserveringen</h3>
-                        <p>Ga naar de <a href="#" onclick="showPage('products')" style="color: #FFD700; font-weight: 600;">producten</a> om er een te maken.</p>
+                        <p>Ga naar de <a href="#" onclick="showPage('products'); return false;" style="color: #FFD700; font-weight: 600; text-decoration: none;">producten</a> om er een te maken.</p>
                     </div>
                 `;
                 return;
@@ -1073,21 +1110,22 @@
             userReservations.forEach(reservation => {
                 // Find product details
                 const product = products.find(p => p.id === reservation.productId) || {
-                    name: reservation.productName || 'Onbekend product'
+                    name: reservation.productName || 'Onbekend product',
+                    price: reservation.productPrice || 0
                 };
                 
                 html += `
                     <div class="reservation-item">
                         <div class="reservation-header">
                             <div class="reservation-product">${product.name}</div>
-                            <div class="reservation-price">€${reservation.finalPrice?.toFixed(2) || '0.00'}</div>
+                            <div class="reservation-price">€${reservation.finalPrice?.toFixed(2) || product.price.toFixed(2)}</div>
                         </div>
                         <div class="reservation-details">
                             <div class="reservation-color">
                                 <div class="color-dot ${reservation.color}"></div>
                                 <span>${reservation.colorName || reservation.color}</span>
                             </div>
-                            <div>Basisprijs: €${reservation.productPrice?.toFixed(2) || '0.00'}</div>
+                            <div>Basisprijs: €${product.price.toFixed(2)}</div>
                         </div>
                         <div class="reservation-actions">
                             <button class="action-btn edit-btn" onclick="openReservationModal('${reservation.productId}', '${reservation.id}')">
@@ -1111,7 +1149,13 @@
             try {
                 await db.collection('reservations').doc(reservationId).delete();
                 showToast('Reservering verwijderd');
-                loadUserReservations();
+                
+                // Remove from local array
+                userReservations = userReservations.filter(r => r.id !== reservationId);
+                
+                // Update display immediately
+                updateReservationsDisplay();
+                
             } catch (error) {
                 console.error('Error deleting reservation:', error);
                 showToast('Fout bij verwijderen');
@@ -1176,6 +1220,10 @@
                 updateAuthUI();
                 document.getElementById('authModal').classList.remove('active');
                 showToast(`Welkom ${result.user.displayName || result.user.email}!`);
+                
+                // Load reservations after login
+                loadUserReservations();
+                
             } catch (error) {
                 showToast('Google login mislukt');
             }
@@ -1189,6 +1237,10 @@
                 updateAuthUI();
                 document.getElementById('authModal').classList.remove('active');
                 showToast('Welkom terug!');
+                
+                // Load reservations after login
+                loadUserReservations();
+                
             } catch (error) {
                 showToast('Login mislukt');
             }
@@ -1199,6 +1251,7 @@
                 await auth.signOut();
                 currentUser = null;
                 isHost = false;
+                userReservations = [];
                 updateAuthUI();
                 showToast('Succesvol uitgelogd');
             } catch (error) {
@@ -1226,8 +1279,6 @@
                 if (reservationsNav) reservationsNav.style.display = 'flex';
                 if (hostSection && isHost) hostSection.style.display = 'block';
                 
-                // Load user data
-                loadUserReservations();
             } else {
                 // User is logged out
                 if (welcomeUser) welcomeUser.textContent = 'Log in voor persoonlijke bonussen';
@@ -1241,6 +1292,18 @@
                 }
                 if (reservationsNav) reservationsNav.style.display = 'none';
                 if (hostSection) hostSection.style.display = 'none';
+                
+                // Clear reservations display
+                const container = document.getElementById('reservationsList');
+                if (container) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-calendar-times"></i>
+                            <h3>Geen reserveringen</h3>
+                            <p>Log in om je reserveringen te zien</p>
+                        </div>
+                    `;
+                }
             }
         }
         
@@ -1312,8 +1375,11 @@
                 currentUser = user;
                 if (user) {
                     checkIfHost(user.email);
+                    // Load reservations when user logs in
+                    loadUserReservations();
                 } else {
                     isHost = false;
+                    userReservations = [];
                 }
                 updateAuthUI();
             });

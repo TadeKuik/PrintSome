@@ -13,14 +13,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* BASIC STYLES - Verminderd voor leesbaarheid */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+        }
         
         :root {
             --primary-color: #FFD700;
             --light-color: #ffffff;
             --dark-color: #000000;
-            --gray-100: #e9ecef;
+            --gray-100: #f5f5f5;
+            --gray-200: #e0e0e0;
+            --gray-500: #666666;
+            --success-color: #4CAF50;
+            --danger-color: #f44336;
         }
         
         body {
@@ -45,7 +53,28 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 16px;
-            border-bottom: 1px solid var(--gray-100);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
         }
         
         .main-content {
@@ -62,24 +91,31 @@
             right: 0;
             height: 70px;
             background-color: var(--light-color);
-            border-top: 1px solid var(--gray-100);
+            border-top: 1px solid var(--gray-200);
             display: flex;
             justify-content: space-around;
             align-items: center;
             max-width: 768px;
             margin: 0 auto;
+            z-index: 100;
         }
         
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: #6c757d;
+            color: var(--gray-500);
             text-decoration: none;
+            font-size: 12px;
+            gap: 4px;
         }
         
         .nav-item.active {
             color: var(--primary-color);
+        }
+        
+        .nav-icon {
+            font-size: 20px;
         }
         
         .page {
@@ -91,26 +127,39 @@
         }
         
         .welcome-card {
-            background: var(--primary-color);
-            color: #000000;
+            background: linear-gradient(135deg, var(--primary-color), #ffed4e);
+            color: black;
             border-radius: 12px;
-            padding: 24px;
+            padding: 20px;
             margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
         }
         
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 16px;
-            margin-bottom: 20px;
+            margin-top: 16px;
+        }
+        
+        @media (min-width: 480px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
         
         .product-card {
-            background-color: var(--light-color);
+            background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            border: 1px solid var(--gray-100);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid var(--gray-200);
+            transition: transform 0.2s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         
         .product-image {
@@ -119,21 +168,126 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--gray-500);
         }
         
         .product-info {
             padding: 12px;
         }
         
-        .settings-section {
-            background-color: var(--light-color);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        .product-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 14px;
         }
         
-        /* Modal Styles */
+        .product-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        /* RESERVERINGEN STYLES */
+        .reservations-container {
+            padding: 16px 0;
+        }
+        
+        .reservation-item {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid var(--gray-200);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .reservation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .reservation-product {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .reservation-details {
+            display: flex;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .reservation-color {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .color-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .color-dot.wit { background-color: white; }
+        .color-dot.zwart { background-color: black; }
+        .color-dot.groen { background-color: green; }
+        .color-dot.geel { background-color: yellow; }
+        .color-dot.rood { background-color: red; }
+        .color-dot.rainbow { 
+            background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+        }
+        
+        .reservation-price {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+        
+        .reservation-actions {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+        
+        .action-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .edit-btn {
+            background-color: var(--gray-100);
+            color: var(--dark-color);
+        }
+        
+        .delete-btn {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray-500);
+        }
+        
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        /* MODAL STYLES */
         .modal {
             position: fixed;
             top: 0;
@@ -156,29 +310,192 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 16px;
-            border-bottom: 1px solid var(--gray-100);
+            border-bottom: 1px solid var(--gray-200);
+            flex-shrink: 0;
         }
         
         .modal-content {
             flex: 1;
             overflow-y: auto;
-            padding: 24px 16px;
+            padding: 20px 16px;
         }
         
+        /* RESERVERING MODAL STYLES */
+        .color-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .color-option {
+            padding: 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .color-option:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .color-option.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+        
+        .color-preview {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 auto 8px;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .color-price {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .final-price {
+            background: var(--gray-100);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .final-price-label {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-bottom: 4px;
+        }
+        
+        .final-price-amount {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .modal-btn {
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .save-btn {
+            background-color: var(--primary-color);
+            color: black;
+        }
+        
+        .cancel-btn {
+            background-color: var(--gray-100);
+            color: var(--dark-color);
+        }
+        
+        /* TOAST */
         .toast {
             position: fixed;
             bottom: 90px;
             left: 50%;
-            transform: translateX(-50%);
-            background-color: #333;
+            transform: translateX(-50%) translateY(20px);
+            background-color: rgba(0,0,0,0.9);
             color: white;
-            padding: 12px 20px;
+            padding: 12px 24px;
             border-radius: 8px;
             display: none;
+            z-index: 1001;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         
         .toast.show {
             display: block;
+            animation: slideUp 0.3s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateX(-50%) translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* SETTINGS */
+        .settings-section {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .settings-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .settings-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        
+        .settings-item:last-child {
+            border-bottom: none;
+        }
+        
+        .login-btn {
+            background-color: var(--primary-color);
+            color: black;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        /* HOST SECTION */
+        .host-reservation-item {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .host-user {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
     </style>
 </head>
@@ -188,16 +505,10 @@
         <!-- App Header -->
         <header class="app-header">
             <div class="header-title">
-                <i class="fas fa-cube"></i>
-                <span id="headerTitle">PrintSome</span>
+                <i class="fas fa-cube"></i> PrintSome
             </div>
-            <div class="header-actions">
-                <button class="header-action-btn" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <div class="user-avatar" id="userAvatar">
-                    <i class="fas fa-user"></i>
-                </div>
+            <div class="user-avatar" id="userAvatar">
+                <i class="fas fa-user"></i>
             </div>
         </header>
 
@@ -206,53 +517,38 @@
             <!-- Home Page -->
             <div class="page active" id="homePage">
                 <div class="welcome-card">
-                    <h1 class="welcome-title">Welkom bij PrintSome!</h1>
-                    <p class="welcome-subtitle">3D printing shop</p>
-                    <div class="welcome-user" id="welcomeUser">Log in voor persoonlijke kortingscodes</div>
+                    <h1>Welkom bij PrintSome!</h1>
+                    <p>3D printing shop</p>
+                    <div id="welcomeUser">Log in voor persoonlijke kortingscodes</div>
                 </div>
 
-                <div class="section-header">
-                    <h2 class="section-title">Uitgelichte Producten</h2>
-                    <a href="#" class="section-link" id="allProductsLink" data-page="products">
-                        Alles zien <i class="fas fa-chevron-right"></i>
-                    </a>
-                </div>
-
+                <h2 style="margin: 20px 0 10px;">Uitgelichte Producten</h2>
                 <div class="products-grid" id="featuredProducts">
-                    <div class="loading">
-                        <div class="loading-spinner"></div>
-                        <p>Producten laden...</p>
-                    </div>
+                    <!-- Producten worden hier geladen -->
                 </div>
             </div>
 
             <!-- Products Page -->
             <div class="page" id="productsPage">
-                <div class="products-page-header">
-                    <div class="search-bar">
-                        <i class="fas fa-search search-icon"></i>
-                        <input type="text" class="search-input" id="searchInput" placeholder="Zoek 3D producten...">
-                    </div>
-                    <div class="filter-chips" id="filterChips">
+                <div style="margin-bottom: 20px;">
+                    <input type="text" id="searchInput" placeholder="Zoek producten..." 
+                           style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 12px;">
+                    <div style="display: flex; gap: 8px; overflow-x: auto;">
                         <button class="filter-chip active" data-filter="all">Alles</button>
                         <button class="filter-chip" data-filter="fidgets">Fidgets</button>
                     </div>
                 </div>
-
                 <div class="products-grid" id="allProducts">
-                    <div class="loading">
-                        <div class="loading-spinner"></div>
-                        <p>Producten laden...</p>
-                    </div>
+                    <!-- Producten worden hier geladen -->
                 </div>
             </div>
 
             <!-- Reserveringen Page -->
             <div class="page" id="reservationsPage">
                 <div class="reservations-container">
-                    <h2 class="section-title">Mijn Reserveringen</h2>
+                    <h2 style="margin-bottom: 20px;">Mijn Reserveringen</h2>
                     <div id="reservationsList">
-                        <!-- Reservations will be loaded here -->
+                        <!-- Reserveringen worden hier geladen -->
                     </div>
                 </div>
             </div>
@@ -260,19 +556,16 @@
             <!-- Settings Page -->
             <div class="page" id="settingsPage">
                 <div class="settings-section">
-                    <h3 class="settings-title">
-                        <i class="fas fa-user-cog"></i>
-                        Account
-                    </h3>
+                    <h3 class="settings-title"><i class="fas fa-user-cog"></i> Account</h3>
                     <div class="settings-item">
-                        <div class="settings-info">
+                        <div>
                             <h4>Account Status</h4>
                             <p id="accountStatus">Niet ingelogd</p>
                         </div>
-                        <button class="filter-chip" id="loginButton">Inloggen</button>
+                        <button class="login-btn" id="loginButton">Inloggen</button>
                     </div>
                     <div class="settings-item">
-                        <div class="settings-info">
+                        <div>
                             <h4>Bonuscodes</h4>
                             <p id="settingsBonusCount">Log in voor bonuscodes</p>
                         </div>
@@ -281,14 +574,11 @@
 
                 <!-- HOST SECTION -->
                 <div class="settings-section" id="hostSettingsSection" style="display: none;">
-                    <h3 class="settings-title">
-                        <i class="fas fa-crown"></i>
-                        Host Beheer
-                    </h3>
-                    <div class="settings-item" onclick="showPage('hostReservations')">
-                        <div class="settings-info">
+                    <h3 class="settings-title"><i class="fas fa-crown"></i> Host Beheer</h3>
+                    <div class="settings-item" onclick="showPage('hostReservations')" style="cursor: pointer;">
+                        <div>
                             <h4>Alle Reserveringen</h4>
-                            <p>Bekijk alle reserveringen van alle gebruikers</p>
+                            <p>Bekijk alle reserveringen</p>
                         </div>
                         <i class="fas fa-chevron-right"></i>
                     </div>
@@ -297,10 +587,10 @@
 
             <!-- Host Reserveringen Page -->
             <div class="page" id="hostReservationsPage">
-                <div class="host-reservations">
-                    <h2 class="section-title">Alle Reserveringen (Host View)</h2>
+                <div class="reservations-container">
+                    <h2 style="margin-bottom: 20px;">Alle Reserveringen (Host)</h2>
                     <div id="allReservationsList">
-                        <!-- All reservations will be loaded here -->
+                        <!-- Alle reserveringen worden hier geladen -->
                     </div>
                 </div>
             </div>
@@ -310,19 +600,19 @@
         <nav class="bottom-nav">
             <a href="#" class="nav-item active" data-page="home">
                 <i class="fas fa-home nav-icon"></i>
-                <span class="nav-label">Home</span>
+                <span>Home</span>
             </a>
             <a href="#" class="nav-item" data-page="products">
                 <i class="fas fa-cube nav-icon"></i>
-                <span class="nav-label">Producten</span>
+                <span>Producten</span>
             </a>
             <a href="#" class="nav-item" data-page="reservations" id="reservationsNav" style="display: none;">
                 <i class="fas fa-calendar-check nav-icon"></i>
-                <span class="nav-label">Reserveren</span>
+                <span>Reserveren</span>
             </a>
             <a href="#" class="nav-item" data-page="settings">
                 <i class="fas fa-cog nav-icon"></i>
-                <span class="nav-label">Instellingen</span>
+                <span>Instellingen</span>
             </a>
         </nav>
     </div>
@@ -330,42 +620,36 @@
     <!-- Auth Modal -->
     <div class="modal" id="authModal">
         <div class="modal-header">
-            <h2 class="auth-title">PrintSome Account</h2>
-            <button class="close-auth" id="closeAuth">
+            <h2>PrintSome Account</h2>
+            <button id="closeAuth">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         <div class="modal-content">
-            <div id="authContainer">
-                <!-- Auth content will be loaded here -->
-            </div>
+            <div id="authContainer"></div>
         </div>
     </div>
 
     <!-- Product Modal -->
     <div class="modal" id="productModal">
         <div class="modal-header">
-            <h2 class="auth-title">Product Details</h2>
-            <button class="close-auth" id="closeProductModal">
+            <h2>Product Details</h2>
+            <button id="closeProductModal">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="modal-content" id="productModalContent">
-            <!-- Product content -->
-        </div>
+        <div class="modal-content" id="productModalContent"></div>
     </div>
 
     <!-- Reservation Modal -->
     <div class="modal" id="reservationModal">
         <div class="modal-header">
-            <h2 class="auth-title" id="reservationModalTitle">Nieuwe Reservering</h2>
-            <button class="close-auth" id="closeReservationModal">
+            <h2 id="reservationModalTitle">Nieuwe Reservering</h2>
+            <button id="closeReservationModal">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="modal-content" id="reservationModalContent">
-            <!-- Reservation content -->
-        </div>
+        <div class="modal-content" id="reservationModalContent"></div>
     </div>
 
     <!-- Toast Notification -->
@@ -393,18 +677,22 @@
         
         // App State
         let currentUser = null;
-        let currentPage = 'home';
         let products = [];
+        let userReservations = [];
         let isHost = false;
+        let selectedColor = null;
+        let currentReservationProduct = null;
+        let currentReservationEditId = null;
         
-        // DOM Elements
-        const authModal = document.getElementById('authModal');
-        const productModal = document.getElementById('productModal');
-        const reservationModal = document.getElementById('reservationModal');
-        const toast = document.getElementById('toast');
-        const toastMessage = document.getElementById('toastMessage');
-        const reservationsNav = document.getElementById('reservationsNav');
-        const hostSettingsSection = document.getElementById('hostSettingsSection');
+        // Color options with price multipliers
+        const colorOptions = [
+            { id: 'wit', name: 'Wit', priceMultiplier: 1.0 },
+            { id: 'zwart', name: 'Zwart', priceMultiplier: 1.0 },
+            { id: 'groen', name: 'Groen', priceMultiplier: 1.0 },
+            { id: 'geel', name: 'Geel', priceMultiplier: 1.0 },
+            { id: 'rood', name: 'Rood', priceMultiplier: 1.0 },
+            { id: 'rainbow', name: 'Rainbow', priceMultiplier: 1.05 } // 5% duurder
+        ];
         
         // Check if user is host
         function checkIfHost(email) {
@@ -412,134 +700,55 @@
             isHost = hostEmails.includes(email.toLowerCase());
             console.log('Host status:', isHost);
             
-            if (isHost && hostSettingsSection) {
-                hostSettingsSection.style.display = 'block';
+            const hostSection = document.getElementById('hostSettingsSection');
+            if (isHost && hostSection) {
+                hostSection.style.display = 'block';
             }
         }
         
-        // Firebase Auth Functions
-        async function signInWithGoogle() {
-            try {
-                const provider = new firebase.auth.GoogleAuthProvider();
-                const result = await auth.signInWithPopup(provider);
-                currentUser = result.user;
-                checkIfHost(currentUser.email);
-                updateAuthUI();
-                authModal.classList.remove('active');
-                showToast(`Welkom ${result.user.displayName || result.user.email}!`);
-            } catch (error) {
-                console.error('Google login error:', error);
-                showToast('Google login mislukt: ' + error.message);
-            }
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
         }
         
-        async function signInWithEmail(email, password) {
-            try {
-                const userCredential = await auth.signInWithEmailAndPassword(email, password);
-                currentUser = userCredential.user;
-                checkIfHost(currentUser.email);
-                updateAuthUI();
-                authModal.classList.remove('active');
-                showToast(`Welkom terug!`);
-            } catch (error) {
-                showToast('Login mislukt: ' + error.message);
-            }
-        }
-        
-        async function logout() {
-            try {
-                await auth.signOut();
-                currentUser = null;
-                isHost = false;
-                updateAuthUI();
-                hideReservationsNav();
-                hideHostSection();
-                showToast('Succesvol uitgelogd');
-            } catch (error) {
-                console.error('Logout error:', error);
-            }
-        }
-        
-        // Update UI based on auth state
-        function updateAuthUI() {
-            const welcomeUser = document.getElementById('welcomeUser');
-            const accountStatus = document.getElementById('accountStatus');
-            const loginButton = document.getElementById('loginButton');
+        // Show page
+        function showPage(page) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
             
-            if (currentUser) {
-                const displayName = currentUser.displayName || currentUser.email.split('@')[0] || 'Gebruiker';
-                if (welcomeUser) welcomeUser.textContent = `Welkom, ${displayName}!`;
-                if (accountStatus) accountStatus.textContent = 'Ingelogd';
-                if (loginButton) {
-                    loginButton.innerHTML = '<i class="fas fa-sign-out-alt"></i> Uitloggen';
-                    loginButton.onclick = logout;
+            // Show selected page
+            const pageElement = document.getElementById(page + 'Page');
+            if (pageElement) pageElement.classList.add('active');
+            
+            // Activate nav item
+            const navItem = document.querySelector(`.nav-item[data-page="${page}"]`);
+            if (navItem) navItem.classList.add('active');
+            
+            // Page-specific actions
+            if (page === 'reservations') {
+                loadUserReservations();
+            } else if (page === 'hostReservations') {
+                if (isHost) {
+                    loadAllReservations();
+                } else {
+                    showToast('Alleen beschikbaar voor host');
+                    showPage('settings');
                 }
-                showReservationsNav();
-            } else {
-                if (welcomeUser) welcomeUser.textContent = 'Log in voor persoonlijke bonussen';
-                if (accountStatus) accountStatus.textContent = 'Niet ingelogd';
-                if (loginButton) {
-                    loginButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> Inloggen';
-                    loginButton.onclick = () => {
-                        authModal.classList.add('active');
-                        renderAuthForm();
-                    };
-                }
-                hideReservationsNav();
             }
         }
         
-        // Show/hide reservations nav
-        function showReservationsNav() {
-            if (reservationsNav) reservationsNav.style.display = 'flex';
-        }
-        
-        function hideReservationsNav() {
-            if (reservationsNav) reservationsNav.style.display = 'none';
-        }
-        
-        // Hide host section
-        function hideHostSection() {
-            if (hostSettingsSection) hostSettingsSection.style.display = 'none';
-        }
-        
-        // Render auth form
-        function renderAuthForm() {
-            const container = document.getElementById('authContainer');
-            if (!container) return;
-            
-            container.innerHTML = `
-                <button class="auth-button google" onclick="signInWithGoogle()">
-                    <i class="fab fa-google"></i> Inloggen met Google
-                </button>
-                <div style="margin: 20px 0; text-align: center;">of</div>
-                <form onsubmit="handleEmailLogin(event)" style="display: flex; flex-direction: column; gap: 16px;">
-                    <input type="email" id="email" placeholder="Email" required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px;">
-                    <input type="password" id="password" placeholder="Wachtwoord" required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px;">
-                    <button type="submit" style="padding: 12px; background: #FFD700; border: none; border-radius: 8px; font-weight: bold;">
-                        Inloggen met Email
-                    </button>
-                </form>
-            `;
-        }
-        
-        function handleEmailLogin(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            signInWithEmail(email, password);
-        }
-        
-        // Load products
+        // Load products from Firebase
         async function loadProducts() {
             try {
                 const snapshot = await db.collection('products').get();
                 products = [];
                 snapshot.forEach(doc => {
-                    products.push({
-                        id: doc.id,
-                        ...doc.data()
-                    });
+                    products.push({ id: doc.id, ...doc.data() });
                 });
                 
                 if (products.length === 0) {
@@ -549,6 +758,7 @@
                 }
                 
                 displayFeaturedProducts();
+                displayAllProducts();
                 
             } catch (error) {
                 console.error('Error loading products:', error);
@@ -576,6 +786,15 @@
                     category: 'fidgets',
                     featured: true,
                     imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Hexagon-fidget.png'
+                },
+                {
+                    name: 'Sleutelhanger',
+                    description: 'Personaliseerbaar',
+                    price: 1.99,
+                    material: 'PLA',
+                    category: 'home',
+                    featured: false,
+                    imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Binnenkort-beschikbaar_Tekst.png'
                 }
             ];
             
@@ -589,30 +808,50 @@
             const container = document.getElementById('featuredProducts');
             if (!container) return;
             
-            const featured = products.filter(p => p.featured).slice(0, 4);
+            const featured = products.filter(p => p.featured).slice(0, 6);
             
             if (featured.length === 0) {
-                container.innerHTML = '<p>Geen producten</p>';
+                container.innerHTML = '<p>Geen uitgelichte producten</p>';
                 return;
             }
             
             container.innerHTML = '';
-            
             featured.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <div class="product-image">
-                        <i class="fas fa-cube"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3>${product.name}</h3>
-                        <p>€${product.price}</p>
-                        <button onclick="showProductDetails('${product.id}')">Bekijk</button>
-                    </div>
-                `;
+                const card = createProductCard(product);
                 container.appendChild(card);
             });
+        }
+        
+        // Display all products
+        function displayAllProducts() {
+            const container = document.getElementById('allProducts');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            products.forEach(product => {
+                const card = createProductCard(product);
+                container.appendChild(card);
+            });
+        }
+        
+        // Create product card
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <div class="product-image">
+                    <i class="fas fa-cube" style="font-size: 40px;"></i>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-price">€${product.price.toFixed(2)}</div>
+                    <button onclick="showProductDetails('${product.id}')" 
+                            style="margin-top: 8px; width: 100%; padding: 8px; background: #FFD700; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">
+                        Bekijk details
+                    </button>
+                </div>
+            `;
+            return card;
         }
         
         // Show product details
@@ -622,76 +861,276 @@
             
             const content = document.getElementById('productModalContent');
             content.innerHTML = `
-                <h2>${product.name}</h2>
-                <p>${product.description}</p>
-                <p>Prijs: €${product.price}</p>
-                <button onclick="openReservationModal('${product.id}')" ${!currentUser ? 'disabled' : ''}>
-                    ${!currentUser ? 'Log in om te reserveren' : 'Reserveer'}
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <div style="width: 200px; height: 200px; background: #f5f5f5; border-radius: 12px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-cube" style="font-size: 60px; color: #666;"></i>
+                    </div>
+                    <h2 style="margin-bottom: 8px;">${product.name}</h2>
+                    <p style="color: #666; margin-bottom: 16px;">${product.description}</p>
+                    <div style="font-size: 24px; font-weight: bold; color: #FFD700; margin-bottom: 24px;">
+                        €${product.price.toFixed(2)}
+                    </div>
+                </div>
+                <button onclick="openReservationModal('${product.id}')" 
+                        style="width: 100%; padding: 16px; background: #FFD700; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer;"
+                        ${!currentUser ? 'disabled' : ''}>
+                    ${!currentUser ? 'Log in om te reserveren' : 'Reserveer dit product'}
                 </button>
             `;
             
-            productModal.classList.add('active');
+            document.getElementById('productModal').classList.add('active');
         }
         
         // Open reservation modal
-        function openReservationModal(productId) {
+        function openReservationModal(productId, reservationId = null) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
             
+            currentReservationProduct = product;
+            currentReservationEditId = reservationId;
+            selectedColor = null;
+            
+            // Set modal title
+            document.getElementById('reservationModalTitle').textContent = 
+                reservationId ? 'Reservering Bewerken' : 'Nieuwe Reservering';
+            
+            const basePrice = product.price;
             const content = document.getElementById('reservationModalContent');
+            
             content.innerHTML = `
-                <h3>${product.name}</h3>
-                <p>Kies een kleur:</p>
-                <div>
-                    <button onclick="selectColor('wit')">Wit</button>
-                    <button onclick="selectColor('zwart')">Zwart</button>
-                    <button onclick="selectColor('rainbow')">Rainbow (+5%)</button>
+                <div style="background: #f9f9f9; padding: 16px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 8px;">${product.name}</h3>
+                    <div style="font-size: 20px; font-weight: bold; color: #FFD700;">€${basePrice.toFixed(2)}</div>
                 </div>
-                <p id="priceDisplay">Prijs: €${product.price}</p>
-                <button onclick="saveReservation('${product.id}')">Opslaan</button>
+                
+                <h3 style="margin-bottom: 16px;">Kies een kleur:</h3>
+                <div class="color-options" id="colorOptions">
+                    ${colorOptions.map(color => `
+                        <div class="color-option" onclick="selectReservationColor('${color.id}', ${basePrice})">
+                            <div class="color-preview" style="background: ${getColorBackground(color.id)}"></div>
+                            <div class="color-name">${color.name}</div>
+                            <div class="color-price">€${(basePrice * color.priceMultiplier).toFixed(2)}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div class="final-price">
+                    <div class="final-price-label">Totaalprijs:</div>
+                    <div class="final-price-amount" id="finalPriceAmount">€${basePrice.toFixed(2)}</div>
+                </div>
+                
+                <div class="modal-buttons">
+                    <button class="modal-btn save-btn" onclick="saveReservation()" id="saveReservationBtn">
+                        ${reservationId ? 'Reservering Bijwerken' : 'Reservering Opslaan'}
+                    </button>
+                    <button class="modal-btn cancel-btn" onclick="closeReservationModal()">Annuleren</button>
+                </div>
             `;
             
-            reservationModal.classList.add('active');
+            // If editing, load existing color
+            if (reservationId) {
+                const reservation = userReservations.find(r => r.id === reservationId);
+                if (reservation) {
+                    selectReservationColor(reservation.color, basePrice);
+                }
+            }
+            
+            document.getElementById('reservationModal').classList.add('active');
         }
         
-        function selectColor(color) {
-            // Kleur selectie logica
-            console.log('Gekozen kleur:', color);
+        // Get color background for preview
+        function getColorBackground(colorId) {
+            switch(colorId) {
+                case 'wit': return 'white';
+                case 'zwart': return 'black';
+                case 'groen': return 'green';
+                case 'geel': return 'yellow';
+                case 'rood': return 'red';
+                case 'rainbow': return 'linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet)';
+                default: return '#ccc';
+            }
         }
         
-        async function saveReservation(productId) {
-            if (!currentUser) return;
+        // Select color in reservation modal
+        function selectReservationColor(colorId, basePrice) {
+            selectedColor = colorId;
+            
+            // Update UI
+            document.querySelectorAll('.color-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Find and select the clicked color option
+            const colorOption = Array.from(document.querySelectorAll('.color-option')).find(option => {
+                return option.querySelector('.color-name').textContent === 
+                    colorOptions.find(c => c.id === colorId).name;
+            });
+            
+            if (colorOption) {
+                colorOption.classList.add('selected');
+            }
+            
+            // Update price
+            const color = colorOptions.find(c => c.id === colorId);
+            const finalPrice = basePrice * color.priceMultiplier;
+            document.getElementById('finalPriceAmount').textContent = `€${finalPrice.toFixed(2)}`;
+        }
+        
+        // Close reservation modal
+        function closeReservationModal() {
+            document.getElementById('reservationModal').classList.remove('active');
+            currentReservationProduct = null;
+            currentReservationEditId = null;
+            selectedColor = null;
+        }
+        
+        // Save reservation
+        async function saveReservation() {
+            if (!currentUser || !currentReservationProduct || !selectedColor) {
+                showToast('Selecteer een kleur');
+                return;
+            }
             
             try {
-                await db.collection('reservations').add({
+                const basePrice = currentReservationProduct.price;
+                const color = colorOptions.find(c => c.id === selectedColor);
+                const finalPrice = basePrice * color.priceMultiplier;
+                
+                const reservationData = {
                     userId: currentUser.uid,
                     userEmail: currentUser.email,
-                    productId: productId,
-                    createdAt: new Date()
-                });
+                    productId: currentReservationProduct.id,
+                    productName: currentReservationProduct.name,
+                    productPrice: currentReservationProduct.price,
+                    color: selectedColor,
+                    colorName: color.name,
+                    finalPrice: finalPrice,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                };
                 
-                showToast('Reservering opgeslagen!');
-                reservationModal.classList.remove('active');
+                if (currentReservationEditId) {
+                    // Update existing
+                    await db.collection('reservations').doc(currentReservationEditId).update(reservationData);
+                    showToast('Reservering bijgewerkt!');
+                } else {
+                    // Create new
+                    await db.collection('reservations').add(reservationData);
+                    showToast('Reservering opgeslagen!');
+                }
+                
+                closeReservationModal();
+                loadUserReservations();
                 
             } catch (error) {
                 console.error('Error saving reservation:', error);
-                showToast('Fout bij opslaan');
+                showToast('Fout bij opslaan reservering');
+            }
+        }
+        
+        // Load user reservations
+        async function loadUserReservations() {
+            if (!currentUser) return;
+            
+            try {
+                const snapshot = await db.collection('reservations')
+                    .where('userId', '==', currentUser.uid)
+                    .orderBy('createdAt', 'desc')
+                    .get();
+                
+                userReservations = [];
+                snapshot.forEach(doc => {
+                    userReservations.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
+                });
+                
+                updateReservationsDisplay();
+                
+            } catch (error) {
+                console.error('Error loading reservations:', error);
+            }
+        }
+        
+        // Update reservations display
+        function updateReservationsDisplay() {
+            const container = document.getElementById('reservationsList');
+            if (!container) return;
+            
+            if (userReservations.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-calendar-times"></i>
+                        <h3>Geen reserveringen</h3>
+                        <p>Ga naar de <a href="#" onclick="showPage('products')" style="color: #FFD700; font-weight: 600;">producten</a> om er een te maken.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            userReservations.forEach(reservation => {
+                // Find product details
+                const product = products.find(p => p.id === reservation.productId) || {
+                    name: reservation.productName || 'Onbekend product'
+                };
+                
+                html += `
+                    <div class="reservation-item">
+                        <div class="reservation-header">
+                            <div class="reservation-product">${product.name}</div>
+                            <div class="reservation-price">€${reservation.finalPrice?.toFixed(2) || '0.00'}</div>
+                        </div>
+                        <div class="reservation-details">
+                            <div class="reservation-color">
+                                <div class="color-dot ${reservation.color}"></div>
+                                <span>${reservation.colorName || reservation.color}</span>
+                            </div>
+                            <div>Basisprijs: €${reservation.productPrice?.toFixed(2) || '0.00'}</div>
+                        </div>
+                        <div class="reservation-actions">
+                            <button class="action-btn edit-btn" onclick="openReservationModal('${reservation.productId}', '${reservation.id}')">
+                                <i class="fas fa-edit"></i> Bewerken
+                            </button>
+                            <button class="action-btn delete-btn" onclick="deleteReservation('${reservation.id}')">
+                                <i class="fas fa-trash"></i> Verwijderen
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+        
+        // Delete reservation
+        async function deleteReservation(reservationId) {
+            if (!confirm('Weet je zeker dat je deze reservering wilt verwijderen?')) return;
+            
+            try {
+                await db.collection('reservations').doc(reservationId).delete();
+                showToast('Reservering verwijderd');
+                loadUserReservations();
+            } catch (error) {
+                console.error('Error deleting reservation:', error);
+                showToast('Fout bij verwijderen');
             }
         }
         
         // Load all reservations for host
         async function loadAllReservations() {
-            if (!isHost) {
-                showToast('Alleen voor host');
-                return;
-            }
+            if (!isHost) return;
             
             try {
-                const snapshot = await db.collection('reservations').get();
+                const snapshot = await db.collection('reservations')
+                    .orderBy('createdAt', 'desc')
+                    .get();
+                
                 const container = document.getElementById('allReservationsList');
                 
                 if (snapshot.empty) {
-                    container.innerHTML = '<p>Geen reserveringen</p>';
+                    container.innerHTML = '<p>Geen reserveringen gevonden</p>';
                     return;
                 }
                 
@@ -699,10 +1138,22 @@
                 snapshot.forEach(doc => {
                     const data = doc.data();
                     html += `
-                        <div style="border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 8px;">
-                            <p><strong>Gebruiker:</strong> ${data.userEmail}</p>
-                            <p><strong>Product ID:</strong> ${data.productId}</p>
-                            <p><strong>Datum:</strong> ${new Date(data.createdAt?.toDate()).toLocaleDateString()}</p>
+                        <div class="host-reservation-item">
+                            <div class="host-user">
+                                <i class="fas fa-user"></i>
+                                ${data.userEmail}
+                            </div>
+                            <div style="font-weight: 600; margin-bottom: 8px;">${data.productName}</div>
+                            <div style="display: flex; gap: 12px; color: #666; font-size: 14px; margin-bottom: 8px;">
+                                <div class="reservation-color">
+                                    <div class="color-dot ${data.color}"></div>
+                                    <span>${data.colorName || data.color}</span>
+                                </div>
+                                <div>€${data.finalPrice?.toFixed(2) || '0.00'}</div>
+                            </div>
+                            <div style="font-size: 12px; color: #999;">
+                                ${data.createdAt ? new Date(data.createdAt.toDate()).toLocaleDateString('nl-NL') : 'Onbekende datum'}
+                            </div>
                         </div>
                     `;
                 });
@@ -710,41 +1161,118 @@
                 container.innerHTML = html;
                 
             } catch (error) {
-                console.error('Error loading reservations:', error);
+                console.error('Error loading all reservations:', error);
                 showToast('Fout bij laden reserveringen');
             }
         }
         
-        // Show page
-        function showPage(page) {
-            document.querySelectorAll('.page').forEach(p => {
-                p.classList.remove('active');
-            });
-            
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            currentPage = page;
-            const pageElement = document.getElementById(page + 'Page');
-            if (pageElement) pageElement.classList.add('active');
-            
-            const navItem = document.querySelector(`.nav-item[data-page="${page}"]`);
-            if (navItem) navItem.classList.add('active');
-            
-            if (page === 'hostReservations') {
-                loadAllReservations();
+        // Auth functions
+        async function signInWithGoogle() {
+            try {
+                const provider = new firebase.auth.GoogleAuthProvider();
+                const result = await auth.signInWithPopup(provider);
+                currentUser = result.user;
+                checkIfHost(currentUser.email);
+                updateAuthUI();
+                document.getElementById('authModal').classList.remove('active');
+                showToast(`Welkom ${result.user.displayName || result.user.email}!`);
+            } catch (error) {
+                showToast('Google login mislukt');
             }
         }
         
-        // Show toast
-        function showToast(message) {
-            toastMessage.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
+        async function signInWithEmail(email, password) {
+            try {
+                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                currentUser = userCredential.user;
+                checkIfHost(currentUser.email);
+                updateAuthUI();
+                document.getElementById('authModal').classList.remove('active');
+                showToast('Welkom terug!');
+            } catch (error) {
+                showToast('Login mislukt');
+            }
         }
         
-        // Event Listeners
+        async function logout() {
+            try {
+                await auth.signOut();
+                currentUser = null;
+                isHost = false;
+                updateAuthUI();
+                showToast('Succesvol uitgelogd');
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+        }
+        
+        // Update UI based on auth state
+        function updateAuthUI() {
+            const welcomeUser = document.getElementById('welcomeUser');
+            const accountStatus = document.getElementById('accountStatus');
+            const loginButton = document.getElementById('loginButton');
+            const reservationsNav = document.getElementById('reservationsNav');
+            const hostSection = document.getElementById('hostSettingsSection');
+            
+            if (currentUser) {
+                // User is logged in
+                const displayName = currentUser.displayName || currentUser.email.split('@')[0] || 'Gebruiker';
+                if (welcomeUser) welcomeUser.textContent = `Welkom, ${displayName}!`;
+                if (accountStatus) accountStatus.textContent = 'Ingelogd';
+                if (loginButton) {
+                    loginButton.innerHTML = '<i class="fas fa-sign-out-alt"></i> Uitloggen';
+                    loginButton.onclick = logout;
+                }
+                if (reservationsNav) reservationsNav.style.display = 'flex';
+                if (hostSection && isHost) hostSection.style.display = 'block';
+                
+                // Load user data
+                loadUserReservations();
+            } else {
+                // User is logged out
+                if (welcomeUser) welcomeUser.textContent = 'Log in voor persoonlijke bonussen';
+                if (accountStatus) accountStatus.textContent = 'Niet ingelogd';
+                if (loginButton) {
+                    loginButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> Inloggen';
+                    loginButton.onclick = () => {
+                        document.getElementById('authModal').classList.add('active');
+                        renderAuthForm();
+                    };
+                }
+                if (reservationsNav) reservationsNav.style.display = 'none';
+                if (hostSection) hostSection.style.display = 'none';
+            }
+        }
+        
+        // Render auth form
+        function renderAuthForm() {
+            const container = document.getElementById('authContainer');
+            if (!container) return;
+            
+            container.innerHTML = `
+                <button onclick="signInWithGoogle()" style="width: 100%; padding: 16px; background: white; border: 2px solid #ddd; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; margin-bottom: 20px;">
+                    <i class="fab fa-google" style="color: #DB4437; margin-right: 8px;"></i>
+                    Inloggen met Google
+                </button>
+                <div style="text-align: center; color: #666; margin: 20px 0;">of</div>
+                <form onsubmit="handleEmailLogin(event)" style="display: flex; flex-direction: column; gap: 16px;">
+                    <input type="email" id="email" placeholder="Email" required style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                    <input type="password" id="password" placeholder="Wachtwoord" required style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                    <button type="submit" style="padding: 16px; background: #FFD700; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer;">
+                        Inloggen met Email
+                    </button>
+                </form>
+            `;
+        }
+        
+        function handleEmailLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            signInWithEmail(email, password);
+        }
+        
+        // Initialize app
         document.addEventListener('DOMContentLoaded', () => {
             // Navigation
             document.querySelectorAll('.nav-item').forEach(item => {
@@ -757,40 +1285,35 @@
             
             // Close modals
             document.getElementById('closeAuth')?.addEventListener('click', () => {
-                authModal.classList.remove('active');
+                document.getElementById('authModal').classList.remove('active');
             });
             
             document.getElementById('closeProductModal')?.addEventListener('click', () => {
-                productModal.classList.remove('active');
+                document.getElementById('productModal').classList.remove('active');
             });
             
             document.getElementById('closeReservationModal')?.addEventListener('click', () => {
-                reservationModal.classList.remove('active');
+                closeReservationModal();
             });
             
-            // Login button
-            document.getElementById('loginButton')?.addEventListener('click', () => {
-                if (!currentUser) {
-                    authModal.classList.add('active');
+            // User avatar click
+            document.getElementById('userAvatar')?.addEventListener('click', () => {
+                if (currentUser) {
+                    showToast(`Ingelogd als ${currentUser.email}`);
+                } else {
+                    document.getElementById('authModal').classList.add('active');
                     renderAuthForm();
                 }
             });
             
-            // All products link
-            document.getElementById('allProductsLink')?.addEventListener('click', (e) => {
-                e.preventDefault();
-                showPage('products');
-            });
-            
             // Firebase auth listener
             auth.onAuthStateChanged((user) => {
-                console.log('Auth state:', user ? 'Logged in' : 'Logged out');
+                console.log('Auth state changed:', user ? 'Logged in' : 'Logged out');
                 currentUser = user;
                 if (user) {
                     checkIfHost(user.email);
                 } else {
                     isHost = false;
-                    hideHostSection();
                 }
                 updateAuthUI();
             });

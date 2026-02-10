@@ -16,20 +16,30 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
-    
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+
         :root {
-            --primary-color: #FFD700;
-            --primary-light: #FFF9C4;
-            --secondary-color: #FFC400;
-            --accent-color: #FFA000;
-            --success-color: #4CAF50;
-            --warning-color: #FF9800;
-            --danger-color: #F44336;
+            /* Light Theme Variables - Geel & Zwart */
+            --primary-color: #FFD700; /* Geel */
+            --primary-light: #FFF9C4; /* Lichtgeel */
+            --secondary-color: #FFC400; /* Amber geel */
+            --accent-color: #FFA000; /* Oranje-geel */
+            --success-color: #4CAF50; /* Groen blijft */
+            --warning-color: #FF9800; /* Oranje */
+            --danger-color: #F44336; /* Rood blijft */
             --light-color: #ffffff;
-            --dark-color: #000000;
+            --dark-color: #000000; /* Zwart */
             --gray-50: #f8f9fa;
             --gray-100: #e9ecef;
             --gray-200: #dee2e6;
@@ -39,13 +49,26 @@
             --gray-600: #495057;
             --gray-700: #343a40;
             --gray-800: #212529;
-            --gray-900: #000000;
+            --gray-900: #000000; /* Zwart */
             
+            --border-radius-sm: 8px;
             --border-radius: 12px;
             --border-radius-lg: 16px;
+            --border-radius-xl: 20px;
+            --border-radius-2xl: 24px;
+            
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
             --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-md: 0 6px 10px rgba(0,0,0,0.1);
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --shadow-xl: 0 15px 35px rgba(0,0,0,0.2);
+            
+            --transition-fast: 150ms ease;
             --transition: 250ms ease;
+            --transition-slow: 350ms ease;
+            
+            --safe-area-top: env(safe-area-inset-top);
+            --safe-area-bottom: env(safe-area-inset-bottom);
             
             --header-height: 60px;
             --nav-height: 70px;
@@ -53,13 +76,14 @@
         }
 
         .dark-theme {
-            --primary-color: #FFC107;
-            --primary-light: #333300;
-            --secondary-color: #FFB300;
-            --accent-color: #FF8F00;
-            --success-color: #388E3C;
-            --warning-color: #F57C00;
-            --danger-color: #D32F2F;
+            /* Dark Theme Variables - Geel & Zwart */
+            --primary-color: #FFC107; /* Donkerder geel */
+            --primary-light: #333300; /* Donker geel-zwart */
+            --secondary-color: #FFB300; /* Amber */
+            --accent-color: #FF8F00; /* Donker oranje-geel */
+            --success-color: #388E3C; /* Donker groen */
+            --warning-color: #F57C00; /* Donker oranje */
+            --danger-color: #D32F2F; /* Donker rood */
             --light-color: #121212;
             --dark-color: #ffffff;
             --gray-50: #1e1e1e;
@@ -74,15 +98,7 @@
             --gray-900: #ffffff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-        }
-
-        html, body {
+        html {
             height: 100%;
             overflow: hidden;
         }
@@ -90,14 +106,18 @@
         body {
             background-color: var(--light-color);
             color: var(--dark-color);
-            transition: background-color var(--transition), color var(--transition);
+            transition: background-color var(--transition-slow), color var(--transition-slow);
             height: 100vh;
-            padding-top: env(safe-area-inset-top);
-            padding-bottom: env(safe-area-inset-bottom);
+            height: calc(var(--vh, 1vh) * 100);
+            overflow: hidden;
+            position: relative;
+            padding-top: var(--safe-area-top);
+            padding-bottom: var(--safe-area-bottom);
             display: flex;
             flex-direction: column;
         }
 
+        /* App Container */
         .app-container {
             flex: 1;
             display: flex;
@@ -111,6 +131,7 @@
             background-color: var(--light-color);
         }
 
+        /* App Header */
         .app-header {
             height: var(--header-height);
             background-color: var(--light-color);
@@ -122,6 +143,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            transition: all var(--transition);
         }
 
         .header-title {
@@ -133,10 +155,14 @@
             gap: 8px;
         }
 
+        .header-title i {
+            color: var(--accent-color);
+        }
+
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
         }
 
         .header-action-btn {
@@ -151,10 +177,11 @@
             color: var(--dark-color);
             font-size: 18px;
             cursor: pointer;
-            transition: background-color var(--transition);
+            transition: background-color var(--transition-fast);
         }
 
-        .header-action-btn:hover {
+        .header-action-btn:hover,
+        .header-action-btn:active {
             background-color: var(--gray-100);
         }
 
@@ -163,7 +190,7 @@
             height: 36px;
             border-radius: 50%;
             background-color: var(--primary-color);
-            color: #000000;
+            color: #000000; /* Zwart tekst op geel */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -175,13 +202,102 @@
             overflow: hidden;
         }
 
+        .user-avatar:hover,
+        .user-avatar:active {
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Language selector */
+        .language-selector {
+            position: relative;
+        }
+
+        .language-btn {
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-color);
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color var(--transition-fast);
+            font-weight: bold;
+        }
+
+        .language-btn:hover,
+        .language-btn:active {
+            background-color: var(--gray-100);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            min-width: 120px;
+            z-index: 1000;
+            display: none;
+            border: 1px solid var(--gray-100);
+        }
+
+        .language-dropdown.show {
+            display: block;
+        }
+
+        .language-option {
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: background-color var(--transition-fast);
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .language-option:last-child {
+            border-bottom: none;
+        }
+
+        .language-option:hover {
+            background-color: var(--gray-100);
+        }
+
+        .language-option.active {
+            background-color: var(--primary-light);
+        }
+
+        .language-flag {
+            font-size: 16px;
+        }
+
+        .language-name {
+            font-size: 14px;
+        }
+
+        /* Main Content Area */
         .main-content {
             flex: 1;
             overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
             padding: 16px;
             padding-bottom: calc(var(--nav-height) + 16px);
         }
 
+        /* Bottom Navigation */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -193,7 +309,7 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding-bottom: env(safe-area-inset-bottom);
+            padding-bottom: var(--safe-area-bottom);
             z-index: 100;
             max-width: var(--container-max-width);
             margin: 0 auto;
@@ -210,6 +326,7 @@
             color: var(--gray-500);
             transition: all var(--transition);
             position: relative;
+            min-width: 0;
         }
 
         .nav-item.active {
@@ -219,69 +336,112 @@
         .nav-icon {
             font-size: 20px;
             margin-bottom: 4px;
+            transition: transform var(--transition);
+        }
+
+        .nav-item.active .nav-icon {
+            transform: translateY(-2px);
         }
 
         .nav-label {
             font-size: 11px;
             font-weight: 500;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
+        .nav-indicator {
+            position: absolute;
+            top: 0;
+            width: 4px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .nav-item.active .nav-indicator {
+            opacity: 1;
+        }
+
+        /* Page Content */
         .page {
             display: none;
+            animation: fadeIn var(--transition) forwards;
         }
 
         .page.active {
             display: block;
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Home Page */
         .welcome-card {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: #000000;
+            color: #000000; /* Zwart tekst op geel */
             border-radius: var(--border-radius-lg);
             padding: 24px;
             margin-bottom: 20px;
             box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
         }
 
         .welcome-title {
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
         }
 
-        .weekly-discount-section {
-            background-color: var(--light-color);
-            border-radius: var(--border-radius-lg);
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: var(--shadow);
-            border: 2px dashed var(--primary-color);
-            text-align: center;
-        }
-
-        .weekly-discount-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .weekly-discount-info {
+        .welcome-subtitle {
             font-size: 14px;
-            color: var(--gray-600);
-            margin: 12px 0;
+            opacity: 0.9;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .welcome-user {
+            font-weight: 600;
+            background-color: rgba(0,0,0,0.2); /* Zwart met transparantie */
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
         }
 
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 24px 0 16px 0;
+            margin-bottom: 16px;
+            margin-top: 24px;
         }
 
         .section-title {
@@ -290,6 +450,82 @@
             color: var(--dark-color);
         }
 
+        .section-link {
+            font-size: 14px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .section-link i {
+            font-size: 12px;
+        }
+
+        /* FAQ Styles */
+        .faq-section {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius-lg);
+            padding: 20px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--gray-100);
+            padding: 16px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark-color);
+            font-size: 16px;
+        }
+
+        .faq-question i {
+            color: var(--primary-color);
+            transition: transform var(--transition);
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition);
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
+
+        .faq-answer.show {
+            max-height: 300px;
+            margin-top: 12px;
+        }
+
+        /* Products Grid */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -313,7 +549,8 @@
             position: relative;
         }
 
-        .product-card:hover {
+        .product-card:hover,
+        .product-card:active {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
         }
@@ -341,6 +578,19 @@
             transform: scale(1.05);
         }
 
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent-color);
+            color: #000000; /* Zwart tekst */
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            z-index: 2;
+        }
+
         .product-info {
             padding: 12px;
         }
@@ -355,11 +605,53 @@
             text-overflow: ellipsis;
         }
 
+        .product-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .product-material, .product-category {
+            font-size: 11px;
+            color: var(--gray-500);
+            background-color: var(--gray-100);
+            padding: 2px 8px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
         .product-price {
             font-size: 16px;
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 8px;
+        }
+
+        .bonus-badge {
+            background-color: rgba(255, 160, 0, 0.1); /* Accent kleur met transparantie */
+            border: 1px dashed var(--accent-color);
+            padding: 6px 8px;
+            border-radius: var(--border-radius-sm);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent-color);
+            display: none;
+            margin-top: 4px;
+        }
+
+        .bonus-badge.show {
+            display: block;
+        }
+
+        .bonus-badge i {
+            margin-right: 4px;
+            font-size: 10px;
+        }
+
+        /* Products Page */
+        .products-page-header {
+            margin-bottom: 20px;
         }
 
         .search-bar {
@@ -372,9 +664,16 @@
             padding: 14px 16px 14px 44px;
             background-color: var(--gray-100);
             border: none;
-            border-radius: var(--border-radius);
+            border-radius: var(--border-radius-lg);
             font-size: 16px;
             color: var(--dark-color);
+            transition: all var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            background-color: var(--gray-200);
+            box-shadow: 0 0 0 2px var(--primary-light);
         }
 
         .search-icon {
@@ -390,6 +689,8 @@
             gap: 8px;
             overflow-x: auto;
             padding-bottom: 8px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
 
         .filter-chips::-webkit-scrollbar {
@@ -405,14 +706,16 @@
             color: var(--gray-700);
             white-space: nowrap;
             cursor: pointer;
+            transition: all var(--transition);
             border: none;
         }
 
         .filter-chip.active {
             background-color: var(--primary-color);
-            color: #000000;
+            color: #000000; /* Zwart tekst op geel */
         }
 
+        /* Settings Page */
         .settings-section {
             background-color: var(--light-color);
             border-radius: var(--border-radius);
@@ -431,6 +734,12 @@
             gap: 10px;
         }
 
+        .settings-title i {
+            color: var(--primary-color);
+            width: 24px;
+            text-align: center;
+        }
+
         .settings-item {
             display: flex;
             justify-content: space-between;
@@ -444,6 +753,150 @@
             border-bottom: none;
         }
 
+        .settings-info h4 {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 2px;
+            color: var(--dark-color);
+        }
+
+        .settings-info p {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+
+        /* Privacy Page - Telefoon vriendelijk */
+        .privacy-content {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 20px 16px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .privacy-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .privacy-subtitle {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin: 24px 0 12px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .privacy-text {
+            line-height: 1.6;
+            margin-bottom: 16px;
+            color: var(--gray-700);
+            font-size: 15px;
+        }
+
+        .privacy-list {
+            padding-left: 20px;
+            margin-bottom: 16px;
+            color: var(--gray-700);
+            font-size: 15px;
+        }
+
+        .privacy-list li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .privacy-table-container {
+            overflow-x: auto;
+            margin: 16px 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .privacy-table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .privacy-table th {
+            background-color: var(--gray-100);
+            color: var(--dark-color);
+            font-weight: 600;
+            padding: 12px 8px;
+            text-align: left;
+            border: 1px solid var(--gray-200);
+        }
+
+        .privacy-table td {
+            padding: 12px 8px;
+            border: 1px solid var(--gray-200);
+            color: var(--gray-700);
+        }
+
+        .privacy-table tr:nth-child(even) {
+            background-color: var(--gray-50);
+        }
+
+        .contact-info {
+            background-color: var(--gray-100);
+            padding: 16px;
+            border-radius: var(--border-radius);
+            margin: 16px 0;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+            color: var(--gray-700);
+            font-size: 14px;
+            line-height: 1.4;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .privacy-back-btn {
+            background-color: var(--gray-100);
+            color: var(--dark-color);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            width: 100%;
+            justify-content: center;
+            transition: background-color var(--transition);
+        }
+
+        .privacy-back-btn:hover,
+        .privacy-back-btn:active {
+            background-color: var(--gray-200);
+        }
+
+        /* Toggle Switch */
         .toggle {
             position: relative;
             display: inline-block;
@@ -479,6 +932,7 @@
             background-color: white;
             transition: var(--transition);
             border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         input:checked + .toggle-slider {
@@ -489,7 +943,8 @@
             transform: translateX(24px);
         }
 
-        .auth-modal, .product-modal {
+        /* Auth Modal */
+        .auth-modal {
             position: fixed;
             top: 0;
             left: 0;
@@ -499,35 +954,390 @@
             z-index: 1000;
             display: none;
             flex-direction: column;
+            animation: slideUp var(--transition) forwards;
+            padding-top: var(--safe-area-top);
         }
 
-        .auth-modal.active, .product-modal.active {
+        .auth-modal.active {
             display: flex;
         }
 
-        .toast {
-            position: fixed;
-            bottom: calc(var(--nav-height) + 20px);
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background-color: var(--gray-800);
-            color: white;
-            padding: 12px 20px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            z-index: 1001;
+        .auth-header {
+            height: var(--header-height);
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .auth-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .close-auth {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--dark-color);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color var(--transition-fast);
+        }
+
+        .close-auth:hover,
+        .close-auth:active {
+            background-color: var(--gray-100);
+        }
+
+        .auth-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 12px;
+            background: var(--gray-100);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            color: var(--gray-700);
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .auth-tab.active {
+            background: var(--primary-color);
+            color: #000000; /* Zwart tekst op geel */
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .auth-form.hidden {
+            display: none;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-input {
+            padding: 14px;
+            background: var(--gray-100);
+            border: 2px solid transparent;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            color: var(--dark-color);
+            transition: all var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            background: var(--gray-200);
+            border-color: var(--primary-color);
+        }
+
+        .auth-button {
+            padding: 16px;
+            background: var(--primary-color);
+            color: #000000; /* Zwart tekst op geel */
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 10px;
-            transition: transform var(--transition), opacity var(--transition);
-            opacity: 0;
+            margin-top: 10px;
         }
 
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
+        .auth-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
         }
 
+        .auth-button.google {
+            background: white;
+            color: var(--dark-color);
+            border: 2px solid var(--gray-200);
+        }
+
+        .auth-button.google:hover {
+            background: var(--gray-50);
+            border-color: var(--gray-300);
+        }
+
+        .auth-button.google i {
+            color: #DB4437; /* Google rood */
+        }
+
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: var(--gray-500);
+            font-size: 14px;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gray-200);
+        }
+
+        .auth-divider span {
+            padding: 0 15px;
+        }
+
+        .auth-error {
+            background: rgba(244, 67, 54, 0.1); /* Danger color met transparantie */
+            border: 1px solid var(--danger-color);
+            color: var(--danger-color);
+            padding: 12px;
+            border-radius: var(--border-radius);
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .auth-error.show {
+            display: block;
+        }
+
+        .auth-success {
+            background: rgba(76, 175, 80, 0.1); /* Success color met transparantie */
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+            padding: 12px;
+            border-radius: var(--border-radius);
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .auth-success.show {
+            display: block;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        /* Product Detail Modal - Nieuwe Layout */
+        .product-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--light-color);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            animation: slideUp var(--transition) forwards;
+            padding-top: var(--safe-area-top);
+        }
+
+        .product-modal.active {
+            display: flex;
+        }
+
+        .product-modal-header {
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .product-modal-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 16px 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-modal-image {
+            height: 280px;
+            width: 280px;
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius-lg);
+            margin: 16px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            align-self: center;
+        }
+
+        .product-modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info-columns {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .product-info-columns {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            
+            .product-modal-image {
+                width: 300px;
+                height: 300px;
+                margin: 16px 0 16px 16px;
+                order: 2;
+                flex-shrink: 0;
+            }
+            
+            .product-info-content {
+                flex: 1;
+                order: 1;
+                padding-right: 16px;
+            }
+        }
+
+        .product-info-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .product-modal-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 8px;
+        }
+
+        .product-modal-description {
+            font-size: 16px;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+
+        .product-modal-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            background-color: var(--gray-100);
+            padding: 12px;
+            border-radius: var(--border-radius);
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: var(--gray-500);
+            margin-bottom: 4px;
+        }
+
+        .detail-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .product-modal-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+            margin: 16px 0;
+        }
+
+        .product-modal-bonus {
+            background-color: rgba(255, 160, 0, 0.1);
+            border: 2px dashed var(--accent-color);
+            padding: 16px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-top: 16px;
+            display: none;
+        }
+
+        .product-modal-bonus.show {
+            display: block;
+        }
+
+        .bonus-title {
+            font-size: 14px;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .bonus-code {
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            background-color: rgba(255,255,255,0.3);
+            padding: 8px 16px;
+            border-radius: var(--border-radius-sm);
+            display: inline-block;
+        }
+
+        /* Loading State */
         .loading {
             display: flex;
             flex-direction: column;
@@ -551,48 +1361,112 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: calc(var(--nav-height) + 20px);
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: var(--gray-800);
+            color: white;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-xl);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 90%;
+            transition: transform var(--transition);
+            opacity: 0;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            color: var(--accent-color);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray-500);
+        }
+
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--gray-600);
+        }
+
+        .empty-state p {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        /* Utility Classes */
         .hidden {
             display: none !important;
         }
 
-        .language-selector {
-            position: relative;
-            display: inline-block;
+        .text-center {
+            text-align: center;
         }
 
-        .language-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: var(--light-color);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--border-radius);
-            padding: 8px 0;
-            min-width: 120px;
-            box-shadow: var(--shadow-lg);
-            display: none;
-            z-index: 1000;
+        .text-primary {
+            color: var(--primary-color);
         }
 
-        .language-dropdown.show {
-            display: block;
+        .text-accent {
+            color: var(--accent-color);
         }
 
-        .language-option {
-            padding: 8px 16px;
-            cursor: pointer;
-            color: var(--dark-color);
-            transition: background-color var(--transition);
+        .text-success {
+            color: var(--success-color);
         }
 
-        .language-option:hover {
-            background-color: var(--gray-100);
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+
+        .bg-accent {
+            background-color: var(--accent-color);
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gray-300);
+            border-radius: 3px;
+        }
+
+        .dark-theme ::-webkit-scrollbar-thumb {
+            background: var(--gray-600);
         }
     </style>
 </head>
 
 <body>
+    <!-- App Container -->
     <div class="app-container" id="appContainer">
+        <!-- App Header -->
         <header class="app-header">
             <div class="header-title">
                 <i class="fas fa-cube"></i>
@@ -600,52 +1474,59 @@
             </div>
             <div class="header-actions">
                 <div class="language-selector">
-                    <button class="header-action-btn" id="languageToggle" title="Taal">
-                        <i class="fas fa-globe"></i>
+                    <button class="language-btn" id="languageBtn" title="Taal wisselen">
+                        <span id="languageFlag">🇳🇱</span>
                     </button>
                     <div class="language-dropdown" id="languageDropdown">
-                        <div class="language-option" data-lang="nl">🇳🇱 Nederlands</div>
-                        <div class="language-option" data-lang="en">🇬🇧 English</div>
-                        <div class="language-option" data-lang="de">🇩🇪 Deutsch</div>
-                        <div class="language-option" data-lang="fr">🇫🇷 Français</div>
-                        <div class="language-option" data-lang="es">🇪🇸 Español</div>
-                        <div class="language-option" data-lang="zh">🇨🇳 中文</div>
-                        <div class="language-option" data-lang="ar">🇸🇦 العربية</div>
-                        <div class="language-option" data-lang="hi">🇮🇳 हिन्दी</div>
-                        <div class="language-option" data-lang="ru">🇷🇺 Русский</div>
+                        <div class="language-option" data-lang="nl">
+                            <span class="language-flag">🇳🇱</span>
+                            <span class="language-name">Nederlands</span>
+                        </div>
+                        <div class="language-option" data-lang="en">
+                            <span class="language-flag">🇬🇧</span>
+                            <span class="language-name">English</span>
+                        </div>
+                        <div class="language-option" data-lang="es">
+                            <span class="language-flag">🇪🇸</span>
+                            <span class="language-name">Español</span>
+                        </div>
+                        <div class="language-option" data-lang="fr">
+                            <span class="language-flag">🇫🇷</span>
+                            <span class="language-name">Français</span>
+                        </div>
+                        <div class="language-option" data-lang="de">
+                            <span class="language-flag">🇩🇪</span>
+                            <span class="language-name">Deutsch</span>
+                        </div>
+                        <div class="language-option" data-lang="zh">
+                            <span class="language-flag">🇨🇳</span>
+                            <span class="language-name">中文</span>
+                        </div>
                     </div>
                 </div>
-                <button class="header-action-btn" id="themeToggle" title="Thema">
+                <button class="header-action-btn" id="themeToggle" title="Thema wisselen">
                     <i class="fas fa-moon"></i>
                 </button>
-                <div class="user-avatar" id="userAvatar">
+                <div class="user-avatar" id="userAvatar" title="Account">
                     <i class="fas fa-user"></i>
                 </div>
             </div>
         </header>
 
+        <!-- Main Content -->
         <main class="main-content" id="mainContent">
+            <!-- Home Page -->
             <div class="page active" id="homePage">
                 <div class="welcome-card">
-                    <h1 class="welcome-title" data-i18n="welcomeTitle">Welkom bij PrintSome!</h1>
-                    <p class="welcome-subtitle" data-i18n="welcomeSubtitle">3D printing shop</p>
-                    <div class="welcome-user" id="welcomeUser" data-i18n="welcomeUser">Log in voor persoonlijke kortingscodes</div>
-                </div>
-
-                <div class="weekly-discount-section" id="weeklyDiscountSection" style="display: none;">
-                    <h2 class="weekly-discount-title">
-                        <i class="fas fa-gift"></i>
-                        <span data-i18n="weeklyDiscountTitle">Jouw Wekelijkse Kortingscode</span>
-                    </h2>
-                    <div class="weekly-discount-info" id="weeklyDiscountInfo" data-i18n="weeklyDiscountInfo">
-                        Bekijk je wekelijkse kortingscode per product in de product sectie
-                    </div>
+                    <h1 class="welcome-title" id="welcomeTitle">Welkom bij PrintSome!</h1>
+                    <p class="welcome-subtitle" id="welcomeSubtitle"> 3D printing shop</p>
+                    <div class="welcome-user" id="welcomeUser">Log in voor persoonlijke kortingscodes</div>
                 </div>
 
                 <div class="section-header">
-                    <h2 class="section-title" data-i18n="featuredProducts">Uitgelichte Producten</h2>
-                    <a href="#" class="section-link" id="allProductsLink" data-page="products" data-i18n="viewAll">
-                        Alles zien
+                    <h2 class="section-title" id="featuredTitle">Uitgelichte Producten</h2>
+                    <a href="#" class="section-link" id="allProductsLink" data-page="products">
+                        <span id="viewAllText">Alles zien</span>
                         <i class="fas fa-chevron-right"></i>
                     </a>
                 </div>
@@ -653,84 +1534,120 @@
                 <div class="products-grid" id="featuredProducts">
                     <div class="loading">
                         <div class="loading-spinner"></div>
-                        <p data-i18n="loadingProducts">Producten laden...</p>
+                        <p id="loadingProducts">Producten laden...</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="faq-section">
+                    <h2 class="faq-title">
+                        <i class="fas fa-question-circle"></i>
+                        <span id="faqTitle">Veelgestelde vragen</span>
+                    </h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span id="faqQ1">Hoe kan ik producten kopen?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer" id="faqA1">
+                            Op dit moment is het nog niet mogelijk om online te kopen. Aankopen zijn wel offline (in real life) mogelijk.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span id="faqQ2">Hoe werken bonuscodes?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer" id="faqA2">
+                            Bonuscodes kun je invoeren tijdens het reserveren. Zodra de code geldig is, wordt de korting automatisch verrekend.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span id="faqQ3">Wat voor producten verkoopt PrintSome?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer" id="faqA3">
+                            Op dit moment verkopen wij voornamelijk fidget toys. Ons assortiment wordt regelmatig uitgebreid. Neem een kijkje bij onze producten om te zien wat wij momenteel aanbieden.
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Products Page -->
             <div class="page" id="productsPage">
                 <div class="products-page-header">
                     <div class="search-bar">
                         <i class="fas fa-search search-icon"></i>
-                        <input type="text" class="search-input" id="searchInput" data-i18n="searchPlaceholder" placeholder="Zoek 3D producten...">
+                        <input type="text" class="search-input" id="searchInput" placeholder="Zoek 3D producten...">
                     </div>
                     <div class="filter-chips" id="filterChips">
-                        <button class="filter-chip active" data-filter="all" data-i18n="filterAll">Alles</button>
-                        <button class="filter-chip" data-filter="home" data-i18n="filterHome">Huis</button>
-                        <button class="filter-chip" data-filter="tech" data-i18n="filterTech">Tech</button>
-                        <button class="filter-chip" data-filter="custom" data-i18n="filterCustom">Custom</button>
-                        <button class="filter-chip" data-filter="fidgets" data-i18n="filterFidgets">Fidgets</button>
+                        <button class="filter-chip active" data-filter="all" id="filterAll">Alles</button>
+                        <button class="filter-chip" data-filter="home" id="filterHome">Huis</button>
+                        <button class="filter-chip" data-filter="tech" id="filterTech">Tech</button>
+                        <button class="filter-chip" data-filter="custom" id="filterCustom">Custom</button>
+                        <button class="filter-chip" data-filter="fidgets" id="filterFidgets">Fidgets</button>
                     </div>
                 </div>
 
                 <div class="products-grid" id="allProducts">
                     <div class="loading">
                         <div class="loading-spinner"></div>
-                        <p data-i18n="loadingProducts">Producten laden...</p>
+                        <p id="loadingProducts2">Producten laden...</p>
                     </div>
                 </div>
             </div>
 
+            <!-- Favorites Page -->
             <div class="page" id="favoritesPage">
                 <div class="section-header">
-                    <h2 class="section-title" data-i18n="favoritesTitle">Jouw Favorieten</h2>
+                    <h2 class="section-title" id="favoritesTitle">Jouw Favorieten</h2>
                 </div>
+
                 <div class="products-grid" id="favoritesProducts">
                     <div class="loading">
                         <div class="loading-spinner"></div>
-                        <p data-i18n="loadingFavorites">Favorieten laden...</p>
+                        <p id="loadingFavorites">Favorieten laden...</p>
                     </div>
                 </div>
             </div>
 
+            <!-- Settings Page -->
             <div class="page" id="settingsPage">
                 <div class="settings-section">
                     <h3 class="settings-title">
                         <i class="fas fa-user-cog"></i>
-                        <span data-i18n="settingsAccount">Account</span>
+                        <span id="accountSettingsTitle">Account</span>
                     </h3>
                     <div class="settings-item">
                         <div class="settings-info">
-                            <h4 data-i18n="accountStatus">Account Status</h4>
-                            <p id="accountStatus" data-i18n="notLoggedIn">Niet ingelogd</p>
+                            <h4 id="accountStatusTitle">Account Status</h4>
+                            <p id="accountStatus">Niet ingelogd</p>
                         </div>
-                        <button class="filter-chip" id="loginButton" data-i18n="login">Inloggen</button>
+                        <button class="filter-chip" id="loginButton">
+                            <span id="loginButtonText">Inloggen</span>
+                        </button>
                     </div>
-                </div>
-
-                <div class="settings-section">
-                    <h3 class="settings-title">
-                        <i class="fas fa-language"></i>
-                        <span data-i18n="settingsLanguage">Taal</span>
-                    </h3>
                     <div class="settings-item">
                         <div class="settings-info">
-                            <h4 data-i18n="appLanguage">App Taal</h4>
-                            <p id="currentLanguage" data-i18n="currentLanguage">Nederlands</p>
+                            <h4 id="bonusCodesTitle">Bonuscodes</h4>
+                            <p id="settingsBonusCount">Log in voor bonuscodes</p>
                         </div>
-                        <i class="fas fa-chevron-right" style="color: var(--gray-400);"></i>
                     </div>
                 </div>
 
                 <div class="settings-section">
                     <h3 class="settings-title">
                         <i class="fas fa-palette"></i>
-                        <span data-i18n="settingsDisplay">Weergave</span>
+                        <span id="displaySettingsTitle">Weergave</span>
                     </h3>
                     <div class="settings-item">
                         <div class="settings-info">
-                            <h4 data-i18n="darkMode">Donkere Modus</h4>
-                            <p data-i18n="darkModeDesc">Schakel tussen licht en donker thema</p>
+                            <h4 id="darkModeTitle">Donkere Modus</h4>
+                            <p id="darkModeDesc">Schakel tussen licht en donker thema</p>
                         </div>
                         <label class="toggle">
                             <input type="checkbox" id="darkModeToggle">
@@ -741,73 +1658,121 @@
 
                 <div class="settings-section">
                     <h3 class="settings-title">
+                        <i class="fas fa-globe"></i>
+                        <span id="languageSettingsTitle">Taal</span>
+                    </h3>
+                    <div class="settings-item" onclick="toggleLanguageDropdown()">
+                        <div class="settings-info">
+                            <h4 id="currentLanguageTitle">Huidige Taal</h4>
+                            <p id="currentLanguage">Nederlands</p>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color: var(--gray-400);"></i>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3 class="settings-title">
                         <i class="fas fa-info-circle"></i>
-                        <span data-i18n="settingsAbout">Over</span>
+                        <span id="aboutTitle">Over</span>
                     </h3>
                     <div class="settings-item">
                         <div class="settings-info">
-                            <h4 data-i18n="version">Versie</h4>
+                            <h4 id="versionTitle">Versie</h4>
                             <p>PrintSome App v1.0</p>
                         </div>
                     </div>
                     <div class="settings-item">
                         <div class="settings-info">
-                            <h4 data-i18n="contact">Contact</h4>
+                            <h4 id="contactTitle">Contact</h4>
                             <p>PrintSome-webapp@outlook.com</p>
                         </div>
                     </div>
                 </div>
+
+                <div class="settings-section">
+                    <h3 class="settings-title">
+                        <i class="fas fa-shield-alt"></i>
+                        <span id="privacyTitle">Privacy & Beleid</span>
+                    </h3>
+                    <div class="settings-item" onclick="showPage('privacy')">
+                        <div class="settings-info">
+                            <h4 id="privacyPolicyTitle">Privacybeleid</h4>
+                            <p id="privacyPolicyDesc">Lees onze privacyverklaring</p>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color: var(--gray-400);"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Privacy Page -->
+            <div class="page" id="privacyPage">
+                <div class="privacy-content" id="privacyContent">
+                    <!-- Privacy content will be loaded dynamically based on language -->
+                </div>
             </div>
         </main>
 
+        <!-- Bottom Navigation -->
         <nav class="bottom-nav">
             <a href="#" class="nav-item active" data-page="home">
+                <span class="nav-indicator"></span>
                 <i class="fas fa-home nav-icon"></i>
-                <span class="nav-label" data-i18n="navHome">Home</span>
+                <span class="nav-label" id="navHome">Home</span>
             </a>
-            <a href="#" class="nav-item" data-page="products">
+            <a href="#" class="nav-item" data-page="products" id="productsNav">
+                <span class="nav-indicator"></span>
                 <i class="fas fa-cube nav-icon"></i>
-                <span class="nav-label" data-i18n="navProducts">Producten</span>
+                <span class="nav-label" id="navProducts">Producten</span>
             </a>
-            <a href="#" class="nav-item" data-page="favorites">
+            <a href="#" class="nav-item" data-page="favorites" id="favoritesNav">
+                <span class="nav-indicator"></span>
                 <i class="fas fa-heart nav-icon"></i>
-                <span class="nav-label" data-i18n="navFavorites">Favorieten</span>
+                <span class="nav-label" id="navFavorites">Favorieten</span>
             </a>
             <a href="#" class="nav-item" data-page="settings">
+                <span class="nav-indicator"></span>
                 <i class="fas fa-cog nav-icon"></i>
-                <span class="nav-label" data-i18n="navSettings">Instellingen</span>
+                <span class="nav-label" id="navSettings">Instellingen</span>
             </a>
         </nav>
     </div>
 
+    <!-- Auth Modal -->
     <div class="auth-modal" id="authModal">
         <div class="auth-header">
-            <h2 class="auth-title" data-i18n="authTitle">PrintSome Account</h2>
+            <h2 class="auth-title" id="authModalTitle">PrintSome Account</h2>
             <button class="close-auth" id="closeAuth">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         <div class="auth-content">
-            <div class="auth-container" id="authContainer"></div>
+            <div class="auth-container" id="authContainer">
+                <!-- Auth content will be loaded here -->
+            </div>
         </div>
     </div>
 
+    <!-- Product Detail Modal -->
     <div class="product-modal" id="productModal">
         <div class="product-modal-header">
-            <h2 class="auth-title" data-i18n="productDetails">Product Details</h2>
+            <h2 class="auth-title" id="productModalTitle">Product Details</h2>
             <button class="close-auth" id="closeProductModal">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="product-modal-content" id="productModalContent"></div>
+        <div class="product-modal-content" id="productModalContent">
+            <!-- Product content wordt hier ingeladen -->
+        </div>
     </div>
 
+    <!-- Toast Notification -->
     <div class="toast" id="toast">
         <i class="fas fa-check-circle"></i>
         <span id="toastMessage">Bericht</span>
     </div>
 
     <script>
+        // Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBHmq2hPEyb2z89XIR4y-FlKJYpSObh8Iw",
             authDomain: "printsome-b5197.firebaseapp.com",
@@ -818,587 +1783,1376 @@
             measurementId: "G-TL2RN2TRLR"
         };
         
+        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
         const auth = firebase.auth();
+        const storage = firebase.storage();
         
+        // App State
         let currentUser = null;
         let currentPage = 'home';
         let products = [];
+        let filteredProducts = [];
+        let userBonuses = [];
         let userFavorites = [];
-        let currentLanguage = 'nl';
+        let viewedProducts = [];
+        let userSettings = {
+            darkMode: false,
+            language: 'nl'
+        };
         
+        let authMode = 'login'; // 'login' or 'signup'
+        let currentDiscountCode = null;
+        let discountCodeExpiry = null;
+        
+        // Possible discount codes
+        const possibleDiscountCodes = ['KEY91', 'SWITCH64', 'HEXAGON27'];
+        
+        // DOM Elements
+        const appContainer = document.getElementById('appContainer');
+        const mainContent = document.getElementById('mainContent');
+        const userAvatar = document.getElementById('userAvatar');
+        const themeToggle = document.getElementById('themeToggle');
+        const authModal = document.getElementById('authModal');
+        const closeAuth = document.getElementById('closeAuth');
+        const authContainer = document.getElementById('authContainer');
+        const loginButton = document.getElementById('loginButton');
+        const productModal = document.getElementById('productModal');
+        const productModalContent = document.getElementById('productModalContent');
+        const closeProductModal = document.getElementById('closeProductModal');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        const languageBtn = document.getElementById('languageBtn');
+        const languageDropdown = document.getElementById('languageDropdown');
+        const languageFlag = document.getElementById('languageFlag');
+        
+        // Translation data
         const translations = {
             nl: {
+                // Header
+                headerTitle: "PrintSome",
+                themeToggle: "Thema wisselen",
+                languageToggle: "Taal wisselen",
+                account: "Account",
+                
+                // Home Page
                 welcomeTitle: "Welkom bij PrintSome!",
                 welcomeSubtitle: "3D printing shop",
-                welcomeUser: "Log in voor persoonlijke kortingscodes",
-                weeklyDiscountTitle: "Jouw Wekelijkse Kortingscode",
-                weeklyDiscountInfo: "Bekijk je wekelijkse kortingscode per product in de product sectie",
-                featuredProducts: "Uitgelichte Producten",
-                viewAll: "Alles zien",
+                welcomeUserGuest: "Log in voor persoonlijke kortingscodes",
+                featuredTitle: "Uitgelichte Producten",
+                viewAllText: "Alles zien",
                 loadingProducts: "Producten laden...",
+                
+                // FAQ
+                faqTitle: "Veelgestelde vragen",
+                faqQ1: "Hoe kan ik producten kopen?",
+                faqA1: "Op dit moment is het nog niet mogelijk om online te kopen. Aankopen zijn wel offline (in real life) mogelijk.",
+                faqQ2: "Hoe werken bonuscodes?",
+                faqA2: "Bonuscodes kun je invoeren tijdens het reserveren. Zodra de code geldig is, wordt de korting automatisch verrekend.",
+                faqQ3: "Wat voor producten verkoopt PrintSome?",
+                faqA3: "Op dit moment verkopen wij voornamelijk fidget toys. Ons assortiment wordt regelmatig uitgebreid. Neem een kijkje bij onze producten om te zien wat wij momenteel aanbieden.",
+                
+                // Products Page
                 searchPlaceholder: "Zoek 3D producten...",
                 filterAll: "Alles",
                 filterHome: "Huis",
                 filterTech: "Tech",
                 filterCustom: "Custom",
                 filterFidgets: "Fidgets",
+                
+                // Favorites Page
                 favoritesTitle: "Jouw Favorieten",
+                noFavorites: "Geen favorieten",
+                noFavoritesDesc: "Voeg producten toe aan je favorieten",
                 loadingFavorites: "Favorieten laden...",
-                settingsAccount: "Account",
-                accountStatus: "Account Status",
+                
+                // Settings Page
+                accountSettingsTitle: "Account",
+                accountStatusTitle: "Account Status",
                 notLoggedIn: "Niet ingelogd",
-                login: "Inloggen",
-                logout: "Uitloggen",
-                settingsLanguage: "Taal",
-                appLanguage: "App Taal",
-                currentLanguage: "Nederlands",
-                settingsDisplay: "Weergave",
-                darkMode: "Donkere Modus",
+                loggedIn: "Ingelogd",
+                loginButtonText: "Inloggen",
+                logoutButtonText: "Uitloggen",
+                bonusCodesTitle: "Bonuscodes",
+                noBonusCodes: "Log in voor bonuscodes",
+                weeklyCode: "Wekelijkse kortingscode",
+                daysLeft: "Nog {days} dag(en) geldig",
+                displaySettingsTitle: "Weergave",
+                darkModeTitle: "Donkere Modus",
                 darkModeDesc: "Schakel tussen licht en donker thema",
-                settingsAbout: "Over",
-                version: "Versie",
-                contact: "Contact",
+                languageSettingsTitle: "Taal",
+                currentLanguageTitle: "Huidige Taal",
+                currentLanguage: "Nederlands",
+                aboutTitle: "Over",
+                versionTitle: "Versie",
+                contactTitle: "Contact",
+                privacyTitle: "Privacy & Beleid",
+                privacyPolicyTitle: "Privacybeleid",
+                privacyPolicyDesc: "Lees onze privacyverklaring",
+                
+                // Navigation
                 navHome: "Home",
                 navProducts: "Producten",
                 navFavorites: "Favorieten",
                 navSettings: "Instellingen",
-                authTitle: "PrintSome Account",
-                productDetails: "Product Details",
+                
+                // Auth Modal
+                authModalTitle: "PrintSome Account",
+                loginTab: "Inloggen",
+                signupTab: "Registreren",
+                loginWithGoogle: "Inloggen met Google",
+                signupWithGoogle: "Registreren met Google",
+                orWithEmail: "of met email",
+                namePlaceholder: "Je naam",
                 emailPlaceholder: "je@email.nl",
                 passwordPlaceholder: "Minimaal 6 karakters",
-                namePlaceholder: "Je naam",
                 confirmPasswordPlaceholder: "Herhaal wachtwoord",
-                loginBtn: "Inloggen",
-                signupBtn: "Account Aanmaken",
-                googleLogin: "Inloggen met Google",
-                googleSignup: "Registreren met Google",
-                orWithEmail: "of met email",
+                loginButton: "Inloggen",
+                signupButton: "Account Aanmaken",
                 forgotPassword: "Wachtwoord vergeten?",
-                dataSecure: "Je gegevens zijn veilig bij ons",
-                discountCode: "Kortingscode",
-                validUntil: "Geldig tot",
-                addToFavorites: "Toevoegen aan favorieten",
-                removeFromFavorites: "Verwijderen uit favorieten"
+                dataSafe: "Je gegevens zijn veilig bij ons",
+                
+                // Product Modal
+                productModalTitle: "Product Details",
+                materialLabel: "Materiaal",
+                categoryLabel: "Categorie",
+                ratingLabel: "Beoordeling",
+                deliveryLabel: "Levertijd",
+                deliveryTime: "2-3 dagen",
+                bonusTitle: "Jouw Exclusieve Bonuscode",
+                validForOrder: "Geldig bij je volgende bestelling",
+                weeklyDiscount: "Wekelijkse kortingscode",
+                
+                // Toast Messages
+                welcomeToast: "Welkom bij PrintSome!",
+                welcomeBackToast: "Welkom terug {name}!",
+                loginSuccess: "Welkom {name}!",
+                logoutSuccess: "Succesvol uitgelogd",
+                newCodeToast: "Nieuwe weekkorting: {code}",
+                favoriteAdded: "Toegevoegd aan favorieten",
+                favoriteRemoved: "Verwijderd uit favorieten",
+                bonusReceived: "Bonuscode ontvangen: {code}",
+                loginForFavorites: "Log in om favorieten op te slaan",
+                errorLoadingProducts: "Fout bij laden van producten",
+                errorSavingFavorite: "Fout bij opslaan favoriet",
+                
+                // Errors
+                googleLoginFailed: "Google login mislukt",
+                signupFailed: "Account aanmaken mislukt",
+                emailInUse: "Dit emailadres is al in gebruik",
+                invalidEmail: "Ongeldig emailadres",
+                weakPassword: "Wachtwoord moet minstens 6 karakters hebben",
+                userNotFound: "Gebruiker niet gevonden",
+                wrongPassword: "Onjuist wachtwoord",
+                passwordsDontMatch: "Wachtwoorden komen niet overeen",
+                contactForPassword: "Neem contact op: PrintSome-webapp@outlook.com",
+                
+                // Empty States
+                noProductsFound: "Geen producten gevonden",
+                noFeaturedProducts: "Geen uitgelichte producten"
             },
+            
             en: {
+                // Header
+                headerTitle: "PrintSome",
+                themeToggle: "Switch theme",
+                languageToggle: "Change language",
+                account: "Account",
+                
+                // Home Page
                 welcomeTitle: "Welcome to PrintSome!",
                 welcomeSubtitle: "3D printing shop",
-                welcomeUser: "Log in for personal discount codes",
-                weeklyDiscountTitle: "Your Weekly Discount Code",
-                weeklyDiscountInfo: "View your weekly discount code per product in the products section",
-                featuredProducts: "Featured Products",
-                viewAll: "View all",
+                welcomeUserGuest: "Log in for personal discount codes",
+                featuredTitle: "Featured Products",
+                viewAllText: "View all",
                 loadingProducts: "Loading products...",
+                
+                // FAQ
+                faqTitle: "Frequently Asked Questions",
+                faqQ1: "How can I buy products?",
+                faqA1: "It is currently not possible to buy online. Purchases are only possible offline (in real life).",
+                faqQ2: "How do bonus codes work?",
+                faqA2: "You can enter bonus codes when making a reservation. Once the code is valid, the discount will be applied automatically.",
+                faqQ3: "What products does PrintSome sell?",
+                faqA3: "Currently we mainly sell fidget toys. Our assortment is regularly expanded. Take a look at our products to see what we currently offer.",
+                
+                // Products Page
                 searchPlaceholder: "Search 3D products...",
                 filterAll: "All",
                 filterHome: "Home",
                 filterTech: "Tech",
                 filterCustom: "Custom",
                 filterFidgets: "Fidgets",
+                
+                // Favorites Page
                 favoritesTitle: "Your Favorites",
+                noFavorites: "No favorites",
+                noFavoritesDesc: "Add products to your favorites",
                 loadingFavorites: "Loading favorites...",
-                settingsAccount: "Account",
-                accountStatus: "Account Status",
+                
+                // Settings Page
+                accountSettingsTitle: "Account",
+                accountStatusTitle: "Account Status",
                 notLoggedIn: "Not logged in",
-                login: "Log in",
-                logout: "Log out",
-                settingsLanguage: "Language",
-                appLanguage: "App Language",
-                currentLanguage: "English",
-                settingsDisplay: "Display",
-                darkMode: "Dark Mode",
+                loggedIn: "Logged in",
+                loginButtonText: "Log in",
+                logoutButtonText: "Log out",
+                bonusCodesTitle: "Bonus Codes",
+                noBonusCodes: "Log in for bonus codes",
+                weeklyCode: "Weekly discount code",
+                daysLeft: "Valid for {days} more day(s)",
+                displaySettingsTitle: "Display",
+                darkModeTitle: "Dark Mode",
                 darkModeDesc: "Switch between light and dark theme",
-                settingsAbout: "About",
-                version: "Version",
-                contact: "Contact",
+                languageSettingsTitle: "Language",
+                currentLanguageTitle: "Current Language",
+                currentLanguage: "English",
+                aboutTitle: "About",
+                versionTitle: "Version",
+                contactTitle: "Contact",
+                privacyTitle: "Privacy & Policy",
+                privacyPolicyTitle: "Privacy Policy",
+                privacyPolicyDesc: "Read our privacy statement",
+                
+                // Navigation
                 navHome: "Home",
                 navProducts: "Products",
                 navFavorites: "Favorites",
                 navSettings: "Settings",
-                authTitle: "PrintSome Account",
-                productDetails: "Product Details",
-                emailPlaceholder: "your@email.com",
-                passwordPlaceholder: "Minimum 6 characters",
-                namePlaceholder: "Your name",
-                confirmPasswordPlaceholder: "Repeat password",
-                loginBtn: "Log in",
-                signupBtn: "Create Account",
-                googleLogin: "Log in with Google",
-                googleSignup: "Sign up with Google",
+                
+                // Auth Modal
+                authModalTitle: "PrintSome Account",
+                loginTab: "Log in",
+                signupTab: "Sign up",
+                loginWithGoogle: "Log in with Google",
+                signupWithGoogle: "Sign up with Google",
                 orWithEmail: "or with email",
+                namePlaceholder: "Your name",
+                emailPlaceholder: "your@email.com",
+                passwordPlaceholder: "At least 6 characters",
+                confirmPasswordPlaceholder: "Repeat password",
+                loginButton: "Log in",
+                signupButton: "Create Account",
                 forgotPassword: "Forgot password?",
-                dataSecure: "Your data is safe with us",
-                discountCode: "Discount code",
-                validUntil: "Valid until",
-                addToFavorites: "Add to favorites",
-                removeFromFavorites: "Remove from favorites"
+                dataSafe: "Your data is safe with us",
+                
+                // Product Modal
+                productModalTitle: "Product Details",
+                materialLabel: "Material",
+                categoryLabel: "Category",
+                ratingLabel: "Rating",
+                deliveryLabel: "Delivery",
+                deliveryTime: "2-3 days",
+                bonusTitle: "Your Exclusive Bonus Code",
+                validForOrder: "Valid for your next order",
+                weeklyDiscount: "Weekly discount code",
+                
+                // Toast Messages
+                welcomeToast: "Welcome to PrintSome!",
+                welcomeBackToast: "Welcome back {name}!",
+                loginSuccess: "Welcome {name}!",
+                logoutSuccess: "Successfully logged out",
+                newCodeToast: "New weekly discount: {code}",
+                favoriteAdded: "Added to favorites",
+                favoriteRemoved: "Removed from favorites",
+                bonusReceived: "Bonus code received: {code}",
+                loginForFavorites: "Log in to save favorites",
+                errorLoadingProducts: "Error loading products",
+                errorSavingFavorite: "Error saving favorite",
+                
+                // Errors
+                googleLoginFailed: "Google login failed",
+                signupFailed: "Sign up failed",
+                emailInUse: "This email is already in use",
+                invalidEmail: "Invalid email",
+                weakPassword: "Password must be at least 6 characters",
+                userNotFound: "User not found",
+                wrongPassword: "Wrong password",
+                passwordsDontMatch: "Passwords don't match",
+                contactForPassword: "Contact us: PrintSome-webapp@outlook.com",
+                
+                // Empty States
+                noProductsFound: "No products found",
+                noFeaturedProducts: "No featured products"
             },
-            de: {
-                welcomeTitle: "Willkommen bei PrintSome!",
-                welcomeSubtitle: "3D-Druck-Shop",
-                welcomeUser: "Einloggen für persönliche Rabattcodes",
-                weeklyDiscountTitle: "Ihr wöchentlicher Rabattcode",
-                weeklyDiscountInfo: "Sehen Sie Ihren wöchentlichen Rabattcode pro Produkt im Produktbereich",
-                featuredProducts: "Ausgewählte Produkte",
-                viewAll: "Alle anzeigen",
-                loadingProducts: "Produkte laden...",
-                searchPlaceholder: "3D-Produkte suchen...",
-                filterAll: "Alle",
-                filterHome: "Zuhause",
-                filterTech: "Technik",
-                filterCustom: "Benutzerdefiniert",
-                filterFidgets: "Fidgets",
-                favoritesTitle: "Ihre Favoriten",
-                loadingFavorites: "Favoriten laden...",
-                settingsAccount: "Konto",
-                accountStatus: "Kontostatus",
-                notLoggedIn: "Nicht eingeloggt",
-                login: "Einloggen",
-                logout: "Ausloggen",
-                settingsLanguage: "Sprache",
-                appLanguage: "App-Sprache",
-                currentLanguage: "Deutsch",
-                settingsDisplay: "Anzeige",
-                darkMode: "Dunkler Modus",
-                darkModeDesc: "Wechseln zwischen hellem und dunklem Thema",
-                settingsAbout: "Über",
-                version: "Version",
-                contact: "Kontakt",
-                navHome: "Start",
-                navProducts: "Produkte",
-                navFavorites: "Favoriten",
-                navSettings: "Einstellungen",
-                authTitle: "PrintSome Konto",
-                productDetails: "Produktdetails",
-                emailPlaceholder: "ihre@email.de",
-                passwordPlaceholder: "Mindestens 6 Zeichen",
-                namePlaceholder: "Ihr Name",
-                confirmPasswordPlaceholder: "Passwort wiederholen",
-                loginBtn: "Einloggen",
-                signupBtn: "Konto erstellen",
-                googleLogin: "Mit Google einloggen",
-                googleSignup: "Mit Google registrieren",
-                orWithEmail: "oder mit E-Mail",
-                forgotPassword: "Passwort vergessen?",
-                dataSecure: "Ihre Daten sind bei uns sicher",
-                discountCode: "Rabattcode",
-                validUntil: "Gültig bis",
-                addToFavorites: "Zu Favoriten hinzufügen",
-                removeFromFavorites: "Aus Favoriten entfernen"
-            },
-            fr: {
-                welcomeTitle: "Bienvenue chez PrintSome!",
-                welcomeSubtitle: "Boutique d'impression 3D",
-                welcomeUser: "Connectez-vous pour des codes de réduction personnels",
-                weeklyDiscountTitle: "Votre code de réduction hebdomadaire",
-                weeklyDiscountInfo: "Voir votre code de réduction hebdomadaire par produit dans la section produits",
-                featuredProducts: "Produits en vedette",
-                viewAll: "Voir tout",
-                loadingProducts: "Chargement des produits...",
-                searchPlaceholder: "Rechercher des produits 3D...",
-                filterAll: "Tous",
-                filterHome: "Maison",
-                filterTech: "Tech",
-                filterCustom: "Personnalisé",
-                filterFidgets: "Fidgets",
-                favoritesTitle: "Vos favoris",
-                loadingFavorites: "Chargement des favoris...",
-                settingsAccount: "Compte",
-                accountStatus: "Statut du compte",
-                notLoggedIn: "Non connecté",
-                login: "Se connecter",
-                logout: "Se déconnecter",
-                settingsLanguage: "Langue",
-                appLanguage: "Langue de l'app",
-                currentLanguage: "Français",
-                settingsDisplay: "Affichage",
-                darkMode: "Mode sombre",
-                darkModeDesc: "Basculer entre thème clair et sombre",
-                settingsAbout: "À propos",
-                version: "Version",
-                contact: "Contact",
-                navHome: "Accueil",
-                navProducts: "Produits",
-                navFavorites: "Favoris",
-                navSettings: "Paramètres",
-                authTitle: "Compte PrintSome",
-                productDetails: "Détails du produit",
-                emailPlaceholder: "votre@email.fr",
-                passwordPlaceholder: "Minimum 6 caractères",
-                namePlaceholder: "Votre nom",
-                confirmPasswordPlaceholder: "Répéter le mot de passe",
-                loginBtn: "Se connecter",
-                signupBtn: "Créer un compte",
-                googleLogin: "Se connecter avec Google",
-                googleSignup: "S'inscrire avec Google",
-                orWithEmail: "ou avec email",
-                forgotPassword: "Mot de passe oublié?",
-                dataSecure: "Vos données sont en sécurité chez nous",
-                discountCode: "Code de réduction",
-                validUntil: "Valable jusqu'au",
-                addToFavorites: "Ajouter aux favoris",
-                removeFromFavorites: "Retirer des favoris"
-            },
+            
             es: {
+                // Header
+                headerTitle: "PrintSome",
+                themeToggle: "Cambiar tema",
+                languageToggle: "Cambiar idioma",
+                account: "Cuenta",
+                
+                // Home Page
                 welcomeTitle: "¡Bienvenido a PrintSome!",
                 welcomeSubtitle: "Tienda de impresión 3D",
-                welcomeUser: "Inicia sesión para códigos de descuento personales",
-                weeklyDiscountTitle: "Tu código de descuento semanal",
-                weeklyDiscountInfo: "Ve tu código de descuento semanal por producto en la sección de productos",
-                featuredProducts: "Productos destacados",
-                viewAll: "Ver todo",
+                welcomeUserGuest: "Inicia sesión para códigos de descuento personalizados",
+                featuredTitle: "Productos Destacados",
+                viewAllText: "Ver todo",
                 loadingProducts: "Cargando productos...",
+                
+                // FAQ
+                faqTitle: "Preguntas Frecuentes",
+                faqQ1: "¿Cómo puedo comprar productos?",
+                faqA1: "Actualmente no es posible comprar en línea. Las compras solo son posibles fuera de línea (en persona).",
+                faqQ2: "¿Cómo funcionan los códigos de bonificación?",
+                faqA2: "Puedes ingresar códigos de bonificación al hacer una reserva. Una vez que el código sea válido, el descuento se aplicará automáticamente.",
+                faqQ3: "¿Qué productos vende PrintSome?",
+                faqA3: "Actualmente vendemos principalmente juguetes fidget. Nuestro surtido se expande regularmente. Echa un vistazo a nuestros productos para ver lo que ofrecemos actualmente.",
+                
+                // Products Page
                 searchPlaceholder: "Buscar productos 3D...",
                 filterAll: "Todo",
                 filterHome: "Hogar",
                 filterTech: "Tecnología",
                 filterCustom: "Personalizado",
                 filterFidgets: "Fidgets",
-                favoritesTitle: "Tus favoritos",
+                
+                // Favorites Page
+                favoritesTitle: "Tus Favoritos",
+                noFavorites: "Sin favoritos",
+                noFavoritesDesc: "Agrega productos a tus favoritos",
                 loadingFavorites: "Cargando favoritos...",
-                settingsAccount: "Cuenta",
-                accountStatus: "Estado de la cuenta",
+                
+                // Settings Page
+                accountSettingsTitle: "Cuenta",
+                accountStatusTitle: "Estado de la Cuenta",
                 notLoggedIn: "No conectado",
-                login: "Iniciar sesión",
-                logout: "Cerrar sesión",
-                settingsLanguage: "Idioma",
-                appLanguage: "Idioma de la app",
-                currentLanguage: "Español",
-                settingsDisplay: "Pantalla",
-                darkMode: "Modo oscuro",
+                loggedIn: "Conectado",
+                loginButtonText: "Iniciar sesión",
+                logoutButtonText: "Cerrar sesión",
+                bonusCodesTitle: "Códigos de Bonificación",
+                noBonusCodes: "Inicia sesión para códigos de bonificación",
+                weeklyCode: "Código de descuento semanal",
+                daysLeft: "Válido por {days} día(s) más",
+                displaySettingsTitle: "Pantalla",
+                darkModeTitle: "Modo Oscuro",
                 darkModeDesc: "Cambiar entre tema claro y oscuro",
-                settingsAbout: "Acerca de",
-                version: "Versión",
-                contact: "Contacto",
+                languageSettingsTitle: "Idioma",
+                currentLanguageTitle: "Idioma Actual",
+                currentLanguage: "Español",
+                aboutTitle: "Acerca de",
+                versionTitle: "Versión",
+                contactTitle: "Contacto",
+                privacyTitle: "Privacidad y Política",
+                privacyPolicyTitle: "Política de Privacidad",
+                privacyPolicyDesc: "Lee nuestra declaración de privacidad",
+                
+                // Navigation
                 navHome: "Inicio",
                 navProducts: "Productos",
                 navFavorites: "Favoritos",
                 navSettings: "Ajustes",
-                authTitle: "Cuenta PrintSome",
-                productDetails: "Detalles del producto",
+                
+                // Auth Modal
+                authModalTitle: "Cuenta PrintSome",
+                loginTab: "Iniciar sesión",
+                signupTab: "Registrarse",
+                loginWithGoogle: "Iniciar sesión con Google",
+                signupWithGoogle: "Registrarse con Google",
+                orWithEmail: "o con correo electrónico",
+                namePlaceholder: "Tu nombre",
                 emailPlaceholder: "tu@email.com",
                 passwordPlaceholder: "Mínimo 6 caracteres",
-                namePlaceholder: "Tu nombre",
                 confirmPasswordPlaceholder: "Repetir contraseña",
-                loginBtn: "Iniciar sesión",
-                signupBtn: "Crear cuenta",
-                googleLogin: "Iniciar sesión con Google",
-                googleSignup: "Registrarse con Google",
-                orWithEmail: "o con email",
+                loginButton: "Iniciar sesión",
+                signupButton: "Crear Cuenta",
                 forgotPassword: "¿Olvidaste tu contraseña?",
-                dataSecure: "Tus datos están seguros con nosotros",
-                discountCode: "Código de descuento",
-                validUntil: "Válido hasta",
-                addToFavorites: "Añadir a favoritos",
-                removeFromFavorites: "Eliminar de favoritos"
+                dataSafe: "Tus datos están seguros con nosotros",
+                
+                // Product Modal
+                productModalTitle: "Detalles del Producto",
+                materialLabel: "Material",
+                categoryLabel: "Categoría",
+                ratingLabel: "Calificación",
+                deliveryLabel: "Entrega",
+                deliveryTime: "2-3 días",
+                bonusTitle: "Tu Código de Bonificación Exclusivo",
+                validForOrder: "Válido para tu próximo pedido",
+                weeklyDiscount: "Código de descuento semanal",
+                
+                // Toast Messages
+                welcomeToast: "¡Bienvenido a PrintSome!",
+                welcomeBackToast: "¡Bienvenido de nuevo {name}!",
+                loginSuccess: "¡Bienvenido {name}!",
+                logoutSuccess: "Sesión cerrada exitosamente",
+                newCodeToast: "Nuevo descuento semanal: {code}",
+                favoriteAdded: "Agregado a favoritos",
+                favoriteRemoved: "Eliminado de favoritos",
+                bonusReceived: "Código de bonificación recibido: {code}",
+                loginForFavorites: "Inicia sesión para guardar favoritos",
+                errorLoadingProducts: "Error al cargar productos",
+                errorSavingFavorite: "Error al guardar favorito",
+                
+                // Errors
+                googleLoginFailed: "Error al iniciar sesión con Google",
+                signupFailed: "Error al registrarse",
+                emailInUse: "Este correo ya está en uso",
+                invalidEmail: "Correo inválido",
+                weakPassword: "La contraseña debe tener al menos 6 caracteres",
+                userNotFound: "Usuario no encontrado",
+                wrongPassword: "Contraseña incorrecta",
+                passwordsDontMatch: "Las contraseñas no coinciden",
+                contactForPassword: "Contáctanos: PrintSome-webapp@outlook.com",
+                
+                // Empty States
+                noProductsFound: "No se encontraron productos",
+                noFeaturedProducts: "No hay productos destacados"
             },
+            
+            fr: {
+                // Header
+                headerTitle: "PrintSome",
+                themeToggle: "Changer de thème",
+                languageToggle: "Changer de langue",
+                account: "Compte",
+                
+                // Home Page
+                welcomeTitle: "Bienvenue chez PrintSome!",
+                welcomeSubtitle: "Boutique d'impression 3D",
+                welcomeUserGuest: "Connectez-vous pour des codes de réduction personnels",
+                featuredTitle: "Produits en Vedette",
+                viewAllText: "Voir tout",
+                loadingProducts: "Chargement des produits...",
+                
+                // FAQ
+                faqTitle: "Questions Fréquemment Posées",
+                faqQ1: "Comment puis-je acheter des produits?",
+                faqA1: "Il n'est actuellement pas possible d'acheter en ligne. Les achats ne sont possibles qu'hors ligne (en personne).",
+                faqQ2: "Comment fonctionnent les codes bonus?",
+                faqA2: "Vous pouvez saisir des codes bonus lors d'une réservation. Une fois le code valide, la réduction sera appliquée automatiquement.",
+                faqQ3: "Quels produits vend PrintSome?",
+                faqA3: "Actuellement, nous vendons principalement des jouets fidget. Notre assortiment est régulièrement élargi. Jetez un œil à nos produits pour voir ce que nous proposons actuellement.",
+                
+                // Products Page
+                searchPlaceholder: "Rechercher des produits 3D...",
+                filterAll: "Tout",
+                filterHome: "Maison",
+                filterTech: "Technologie",
+                filterCustom: "Personnalisé",
+                filterFidgets: "Fidgets",
+                
+                // Favorites Page
+                favoritesTitle: "Vos Favoris",
+                noFavorites: "Aucun favori",
+                noFavoritesDesc: "Ajoutez des produits à vos favoris",
+                loadingFavorites: "Chargement des favoris...",
+                
+                // Settings Page
+                accountSettingsTitle: "Compte",
+                accountStatusTitle: "Statut du Compte",
+                notLoggedIn: "Non connecté",
+                loggedIn: "Connecté",
+                loginButtonText: "Se connecter",
+                logoutButtonText: "Se déconnecter",
+                bonusCodesTitle: "Codes Bonus",
+                noBonusCodes: "Connectez-vous pour les codes bonus",
+                weeklyCode: "Code de réduction hebdomadaire",
+                daysLeft: "Valable {days} jour(s) de plus",
+                displaySettingsTitle: "Affichage",
+                darkModeTitle: "Mode Sombre",
+                darkModeDesc: "Basculer entre thème clair et sombre",
+                languageSettingsTitle: "Langue",
+                currentLanguageTitle: "Langue Actuelle",
+                currentLanguage: "Français",
+                aboutTitle: "À propos",
+                versionTitle: "Version",
+                contactTitle: "Contact",
+                privacyTitle: "Confidentialité et Politique",
+                privacyPolicyTitle: "Politique de Confidentialité",
+                privacyPolicyDesc: "Lisez notre déclaration de confidentialité",
+                
+                // Navigation
+                navHome: "Accueil",
+                navProducts: "Produits",
+                navFavorites: "Favoris",
+                navSettings: "Paramètres",
+                
+                // Auth Modal
+                authModalTitle: "Compte PrintSome",
+                loginTab: "Se connecter",
+                signupTab: "S'inscrire",
+                loginWithGoogle: "Se connecter avec Google",
+                signupWithGoogle: "S'inscrire avec Google",
+                orWithEmail: "ou avec email",
+                namePlaceholder: "Votre nom",
+                emailPlaceholder: "votre@email.com",
+                passwordPlaceholder: "Au moins 6 caractères",
+                confirmPasswordPlaceholder: "Répéter le mot de passe",
+                loginButton: "Se connecter",
+                signupButton: "Créer un Compte",
+                forgotPassword: "Mot de passe oublié?",
+                dataSafe: "Vos données sont en sécurité avec nous",
+                
+                // Product Modal
+                productModalTitle: "Détails du Produit",
+                materialLabel: "Matériau",
+                categoryLabel: "Catégorie",
+                ratingLabel: "Évaluation",
+                deliveryLabel: "Livraison",
+                deliveryTime: "2-3 jours",
+                bonusTitle: "Votre Code Bonus Exclusif",
+                validForOrder: "Valable pour votre prochaine commande",
+                weeklyDiscount: "Code de réduction hebdomadaire",
+                
+                // Toast Messages
+                welcomeToast: "Bienvenue chez PrintSome!",
+                welcomeBackToast: "Bon retour {name}!",
+                loginSuccess: "Bienvenue {name}!",
+                logoutSuccess: "Déconnexion réussie",
+                newCodeToast: "Nouvelle réduction hebdomadaire: {code}",
+                favoriteAdded: "Ajouté aux favoris",
+                favoriteRemoved: "Retiré des favoris",
+                bonusReceived: "Code bonus reçu: {code}",
+                loginForFavorites: "Connectez-vous pour sauvegarder les favoris",
+                errorLoadingProducts: "Erreur de chargement des produits",
+                errorSavingFavorite: "Erreur de sauvegarde du favori",
+                
+                // Errors
+                googleLoginFailed: "Échec de la connexion Google",
+                signupFailed: "Échec de l'inscription",
+                emailInUse: "Cet email est déjà utilisé",
+                invalidEmail: "Email invalide",
+                weakPassword: "Le mot de passe doit avoir au moins 6 caractères",
+                userNotFound: "Utilisateur non trouvé",
+                wrongPassword: "Mot de passe incorrect",
+                passwordsDontMatch: "Les mots de passe ne correspondent pas",
+                contactForPassword: "Contactez-nous: PrintSome-webapp@outlook.com",
+                
+                // Empty States
+                noProductsFound: "Aucun produit trouvé",
+                noFeaturedProducts: "Aucun produit en vedette"
+            },
+            
+            de: {
+                // Header
+                headerTitle: "PrintSome",
+                themeToggle: "Thema wechseln",
+                languageToggle: "Sprache wechseln",
+                account: "Konto",
+                
+                // Home Page
+                welcomeTitle: "Willkommen bei PrintSome!",
+                welcomeSubtitle: "3D-Druck Shop",
+                welcomeUserGuest: "Melden Sie sich für persönliche Rabattcodes an",
+                featuredTitle: "Ausgewählte Produkte",
+                viewAllText: "Alle anzeigen",
+                loadingProducts: "Produkte werden geladen...",
+                
+                // FAQ
+                faqTitle: "Häufig gestellte Fragen",
+                faqQ1: "Wie kann ich Produkte kaufen?",
+                faqA1: "Derzeit ist kein Online-Kauf möglich. Einkäufe sind nur offline (persönlich) möglich.",
+                faqQ2: "Wie funktionieren Bonus-Codes?",
+                faqA2: "Sie können Bonus-Codes bei einer Reservierung eingeben. Sobald der Code gültig ist, wird der Rabatt automatisch angewendet.",
+                faqQ3: "Welche Produkte verkauft PrintSome?",
+                faqA3: "Derzeit verkaufen wir hauptsächlich Fidget Toys. Unser Sortiment wird regelmäßig erweitert. Schauen Sie sich unsere Produkte an, um zu sehen, was wir aktuell anbieten.",
+                
+                // Products Page
+                searchPlaceholder: "3D-Produkte suchen...",
+                filterAll: "Alle",
+                filterHome: "Zuhause",
+                filterTech: "Technik",
+                filterCustom: "Benutzerdefiniert",
+                filterFidgets: "Fidgets",
+                
+                // Favorites Page
+                favoritesTitle: "Ihre Favoriten",
+                noFavorites: "Keine Favoriten",
+                noFavoritesDesc: "Fügen Sie Produkte zu Ihren Favoriten hinzu",
+                loadingFavorites: "Favoriten werden geladen...",
+                
+                // Settings Page
+                accountSettingsTitle: "Konto",
+                accountStatusTitle: "Kontostatus",
+                notLoggedIn: "Nicht angemeldet",
+                loggedIn: "Angemeldet",
+                loginButtonText: "Anmelden",
+                logoutButtonText: "Abmelden",
+                bonusCodesTitle: "Bonus-Codes",
+                noBonusCodes: "Melden Sie sich für Bonus-Codes an",
+                weeklyCode: "Wöchentlicher Rabattcode",
+                daysLeft: "Noch {days} Tag(e) gültig",
+                displaySettingsTitle: "Anzeige",
+                darkModeTitle: "Dunkler Modus",
+                darkModeDesc: "Zwischen hellem und dunklem Thema wechseln",
+                languageSettingsTitle: "Sprache",
+                currentLanguageTitle: "Aktuelle Sprache",
+                currentLanguage: "Deutsch",
+                aboutTitle: "Über",
+                versionTitle: "Version",
+                contactTitle: "Kontakt",
+                privacyTitle: "Datenschutz & Richtlinien",
+                privacyPolicyTitle: "Datenschutzerklärung",
+                privacyPolicyDesc: "Lesen Sie unsere Datenschutzerklärung",
+                
+                // Navigation
+                navHome: "Startseite",
+                navProducts: "Produkte",
+                navFavorites: "Favoriten",
+                navSettings: "Einstellungen",
+                
+                // Auth Modal
+                authModalTitle: "PrintSome Konto",
+                loginTab: "Anmelden",
+                signupTab: "Registrieren",
+                loginWithGoogle: "Mit Google anmelden",
+                signupWithGoogle: "Mit Google registrieren",
+                orWithEmail: "oder mit E-Mail",
+                namePlaceholder: "Ihr Name",
+                emailPlaceholder: "ihre@email.com",
+                passwordPlaceholder: "Mindestens 6 Zeichen",
+                confirmPasswordPlaceholder: "Passwort wiederholen",
+                loginButton: "Anmelden",
+                signupButton: "Konto erstellen",
+                forgotPassword: "Passwort vergessen?",
+                dataSafe: "Ihre Daten sind bei uns sicher",
+                
+                // Product Modal
+                productModalTitle: "Produktdetails",
+                materialLabel: "Material",
+                categoryLabel: "Kategorie",
+                ratingLabel: "Bewertung",
+                deliveryLabel: "Lieferung",
+                deliveryTime: "2-3 Tage",
+                bonusTitle: "Ihr Exklusiver Bonus-Code",
+                validForOrder: "Gültig für Ihre nächste Bestellung",
+                weeklyDiscount: "Wöchentlicher Rabattcode",
+                
+                // Toast Messages
+                welcomeToast: "Willkommen bei PrintSome!",
+                welcomeBackToast: "Willkommen zurück {name}!",
+                loginSuccess: "Willkommen {name}!",
+                logoutSuccess: "Erfolgreich abgemeldet",
+                newCodeToast: "Neuer wöchentlicher Rabatt: {code}",
+                favoriteAdded: "Zu Favoriten hinzugefügt",
+                favoriteRemoved: "Aus Favoriten entfernt",
+                bonusReceived: "Bonus-Code erhalten: {code}",
+                loginForFavorites: "Melden Sie sich an, um Favoriten zu speichern",
+                errorLoadingProducts: "Fehler beim Laden der Produkte",
+                errorSavingFavorite: "Fehler beim Speichern des Favoriten",
+                
+                // Errors
+                googleLoginFailed: "Google-Anmeldung fehlgeschlagen",
+                signupFailed: "Registrierung fehlgeschlagen",
+                emailInUse: "Diese E-Mail wird bereits verwendet",
+                invalidEmail: "Ungültige E-Mail",
+                weakPassword: "Passwort muss mindestens 6 Zeichen haben",
+                userNotFound: "Benutzer nicht gefunden",
+                wrongPassword: "Falsches Passwort",
+                passwordsDontMatch: "Passwörter stimmen nicht überein",
+                contactForPassword: "Kontaktieren Sie uns: PrintSome-webapp@outlook.com",
+                
+                // Empty States
+                noProductsFound: "Keine Produkte gefunden",
+                noFeaturedProducts: "Keine ausgewählten Produkte"
+            },
+            
             zh: {
-                welcomeTitle: "欢迎来到 PrintSome！",
+                // Header
+                headerTitle: "PrintSome",
+                themeToggle: "切换主题",
+                languageToggle: "切换语言",
+                account: "账户",
+                
+                // Home Page
+                welcomeTitle: "欢迎来到 PrintSome!",
                 welcomeSubtitle: "3D打印商店",
-                welcomeUser: "登录获取个人折扣码",
-                weeklyDiscountTitle: "您的每周折扣码",
-                weeklyDiscountInfo: "在产品部分查看每个产品的每周折扣码",
-                featuredProducts: "精选产品",
-                viewAll: "查看全部",
+                welcomeUserGuest: "登录获取个人折扣码",
+                featuredTitle: "精选产品",
+                viewAllText: "查看全部",
                 loadingProducts: "正在加载产品...",
+                
+                // FAQ
+                faqTitle: "常见问题",
+                faqQ1: "如何购买产品？",
+                faqA1: "目前不支持在线购买。购买仅支持线下（面对面）进行。",
+                faqQ2: "如何使用优惠码？",
+                faqA2: "您可以在预订时输入优惠码。一旦代码有效，折扣将自动应用。",
+                faqQ3: "PrintSome 销售哪些产品？",
+                faqA3: "目前我们主要销售解压玩具。我们的产品线会定期扩展。请查看我们的产品了解当前供应。",
+                
+                // Products Page
                 searchPlaceholder: "搜索3D产品...",
                 filterAll: "全部",
                 filterHome: "家居",
                 filterTech: "科技",
                 filterCustom: "定制",
-                filterFidgets: "减压玩具",
+                filterFidgets: "解压玩具",
+                
+                // Favorites Page
                 favoritesTitle: "您的收藏",
+                noFavorites: "暂无收藏",
+                noFavoritesDesc: "添加产品到收藏",
                 loadingFavorites: "正在加载收藏...",
-                settingsAccount: "账户",
-                accountStatus: "账户状态",
+                
+                // Settings Page
+                accountSettingsTitle: "账户",
+                accountStatusTitle: "账户状态",
                 notLoggedIn: "未登录",
-                login: "登录",
-                logout: "退出登录",
-                settingsLanguage: "语言",
-                appLanguage: "应用语言",
+                loggedIn: "已登录",
+                loginButtonText: "登录",
+                logoutButtonText: "退出登录",
+                bonusCodesTitle: "优惠码",
+                noBonusCodes: "登录获取优惠码",
+                weeklyCode: "每周折扣码",
+                daysLeft: "还剩{days}天有效",
+                displaySettingsTitle: "显示",
+                darkModeTitle: "深色模式",
+                darkModeDesc: "切换亮色和深色主题",
+                languageSettingsTitle: "语言",
+                currentLanguageTitle: "当前语言",
                 currentLanguage: "中文",
-                settingsDisplay: "显示",
-                darkMode: "深色模式",
-                darkModeDesc: "切换浅色和深色主题",
-                settingsAbout: "关于",
-                version: "版本",
-                contact: "联系",
+                aboutTitle: "关于",
+                versionTitle: "版本",
+                contactTitle: "联系",
+                privacyTitle: "隐私与政策",
+                privacyPolicyTitle: "隐私政策",
+                privacyPolicyDesc: "阅读我们的隐私声明",
+                
+                // Navigation
                 navHome: "首页",
                 navProducts: "产品",
                 navFavorites: "收藏",
                 navSettings: "设置",
-                authTitle: "PrintSome 账户",
-                productDetails: "产品详情",
-                emailPlaceholder: "您的@邮箱.com",
-                passwordPlaceholder: "至少6个字符",
-                namePlaceholder: "您的名字",
-                confirmPasswordPlaceholder: "重复密码",
-                loginBtn: "登录",
-                signupBtn: "创建账户",
-                googleLogin: "使用 Google 登录",
-                googleSignup: "使用 Google 注册",
+                
+                // Auth Modal
+                authModalTitle: "PrintSome 账户",
+                loginTab: "登录",
+                signupTab: "注册",
+                loginWithGoogle: "使用Google登录",
+                signupWithGoogle: "使用Google注册",
                 orWithEmail: "或使用邮箱",
+                namePlaceholder: "您的姓名",
+                emailPlaceholder: "your@email.com",
+                passwordPlaceholder: "至少6个字符",
+                confirmPasswordPlaceholder: "重复密码",
+                loginButton: "登录",
+                signupButton: "创建账户",
                 forgotPassword: "忘记密码？",
-                dataSecure: "您的数据在我们这里是安全的",
-                discountCode: "折扣码",
-                validUntil: "有效期至",
-                addToFavorites: "添加到收藏",
-                removeFromFavorites: "从收藏移除"
-            },
-            ar: {
-                welcomeTitle: "مرحبًا بكم في PrintSome!",
-                welcomeSubtitle: "متجر الطباعة ثلاثية الأبعاد",
-                welcomeUser: "سجل الدخول للحصول على رموز خصم شخصية",
-                weeklyDiscountTitle: "رمز الخصم الأسبوعي الخاص بك",
-                weeklyDiscountInfo: "شاهد رمز الخصم الأسبوعي لكل منتج في قسم المنتجات",
-                featuredProducts: "المنتجات المميزة",
-                viewAll: "عرض الكل",
-                loadingProducts: "جارٍ تحميل المنتجات...",
-                searchPlaceholder: "بحث عن منتجات ثلاثية الأبعاد...",
-                filterAll: "الكل",
-                filterHome: "المنزل",
-                filterTech: "التكنولوجيا",
-                filterCustom: "مخصص",
-                filterFidgets: "ألعاب التوتر",
-                favoritesTitle: "المفضلة لديك",
-                loadingFavorites: "جارٍ تحميل المفضلة...",
-                settingsAccount: "الحساب",
-                accountStatus: "حالة الحساب",
-                notLoggedIn: "غير مسجل الدخول",
-                login: "تسجيل الدخول",
-                logout: "تسجيل الخروج",
-                settingsLanguage: "اللغة",
-                appLanguage: "لغة التطبيق",
-                currentLanguage: "العربية",
-                settingsDisplay: "العرض",
-                darkMode: "الوضع الداكن",
-                darkModeDesc: "التبديل بين الوضع الفاتح والداكن",
-                settingsAbout: "حول",
-                version: "الإصدار",
-                contact: "الاتصال",
-                navHome: "الرئيسية",
-                navProducts: "المنتجات",
-                navFavorites: "المفضلة",
-                navSettings: "الإعدادات",
-                authTitle: "حساب PrintSome",
-                productDetails: "تفاصيل المنتج",
-                emailPlaceholder: "بريدك@الإلكتروني",
-                passwordPlaceholder: "6 أحرف على الأقل",
-                namePlaceholder: "اسمك",
-                confirmPasswordPlaceholder: "كرر كلمة المرور",
-                loginBtn: "تسجيل الدخول",
-                signupBtn: "إنشاء حساب",
-                googleLogin: "تسجيل الدخول باستخدام Google",
-                googleSignup: "التسجيل باستخدام Google",
-                orWithEmail: "أو باستخدام البريد الإلكتروني",
-                forgotPassword: "نسيت كلمة المرور؟",
-                dataSecure: "بياناتك آمنة معنا",
-                discountCode: "رمز الخصم",
-                validUntil: "صالح حتى",
-                addToFavorites: "إضافة إلى المفضلة",
-                removeFromFavorites: "إزالة من المفضلة"
-            },
-            hi: {
-                welcomeTitle: "PrintSome में आपका स्वागत है!",
-                welcomeSubtitle: "3D प्रिंटिंग की दुकान",
-                welcomeUser: "व्यक्तिगत छूट कोड के लिए लॉग इन करें",
-                weeklyDiscountTitle: "आपका साप्ताहिक छूट कोड",
-                weeklyDiscountInfo: "उत्पादों अनुभाग में प्रति उत्पाद अपना साप्ताहिक छूट कोड देखें",
-                featuredProducts: "विशेष उत्पाद",
-                viewAll: "सभी देखें",
-                loadingProducts: "उत्पाद लोड हो रहे हैं...",
-                searchPlaceholder: "3D उत्पाद खोजें...",
-                filterAll: "सभी",
-                filterHome: "घर",
-                filterTech: "टेक",
-                filterCustom: "कस्टम",
-                filterFidgets: "फिजेट्स",
-                favoritesTitle: "आपकी पसंदीदा",
-                loadingFavorites: "पसंदीदा लोड हो रही हैं...",
-                settingsAccount: "खाता",
-                accountStatus: "खाता स्थिति",
-                notLoggedIn: "लॉग इन नहीं",
-                login: "लॉग इन",
-                logout: "लॉग आउट",
-                settingsLanguage: "भाषा",
-                appLanguage: "ऐप भाषा",
-                currentLanguage: "हिन्दी",
-                settingsDisplay: "प्रदर्शन",
-                darkMode: "डार्क मोड",
-                darkModeDesc: "हल्के और गहरे थीम के बीच स्विच करें",
-                settingsAbout: "के बारे में",
-                version: "संस्करण",
-                contact: "संपर्क",
-                navHome: "होम",
-                navProducts: "उत्पाद",
-                navFavorites: "पसंदीदा",
-                navSettings: "सेटिंग्स",
-                authTitle: "PrintSome खाता",
-                productDetails: "उत्पाद विवरण",
-                emailPlaceholder: "आपका@ईमेल.कॉम",
-                passwordPlaceholder: "न्यूनतम 6 अक्षर",
-                namePlaceholder: "आपका नाम",
-                confirmPasswordPlaceholder: "पासवर्ड दोहराएं",
-                loginBtn: "लॉग इन",
-                signupBtn: "खाता बनाएं",
-                googleLogin: "Google से लॉग इन करें",
-                googleSignup: "Google से साइन अप करें",
-                orWithEmail: "या ईमेल से",
-                forgotPassword: "पासवर्ड भूल गए?",
-                dataSecure: "आपका डेटा हमारे पास सुरक्षित है",
-                discountCode: "छूट कोड",
-                validUntil: "तक वैध",
-                addToFavorites: "पसंदीदा में जोड़ें",
-                removeFromFavorites: "पसंदीदा से हटाएं"
-            },
-            ru: {
-                welcomeTitle: "Добро пожаловать в PrintSome!",
-                welcomeSubtitle: "Магазин 3D-печати",
-                welcomeUser: "Войдите для получения персональных кодов скидок",
-                weeklyDiscountTitle: "Ваш еженедельный код скидки",
-                weeklyDiscountInfo: "Смотрите ваш еженедельный код скидки на каждый товар в разделе товаров",
-                featuredProducts: "Рекомендуемые товары",
-                viewAll: "Просмотреть все",
-                loadingProducts: "Загрузка товаров...",
-                searchPlaceholder: "Поиск 3D товаров...",
-                filterAll: "Все",
-                filterHome: "Дом",
-                filterTech: "Техника",
-                filterCustom: "На заказ",
-                filterFidgets: "Фиджет-игрушки",
-                favoritesTitle: "Ваши избранные",
-                loadingFavorites: "Загрузка избранного...",
-                settingsAccount: "Аккаунт",
-                accountStatus: "Статус аккаунта",
-                notLoggedIn: "Не вошел",
-                login: "Войти",
-                logout: "Выйти",
-                settingsLanguage: "Язык",
-                appLanguage: "Язык приложения",
-                currentLanguage: "Русский",
-                settingsDisplay: "Отображение",
-                darkMode: "Темный режим",
-                darkModeDesc: "Переключение между светлой и темной темой",
-                settingsAbout: "О приложении",
-                version: "Версия",
-                contact: "Контакты",
-                navHome: "Главная",
-                navProducts: "Товары",
-                navFavorites: "Избранное",
-                navSettings: "Настройки",
-                authTitle: "Аккаунт PrintSome",
-                productDetails: "Детали товара",
-                emailPlaceholder: "ваш@email.ru",
-                passwordPlaceholder: "Минимум 6 символов",
-                namePlaceholder: "Ваше имя",
-                confirmPasswordPlaceholder: "Повторите пароль",
-                loginBtn: "Войти",
-                signupBtn: "Создать аккаунт",
-                googleLogin: "Войти через Google",
-                googleSignup: "Зарегистрироваться через Google",
-                orWithEmail: "или через email",
-                forgotPassword: "Забыли пароль?",
-                dataSecure: "Ваши данные в безопасности",
-                discountCode: "Код скидки",
-                validUntil: "Действителен до",
-                addToFavorites: "Добавить в избранное",
-                removeFromFavorites: "Удалить из избранного"
+                dataSafe: "您的数据在我们这里是安全的",
+                
+                // Product Modal
+                productModalTitle: "产品详情",
+                materialLabel: "材料",
+                categoryLabel: "分类",
+                ratingLabel: "评分",
+                deliveryLabel: "配送",
+                deliveryTime: "2-3天",
+                bonusTitle: "您的专属优惠码",
+                validForOrder: "适用于您的下一个订单",
+                weeklyDiscount: "每周折扣码",
+                
+                // Toast Messages
+                welcomeToast: "欢迎来到 PrintSome!",
+                welcomeBackToast: "欢迎回来 {name}!",
+                loginSuccess: "欢迎 {name}!",
+                logoutSuccess: "成功退出登录",
+                newCodeToast: "新的每周折扣: {code}",
+                favoriteAdded: "已添加到收藏",
+                favoriteRemoved: "已从收藏移除",
+                bonusReceived: "收到优惠码: {code}",
+                loginForFavorites: "登录以保存收藏",
+                errorLoadingProducts: "加载产品时出错",
+                errorSavingFavorite: "保存收藏时出错",
+                
+                // Errors
+                googleLoginFailed: "Google登录失败",
+                signupFailed: "注册失败",
+                emailInUse: "此邮箱已被使用",
+                invalidEmail: "无效邮箱",
+                weakPassword: "密码必须至少6个字符",
+                userNotFound: "用户未找到",
+                wrongPassword: "密码错误",
+                passwordsDontMatch: "密码不匹配",
+                contactForPassword: "联系我们: PrintSome-webapp@outlook.com",
+                
+                // Empty States
+                noProductsFound: "未找到产品",
+                noFeaturedProducts: "无精选产品"
             }
         };
         
-        function translatePage() {
-            const lang = translations[currentLanguage];
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (lang[key]) {
-                    if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
-                        el.placeholder = lang[key];
-                    } else {
-                        el.textContent = lang[key];
-                    }
+        // Flag mapping
+        const flagMap = {
+            'nl': '🇳🇱',
+            'en': '🇬🇧',
+            'es': '🇪🇸',
+            'fr': '🇫🇷',
+            'de': '🇩🇪',
+            'zh': '🇨🇳'
+        };
+        
+        // Firebase Auth Functions
+        async function signInWithGoogle() {
+            try {
+                console.log('🔑 Google login starten...');
+                const provider = new firebase.auth.GoogleAuthProvider();
+                provider.addScope('profile');
+                provider.addScope('email');
+                
+                const result = await auth.signInWithPopup(provider);
+                console.log('✅ Google login succes!', result.user.email);
+                
+                currentUser = result.user;
+                updateAuthUI();
+                authModal.classList.remove('active');
+                showToast(getTranslation('loginSuccess').replace('{name}', result.user.displayName || result.user.email), 3000);
+                
+                // Load user data from Firebase
+                loadUserData(currentUser.uid);
+                
+            } catch (error) {
+                console.error('❌ Google login error:', error);
+                showAuthError(getTranslation('googleLoginFailed') + ': ' + error.message);
+            }
+        }
+        
+        async function signUpWithEmail(email, password, name) {
+            try {
+                console.log('📝 Account aanmaken voor:', email);
+                
+                // Create user
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                
+                // Update profile with name
+                if (name) {
+                    await userCredential.user.updateProfile({
+                        displayName: name
+                    });
                 }
-            });
-            document.getElementById('currentLanguage').textContent = lang['currentLanguage'];
+                
+                console.log('✅ Account aangemaakt!', userCredential.user.email);
+                
+                currentUser = userCredential.user;
+                updateAuthUI();
+                authModal.classList.remove('active');
+                showToast(getTranslation('loginSuccess').replace('{name}', name || email), 3000);
+                
+                // Load user data
+                loadUserData(currentUser.uid);
+                
+            } catch (error) {
+                console.error('❌ Signup error:', error);
+                
+                let errorMessage = getTranslation('signupFailed') + ': ';
+                switch(error.code) {
+                    case 'auth/email-already-in-use':
+                        errorMessage = getTranslation('emailInUse');
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = getTranslation('invalidEmail');
+                        break;
+                    case 'auth/weak-password':
+                        errorMessage = getTranslation('weakPassword');
+                        break;
+                    default:
+                        errorMessage += error.message;
+                }
+                
+                showAuthError(errorMessage);
+            }
         }
         
-        function showToast(message, duration = 3000) {
-            const toast = document.getElementById('toast');
-            const toastMessage = document.getElementById('toastMessage');
-            toastMessage.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), duration);
+        async function signInWithEmail(email, password) {
+            try {
+                console.log('🔐 Login voor:', email);
+                
+                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                console.log('✅ Login succes!', userCredential.user.email);
+                
+                currentUser = userCredential.user;
+                updateAuthUI();
+                authModal.classList.remove('active');
+                showToast(getTranslation('loginSuccess').replace('{name}', userCredential.user.displayName || userCredential.user.email), 3000);
+                
+                // Load user data
+                loadUserData(currentUser.uid);
+                
+            } catch (error) {
+                console.error('❌ Login error:', error);
+                
+                let errorMessage = getTranslation('signupFailed') + ': ';
+                switch(error.code) {
+                    case 'auth/user-not-found':
+                        errorMessage = getTranslation('userNotFound');
+                        break;
+                    case 'auth/wrong-password':
+                        errorMessage = getTranslation('wrongPassword');
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = getTranslation('invalidEmail');
+                        break;
+                    default:
+                        errorMessage += error.message;
+                }
+                
+                showAuthError(errorMessage);
+            }
         }
         
-        auth.onAuthStateChanged((user) => {
-            currentUser = user;
-            updateAuthUI();
-            if (user) loadUserData(user.uid);
-        });
+        async function logout() {
+            try {
+                await auth.signOut();
+                console.log('✅ Uitgelogd');
+                currentUser = null;
+                userBonuses = [];
+                userFavorites = [];
+                currentDiscountCode = null;
+                discountCodeExpiry = null;
+                updateAuthUI();
+                updateProductCards();
+                showToast(getTranslation('logoutSuccess'), 2000);
+            } catch (error) {
+                console.error('❌ Logout error:', error);
+                showToast(getTranslation('logoutSuccess'), 2000);
+            }
+        }
         
+        // Update UI based on auth state
         function updateAuthUI() {
+            const userAvatar = document.getElementById('userAvatar');
             const welcomeUser = document.getElementById('welcomeUser');
             const accountStatus = document.getElementById('accountStatus');
             const loginButton = document.getElementById('loginButton');
-            const weeklyDiscountSection = document.getElementById('weeklyDiscountSection');
+            const loginButtonText = document.getElementById('loginButtonText');
+            
+            if (!userAvatar || !welcomeUser || !accountStatus) return;
             
             if (currentUser) {
-                welcomeUser.textContent = translations[currentLanguage].welcomeUser;
-                accountStatus.textContent = 'Ingelogd';
-                loginButton.textContent = translations[currentLanguage].logout;
-                loginButton.onclick = logout;
-                weeklyDiscountSection.style.display = 'block';
+                // Update avatar
+                if (currentUser.photoURL) {
+                    userAvatar.innerHTML = `<img src="${currentUser.photoURL}" alt="${currentUser.displayName || 'User'}">`;
+                } else {
+                    const initials = currentUser.displayName ? 
+                        currentUser.displayName.charAt(0).toUpperCase() : 
+                        currentUser.email ? currentUser.email.charAt(0).toUpperCase() : 'U';
+                    userAvatar.innerHTML = initials;
+                }
+                
+                // Update welcome message
+                const displayName = currentUser.displayName || currentUser.email.split('@')[0] || 'Gebruiker';
+                welcomeUser.textContent = `Welkom, ${displayName}!`;
+                accountStatus.textContent = getTranslation('loggedIn');
+                
+                if (loginButton && loginButtonText) {
+                    loginButtonText.textContent = getTranslation('logoutButtonText');
+                    loginButton.onclick = logout;
+                }
+                
+                // Generate weekly discount code if needed
+                generateWeeklyDiscountCode();
             } else {
-                welcomeUser.textContent = translations[currentLanguage].welcomeUser;
-                accountStatus.textContent = translations[currentLanguage].notLoggedIn;
-                loginButton.textContent = translations[currentLanguage].login;
-                loginButton.onclick = () => {
-                    document.getElementById('authModal').classList.add('active');
+                userAvatar.innerHTML = '<i class="fas fa-user"></i>';
+                welcomeUser.textContent = getTranslation('welcomeUserGuest');
+                accountStatus.textContent = getTranslation('notLoggedIn');
+                
+                if (loginButton && loginButtonText) {
+                    loginButtonText.textContent = getTranslation('loginButtonText');
+                    loginButton.onclick = () => {
+                        authModal.classList.add('active');
+                        renderAuthForm();
+                    };
+                }
+            }
+            
+            userAvatar.onclick = () => {
+                if (currentUser) {
+                    // Show user profile or logout option
+                    showToast(getTranslation('loggedIn').replace('{email}', currentUser.email), 3000);
+                } else {
+                    authModal.classList.add('active');
                     renderAuthForm();
-                };
-                weeklyDiscountSection.style.display = 'none';
+                }
+            };
+        }
+        
+        // Generate weekly discount code
+        function generateWeeklyDiscountCode() {
+            if (!currentUser) return;
+            
+            const now = new Date();
+            const storedCode = localStorage.getItem(`discountCode_${currentUser.uid}`);
+            const storedExpiry = localStorage.getItem(`discountCodeExpiry_${currentUser.uid}`);
+            const storedWeekNumber = localStorage.getItem(`weekNumber_${currentUser.uid}`);
+            
+            // Calculate current week number (weeks since epoch)
+            const weekNumber = Math.floor(now.getTime() / (7 * 24 * 60 * 60 * 1000));
+            
+            // Check if we need to generate a new code (every Sunday)
+            const isSunday = now.getDay() === 0; // 0 = Sunday
+            const needsNewCode = !storedCode || !storedExpiry || new Date(storedExpiry) <= now || storedWeekNumber !== weekNumber.toString();
+            
+            if (needsNewCode) {
+                // Generate random code from possible codes
+                const randomIndex = Math.floor(Math.random() * possibleDiscountCodes.length);
+                currentDiscountCode = possibleDiscountCodes[randomIndex];
+                
+                // Set expiry to end of week (next Sunday)
+                const expiryDate = new Date(now);
+                const daysUntilSunday = (7 - now.getDay()) % 7;
+                expiryDate.setDate(expiryDate.getDate() + daysUntilSunday + 1); // +1 to make it end of Sunday
+                expiryDate.setHours(23, 59, 59, 999); // End of day
+                
+                discountCodeExpiry = expiryDate;
+                
+                // Store in localStorage
+                localStorage.setItem(`discountCode_${currentUser.uid}`, currentDiscountCode);
+                localStorage.setItem(`discountCodeExpiry_${currentUser.uid}`, discountCodeExpiry.toISOString());
+                localStorage.setItem(`weekNumber_${currentUser.uid}`, weekNumber.toString());
+                
+                updateDiscountCodeDisplay();
+                
+                // Show notification for new code
+                showToast(getTranslation('newCodeToast').replace('{code}', currentDiscountCode), 5000);
+            } else {
+                currentDiscountCode = storedCode;
+                discountCodeExpiry = new Date(storedExpiry);
+                updateDiscountCodeDisplay();
             }
         }
         
-        async function signInWithGoogle() {
-            try {
-                const provider = new firebase.auth.GoogleAuthProvider();
-                const result = await auth.signInWithPopup(provider);
-                currentUser = result.user;
+        // Update discount code display in settings
+        function updateDiscountCodeDisplay() {
+            const settingsBonusCount = document.getElementById('settingsBonusCount');
+            if (!settingsBonusCount) return;
+            
+            if (currentUser && currentDiscountCode) {
+                const now = new Date();
+                const timeDiff = discountCodeExpiry - now;
+                const daysLeft = Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
+                
+                let displayText = `${currentDiscountCode} - ${getTranslation('daysLeft').replace('{days}', daysLeft)}`;
+                settingsBonusCount.textContent = displayText;
+            } else if (currentUser) {
+                settingsBonusCount.textContent = getTranslation('noBonusCodes');
+            } else {
+                settingsBonusCount.textContent = getTranslation('noBonusCodes');
+            }
+        }
+        
+        // Render auth form
+        function renderAuthForm() {
+            const container = document.getElementById('authContainer');
+            if (!container) return;
+            
+            const lang = userSettings.language;
+            
+            container.innerHTML = `
+                <div class="auth-tabs">
+                    <button class="auth-tab ${authMode === 'login' ? 'active' : ''}" onclick="switchAuthMode('login')">
+                        ${getTranslation('loginTab')}
+                    </button>
+                    <button class="auth-tab ${authMode === 'signup' ? 'active' : ''}" onclick="switchAuthMode('signup')">
+                        ${getTranslation('signupTab')}
+                    </button>
+                </div>
+                
+                <div class="auth-error" id="authError"></div>
+                <div class="auth-success" id="authSuccess"></div>
+                
+                <button class="auth-button google" onclick="signInWithGoogle()">
+                    <i class="fab fa-google"></i>
+                    ${authMode === 'login' ? getTranslation('loginWithGoogle') : getTranslation('signupWithGoogle')}
+                </button>
+                
+                <div class="auth-divider">
+                    <span>${getTranslation('orWithEmail')}</span>
+                </div>
+                
+                <form class="auth-form" id="authForm" onsubmit="return handleAuthSubmit(event)">
+                    ${authMode === 'signup' ? `
+                        <div class="form-group">
+                            <label class="form-label" for="name">${getTranslation('namePlaceholder')}</label>
+                            <input type="text" class="form-input" id="name" placeholder="${getTranslation('namePlaceholder')}" required>
+                        </div>
+                    ` : ''}
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" class="form-input" id="email" placeholder="${getTranslation('emailPlaceholder')}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="password">${getTranslation('passwordPlaceholder')}</label>
+                        <input type="password" class="form-input" id="password" placeholder="${getTranslation('passwordPlaceholder')}" required minlength="6">
+                    </div>
+                    
+                    ${authMode === 'signup' ? `
+                        <div class="form-group">
+                            <label class="form-label" for="confirmPassword">${getTranslation('confirmPasswordPlaceholder')}</label>
+                            <input type="password" class="form-input" id="confirmPassword" placeholder="${getTranslation('confirmPasswordPlaceholder')}" required minlength="6">
+                        </div>
+                    ` : ''}
+                    
+                    <button type="submit" class="auth-button">
+                        <i class="fas fa-${authMode === 'login' ? 'sign-in-alt' : 'user-plus'}"></i>
+                        ${authMode === 'login' ? getTranslation('loginButton') : getTranslation('signupButton')}
+                    </button>
+                </form>
+                
+                ${authMode === 'login' ? `
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="#" onclick="showToast('${getTranslation('contactForPassword')}', 5000)" style="color: var(--primary-color); text-decoration: none; font-size: 14px;">
+                            <i class="fas fa-key"></i> ${getTranslation('forgotPassword')}
+                        </a>
+                    </div>
+                ` : ''}
+                
+                <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--gray-200);">
+                    <p style="color: var(--gray-600); font-size: 12px;">
+                        <i class="fas fa-shield-alt"></i> ${getTranslation('dataSafe')}
+                    </p>
+                </div>
+            `;
+        }
+        
+        function switchAuthMode(mode) {
+            authMode = mode;
+            renderAuthForm();
+        }
+        
+        function handleAuthSubmit(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (authMode === 'signup') {
+                const name = document.getElementById('name').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    showAuthError(getTranslation('passwordsDontMatch'));
+                    return false;
+                }
+                
+                signUpWithEmail(email, password, name);
+            } else {
+                signInWithEmail(email, password);
+            }
+            
+            return false;
+        }
+        
+        function showAuthError(message) {
+            const errorElement = document.getElementById('authError');
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.classList.add('show');
+                
+                // Hide after 5 seconds
+                setTimeout(() => {
+                    errorElement.classList.remove('show');
+                }, 5000);
+            }
+        }
+        
+        function showAuthSuccess(message) {
+            const successElement = document.getElementById('authSuccess');
+            if (successElement) {
+                successElement.textContent = message;
+                successElement.classList.add('show');
+                
+                // Hide after 3 seconds
+                setTimeout(() => {
+                    successElement.classList.remove('show');
+                }, 3000);
+            }
+        }
+        
+        // Get translation for current language
+        function getTranslation(key) {
+            const lang = userSettings.language;
+            if (translations[lang] && translations[lang][key]) {
+                return translations[lang][key];
+            }
+            // Fallback to Dutch
+            return translations['nl'][key] || key;
+        }
+        
+        // Apply translations to UI
+        function applyTranslations() {
+            const lang = userSettings.language;
+            
+            // Update language button
+            languageFlag.textContent = flagMap[lang] || '🌐';
+            
+            // Update header
+            document.getElementById('headerTitle').textContent = getTranslation('headerTitle');
+            document.getElementById('themeToggle').title = getTranslation('themeToggle');
+            document.getElementById('languageBtn').title = getTranslation('languageToggle');
+            document.getElementById('userAvatar').title = getTranslation('account');
+            
+            // Update auth modal title
+            document.getElementById('authModalTitle').textContent = getTranslation('authModalTitle');
+            document.getElementById('productModalTitle').textContent = getTranslation('productModalTitle');
+            
+            // Update current language in settings
+            document.getElementById('currentLanguage').textContent = getTranslation('currentLanguage');
+            
+            // Update all text elements that need translation
+            const translationElements = document.querySelectorAll('[id]');
+            translationElements.forEach(el => {
+                const id = el.id;
+                if (id.startsWith('nav') || 
+                    id.includes('Title') || 
+                    id.includes('Text') || 
+                    id.includes('Desc') || 
+                    id.includes('Placeholder') ||
+                    id === 'searchInput' ||
+                    id.includes('filter')) {
+                    
+                    if (el.tagName === 'INPUT') {
+                        el.placeholder = getTranslation(id);
+                    } else if (el.tagName === 'SPAN' || el.tagName === 'H1' || el.tagName === 'H2' || 
+                               el.tagName === 'H3' || el.tagName === 'H4' || el.tagName === 'P' ||
+                               el.tagName === 'LABEL' || el.tagName === 'BUTTON') {
+                        el.textContent = getTranslation(id);
+                    }
+                }
+            });
+            
+            // Update filter chips
+            const filterChips = document.querySelectorAll('.filter-chip');
+            filterChips.forEach(chip => {
+                const filter = chip.dataset.filter;
+                if (filter) {
+                    chip.textContent = getTranslation(`filter${filter.charAt(0).toUpperCase() + filter.slice(1)}`);
+                }
+            });
+            
+            // Update FAQ questions and answers
+            for (let i = 1; i <= 3; i++) {
+                const qElement = document.getElementById(`faqQ${i}`);
+                const aElement = document.getElementById(`faqA${i}`);
+                if (qElement) qElement.querySelector('span').textContent = getTranslation(`faqQ${i}`);
+                if (aElement) aElement.textContent = getTranslation(`faqA${i}`);
+            }
+            
+            // Update auth UI
+            updateAuthUI();
+            updateDiscountCodeDisplay();
+            
+            // Update privacy page
+            updatePrivacyContent();
+        }
+        
+        // Update privacy content based on language
+        function updatePrivacyContent() {
+            const privacyContent = document.getElementById('privacyContent');
+            const lang = userSettings.language;
+            
+            // For now, we'll keep the privacy content in Dutch for all languages
+            // In a real app, you would translate this content
+            privacyContent.innerHTML = `
+                <h1 class="privacy-title">
+                    <i class="fas fa-shield-alt"></i>
+                    ${getTranslation('privacyPolicyTitle')} PrintSome
+                </h1>
+                
+                <p class="privacy-text">
+                    PrintSome is verantwoordelijk voor de verwerking van persoonsgegevens zoals weergegeven in deze privacyverklaring.
+                </p>
+                
+                <h2 class="privacy-subtitle">${getTranslation('contactTitle')}</h2>
+                <div class="contact-info">
+                    <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://PrintSome.pages.dev" target="_blank">https://PrintSome.pages.dev</a></p>
+                    <p><i class="fas fa-envelope"></i> <strong>${getTranslation('emailPlaceholder')}:</strong> <a href="mailto:PrintSome-webapp@outlook.com">PrintSome-webapp@outlook.com</a></p>
+                </div>
+                
+                <h2 class="privacy-subtitle">Persoonsgegevens die wij verwerken</h2>
+                <p class="privacy-text">
+                    PrintSome verwerkt uw persoonsgegevens doordat u gebruik maakt van onze diensten en/of omdat u deze zelf aan ons verstrekt.
+                </p>
+                
+                <button class="privacy-back-btn" onclick="showPage('settings')">
+                    <i class="fas fa-arrow-left"></i>
+                    ${getTranslation('navSettings')}
+                </button>
+            `;
+        }
+        
+        // Change language
+        function changeLanguage(lang) {
+            userSettings.language = lang;
+            localStorage.setItem('printsomeSettings', JSON.stringify(userSettings));
+            applyTranslations();
+            languageDropdown.classList.remove('show');
+            
+            // Update active language in dropdown
+            document.querySelectorAll('.language-option').forEach(option => {
+                if (option.dataset.lang === lang) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
+                }
+            });
+        }
+        
+        // Toggle language dropdown
+        function toggleLanguageDropdown() {
+            languageDropdown.classList.toggle('show');
+        }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!languageBtn.contains(e.target) && !languageDropdown.contains(e.target)) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+        
+        // Fix viewport height for mobile
+        function setViewportHeight() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        
+        // Firebase auth state listener
+        auth.onAuthStateChanged((user) => {
+            console.log('🔥 Firebase auth state changed:', user ? 'Logged in' : 'Logged out');
+            
+            if (user) {
+                currentUser = user;
                 updateAuthUI();
-                document.getElementById('authModal').classList.remove('active');
-                showToast(translations[currentLanguage].welcomeTitle);
-                loadUserData(currentUser.uid);
-            } catch (error) {
-                showToast('Error: ' + error.message);
+                loadUserData(user.uid);
+            } else {
+                currentUser = null;
+                userBonuses = [];
+                userFavorites = [];
+                viewedProducts = [];
+                currentDiscountCode = null;
+                discountCodeExpiry = null;
+                updateAuthUI();
+                updateProductCards();
+                updateFavoritesDisplay();
             }
-        }
+        });
         
+        // Load products from Firebase
         async function loadProducts() {
             try {
+                const featuredContainer = document.getElementById('featuredProducts');
+                const allContainer = document.getElementById('allProducts');
+                
+                if (featuredContainer) {
+                    featuredContainer.innerHTML = `
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            <p>${getTranslation('loadingProducts')}</p>
+                        </div>
+                    `;
+                }
+                
                 const snapshot = await db.collection('products').get();
                 products = [];
+                
                 snapshot.forEach(doc => {
-                    const product = doc.data();
-                    product.id = doc.id;
-                    
-                    if (currentUser && !product.weeklyDiscountCode) {
-                        const now = new Date();
-                        const nextSunday = new Date(now);
-                        nextSunday.setDate(now.getDate() + ((7 - now.getDay()) % 7));
-                        nextSunday.setHours(23, 59, 59, 999);
-                        
-                        product.weeklyDiscountCode = generateDiscountCode();
-                        product.discountValidUntil = nextSunday;
-                        
-                        db.collection('products').doc(doc.id).update({
-                            weeklyDiscountCode: product.weeklyDiscountCode,
-                            discountValidUntil: product.discountValidUntil
-                        });
-                    }
-                    
-                    products.push(product);
+                    products.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
                 });
                 
                 if (products.length === 0) {
@@ -1410,87 +3164,159 @@
                 displayFeaturedProducts();
                 displayAllProducts();
                 updateProductCards();
+                
             } catch (error) {
-                showToast(translations[currentLanguage].loadingProducts + ' Error');
+                console.error('Error loading products:', error);
+                showToast(getTranslation('errorLoadingProducts'), 3000);
             }
         }
         
-        function generateDiscountCode() {
-            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            let code = '';
-            for (let i = 0; i < 8; i++) {
-                code += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            return code;
-        }
-        
+        // Create initial products in Firebase
         async function createInitialProducts() {
-            const products = [
+            const initialProducts = [
                 {
                     name: 'Fidget Toggle Switch',
-                    description: 'Perfect for focusing during school, gaming or homework.',
+                    description: 'Heb je onrustige handen? Deze toggle switch helpt je focussen tijdens school, gamen of huiswerk. Het klikgeluid maakt hem heel satisfying!',
                     price: 0.99,
                     material: 'PLA Basic',
                     category: 'fidgets',
                     featured: true,
                     rating: 4.7,
-                    imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Fidget-Toggle-switch.png'
+                    imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Fidget-Toggle-switch.png',
+                    discount: 0,
+                    bonusCode: 'SWITCH64'
                 },
                 {
                     name: 'Hexagon Fidget',
-                    description: 'Hexagon fidget – perfect for fidgeting and relaxation.',
+                    description: 'Hexagon fidget – perfect om mee te friemelen, ontspannen en je focus te verbeteren, waar je ook bent.',
                     price: 0.99,
                     material: 'PLA Basic',
                     category: 'fidgets',
                     featured: true,
                     rating: 4.6,
-                    imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Hexagon-fidget.png'
-                }
+                    imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Hexagon-fidget.png',
+                    discount: 0,
+                    bonusCode: 'HEXAGON27'
+                },
+                {
+                    name: 'Sleutelhanger',
+                    description: 'Personaliseerbare sleutelhanger met naam.',
+                    price: 1.99,
+                    material: 'PLA Basic',
+                    category: 'home',
+                    category2: 'costum',
+                    featured: false,
+                    rating: 4.5,
+                    imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Binnenkort-beschikbaar_Tekst.png',
+                    discount: 0,
+                    bonusCode: 'KEY91'
+                },
             ];
             
-            for (const product of products) {
+            for (const product of initialProducts) {
                 await db.collection('products').add(product);
             }
+            
+            console.log('Initial products created');
         }
         
+        // Display featured products
         function displayFeaturedProducts() {
             const container = document.getElementById('featuredProducts');
+            if (!container) return;
+            
             const featured = products.filter(p => p.featured).slice(0, 6);
             
             if (featured.length === 0) {
-                container.innerHTML = '<div class="empty-state">Geen uitgelichte producten</div>';
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-cube"></i>
+                        <h3>${getTranslation('noFeaturedProducts')}</h3>
+                    </div>
+                `;
                 return;
             }
             
             container.innerHTML = '';
-            featured.forEach(product => container.appendChild(createProductCard(product)));
+            
+            featured.forEach(product => {
+                const productCard = createProductCard(product, true);
+                container.appendChild(productCard);
+            });
         }
         
+        // Display all products
         function displayAllProducts(filter = 'all') {
             const container = document.getElementById('allProducts');
-            let filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
+            if (!container) return;
+            
+            if (filter === 'all') {
+                filteredProducts = [...products];
+            } else {
+                filteredProducts = products.filter(p => p.category === filter || p.category2 === filter);
+            }
             
             if (filteredProducts.length === 0) {
-                container.innerHTML = '<div class="empty-state">Geen producten gevonden</div>';
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-search"></i>
+                        <h3>${getTranslation('noProductsFound')}</h3>
+                    </div>
+                `;
                 return;
             }
             
             container.innerHTML = '';
-            filteredProducts.forEach(product => container.appendChild(createProductCard(product)));
+            
+            filteredProducts.forEach(product => {
+                const productCard = createProductCard(product, false);
+                container.appendChild(productCard);
+            });
         }
         
-        function createProductCard(product) {
+        // Create product card
+        function createProductCard(product, isFeatured) {
             const card = document.createElement('div');
             card.className = 'product-card';
             card.dataset.id = product.id;
+            card.dataset.category = product.category;
+            if (product.category2) {
+                card.dataset.category2 = product.category2;
+            }
             
             const isFavorite = userFavorites.includes(product.id);
             const favoriteIcon = isFavorite ? 'fas fa-heart' : 'far fa-heart';
+            const hasBonus = userBonuses.includes(product.id);
+            const bonusClass = hasBonus ? 'show' : '';
+            
+            let priceDisplay = `€${product.price.toFixed(2)}`;
+            let discountDisplay = '';
+            
+            if (product.discount > 0) {
+                const discountedPrice = product.price * (1 - product.discount / 100);
+                priceDisplay = `€${discountedPrice.toFixed(2)}`;
+                discountDisplay = `
+                    <div class="product-badge">-${product.discount}%</div>
+                    <div style="text-decoration: line-through; color: var(--gray-400); font-size: 12px;">
+                        €${product.price.toFixed(2)}
+                    </div>
+                `;
+            }
+            
+            // Determine image to show
+            let imageContent = '';
+            if (product.imageUrl) {
+                imageContent = `<img src="${product.imageUrl}" alt="${product.name}" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\\'fas fa-cube\\'></i>';">`;
+            } else {
+                imageContent = `<i class="fas fa-cube"></i>`;
+            }
             
             card.innerHTML = `
                 <div class="product-image">
-                    ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${product.name}">` : '<i class="fas fa-cube"></i>'}
-                    <button class="header-action-btn" style="position: absolute; bottom: 8px; right: 8px; background: rgba(255,255,255,0.9);" data-product-id="${product.id}">
+                    ${imageContent}
+                    ${discountDisplay}
+                    <button class="header-action-btn" style="position: absolute; bottom: 8px; right: 8px; background: rgba(255,255,255,0.9);" 
+                            data-product-id="${product.id}" data-favorite="${isFavorite}">
                         <i class="${favoriteIcon}"></i>
                     </button>
                 </div>
@@ -1499,12 +3325,18 @@
                     <div class="product-categories">
                         <span class="product-material">${product.material}</span>
                         <span class="product-category">${product.category}</span>
+                        ${product.category2 ? `<span class="product-category">${product.category2}</span>` : ''}
                     </div>
-                    <div class="product-price">€${product.price.toFixed(2)}</div>
+                    <div class="product-price">${priceDisplay}</div>
+                    <div class="bonus-badge ${bonusClass}">
+                        <i class="fas fa-gift"></i> ${getTranslation('bonusCodesTitle')}
+                    </div>
                 </div>
             `;
             
-            card.addEventListener('click', () => showProductDetails(product.id));
+            card.addEventListener('click', () => {
+                showProductDetails(product.id);
+            });
             
             const favoriteBtn = card.querySelector('.header-action-btn');
             favoriteBtn.addEventListener('click', (e) => {
@@ -1515,87 +3347,333 @@
             return card;
         }
         
-        function showProductDetails(productId) {
+        // Update all product cards with current state
+        function updateProductCards() {
+            const featuredCards = document.querySelectorAll('#featuredProducts .product-card');
+            featuredCards.forEach(card => {
+                updateProductCard(card);
+            });
+            
+            const allCards = document.querySelectorAll('#allProducts .product-card');
+            allCards.forEach(card => {
+                updateProductCard(card);
+            });
+            
+            updateFavoritesDisplay();
+        }
+        
+        // Update single product card
+        function updateProductCard(card) {
+            const productId = card.dataset.id;
+            const favoriteBtn = card.querySelector('.header-action-btn');
+            const favoriteIcon = favoriteBtn.querySelector('i');
+            const bonusBadge = card.querySelector('.bonus-badge');
+            
+            const isFavorite = userFavorites.includes(productId);
+            favoriteBtn.dataset.favorite = isFavorite;
+            favoriteIcon.className = isFavorite ? 'fas fa-heart' : 'far fa-heart';
+            
+            const hasBonus = userBonuses.includes(productId);
+            if (hasBonus) {
+                bonusBadge.classList.add('show');
+            } else {
+                bonusBadge.classList.remove('show');
+            }
+        }
+        
+        // Show product details modal
+        async function showProductDetails(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
             
-            const now = new Date();
-            let discountInfo = '';
-            if (currentUser && product.weeklyDiscountCode) {
-                const validUntil = new Date(product.discountValidUntil?.seconds * 1000 || product.discountValidUntil);
-                discountInfo = `
-                    <div style="margin-top: 20px; padding: 15px; background: rgba(255, 215, 0, 0.1); border-radius: 10px; text-align: center;">
-                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">${translations[currentLanguage].discountCode}</h3>
-                        <div style="font-size: 24px; font-weight: bold; letter-spacing: 3px; color: var(--accent-color); margin: 10px 0;">
-                            ${product.weeklyDiscountCode}
-                        </div>
-                        <p style="color: var(--gray-600); font-size: 14px;">
-                            ${translations[currentLanguage].validUntil}: ${validUntil.toLocaleDateString()}
-                        </p>
-                    </div>
-                `;
+            if (currentUser && !viewedProducts.includes(productId)) {
+                viewedProducts.push(productId);
             }
             
-            document.getElementById('productModalContent').innerHTML = `
-                <div style="text-align: center;">
-                    <h1 style="font-size: 24px; margin-bottom: 15px;">${product.name}</h1>
-                    <p style="color: var(--gray-600); margin-bottom: 20px;">${product.description}</p>
-                    <div style="font-size: 28px; font-weight: bold; color: var(--primary-color); margin: 20px 0;">
-                        €${product.price.toFixed(2)}
+            let priceDisplay = `€${product.price.toFixed(2)}`;
+            if (product.discount > 0) {
+                const discountedPrice = product.price * (1 - product.discount / 100);
+                priceDisplay = `€${discountedPrice.toFixed(2)}`;
+            }
+            
+            const hasBonus = userBonuses.includes(productId);
+            
+            // Determine image to show
+            let imageContent = '';
+            if (product.imageUrl) {
+                imageContent = `<img src="${product.imageUrl}" alt="${product.name}" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\\'fas fa-cube\\'></i>';">`;
+            } else {
+                imageContent = '<i class="fas fa-cube"></i>';
+            }
+            
+            productModalContent.innerHTML = `
+                <div class="product-info-columns">
+                    <div class="product-info-content">
+                        <h1 class="product-modal-name">${product.name}</h1>
+                        <p class="product-modal-description">${product.description}</p>
+                        
+                        <div class="product-modal-details">
+                            <div class="detail-item">
+                                <div class="detail-label">${getTranslation('materialLabel')}</div>
+                                <div class="detail-value">${product.material}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">${getTranslation('categoryLabel')}</div>
+                                <div class="detail-value">${product.category}${product.category2 ? ', ' + product.category2 : ''}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">${getTranslation('ratingLabel')}</div>
+                                <div class="detail-value">${product.rating || '4.5'}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">${getTranslation('deliveryLabel')}</div>
+                                <div class="detail-value">${getTranslation('deliveryTime')}</div>
+                            </div>
+                        </div>
+
+                        <div class="product-modal-price">${priceDisplay}</div>
+
+                        <div class="product-modal-bonus ${(hasBonus || currentDiscountCode) && currentUser ? 'show' : ''}" id="productModalBonus">
+                            <div class="bonus-title">${getTranslation('bonusTitle')}</div>
+                            <div class="bonus-code" id="productBonusCode">
+                                ${currentDiscountCode || product.bonusCode || 'BONUS10'}
+                            </div>
+                            <p style="margin-top: 8px; font-size: 12px; color: var(--gray-500);">
+                                ${currentDiscountCode ? getTranslation('weeklyDiscount') : getTranslation('validForOrder')}
+                            </p>
+                        </div>
                     </div>
-                    ${discountInfo}
+                    
+                    <div class="product-modal-image">
+                        ${imageContent}
+                    </div>
                 </div>
             `;
             
-            document.getElementById('productModal').classList.add('active');
+            productModal.classList.add('active');
+            
+            // Automatically grant bonus code when user views product
+            if (currentUser && !hasBonus) {
+                setTimeout(() => {
+                    grantBonusToUser(productId);
+                }, 500);
+            }
         }
         
-        async function toggleFavorite(productId) {
-            if (!currentUser) {
-                showToast(translations[currentLanguage].login);
-                document.getElementById('authModal').classList.add('active');
-                renderAuthForm();
-                return;
-            }
-            
-            const index = userFavorites.indexOf(productId);
-            if (index === -1) {
-                userFavorites.push(productId);
-                showToast(translations[currentLanguage].addToFavorites);
-            } else {
-                userFavorites.splice(index, 1);
-                showToast(translations[currentLanguage].removeFromFavorites);
-            }
-            
-            await saveUserData();
-            updateProductCards();
-        }
-        
+        // Load user data from Firebase
         async function loadUserData(userId) {
             try {
-                const doc = await db.collection('userFavorites').doc(userId).get();
-                if (doc.exists) userFavorites = doc.data().productIds || [];
+                const bonusesDoc = await db.collection('userBonuses').doc(userId).get();
+                if (bonusesDoc.exists) {
+                    userBonuses = bonusesDoc.data().productIds || [];
+                }
+                
+                const favoritesDoc = await db.collection('userFavorites').doc(userId).get();
+                if (favoritesDoc.exists) {
+                    userFavorites = favoritesDoc.data().productIds || [];
+                }
+                
                 updateProductCards();
+                updateFavoritesDisplay();
+                
             } catch (error) {
                 console.error('Error loading user data:', error);
             }
         }
         
+        // Save user data to Firebase
         async function saveUserData() {
             if (!currentUser) return;
+            
             try {
+                // Save favorites
                 await db.collection('userFavorites').doc(currentUser.uid).set({
                     productIds: userFavorites,
-                    lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+                    lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+                    email: currentUser.email
                 }, { merge: true });
+                
+                // Save bonuses
+                await db.collection('userBonuses').doc(currentUser.uid).set({
+                    productIds: userBonuses,
+                    lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+                    email: currentUser.email
+                }, { merge: true });
+                
+                console.log('✅ User data saved');
+                
             } catch (error) {
                 console.error('Error saving user data:', error);
             }
         }
         
+        // Grant bonus to user when they view a product
+        async function grantBonusToUser(productId) {
+            if (!currentUser) return false;
+            
+            const product = products.find(p => p.id === productId);
+            if (!product) return false;
+            
+            // Check if user already has bonus for this product
+            if (userBonuses.includes(productId)) {
+                return true; // Already has bonus
+            }
+            
+            try {
+                // Add bonus to user's list
+                userBonuses.push(productId);
+                
+                // Save to Firebase
+                await db.collection('userBonuses').doc(currentUser.uid).set({
+                    productIds: userBonuses,
+                    lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+                    email: currentUser.email
+                }, { merge: true });
+                
+                // Update UI
+                updateProductCards();
+                
+                // Update modal bonus section
+                const bonusSection = document.getElementById('productModalBonus');
+                if (bonusSection) {
+                    bonusSection.classList.add('show');
+                    const codeToShow = currentDiscountCode || product.bonusCode || 'BONUS10';
+                    document.getElementById('productBonusCode').textContent = codeToShow;
+                }
+                
+                // Show success message with the actual code
+                const codeToShow = currentDiscountCode || product.bonusCode || 'BONUS10';
+                showToast(getTranslation('bonusReceived').replace('{code}', codeToShow), 5000);
+                
+                return true;
+                
+            } catch (error) {
+                console.error('Error granting bonus:', error);
+                return false;
+            }
+        }
+        
+        // Load user settings
+        function loadUserSettings() {
+            const savedSettings = localStorage.getItem('printsomeSettings');
+            if (savedSettings) {
+                userSettings = { ...userSettings, ...JSON.parse(savedSettings) };
+                applyUserSettings();
+                applyTranslations();
+            }
+        }
+        
+        // Apply user settings to UI
+        function applyUserSettings() {
+            if (userSettings.darkMode) {
+                document.documentElement.classList.add('dark-theme');
+                document.documentElement.classList.remove('light-theme');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                document.documentElement.classList.add('light-theme');
+                document.documentElement.classList.remove('dark-theme');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            
+            document.getElementById('darkModeToggle').checked = userSettings.darkMode;
+        }
+        
+        // Toggle favorite status
+        async function toggleFavorite(productId) {
+            if (!currentUser) {
+                showToast(getTranslation('loginForFavorites'), 3000);
+                authModal.classList.add('active');
+                renderAuthForm();
+                return;
+            }
+            
+            try {
+                const index = userFavorites.indexOf(productId);
+                if (index === -1) {
+                    userFavorites.push(productId);
+                    showToast(getTranslation('favoriteAdded'), 2000);
+                } else {
+                    userFavorites.splice(index, 1);
+                    showToast(getTranslation('favoriteRemoved'), 2000);
+                }
+                
+                await saveUserData();
+                updateProductCards();
+                updateFavoritesDisplay();
+                
+            } catch (error) {
+                console.error('Error toggling favorite:', error);
+                showToast(getTranslation('errorSavingFavorite'), 2000);
+            }
+        }
+        
+        // Update favorites display
+        async function updateFavoritesDisplay() {
+            const container = document.getElementById('favoritesProducts');
+            if (!container) return;
+            
+            if (userFavorites.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-heart"></i>
+                        <h3>${getTranslation('noFavorites')}</h3>
+                        <p>${currentUser ? getTranslation('noFavoritesDesc') : getTranslation('loginForFavorites')}</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const favoriteProducts = products.filter(p => userFavorites.includes(p.id));
+            
+            if (favoriteProducts.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-heart"></i>
+                        <h3>${getTranslation('noFavorites')}</h3>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            favoriteProducts.forEach(product => {
+                const productCard = createProductCard(product, false);
+                container.appendChild(productCard);
+            });
+        }
+        
+        // FAQ functionality
+        function setupFAQ() {
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isActive = question.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    document.querySelectorAll('.faq-question').forEach(q => {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('show');
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        question.classList.add('active');
+                        answer.classList.add('show');
+                    }
+                });
+            });
+        }
+        
+        // Show page
         function showPage(page) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
             
             currentPage = page;
             document.getElementById(page + 'Page').classList.add('active');
@@ -1603,137 +3681,168 @@
             
             const headerTitle = document.getElementById('headerTitle');
             switch(page) {
-                case 'home': headerTitle.textContent = 'PrintSome'; break;
-                case 'products': headerTitle.textContent = translations[currentLanguage].navProducts; displayAllProducts(); break;
-                case 'favorites': headerTitle.textContent = translations[currentLanguage].favoritesTitle; updateFavoritesDisplay(); break;
-                case 'settings': headerTitle.textContent = translations[currentLanguage].navSettings; break;
+                case 'home':
+                    headerTitle.textContent = getTranslation('headerTitle');
+                    // Setup FAQ when home page is shown
+                    setTimeout(setupFAQ, 100);
+                    break;
+                case 'products':
+                    headerTitle.textContent = getTranslation('navProducts');
+                    displayAllProducts();
+                    break;
+                case 'favorites':
+                    headerTitle.textContent = getTranslation('navFavorites');
+                    updateFavoritesDisplay();
+                    break;
+                case 'privacy':
+                    headerTitle.textContent = getTranslation('privacyPolicyTitle');
+                    break;
+                case 'settings':
+                    headerTitle.textContent = getTranslation('navSettings');
+                    updateDiscountCodeDisplay();
+                    break;
             }
         }
         
-        function updateProductCards() {
-            document.querySelectorAll('.product-card').forEach(card => {
-                const productId = card.dataset.id;
-                const favoriteBtn = card.querySelector('.header-action-btn i');
-                favoriteBtn.className = userFavorites.includes(productId) ? 'fas fa-heart' : 'far fa-heart';
-            });
+        // Show toast notification
+        function showToast(message, duration = 3000) {
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, duration);
         }
         
-        function updateFavoritesDisplay() {
-            const container = document.getElementById('favoritesProducts');
-            const favoriteProducts = products.filter(p => userFavorites.includes(p.id));
-            
-            if (favoriteProducts.length === 0) {
-                container.innerHTML = '<div class="empty-state">' + translations[currentLanguage].favoritesTitle + '</div>';
-                return;
-            }
-            
-            container.innerHTML = '';
-            favoriteProducts.forEach(product => container.appendChild(createProductCard(product)));
-        }
-        
-        function renderAuthForm() {
-            const container = document.getElementById('authContainer');
-            if (!container) return;
-            
-            const lang = translations[currentLanguage];
-            container.innerHTML = `
-                <button class="auth-button google" onclick="signInWithGoogle()">
-                    <i class="fab fa-google"></i> ${lang.googleLogin}
-                </button>
-                <div style="text-align: center; margin-top: 30px;">
-                    <a href="#" onclick="showToast('${translations[currentLanguage].contact}: PrintSome-webapp@outlook.com', 5000)" style="color: var(--primary-color);">
-                        <i class="fas fa-key"></i> ${lang.forgotPassword}
-                    </a>
-                </div>
-            `;
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            loadProducts();
-            translatePage();
-            
-            const savedLang = localStorage.getItem('printsomeLanguage');
-            if (savedLang) {
-                currentLanguage = savedLang;
-                translatePage();
-            }
-            
-            document.getElementById('languageToggle').addEventListener('click', (e) => {
-                e.stopPropagation();
-                document.getElementById('languageDropdown').classList.toggle('show');
-            });
-            
-            document.querySelectorAll('.language-option').forEach(option => {
-                option.addEventListener('click', () => {
-                    currentLanguage = option.dataset.lang;
-                    localStorage.setItem('printsomeLanguage', currentLanguage);
-                    translatePage();
-                    updateAuthUI();
-                    document.getElementById('languageDropdown').classList.remove('show');
-                });
-            });
-            
+        // Set up event listeners
+        function setupEventListeners() {
+            // Bottom navigation
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.addEventListener('click', (e) => {
                     e.preventDefault();
-                    showPage(item.dataset.page);
+                    const page = item.dataset.page;
+                    showPage(page);
                 });
             });
             
-            document.getElementById('themeToggle').addEventListener('click', () => {
-                document.documentElement.classList.toggle('dark-theme');
-                document.documentElement.classList.toggle('light-theme');
-                localStorage.setItem('printsomeDarkMode', document.documentElement.classList.contains('dark-theme'));
+            // Theme toggle
+            themeToggle.addEventListener('click', () => {
+                userSettings.darkMode = !userSettings.darkMode;
+                applyUserSettings();
+                localStorage.setItem('printsomeSettings', JSON.stringify(userSettings));
             });
             
-            document.getElementById('closeAuth').addEventListener('click', () => {
-                document.getElementById('authModal').classList.remove('active');
+            // Language selection
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    const lang = option.dataset.lang;
+                    changeLanguage(lang);
+                });
             });
             
-            document.getElementById('closeProductModal').addEventListener('click', () => {
-                document.getElementById('productModal').classList.remove('active');
+            // Language button
+            languageBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleLanguageDropdown();
             });
             
-            document.getElementById('allProductsLink').addEventListener('click', (e) => {
-                e.preventDefault();
-                showPage('products');
+            // Close auth modal
+            closeAuth.addEventListener('click', () => {
+                authModal.classList.remove('active');
             });
             
+            // Close product modal
+            closeProductModal.addEventListener('click', () => {
+                productModal.classList.remove('active');
+            });
+            
+            // Filter chips
             document.querySelectorAll('.filter-chip').forEach(chip => {
-                chip.addEventListener('click', () => {
-                    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                chip.addEventListener('click', (e) => {
+                    if (chip.id === 'loginButton') return;
+                    
+                    document.querySelectorAll('.filter-chip').forEach(c => {
+                        c.classList.remove('active');
+                    });
                     chip.classList.add('active');
-                    displayAllProducts(chip.dataset.filter);
+                    
+                    const filter = chip.dataset.filter;
+                    displayAllProducts(filter);
                 });
             });
             
-            const darkMode = localStorage.getItem('printsomeDarkMode') === 'true';
-            if (darkMode) {
-                document.documentElement.classList.add('dark-theme');
-                document.documentElement.classList.remove('light-theme');
-            }
-            
-            document.getElementById('darkModeToggle').checked = darkMode;
-            document.getElementById('darkModeToggle').addEventListener('change', (e) => {
-                document.documentElement.classList.toggle('dark-theme', e.target.checked);
-                document.documentElement.classList.toggle('light-theme', !e.target.checked);
-                localStorage.setItem('printsomeDarkMode', e.target.checked);
-            });
-            
-            document.getElementById('searchInput').addEventListener('input', (e) => {
-                const term = e.target.value.toLowerCase();
-                if (term.length === 0) return displayAllProducts();
-                const filtered = products.filter(p => p.name.toLowerCase().includes(term));
-                const container = document.getElementById('allProducts');
-                container.innerHTML = filtered.length ? '' : '<div class="empty-state">Geen producten gevonden</div>';
-                filtered.forEach(p => container.appendChild(createProductCard(p)));
-            });
-            
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.language-selector')) {
-                    document.getElementById('languageDropdown').classList.remove('show');
+            // Search input
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                
+                if (searchTerm.length === 0) {
+                    displayAllProducts();
+                    return;
                 }
+                
+                const filtered = products.filter(product => 
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.description.toLowerCase().includes(searchTerm) ||
+                    product.material.toLowerCase().includes(searchTerm) ||
+                    product.category.toLowerCase().includes(searchTerm) ||
+                    (product.category2 && product.category2.toLowerCase().includes(searchTerm))
+                );
+                
+                const container = document.getElementById('allProducts');
+                
+                if (filtered.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-search"></i>
+                            <h3>${getTranslation('noProductsFound')}</h3>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                container.innerHTML = '';
+                
+                filtered.forEach(product => {
+                    const productCard = createProductCard(product, false);
+                    container.appendChild(productCard);
+                });
             });
+            
+            // Settings toggle
+            document.getElementById('darkModeToggle').addEventListener('change', (e) => {
+                userSettings.darkMode = e.target.checked;
+                applyUserSettings();
+                localStorage.setItem('printsomeSettings', JSON.stringify(userSettings));
+            });
+            
+            // All products link
+            const allProductsLink = document.getElementById('allProductsLink');
+            if (allProductsLink) {
+                allProductsLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showPage('products');
+                });
+            }
+        }
+        
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', async () => {
+            console.log('🚀 PrintSome app starten...');
+            
+            // Fix mobile viewport height
+            setViewportHeight();
+            window.addEventListener('resize', setViewportHeight);
+            
+            // Load data and setup
+            loadUserSettings();
+            loadProducts();
+            setupEventListeners();
+            
+            // Welcome message
+            setTimeout(() => {
+                showToast(getTranslation('welcomeToast'), 3000);
+            }, 1000);
         });
     </script>
 </body>

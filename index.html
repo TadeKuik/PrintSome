@@ -391,6 +391,63 @@
             font-size: 12px;
         }
 
+        /* Weekly Discount Section */
+        .weekly-discount-section {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius-lg);
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: var(--shadow);
+            border: 2px dashed var(--primary-color);
+            text-align: center;
+        }
+
+        .weekly-discount-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .weekly-discount-code {
+            font-family: monospace;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--accent-color);
+            background-color: rgba(255, 160, 0, 0.1);
+            padding: 16px 24px;
+            border-radius: var(--border-radius);
+            display: inline-block;
+            margin: 12px 0;
+            border: 2px solid var(--accent-color);
+        }
+
+        .weekly-discount-info {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-top: 12px;
+        }
+
+        .weekly-discount-timer {
+            background-color: var(--gray-100);
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            font-size: 13px;
+            color: var(--gray-700);
+            margin-top: 16px;
+            display: inline-block;
+        }
+
+        .weekly-discount-timer i {
+            color: var(--primary-color);
+            margin-right: 6px;
+        }
+
         /* FAQ Styles */
         .faq-section {
             background-color: var(--light-color);
@@ -690,6 +747,43 @@
         .settings-info p {
             font-size: 13px;
             color: var(--gray-500);
+        }
+
+        /* Settings Discount Section */
+        .settings-discount-box {
+            background-color: rgba(255, 160, 0, 0.1);
+            border: 2px dashed var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        .settings-discount-label {
+            font-size: 13px;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .settings-discount-code {
+            font-family: monospace;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+
+        .settings-discount-timer {
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-top: 8px;
+        }
+
+        .settings-discount-timer i {
+            color: var(--primary-color);
+            margin-right: 5px;
         }
 
         /* Privacy Page - Telefoon vriendelijk */
@@ -1096,7 +1190,7 @@
             }
         }
 
-        /* Product Detail Modal - Nieuwe Layout */
+        /* Product Detail Modal */
         .product-modal {
             position: fixed;
             top: 0;
@@ -1231,7 +1325,7 @@
             margin: 16px 0;
         }
 
-        .product-modal-bonus {
+        .product-modal-discount {
             background-color: rgba(255, 160, 0, 0.1);
             border: 2px dashed var(--accent-color);
             padding: 16px;
@@ -1241,18 +1335,18 @@
             display: none;
         }
 
-        .product-modal-bonus.show {
+        .product-modal-discount.show {
             display: block;
         }
 
-        .bonus-title {
+        .discount-title {
             font-size: 14px;
             color: var(--accent-color);
             margin-bottom: 8px;
             font-weight: 600;
         }
 
-        .bonus-code {
+        .discount-code {
             font-family: monospace;
             font-size: 18px;
             font-weight: 700;
@@ -1262,6 +1356,12 @@
             padding: 8px 16px;
             border-radius: var(--border-radius-sm);
             display: inline-block;
+        }
+
+        .discount-info {
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-top: 8px;
         }
 
         /* Loading State */
@@ -1419,6 +1519,22 @@
                     <div class="welcome-user" id="welcomeUser">Log in voor persoonlijke kortingscodes</div>
                 </div>
 
+                <!-- Weekly Discount Section (only visible when logged in) -->
+                <div class="weekly-discount-section" id="weeklyDiscountSection" style="display: none;">
+                    <h2 class="weekly-discount-title">
+                        <i class="fas fa-gift"></i>
+                        Jouw Wekelijkse Kortingscode
+                    </h2>
+                    <div class="weekly-discount-code" id="weeklyDiscountCode">LOADING...</div>
+                    <div class="weekly-discount-info" id="weeklyDiscountInfo">
+                        Deze code is geldig bij alle producten deze week
+                    </div>
+                    <div class="weekly-discount-timer" id="weeklyDiscountTimer">
+                        <i class="fas fa-clock"></i>
+                        <span>Nieuwe code op zondag</span>
+                    </div>
+                </div>
+
                 <div class="section-header">
                     <h2 class="section-title">Uitgelichte Producten</h2>
                     <a href="#" class="section-link" id="allProductsLink" data-page="products">
@@ -1457,7 +1573,7 @@
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            Bonuscodes kun je invoeren tijdens het reserveren. Zodra de code geldig is, wordt de korting automatisch verrekend.
+                            Elke week krijg je als ingelogde gebruiker één kortingscode die geldig is voor alle producten. De code wordt elke zondag vernieuwd. Je kunt je code vinden op de home pagina en in de instellingen.
                         </div>
                     </div>
                     
@@ -1525,10 +1641,14 @@
                         </div>
                         <button class="filter-chip" id="loginButton">Inloggen</button>
                     </div>
-                    <div class="settings-item">
-                        <div class="settings-info">
-                            <h4>Bonuscodes</h4>
-                            <p id="settingsBonusCount">Log in voor bonuscodes</p>
+                    
+                    <!-- Discount Code Section -->
+                    <div class="settings-discount-box" id="settingsDiscountBox" style="display: none;">
+                        <div class="settings-discount-label">Jouw Wekelijkse Kortingscode</div>
+                        <div class="settings-discount-code" id="settingsDiscountCode">LOGIN FIRST</div>
+                        <div class="settings-discount-timer" id="settingsDiscountTimer">
+                            <i class="fas fa-clock"></i>
+                            <span>Nieuwe code op zondag</span>
                         </div>
                     </div>
                 </div>
@@ -1838,7 +1958,6 @@
         let currentPage = 'home';
         let products = [];
         let filteredProducts = [];
-        let userBonuses = [];
         let userFavorites = [];
         let viewedProducts = [];
         let userSettings = {
@@ -1849,9 +1968,6 @@
         let authMode = 'login'; // 'login' or 'signup'
         let currentDiscountCode = null;
         let discountCodeExpiry = null;
-        
-        // Possible discount codes
-        const possibleDiscountCodes = ['KEY91', 'SWITCH64', 'HEXAGON27'];
         
         // DOM Elements
         const appContainer = document.getElementById('appContainer');
@@ -1981,8 +2097,8 @@
                 await auth.signOut();
                 console.log('✅ Uitgelogd');
                 currentUser = null;
-                userBonuses = [];
                 userFavorites = [];
+                viewedProducts = [];
                 currentDiscountCode = null;
                 discountCodeExpiry = null;
                 updateAuthUI();
@@ -2024,11 +2140,13 @@
                     loginButton.onclick = logout;
                 }
                 
-                // Generate weekly discount code if needed
+                // Generate weekly discount code
                 generateWeeklyDiscountCode();
+                updateDiscountCodeDisplay();
+                
             } else {
                 userAvatar.innerHTML = '<i class="fas fa-user"></i>';
-                welcomeUser.textContent = 'Log in voor persoonlijke bonussen';
+                welcomeUser.textContent = 'Log in voor persoonlijke kortingscodes';
                 accountStatus.textContent = 'Niet ingelogd';
                 
                 if (loginButton) {
@@ -2038,6 +2156,12 @@
                         renderAuthForm();
                     };
                 }
+                
+                // Hide discount sections
+                const weeklyDiscountSection = document.getElementById('weeklyDiscountSection');
+                const settingsDiscountBox = document.getElementById('settingsDiscountBox');
+                if (weeklyDiscountSection) weeklyDiscountSection.style.display = 'none';
+                if (settingsDiscountBox) settingsDiscountBox.style.display = 'none';
             }
             
             userAvatar.onclick = () => {
@@ -2060,7 +2184,7 @@
             const storedExpiry = localStorage.getItem(`discountCodeExpiry_${currentUser.uid}`);
             const storedWeekNumber = localStorage.getItem(`weekNumber_${currentUser.uid}`);
             
-            // Calculate current week number (weeks since epoch)
+            // Calculate current week number
             const weekNumber = Math.floor(now.getTime() / (7 * 24 * 60 * 60 * 1000));
             
             // Check if we need to generate a new code (every Sunday)
@@ -2068,15 +2192,15 @@
             const needsNewCode = !storedCode || !storedExpiry || new Date(storedExpiry) <= now || storedWeekNumber !== weekNumber.toString();
             
             if (needsNewCode) {
-                // Generate random code from possible codes
-                const randomIndex = Math.floor(Math.random() * possibleDiscountCodes.length);
-                currentDiscountCode = possibleDiscountCodes[randomIndex];
+                // Generate a random discount code
+                const randomCode = generateRandomDiscountCode();
+                currentDiscountCode = randomCode;
                 
-                // Set expiry to end of week (next Sunday)
+                // Set expiry to end of week (next Sunday at midnight)
                 const expiryDate = new Date(now);
-                const daysUntilSunday = (7 - now.getDay()) % 7;
-                expiryDate.setDate(expiryDate.getDate() + daysUntilSunday + 1); // +1 to make it end of Sunday
-                expiryDate.setHours(23, 59, 59, 999); // End of day
+                const daysUntilSunday = (7 - now.getDay()) % 7 || 7; // If today is Sunday, next week
+                expiryDate.setDate(expiryDate.getDate() + daysUntilSunday);
+                expiryDate.setHours(23, 59, 59, 999);
                 
                 discountCodeExpiry = expiryDate;
                 
@@ -2085,33 +2209,82 @@
                 localStorage.setItem(`discountCodeExpiry_${currentUser.uid}`, discountCodeExpiry.toISOString());
                 localStorage.setItem(`weekNumber_${currentUser.uid}`, weekNumber.toString());
                 
-                updateDiscountCodeDisplay();
-                
                 // Show notification for new code
                 showToast(`Nieuwe weekkorting: ${currentDiscountCode}`, 5000);
             } else {
                 currentDiscountCode = storedCode;
                 discountCodeExpiry = new Date(storedExpiry);
-                updateDiscountCodeDisplay();
             }
         }
         
-        // Update discount code display in settings
+        // Generate a random discount code
+        function generateRandomDiscountCode() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let result = '';
+            for (let i = 0; i < 6; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+        
+        // Update discount code display
         function updateDiscountCodeDisplay() {
-            const settingsBonusCount = document.getElementById('settingsBonusCount');
-            if (!settingsBonusCount) return;
+            // Update home page discount section
+            const weeklyDiscountSection = document.getElementById('weeklyDiscountSection');
+            const weeklyDiscountCode = document.getElementById('weeklyDiscountCode');
+            const weeklyDiscountInfo = document.getElementById('weeklyDiscountInfo');
+            const weeklyDiscountTimer = document.getElementById('weeklyDiscountTimer');
+            
+            // Update settings discount section
+            const settingsDiscountBox = document.getElementById('settingsDiscountBox');
+            const settingsDiscountCode = document.getElementById('settingsDiscountCode');
+            const settingsDiscountTimer = document.getElementById('settingsDiscountTimer');
             
             if (currentUser && currentDiscountCode) {
+                // Show discount sections
+                if (weeklyDiscountSection) weeklyDiscountSection.style.display = 'block';
+                if (settingsDiscountBox) settingsDiscountBox.style.display = 'block';
+                
                 const now = new Date();
                 const timeDiff = discountCodeExpiry - now;
-                const daysLeft = Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
                 
-                let displayText = `${currentDiscountCode} - Nog ${daysLeft} dag${daysLeft !== 1 ? 'en' : ''} geldig`;
-                settingsBonusCount.textContent = displayText;
+                // Calculate days, hours, minutes left
+                const daysLeft = Math.max(0, Math.floor(timeDiff / (1000 * 60 * 60 * 24)));
+                const hoursLeft = Math.max(0, Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+                const minutesLeft = Math.max(0, Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60)));
+                
+                let timerText = '';
+                if (daysLeft > 1) {
+                    timerText = `Nog ${daysLeft} dagen geldig`;
+                } else if (daysLeft === 1) {
+                    timerText = `Nog 1 dag geldig`;
+                } else if (hoursLeft > 0) {
+                    timerText = `Nog ${hoursLeft} uur geldig`;
+                } else {
+                    timerText = `Nog ${minutesLeft} minuten geldig`;
+                }
+                
+                // Update home page
+                if (weeklyDiscountCode) weeklyDiscountCode.textContent = currentDiscountCode;
+                if (weeklyDiscountInfo) weeklyDiscountInfo.textContent = 'Deze code is geldig bij alle producten';
+                if (weeklyDiscountTimer) {
+                    weeklyDiscountTimer.innerHTML = `<i class="fas fa-clock"></i><span>${timerText}</span>`;
+                }
+                
+                // Update settings page
+                if (settingsDiscountCode) settingsDiscountCode.textContent = currentDiscountCode;
+                if (settingsDiscountTimer) {
+                    settingsDiscountTimer.innerHTML = `<i class="fas fa-clock"></i><span>${timerText}</span>`;
+                }
+                
             } else if (currentUser) {
-                settingsBonusCount.textContent = "Geen actieve code";
+                // User logged in but no code (shouldn't happen)
+                if (weeklyDiscountSection) weeklyDiscountSection.style.display = 'none';
+                if (settingsDiscountBox) settingsDiscountBox.style.display = 'none';
             } else {
-                settingsBonusCount.textContent = "Log in voor bonuscodes";
+                // Not logged in
+                if (weeklyDiscountSection) weeklyDiscountSection.style.display = 'none';
+                if (settingsDiscountBox) settingsDiscountBox.style.display = 'none';
             }
         }
         
@@ -2223,23 +2396,9 @@
                 errorElement.textContent = message;
                 errorElement.classList.add('show');
                 
-                // Hide after 5 seconds
                 setTimeout(() => {
                     errorElement.classList.remove('show');
                 }, 5000);
-            }
-        }
-        
-        function showAuthSuccess(message) {
-            const successElement = document.getElementById('authSuccess');
-            if (successElement) {
-                successElement.textContent = message;
-                successElement.classList.add('show');
-                
-                // Hide after 3 seconds
-                setTimeout(() => {
-                    successElement.classList.remove('show');
-                }, 3000);
             }
         }
         
@@ -2259,7 +2418,6 @@
                 loadUserData(user.uid);
             } else {
                 currentUser = null;
-                userBonuses = [];
                 userFavorites = [];
                 viewedProducts = [];
                 currentDiscountCode = null;
@@ -2281,7 +2439,7 @@
                         <div class="loading">
                             <div class="loading-spinner"></div>
                             <p>Producten laden...</p>
-                    </div>
+                        </div>
                     `;
                 }
                 
@@ -2323,8 +2481,7 @@
                     featured: true,
                     rating: 4.7,
                     imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Fidget-Toggle-switch.png',
-                    discount: 0,
-                    bonusCode: 'SWITCH64'
+                    discount: 0
                 },
                 {
                     name: 'Hexagon Fidget',
@@ -2335,8 +2492,7 @@
                     featured: true,
                     rating: 4.6,
                     imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Hexagon-fidget.png',
-                    discount: 0,
-                    bonusCode: 'HEXAGON27'
+                    discount: 0
                 },
                 {
                     name: 'Sleutelhanger',
@@ -2344,12 +2500,11 @@
                     price: 1.99,
                     material: 'PLA Basic',
                     category: 'home',
-                    category2: 'costum',
+                    category2: 'custom',
                     featured: false,
                     rating: 4.5,
                     imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Binnenkort-beschikbaar_Tekst.png',
-                    discount: 0,
-                    bonusCode: 'KEY91'
+                    discount: 0
                 },
             ];
             
@@ -2426,8 +2581,6 @@
             
             const isFavorite = userFavorites.includes(product.id);
             const favoriteIcon = isFavorite ? 'fas fa-heart' : 'far fa-heart';
-            const hasBonus = userBonuses.includes(product.id);
-            const bonusClass = hasBonus ? 'show' : '';
             
             let priceDisplay = `€${product.price.toFixed(2)}`;
             let discountDisplay = '';
@@ -2468,9 +2621,6 @@
                         ${product.category2 ? `<span class="product-category">${product.category2}</span>` : ''}
                     </div>
                     <div class="product-price">${priceDisplay}</div>
-                    <div class="bonus-badge ${bonusClass}">
-                        <i class="fas fa-gift"></i> Bonus beschikbaar
-                    </div>
                 </div>
             `;
             
@@ -2507,18 +2657,10 @@
             const productId = card.dataset.id;
             const favoriteBtn = card.querySelector('.header-action-btn');
             const favoriteIcon = favoriteBtn.querySelector('i');
-            const bonusBadge = card.querySelector('.bonus-badge');
             
             const isFavorite = userFavorites.includes(productId);
             favoriteBtn.dataset.favorite = isFavorite;
             favoriteIcon.className = isFavorite ? 'fas fa-heart' : 'far fa-heart';
-            
-            const hasBonus = userBonuses.includes(productId);
-            if (hasBonus) {
-                bonusBadge.classList.add('show');
-            } else {
-                bonusBadge.classList.remove('show');
-            }
         }
         
         // Show product details modal
@@ -2528,7 +2670,6 @@
             
             if (currentUser && !viewedProducts.includes(productId)) {
                 viewedProducts.push(productId);
-                // Not showing viewed count anymore as per requirement
             }
             
             let priceDisplay = `€${product.price.toFixed(2)}`;
@@ -2536,8 +2677,6 @@
                 const discountedPrice = product.price * (1 - product.discount / 100);
                 priceDisplay = `€${discountedPrice.toFixed(2)}`;
             }
-            
-            const hasBonus = userBonuses.includes(productId);
             
             // Determine image to show
             let imageContent = '';
@@ -2574,14 +2713,14 @@
 
                         <div class="product-modal-price">${priceDisplay}</div>
 
-                        <div class="product-modal-bonus ${(hasBonus || currentDiscountCode) && currentUser ? 'show' : ''}" id="productModalBonus">
-                            <div class="bonus-title">Jouw Exclusieve Bonuscode</div>
-                            <div class="bonus-code" id="productBonusCode">
-                                ${currentDiscountCode || product.bonusCode || 'BONUS10'}
+                        <div class="product-modal-discount ${currentUser ? 'show' : ''}" id="productModalDiscount">
+                            <div class="discount-title">Gebruik je wekelijkse kortingscode</div>
+                            <div class="discount-code" id="productDiscountCode">
+                                ${currentUser && currentDiscountCode ? currentDiscountCode : 'LOGIN VOOR KORTING'}
                             </div>
-                            <p style="margin-top: 8px; font-size: 12px; color: var(--gray-500);">
-                                ${currentDiscountCode ? 'Wekelijkse kortingscode' : 'Geldig bij je volgende bestelling'}
-                            </p>
+                            <div class="discount-info" id="productDiscountInfo">
+                                ${currentUser ? 'Deze code is geldig bij alle producten deze week' : 'Log in voor een persoonlijke kortingscode'}
+                            </div>
                         </div>
                     </div>
                     
@@ -2592,23 +2731,11 @@
             `;
             
             productModal.classList.add('active');
-            
-            // Automatically grant bonus code when user views product
-            if (currentUser && !hasBonus) {
-                setTimeout(() => {
-                    grantBonusToUser(productId);
-                }, 500);
-            }
         }
         
         // Load user data from Firebase
         async function loadUserData(userId) {
             try {
-                const bonusesDoc = await db.collection('userBonuses').doc(userId).get();
-                if (bonusesDoc.exists) {
-                    userBonuses = bonusesDoc.data().productIds || [];
-                }
-                
                 const favoritesDoc = await db.collection('userFavorites').doc(userId).get();
                 if (favoritesDoc.exists) {
                     userFavorites = favoritesDoc.data().productIds || [];
@@ -2634,63 +2761,10 @@
                     email: currentUser.email
                 }, { merge: true });
                 
-                // Save bonuses
-                await db.collection('userBonuses').doc(currentUser.uid).set({
-                    productIds: userBonuses,
-                    lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
-                    email: currentUser.email
-                }, { merge: true });
-                
                 console.log('✅ User data saved');
                 
             } catch (error) {
                 console.error('Error saving user data:', error);
-            }
-        }
-        
-        // Grant bonus to user when they view a product
-        async function grantBonusToUser(productId) {
-            if (!currentUser) return false;
-            
-            const product = products.find(p => p.id === productId);
-            if (!product) return false;
-            
-            // Check if user already has bonus for this product
-            if (userBonuses.includes(productId)) {
-                return true; // Already has bonus
-            }
-            
-            try {
-                // Add bonus to user's list
-                userBonuses.push(productId);
-                
-                // Save to Firebase
-                await db.collection('userBonuses').doc(currentUser.uid).set({
-                    productIds: userBonuses,
-                    lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
-                    email: currentUser.email
-                }, { merge: true });
-                
-                // Update UI
-                updateProductCards();
-                
-                // Update modal bonus section
-                const bonusSection = document.getElementById('productModalBonus');
-                if (bonusSection) {
-                    bonusSection.classList.add('show');
-                    const codeToShow = currentDiscountCode || product.bonusCode || 'BONUS10';
-                    document.getElementById('productBonusCode').textContent = codeToShow;
-                }
-                
-                // Show success message with the actual code
-                const codeToShow = currentDiscountCode || product.bonusCode || 'BONUS10';
-                showToast(`Bonuscode ontvangen: ${codeToShow}`, 5000);
-                
-                return true;
-                
-            } catch (error) {
-                console.error('Error granting bonus:', error);
-                return false;
             }
         }
         
@@ -2823,8 +2897,9 @@
             switch(page) {
                 case 'home':
                     headerTitle.textContent = 'PrintSome';
-                    // Setup FAQ when home page is shown
+                    // Setup FAQ and update discount display
                     setTimeout(setupFAQ, 100);
+                    updateDiscountCodeDisplay();
                     break;
                 case 'products':
                     headerTitle.textContent = 'Producten';
@@ -2964,6 +3039,13 @@
             loadUserSettings();
             loadProducts();
             setupEventListeners();
+            
+            // Update discount timer every minute
+            setInterval(() => {
+                if (currentUser) {
+                    updateDiscountCodeDisplay();
+                }
+            }, 60000);
             
             // Welcome message
             setTimeout(() => {

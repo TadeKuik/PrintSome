@@ -16,30 +16,20 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
-    <!-- Font Awesome Icons -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Reset & Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-        }
-
         :root {
-            /* Light Theme Variables - Geel & Zwart */
-            --primary-color: #FFD700; /* Geel */
-            --primary-light: #FFF9C4; /* Lichtgeel */
-            --secondary-color: #FFC400; /* Amber geel */
-            --accent-color: #FFA000; /* Oranje-geel */
-            --success-color: #4CAF50; /* Groen blijft */
-            --warning-color: #FF9800; /* Oranje */
-            --danger-color: #F44336; /* Rood blijft */
+            --primary-color: #FFD700;
+            --primary-light: #FFF9C4;
+            --secondary-color: #FFC400;
+            --accent-color: #FFA000;
+            --success-color: #4CAF50;
+            --warning-color: #FF9800;
+            --danger-color: #F44336;
             --light-color: #ffffff;
-            --dark-color: #000000; /* Zwart */
+            --dark-color: #000000;
             --gray-50: #f8f9fa;
             --gray-100: #e9ecef;
             --gray-200: #dee2e6;
@@ -49,26 +39,13 @@
             --gray-600: #495057;
             --gray-700: #343a40;
             --gray-800: #212529;
-            --gray-900: #000000; /* Zwart */
+            --gray-900: #000000;
             
-            --border-radius-sm: 8px;
             --border-radius: 12px;
             --border-radius-lg: 16px;
-            --border-radius-xl: 20px;
-            --border-radius-2xl: 24px;
-            
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
             --shadow: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-md: 0 6px 10px rgba(0,0,0,0.1);
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
-            --shadow-xl: 0 15px 35px rgba(0,0,0,0.2);
-            
-            --transition-fast: 150ms ease;
             --transition: 250ms ease;
-            --transition-slow: 350ms ease;
-            
-            --safe-area-top: env(safe-area-inset-top);
-            --safe-area-bottom: env(safe-area-inset-bottom);
             
             --header-height: 60px;
             --nav-height: 70px;
@@ -76,14 +53,13 @@
         }
 
         .dark-theme {
-            /* Dark Theme Variables - Geel & Zwart */
-            --primary-color: #FFC107; /* Donkerder geel */
-            --primary-light: #333300; /* Donker geel-zwart */
-            --secondary-color: #FFB300; /* Amber */
-            --accent-color: #FF8F00; /* Donker oranje-geel */
-            --success-color: #388E3C; /* Donker groen */
-            --warning-color: #F57C00; /* Donker oranje */
-            --danger-color: #D32F2F; /* Donker rood */
+            --primary-color: #FFC107;
+            --primary-light: #333300;
+            --secondary-color: #FFB300;
+            --accent-color: #FF8F00;
+            --success-color: #388E3C;
+            --warning-color: #F57C00;
+            --danger-color: #D32F2F;
             --light-color: #121212;
             --dark-color: #ffffff;
             --gray-50: #1e1e1e;
@@ -98,7 +74,15 @@
             --gray-900: #ffffff;
         }
 
-        html {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+
+        html, body {
             height: 100%;
             overflow: hidden;
         }
@@ -106,18 +90,14 @@
         body {
             background-color: var(--light-color);
             color: var(--dark-color);
-            transition: background-color var(--transition-slow), color var(--transition-slow);
+            transition: background-color var(--transition), color var(--transition);
             height: 100vh;
-            height: calc(var(--vh, 1vh) * 100);
-            overflow: hidden;
-            position: relative;
-            padding-top: var(--safe-area-top);
-            padding-bottom: var(--safe-area-bottom);
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
             display: flex;
             flex-direction: column;
         }
 
-        /* App Container */
         .app-container {
             flex: 1;
             display: flex;
@@ -131,7 +111,6 @@
             background-color: var(--light-color);
         }
 
-        /* App Header */
         .app-header {
             height: var(--header-height);
             background-color: var(--light-color);
@@ -143,7 +122,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            transition: all var(--transition);
         }
 
         .header-title {
@@ -155,14 +133,10 @@
             gap: 8px;
         }
 
-        .header-title i {
-            color: var(--accent-color);
-        }
-
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
         }
 
         .header-action-btn {
@@ -177,11 +151,10 @@
             color: var(--dark-color);
             font-size: 18px;
             cursor: pointer;
-            transition: background-color var(--transition-fast);
+            transition: background-color var(--transition);
         }
 
-        .header-action-btn:hover,
-        .header-action-btn:active {
+        .header-action-btn:hover {
             background-color: var(--gray-100);
         }
 
@@ -190,7 +163,7 @@
             height: 36px;
             border-radius: 50%;
             background-color: var(--primary-color);
-            color: #000000; /* Zwart tekst op geel */
+            color: #000000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -202,29 +175,13 @@
             overflow: hidden;
         }
 
-        .user-avatar:hover,
-        .user-avatar:active {
-            border-color: var(--accent-color);
-            transform: scale(1.05);
-        }
-
-        .user-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Main Content Area */
         .main-content {
             flex: 1;
             overflow-y: auto;
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
             padding: 16px;
             padding-bottom: calc(var(--nav-height) + 16px);
         }
 
-        /* Bottom Navigation */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -236,7 +193,7 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding-bottom: var(--safe-area-bottom);
+            padding-bottom: env(safe-area-inset-bottom);
             z-index: 100;
             max-width: var(--container-max-width);
             margin: 0 auto;
@@ -253,7 +210,6 @@
             color: var(--gray-500);
             transition: all var(--transition);
             position: relative;
-            min-width: 0;
         }
 
         .nav-item.active {
@@ -263,135 +219,37 @@
         .nav-icon {
             font-size: 20px;
             margin-bottom: 4px;
-            transition: transform var(--transition);
-        }
-
-        .nav-item.active .nav-icon {
-            transform: translateY(-2px);
         }
 
         .nav-label {
             font-size: 11px;
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
-        .nav-indicator {
-            position: absolute;
-            top: 0;
-            width: 4px;
-            height: 3px;
-            background-color: var(--primary-color);
-            border-radius: 2px;
-            opacity: 0;
-            transition: opacity var(--transition);
-        }
-
-        .nav-item.active .nav-indicator {
-            opacity: 1;
-        }
-
-        /* Page Content */
         .page {
             display: none;
-            animation: fadeIn var(--transition) forwards;
         }
 
         .page.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Home Page */
         .welcome-card {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: #000000; /* Zwart tekst op geel */
+            color: #000000;
             border-radius: var(--border-radius-lg);
             padding: 24px;
             margin-bottom: 20px;
             box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .welcome-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
-            opacity: 0.3;
         }
 
         .welcome-title {
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 8px;
-            position: relative;
-            z-index: 1;
         }
 
-        .welcome-subtitle {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .welcome-user {
-            font-weight: 600;
-            background-color: rgba(0,0,0,0.2); /* Zwart met transparantie */
-            padding: 4px 12px;
-            border-radius: 20px;
-            display: inline-block;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            margin-top: 24px;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--dark-color);
-        }
-
-        .section-link {
-            font-size: 14px;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .section-link i {
-            font-size: 12px;
-        }
-
-        /* Weekly Discount Section */
         .weekly-discount-section {
             background-color: var(--light-color);
             border-radius: var(--border-radius-lg);
@@ -413,103 +271,25 @@
             gap: 10px;
         }
 
-        .weekly-discount-code {
-            font-family: monospace;
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: 3px;
-            color: var(--accent-color);
-            background-color: rgba(255, 160, 0, 0.1);
-            padding: 16px 24px;
-            border-radius: var(--border-radius);
-            display: inline-block;
-            margin: 12px 0;
-            border: 2px solid var(--accent-color);
-        }
-
         .weekly-discount-info {
             font-size: 14px;
             color: var(--gray-600);
-            margin-top: 12px;
+            margin: 12px 0;
         }
 
-        .weekly-discount-timer {
-            background-color: var(--gray-100);
-            padding: 8px 16px;
-            border-radius: var(--border-radius);
-            font-size: 13px;
-            color: var(--gray-700);
-            margin-top: 16px;
-            display: inline-block;
-        }
-
-        .weekly-discount-timer i {
-            color: var(--primary-color);
-            margin-right: 6px;
-        }
-
-        /* FAQ Styles */
-        .faq-section {
-            background-color: var(--light-color);
-            border-radius: var(--border-radius-lg);
-            padding: 20px;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        .faq-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid var(--gray-100);
-            padding: 16px 0;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-        }
-
-        .faq-question {
+        .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: pointer;
-            font-weight: 600;
+            margin: 24px 0 16px 0;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
             color: var(--dark-color);
-            font-size: 16px;
         }
 
-        .faq-question i {
-            color: var(--primary-color);
-            transition: transform var(--transition);
-        }
-
-        .faq-question.active i {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height var(--transition);
-            color: var(--gray-700);
-            line-height: 1.6;
-        }
-
-        .faq-answer.show {
-            max-height: 300px;
-            margin-top: 12px;
-        }
-
-        /* Products Grid */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -533,8 +313,7 @@
             position: relative;
         }
 
-        .product-card:hover,
-        .product-card:active {
+        .product-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
         }
@@ -562,19 +341,6 @@
             transform: scale(1.05);
         }
 
-        .product-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: var(--accent-color);
-            color: #000000; /* Zwart tekst */
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
-            z-index: 2;
-        }
-
         .product-info {
             padding: 12px;
         }
@@ -589,53 +355,11 @@
             text-overflow: ellipsis;
         }
 
-        .product-categories {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-            margin-bottom: 8px;
-        }
-
-        .product-material, .product-category {
-            font-size: 11px;
-            color: var(--gray-500);
-            background-color: var(--gray-100);
-            padding: 2px 8px;
-            border-radius: 10px;
-            display: inline-block;
-        }
-
         .product-price {
             font-size: 16px;
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 8px;
-        }
-
-        .bonus-badge {
-            background-color: rgba(255, 160, 0, 0.1); /* Accent kleur met transparantie */
-            border: 1px dashed var(--accent-color);
-            padding: 6px 8px;
-            border-radius: var(--border-radius-sm);
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--accent-color);
-            display: none;
-            margin-top: 4px;
-        }
-
-        .bonus-badge.show {
-            display: block;
-        }
-
-        .bonus-badge i {
-            margin-right: 4px;
-            font-size: 10px;
-        }
-
-        /* Products Page */
-        .products-page-header {
-            margin-bottom: 20px;
         }
 
         .search-bar {
@@ -648,16 +372,9 @@
             padding: 14px 16px 14px 44px;
             background-color: var(--gray-100);
             border: none;
-            border-radius: var(--border-radius-lg);
+            border-radius: var(--border-radius);
             font-size: 16px;
             color: var(--dark-color);
-            transition: all var(--transition);
-        }
-
-        .search-input:focus {
-            outline: none;
-            background-color: var(--gray-200);
-            box-shadow: 0 0 0 2px var(--primary-light);
         }
 
         .search-icon {
@@ -673,8 +390,6 @@
             gap: 8px;
             overflow-x: auto;
             padding-bottom: 8px;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
         }
 
         .filter-chips::-webkit-scrollbar {
@@ -690,16 +405,14 @@
             color: var(--gray-700);
             white-space: nowrap;
             cursor: pointer;
-            transition: all var(--transition);
             border: none;
         }
 
         .filter-chip.active {
             background-color: var(--primary-color);
-            color: #000000; /* Zwart tekst op geel */
+            color: #000000;
         }
 
-        /* Settings Page */
         .settings-section {
             background-color: var(--light-color);
             border-radius: var(--border-radius);
@@ -718,12 +431,6 @@
             gap: 10px;
         }
 
-        .settings-title i {
-            color: var(--primary-color);
-            width: 24px;
-            text-align: center;
-        }
-
         .settings-item {
             display: flex;
             justify-content: space-between;
@@ -737,187 +444,6 @@
             border-bottom: none;
         }
 
-        .settings-info h4 {
-            font-size: 15px;
-            font-weight: 500;
-            margin-bottom: 2px;
-            color: var(--dark-color);
-        }
-
-        .settings-info p {
-            font-size: 13px;
-            color: var(--gray-500);
-        }
-
-        /* Settings Discount Section */
-        .settings-discount-box {
-            background-color: rgba(255, 160, 0, 0.1);
-            border: 2px dashed var(--accent-color);
-            border-radius: var(--border-radius);
-            padding: 20px;
-            margin-top: 16px;
-            text-align: center;
-        }
-
-        .settings-discount-label {
-            font-size: 13px;
-            color: var(--accent-color);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .settings-discount-code {
-            font-family: monospace;
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: 3px;
-            color: var(--accent-color);
-            margin-bottom: 8px;
-        }
-
-        .settings-discount-timer {
-            font-size: 12px;
-            color: var(--gray-600);
-            margin-top: 8px;
-        }
-
-        .settings-discount-timer i {
-            color: var(--primary-color);
-            margin-right: 5px;
-        }
-
-        /* Privacy Page - Telefoon vriendelijk */
-        .privacy-content {
-            background-color: var(--light-color);
-            border-radius: var(--border-radius);
-            padding: 20px 16px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow);
-        }
-
-        .privacy-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .privacy-subtitle {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--dark-color);
-            margin: 24px 0 12px 0;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--gray-200);
-        }
-
-        .privacy-text {
-            line-height: 1.6;
-            margin-bottom: 16px;
-            color: var(--gray-700);
-            font-size: 15px;
-        }
-
-        .privacy-list {
-            padding-left: 20px;
-            margin-bottom: 16px;
-            color: var(--gray-700);
-            font-size: 15px;
-        }
-
-        .privacy-list li {
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-
-        .privacy-table-container {
-            overflow-x: auto;
-            margin: 16px 0;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .privacy-table {
-            width: 100%;
-            min-width: 600px;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
-
-        .privacy-table th {
-            background-color: var(--gray-100);
-            color: var(--dark-color);
-            font-weight: 600;
-            padding: 12px 8px;
-            text-align: left;
-            border: 1px solid var(--gray-200);
-        }
-
-        .privacy-table td {
-            padding: 12px 8px;
-            border: 1px solid var(--gray-200);
-            color: var(--gray-700);
-        }
-
-        .privacy-table tr:nth-child(even) {
-            background-color: var(--gray-50);
-        }
-
-        .contact-info {
-            background-color: var(--gray-100);
-            padding: 16px;
-            border-radius: var(--border-radius);
-            margin: 16px 0;
-        }
-
-        .contact-info p {
-            margin-bottom: 8px;
-            color: var(--gray-700);
-            font-size: 14px;
-            line-height: 1.4;
-            word-break: break-word;
-            overflow-wrap: break-word;
-        }
-
-        .contact-info a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            word-break: break-all;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        .privacy-back-btn {
-            background-color: var(--gray-100);
-            color: var(--dark-color);
-            border: none;
-            border-radius: var(--border-radius);
-            padding: 12px 20px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 20px;
-            width: 100%;
-            justify-content: center;
-            transition: background-color var(--transition);
-        }
-
-        .privacy-back-btn:hover,
-        .privacy-back-btn:active {
-            background-color: var(--gray-200);
-        }
-
-        /* Toggle Switch */
         .toggle {
             position: relative;
             display: inline-block;
@@ -953,7 +479,6 @@
             background-color: white;
             transition: var(--transition);
             border-radius: 50%;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         input:checked + .toggle-slider {
@@ -964,8 +489,7 @@
             transform: translateX(24px);
         }
 
-        /* Auth Modal */
-        .auth-modal {
+        .auth-modal, .product-modal {
             position: fixed;
             top: 0;
             left: 0;
@@ -975,396 +499,35 @@
             z-index: 1000;
             display: none;
             flex-direction: column;
-            animation: slideUp var(--transition) forwards;
-            padding-top: var(--safe-area-top);
         }
 
-        .auth-modal.active {
+        .auth-modal.active, .product-modal.active {
             display: flex;
         }
 
-        .auth-header {
-            height: var(--header-height);
+        .toast {
+            position: fixed;
+            bottom: calc(var(--nav-height) + 20px);
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: var(--gray-800);
+            color: white;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            z-index: 1001;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 16px;
-            border-bottom: 1px solid var(--gray-100);
-        }
-
-        .auth-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--dark-color);
-        }
-
-        .close-auth {
-            background: none;
-            border: none;
-            font-size: 20px;
-            color: var(--dark-color);
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color var(--transition-fast);
-        }
-
-        .close-auth:hover,
-        .close-auth:active {
-            background-color: var(--gray-100);
-        }
-
-        .auth-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 24px 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .auth-container {
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .auth-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 30px;
-        }
-
-        .auth-tab {
-            flex: 1;
-            padding: 12px;
-            background: var(--gray-100);
-            border: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            color: var(--gray-700);
-            cursor: pointer;
-            transition: all var(--transition);
-        }
-
-        .auth-tab.active {
-            background: var(--primary-color);
-            color: #000000; /* Zwart tekst op geel */
-        }
-
-        .auth-form {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .auth-form.hidden {
-            display: none;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-label {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--dark-color);
-        }
-
-        .form-input {
-            padding: 14px;
-            background: var(--gray-100);
-            border: 2px solid transparent;
-            border-radius: var(--border-radius);
-            font-size: 16px;
-            color: var(--dark-color);
-            transition: all var(--transition);
-        }
-
-        .form-input:focus {
-            outline: none;
-            background: var(--gray-200);
-            border-color: var(--primary-color);
-        }
-
-        .auth-button {
-            padding: 16px;
-            background: var(--primary-color);
-            color: #000000; /* Zwart tekst op geel */
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 10px;
-            margin-top: 10px;
+            transition: transform var(--transition), opacity var(--transition);
+            opacity: 0;
         }
 
-        .auth-button:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
         }
 
-        .auth-button.google {
-            background: white;
-            color: var(--dark-color);
-            border: 2px solid var(--gray-200);
-        }
-
-        .auth-button.google:hover {
-            background: var(--gray-50);
-            border-color: var(--gray-300);
-        }
-
-        .auth-button.google i {
-            color: #DB4437; /* Google rood */
-        }
-
-        .auth-divider {
-            display: flex;
-            align-items: center;
-            margin: 20px 0;
-            color: var(--gray-500);
-            font-size: 14px;
-        }
-
-        .auth-divider::before,
-        .auth-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--gray-200);
-        }
-
-        .auth-divider span {
-            padding: 0 15px;
-        }
-
-        .auth-error {
-            background: rgba(244, 67, 54, 0.1); /* Danger color met transparantie */
-            border: 1px solid var(--danger-color);
-            color: var(--danger-color);
-            padding: 12px;
-            border-radius: var(--border-radius);
-            font-size: 14px;
-            margin-bottom: 16px;
-            display: none;
-        }
-
-        .auth-error.show {
-            display: block;
-        }
-
-        .auth-success {
-            background: rgba(76, 175, 80, 0.1); /* Success color met transparantie */
-            border: 1px solid var(--success-color);
-            color: var(--success-color);
-            padding: 12px;
-            border-radius: var(--border-radius);
-            font-size: 14px;
-            margin-bottom: 16px;
-            display: none;
-        }
-
-        .auth-success.show {
-            display: block;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(100%);
-            }
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        /* Product Detail Modal */
-        .product-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: var(--light-color);
-            z-index: 1000;
-            display: none;
-            flex-direction: column;
-            animation: slideUp var(--transition) forwards;
-            padding-top: var(--safe-area-top);
-        }
-
-        .product-modal.active {
-            display: flex;
-        }
-
-        .product-modal-header {
-            height: var(--header-height);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 16px;
-            border-bottom: 1px solid var(--gray-100);
-        }
-
-        .product-modal-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 0 16px 16px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-modal-image {
-            height: 280px;
-            width: 280px;
-            background-color: var(--gray-100);
-            border-radius: var(--border-radius-lg);
-            margin: 16px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            align-self: center;
-        }
-
-        .product-modal-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .product-info-columns {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .product-info-columns {
-                flex-direction: row;
-                align-items: flex-start;
-            }
-            
-            .product-modal-image {
-                width: 300px;
-                height: 300px;
-                margin: 16px 0 16px 16px;
-                order: 2;
-                flex-shrink: 0;
-            }
-            
-            .product-info-content {
-                flex: 1;
-                order: 1;
-                padding-right: 16px;
-            }
-        }
-
-        .product-info-content {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .product-modal-name {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--dark-color);
-            margin-bottom: 8px;
-        }
-
-        .product-modal-description {
-            font-size: 16px;
-            color: var(--gray-600);
-            line-height: 1.5;
-        }
-
-        .product-modal-details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .detail-item {
-            background-color: var(--gray-100);
-            padding: 12px;
-            border-radius: var(--border-radius);
-        }
-
-        .detail-label {
-            font-size: 12px;
-            color: var(--gray-500);
-            margin-bottom: 4px;
-        }
-
-        .detail-value {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--dark-color);
-        }
-
-        .product-modal-price {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-align: center;
-            margin: 16px 0;
-        }
-
-        .product-modal-discount {
-            background-color: rgba(255, 160, 0, 0.1);
-            border: 2px dashed var(--accent-color);
-            padding: 16px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            margin-top: 16px;
-            display: none;
-        }
-
-        .product-modal-discount.show {
-            display: block;
-        }
-
-        .discount-title {
-            font-size: 14px;
-            color: var(--accent-color);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .discount-code {
-            font-family: monospace;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--accent-color);
-            background-color: rgba(255,255,255,0.3);
-            padding: 8px 16px;
-            border-radius: var(--border-radius-sm);
-            display: inline-block;
-        }
-
-        .discount-info {
-            font-size: 12px;
-            color: var(--gray-600);
-            margin-top: 8px;
-        }
-
-        /* Loading State */
         .loading {
             display: flex;
             flex-direction: column;
@@ -1388,156 +551,100 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Toast Notification */
-        .toast {
-            position: fixed;
-            bottom: calc(var(--nav-height) + 20px);
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background-color: var(--gray-800);
-            color: white;
-            padding: 12px 20px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-xl);
-            z-index: 1001;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            max-width: 90%;
-            transition: transform var(--transition);
-            opacity: 0;
-        }
-
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-
-        .toast i {
-            color: var(--accent-color);
-        }
-
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--gray-500);
-        }
-
-        .empty-state i {
-            font-size: 48px;
-            margin-bottom: 16px;
-            opacity: 0.5;
-        }
-
-        .empty-state h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: var(--gray-600);
-        }
-
-        .empty-state p {
-            font-size: 14px;
-            color: var(--gray-500);
-        }
-
-        /* Utility Classes */
         .hidden {
             display: none !important;
         }
 
-        .text-center {
-            text-align: center;
+        .language-selector {
+            position: relative;
+            display: inline-block;
         }
 
-        .text-primary {
-            color: var(--primary-color);
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--light-color);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            padding: 8px 0;
+            min-width: 120px;
+            box-shadow: var(--shadow-lg);
+            display: none;
+            z-index: 1000;
         }
 
-        .text-accent {
-            color: var(--accent-color);
+        .language-dropdown.show {
+            display: block;
         }
 
-        .text-success {
-            color: var(--success-color);
+        .language-option {
+            padding: 8px 16px;
+            cursor: pointer;
+            color: var(--dark-color);
+            transition: background-color var(--transition);
         }
 
-        .bg-primary {
-            background-color: var(--primary-color);
-        }
-
-        .bg-accent {
-            background-color: var(--accent-color);
-        }
-
-        /* Scrollbar Styling */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--gray-300);
-            border-radius: 3px;
-        }
-
-        .dark-theme ::-webkit-scrollbar-thumb {
-            background: var(--gray-600);
+        .language-option:hover {
+            background-color: var(--gray-100);
         }
     </style>
 </head>
 
 <body>
-    <!-- App Container -->
     <div class="app-container" id="appContainer">
-        <!-- App Header -->
         <header class="app-header">
             <div class="header-title">
                 <i class="fas fa-cube"></i>
                 <span id="headerTitle">PrintSome</span>
             </div>
             <div class="header-actions">
-                <button class="header-action-btn" id="themeToggle" title="Thema wisselen">
+                <div class="language-selector">
+                    <button class="header-action-btn" id="languageToggle" title="Taal">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <div class="language-option" data-lang="nl">🇳🇱 Nederlands</div>
+                        <div class="language-option" data-lang="en">🇬🇧 English</div>
+                        <div class="language-option" data-lang="de">🇩🇪 Deutsch</div>
+                        <div class="language-option" data-lang="fr">🇫🇷 Français</div>
+                        <div class="language-option" data-lang="es">🇪🇸 Español</div>
+                        <div class="language-option" data-lang="zh">🇨🇳 中文</div>
+                        <div class="language-option" data-lang="ar">🇸🇦 العربية</div>
+                        <div class="language-option" data-lang="hi">🇮🇳 हिन्दी</div>
+                        <div class="language-option" data-lang="ru">🇷🇺 Русский</div>
+                    </div>
+                </div>
+                <button class="header-action-btn" id="themeToggle" title="Thema">
                     <i class="fas fa-moon"></i>
                 </button>
-                <div class="user-avatar" id="userAvatar" title="Account">
+                <div class="user-avatar" id="userAvatar">
                     <i class="fas fa-user"></i>
                 </div>
             </div>
         </header>
 
-        <!-- Main Content -->
         <main class="main-content" id="mainContent">
-            <!-- Home Page -->
             <div class="page active" id="homePage">
                 <div class="welcome-card">
-                    <h1 class="welcome-title">Welkom bij PrintSome!</h1>
-                    <p class="welcome-subtitle"> 3D printing shop</p>
-                    <div class="welcome-user" id="welcomeUser">Log in voor persoonlijke kortingscodes</div>
+                    <h1 class="welcome-title" data-i18n="welcomeTitle">Welkom bij PrintSome!</h1>
+                    <p class="welcome-subtitle" data-i18n="welcomeSubtitle">3D printing shop</p>
+                    <div class="welcome-user" id="welcomeUser" data-i18n="welcomeUser">Log in voor persoonlijke kortingscodes</div>
                 </div>
 
-                <!-- Weekly Discount Section (only visible when logged in) -->
                 <div class="weekly-discount-section" id="weeklyDiscountSection" style="display: none;">
                     <h2 class="weekly-discount-title">
                         <i class="fas fa-gift"></i>
-                        Jouw Wekelijkse Kortingscode
+                        <span data-i18n="weeklyDiscountTitle">Jouw Wekelijkse Kortingscode</span>
                     </h2>
-                    <div class="weekly-discount-code" id="weeklyDiscountCode">LOADING...</div>
-                    <div class="weekly-discount-info" id="weeklyDiscountInfo">
-                        Deze code is geldig bij alle producten deze week
-                    </div>
-                    <div class="weekly-discount-timer" id="weeklyDiscountTimer">
-                        <i class="fas fa-clock"></i>
-                        <span>Nieuwe code op zondag</span>
+                    <div class="weekly-discount-info" id="weeklyDiscountInfo" data-i18n="weeklyDiscountInfo">
+                        Bekijk je wekelijkse kortingscode per product in de product sectie
                     </div>
                 </div>
 
                 <div class="section-header">
-                    <h2 class="section-title">Uitgelichte Producten</h2>
-                    <a href="#" class="section-link" id="allProductsLink" data-page="products">
+                    <h2 class="section-title" data-i18n="featuredProducts">Uitgelichte Producten</h2>
+                    <a href="#" class="section-link" id="allProductsLink" data-page="products" data-i18n="viewAll">
                         Alles zien
                         <i class="fas fa-chevron-right"></i>
                     </a>
@@ -1546,122 +653,84 @@
                 <div class="products-grid" id="featuredProducts">
                     <div class="loading">
                         <div class="loading-spinner"></div>
-                        <p>Producten laden...</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Section -->
-                <div class="faq-section">
-                    <h2 class="faq-title">
-                        <i class="fas fa-question-circle"></i>
-                        Veelgestelde vragen
-                    </h2>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Hoe kan ik producten kopen?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            Op dit moment is het nog niet mogelijk om online te kopen. Aankopen zijn wel offline (in real life) mogelijk.
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Hoe werken bonuscodes?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            Elke week krijg je als ingelogde gebruiker één kortingscode die geldig is voor alle producten. De code wordt elke zondag vernieuwd. Je kunt je code vinden op de home pagina en in de instellingen.
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Wat voor producten verkoopt PrintSome?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            Op dit moment verkopen wij voornamelijk fidget toys. Ons assortiment wordt regelmatig uitgebreid. Neem een kijkje bij onze producten om te zien wat wij momenteel aanbieden.
-                        </div>
+                        <p data-i18n="loadingProducts">Producten laden...</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Products Page -->
             <div class="page" id="productsPage">
                 <div class="products-page-header">
                     <div class="search-bar">
                         <i class="fas fa-search search-icon"></i>
-                        <input type="text" class="search-input" id="searchInput" placeholder="Zoek 3D producten...">
+                        <input type="text" class="search-input" id="searchInput" data-i18n="searchPlaceholder" placeholder="Zoek 3D producten...">
                     </div>
                     <div class="filter-chips" id="filterChips">
-                        <button class="filter-chip active" data-filter="all">Alles</button>
-                        <button class="filter-chip" data-filter="home">Huis</button>
-                        <button class="filter-chip" data-filter="tech">Tech</button>
-                        <button class="filter-chip" data-filter="custom">Custom</button>
-                        <button class="filter-chip" data-filter="fidgets">Fidgets</button>
+                        <button class="filter-chip active" data-filter="all" data-i18n="filterAll">Alles</button>
+                        <button class="filter-chip" data-filter="home" data-i18n="filterHome">Huis</button>
+                        <button class="filter-chip" data-filter="tech" data-i18n="filterTech">Tech</button>
+                        <button class="filter-chip" data-filter="custom" data-i18n="filterCustom">Custom</button>
+                        <button class="filter-chip" data-filter="fidgets" data-i18n="filterFidgets">Fidgets</button>
                     </div>
                 </div>
 
                 <div class="products-grid" id="allProducts">
                     <div class="loading">
                         <div class="loading-spinner"></div>
-                        <p>Producten laden...</p>
+                        <p data-i18n="loadingProducts">Producten laden...</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Favorites Page -->
             <div class="page" id="favoritesPage">
                 <div class="section-header">
-                    <h2 class="section-title">Jouw Favorieten</h2>
+                    <h2 class="section-title" data-i18n="favoritesTitle">Jouw Favorieten</h2>
                 </div>
-
                 <div class="products-grid" id="favoritesProducts">
                     <div class="loading">
                         <div class="loading-spinner"></div>
-                        <p>Favorieten laden...</p>
+                        <p data-i18n="loadingFavorites">Favorieten laden...</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Settings Page -->
             <div class="page" id="settingsPage">
                 <div class="settings-section">
                     <h3 class="settings-title">
                         <i class="fas fa-user-cog"></i>
-                        Account
+                        <span data-i18n="settingsAccount">Account</span>
                     </h3>
                     <div class="settings-item">
                         <div class="settings-info">
-                            <h4>Account Status</h4>
-                            <p id="accountStatus">Niet ingelogd</p>
+                            <h4 data-i18n="accountStatus">Account Status</h4>
+                            <p id="accountStatus" data-i18n="notLoggedIn">Niet ingelogd</p>
                         </div>
-                        <button class="filter-chip" id="loginButton">Inloggen</button>
+                        <button class="filter-chip" id="loginButton" data-i18n="login">Inloggen</button>
                     </div>
-                    
-                    <!-- Discount Code Section -->
-                    <div class="settings-discount-box" id="settingsDiscountBox" style="display: none;">
-                        <div class="settings-discount-label">Jouw Wekelijkse Kortingscode</div>
-                        <div class="settings-discount-code" id="settingsDiscountCode">LOGIN FIRST</div>
-                        <div class="settings-discount-timer" id="settingsDiscountTimer">
-                            <i class="fas fa-clock"></i>
-                            <span>Nieuwe code op zondag</span>
+                </div>
+
+                <div class="settings-section">
+                    <h3 class="settings-title">
+                        <i class="fas fa-language"></i>
+                        <span data-i18n="settingsLanguage">Taal</span>
+                    </h3>
+                    <div class="settings-item">
+                        <div class="settings-info">
+                            <h4 data-i18n="appLanguage">App Taal</h4>
+                            <p id="currentLanguage" data-i18n="currentLanguage">Nederlands</p>
                         </div>
+                        <i class="fas fa-chevron-right" style="color: var(--gray-400);"></i>
                     </div>
                 </div>
 
                 <div class="settings-section">
                     <h3 class="settings-title">
                         <i class="fas fa-palette"></i>
-                        Weergave
+                        <span data-i18n="settingsDisplay">Weergave</span>
                     </h3>
                     <div class="settings-item">
                         <div class="settings-info">
-                            <h4>Donkere Modus</h4>
-                            <p>Schakel tussen licht en donker thema</p>
+                            <h4 data-i18n="darkMode">Donkere Modus</h4>
+                            <p data-i18n="darkModeDesc">Schakel tussen licht en donker thema</p>
                         </div>
                         <label class="toggle">
                             <input type="checkbox" id="darkModeToggle">
@@ -1673,270 +742,72 @@
                 <div class="settings-section">
                     <h3 class="settings-title">
                         <i class="fas fa-info-circle"></i>
-                        Over
+                        <span data-i18n="settingsAbout">Over</span>
                     </h3>
                     <div class="settings-item">
                         <div class="settings-info">
-                            <h4>Versie</h4>
+                            <h4 data-i18n="version">Versie</h4>
                             <p>PrintSome App v1.0</p>
                         </div>
                     </div>
                     <div class="settings-item">
                         <div class="settings-info">
-                            <h4>Contact</h4>
+                            <h4 data-i18n="contact">Contact</h4>
                             <p>PrintSome-webapp@outlook.com</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="settings-section">
-                    <h3 class="settings-title">
-                        <i class="fas fa-shield-alt"></i>
-                        Privacy & Beleid
-                    </h3>
-                    <div class="settings-item" onclick="showPage('privacy')">
-                        <div class="settings-info">
-                            <h4>Privacybeleid</h4>
-                            <p>Lees onze privacyverklaring</p>
-                        </div>
-                        <i class="fas fa-chevron-right" style="color: var(--gray-400);"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Privacy Page -->
-            <div class="page" id="privacyPage">
-                <div class="privacy-content">
-                    <h1 class="privacy-title">
-                        <i class="fas fa-shield-alt"></i>
-                        Privacyverklaring PrintSome
-                    </h1>
-                    
-                    <p class="privacy-text">
-                        PrintSome is verantwoordelijk voor de verwerking van persoonsgegevens zoals weergegeven in deze privacyverklaring.
-                    </p>
-                    
-                    <h2 class="privacy-subtitle">Contactgegevens</h2>
-                    <div class="contact-info">
-                        <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://PrintSome.pages.dev" target="_blank">https://PrintSome.pages.dev</a></p>
-                        <p><i class="fas fa-envelope"></i> <strong>E-mailadres:</strong> <a href="mailto:PrintSome-webapp@outlook.com">PrintSome-webapp@outlook.com</a></p>
-                    </div>
-                    
-                    <h2 class="privacy-subtitle">Persoonsgegevens die wij verwerken</h2>
-                    <p class="privacy-text">
-                        PrintSome verwerkt uw persoonsgegevens doordat u gebruik maakt van onze diensten en/of omdat u deze zelf aan ons verstrekt. Hieronder vindt u een overzicht van de persoonsgegevens die wij verwerken:
-                    </p>
-                    <ul class="privacy-list">
-                        <li>Voor- en achternaam</li>
-                        <li>E-mailadres</li>
-                        <li>IP-adres</li>
-                        <li>Internetbrowser en apparaattype</li>
-                        <li>Locatiegegevens</li>
-                        <li>Overige persoonsgegevens die u actief verstrekt, bijvoorbeeld in correspondentie</li>
-                    </ul>
-                    
-                    <h2 class="privacy-subtitle">Bijzondere en/of gevoelige persoonsgegevens</h2>
-                    <p class="privacy-text">
-                        Onze website en/of dienst heeft niet de intentie gegevens te verzamelen over websitebezoekers die jonger zijn dan 16 jaar, tenzij zij toestemming hebben van ouders of voogd. Wij kunnen echter niet controleren of een bezoeker ouder dan 16 is. Wij raden ouders aan betrokken te zijn bij de online activiteiten van hun kinderen om zo te voorkomen dat er gegevens over kinderen worden verzameld zonder ouderlijke toestemming.
-                    </p>
-                    <p class="privacy-text">
-                        Als u ervan overtuigd bent dat wij zonder die toestemming persoonlijke gegevens hebben verzameld over een minderjarige, neem dan contact met ons op via PrintSome-webapp@outlook.com, dan verwijderen wij deze informatie.
-                    </p>
-                    
-                    <h2 class="privacy-subtitle">Doelen en grondslagen</h2>
-                    <p class="privacy-text">
-                        PrintSome verwerkt uw persoonsgegevens voor de volgende doelen:
-                    </p>
-                    <ul class="privacy-list">
-                        <li>U de mogelijkheid te bieden een account aan te maken</li>
-                        <li>Contact met u op te nemen indien dit nodig is om onze dienstverlening uit te voeren</li>
-                        <li>Het technisch functioneren en verbeteren van de website</li>
-                    </ul>
-                    
-                    <h2 class="privacy-subtitle">Geautomatiseerde besluitvorming</h2>
-                    <p class="privacy-text">
-                        PrintSome neemt geen besluiten op basis van geautomatiseerde verwerkingen die (aanzienlijke) gevolgen kunnen hebben voor personen.
-                    </p>
-                    
-                    <h2 class="privacy-subtitle">Hoe lang we persoonsgegevens bewaren</h2>
-                    <p class="privacy-text">
-                        PrintSome bewaart uw persoonsgegevens niet langer dan strikt nodig is om de doelen te realiseren waarvoor uw gegevens worden verzameld. Wij hanteren de volgende bewaartermijnen:
-                    </p>
-                    <ul class="privacy-list">
-                        <li><strong>Accountgegevens:</strong> tot 1 maand na het verwijderen van het account</li>
-                        <li><strong>Contactgegevens:</strong> zolang als nodig is voor communicatie of ondersteuning</li>
-                    </ul>
-                    
-                    <h2 class="privacy-subtitle">Delen van persoonsgegevens met derden</h2>
-                    <p class="privacy-text">
-                        PrintSome deelt uw persoonsgegevens uitsluitend met derden als dit noodzakelijk is voor het functioneren van de dienst. Met deze partijen zijn verwerkersovereenkomsten gesloten.
-                    </p>
-                    
-                    <div class="privacy-table-container">
-                        <table class="privacy-table">
-                            <thead>
-                                <tr>
-                                    <th>Categorie</th>
-                                    <th>Naam</th>
-                                    <th>Jurisdictie</th>
-                                    <th>Doel</th>
-                                    <th>Gegevens</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Hosting</td>
-                                    <td>Cloudflare</td>
-                                    <td>Verenigde Staten / EU</td>
-                                    <td>Websitebeveiliging en -hosting</td>
-                                    <td>IP-adres, browsergegevens</td>
-                                </tr>
-                                <tr>
-                                    <td>Hosting & backend</td>
-                                    <td>Firebase (Google)</td>
-                                    <td>Verenigde Staten</td>
-                                    <td>Authenticatie en opslag</td>
-                                    <td>Accountgegevens</td>
-                                </tr>
-                                <tr>
-                                    <td>Code & infrastructuur</td>
-                                    <td>GitHub</td>
-                                    <td>Verenigde Staten</td>
-                                    <td>Broncodebeheer</td>
-                                    <td>Technische metadata</td>
-                                </tr>
-                                <tr>
-                                    <td>Analyse</td>
-                                    <td>Cloudflare Analytics</td>
-                                    <td>Verenigde Staten / EU</td>
-                                    <td>Website-inzichten</td>
-                                    <td>Geanonimiseerde gebruiksgegevens</td>
-                                </tr>
-                                <tr>
-                                    <td>E-mail</td>
-                                    <td>Outlook, Gmail</td>
-                                    <td>Verenigde Staten / EU</td>
-                                    <td>Communicatie</td>
-                                    <td>E-mailadres, inhoud e-mail</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class="privacy-text" style="margin-top: 16px;">
-                        PrintSome verkoopt geen persoonsgegevens aan derden.
-                    </p>
-                    
-                    <h2 class="privacy-subtitle">Cookies en vergelijkbare technieken</h2>
-                    <p class="privacy-text">
-                        PrintSome gebruikt zelf geen cookies.
-                    </p>
-                    <p class="privacy-text">
-                        Wel kan het voorkomen dat derde partijen, zoals Google (bijvoorbeeld via Firebase of ingesloten diensten), cookies plaatsen die nodig zijn voor hun functioneren. Deze cookies vallen onder het privacybeleid van de betreffende derde partij.
-                    </p>
-                    <p class="privacy-text">
-                        Meer informatie over cookies vindt u op:<br>
-                        <a href="https://veiliginternetten.nl/wat-zijn-cookies/" target="_blank">https://veiliginternetten.nl/wat-zijn-cookies/</a>
-                    </p>
-                    
-                    <h2 class="privacy-subtitle">Gegevens inzien, aanpassen of verwijderen</h2>
-                    <p class="privacy-text">
-                        U heeft het recht om uw persoonsgegevens in te zien, te corrigeren of te verwijderen. Daarnaast heeft u het recht om bezwaar te maken tegen de verwerking van uw persoonsgegevens en heeft u recht op gegevensoverdraagbaarheid.
-                    </p>
-                    <p class="privacy-text">
-                        U kunt een verzoek sturen naar:<br>
-                        <a href="mailto:PrintSome-webapp@outlook.com">PrintSome-webapp@outlook.com</a>
-                    </p>
-                    <p class="privacy-text">
-                        Om misbruik te voorkomen kunnen wij u vragen zich te identificeren. We reageren zo snel mogelijk, maar uiterlijk binnen vier weken.
-                    </p>
-                    <p class="privacy-text">
-                        Daarnaast heeft u het recht een klacht in te dienen bij de Autoriteit Persoonsgegevens:<br>
-                        <a href="https://autoriteitpersoonsgegevens.nl/" target="_blank">https://autoriteitpersoonsgegevens.nl/</a>
-                    </p>
-                    
-                    <h2 class="privacy-subtitle">Hoe wij persoonsgegevens beveiligen</h2>
-                    <p class="privacy-text">
-                        PrintSome neemt passende maatregelen om uw gegevens te beschermen tegen misbruik, verlies, onbevoegde toegang, ongewenste openbaarmaking en ongeoorloofde wijziging.
-                    </p>
-                    <p class="privacy-text">
-                        Als u denkt dat uw gegevens niet goed beveiligd zijn of er sprake is van misbruik, neem dan contact op via PrintSome-webapp@outlook.com.
-                    </p>
-                    
-                    <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--gray-200);">
-                        <p style="color: var(--gray-600); font-size: 12px;">
-                            <i class="fas fa-calendar-alt"></i> Laatst bijgewerkt: Februari 2026
-                        </p>
-                    </div>
-                    
-                    <button class="privacy-back-btn" onclick="showPage('settings')">
-                        <i class="fas fa-arrow-left"></i>
-                        Terug naar Instellingen
-                    </button>
-                </div>
             </div>
         </main>
 
-        <!-- Bottom Navigation -->
         <nav class="bottom-nav">
             <a href="#" class="nav-item active" data-page="home">
-                <span class="nav-indicator"></span>
                 <i class="fas fa-home nav-icon"></i>
-                <span class="nav-label">Home</span>
+                <span class="nav-label" data-i18n="navHome">Home</span>
             </a>
-            <a href="#" class="nav-item" data-page="products" id="productsNav">
-                <span class="nav-indicator"></span>
+            <a href="#" class="nav-item" data-page="products">
                 <i class="fas fa-cube nav-icon"></i>
-                <span class="nav-label">Producten</span>
+                <span class="nav-label" data-i18n="navProducts">Producten</span>
             </a>
-            <a href="#" class="nav-item" data-page="favorites" id="favoritesNav">
-                <span class="nav-indicator"></span>
+            <a href="#" class="nav-item" data-page="favorites">
                 <i class="fas fa-heart nav-icon"></i>
-                <span class="nav-label">Favorieten</span>
+                <span class="nav-label" data-i18n="navFavorites">Favorieten</span>
             </a>
             <a href="#" class="nav-item" data-page="settings">
-                <span class="nav-indicator"></span>
                 <i class="fas fa-cog nav-icon"></i>
-                <span class="nav-label">Instellingen</span>
+                <span class="nav-label" data-i18n="navSettings">Instellingen</span>
             </a>
         </nav>
     </div>
 
-    <!-- Auth Modal -->
     <div class="auth-modal" id="authModal">
         <div class="auth-header">
-            <h2 class="auth-title">PrintSome Account</h2>
+            <h2 class="auth-title" data-i18n="authTitle">PrintSome Account</h2>
             <button class="close-auth" id="closeAuth">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         <div class="auth-content">
-            <div class="auth-container" id="authContainer">
-                <!-- Auth content will be loaded here -->
-            </div>
+            <div class="auth-container" id="authContainer"></div>
         </div>
     </div>
 
-    <!-- Product Detail Modal -->
     <div class="product-modal" id="productModal">
         <div class="product-modal-header">
-            <h2 class="auth-title">Product Details</h2>
+            <h2 class="auth-title" data-i18n="productDetails">Product Details</h2>
             <button class="close-auth" id="closeProductModal">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="product-modal-content" id="productModalContent">
-            <!-- Product content wordt hier ingeladen -->
-        </div>
+        <div class="product-modal-content" id="productModalContent"></div>
     </div>
 
-    <!-- Toast Notification -->
     <div class="toast" id="toast">
         <i class="fas fa-check-circle"></i>
         <span id="toastMessage">Bericht</span>
     </div>
 
     <script>
-        // Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBHmq2hPEyb2z89XIR4y-FlKJYpSObh8Iw",
             authDomain: "printsome-b5197.firebaseapp.com",
@@ -1947,510 +818,587 @@
             measurementId: "G-TL2RN2TRLR"
         };
         
-        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
         const auth = firebase.auth();
-        const storage = firebase.storage();
         
-        // App State
         let currentUser = null;
         let currentPage = 'home';
         let products = [];
-        let filteredProducts = [];
         let userFavorites = [];
-        let viewedProducts = [];
-        let userSettings = {
-            darkMode: false,
-            language: 'nl'
+        let currentLanguage = 'nl';
+        
+        const translations = {
+            nl: {
+                welcomeTitle: "Welkom bij PrintSome!",
+                welcomeSubtitle: "3D printing shop",
+                welcomeUser: "Log in voor persoonlijke kortingscodes",
+                weeklyDiscountTitle: "Jouw Wekelijkse Kortingscode",
+                weeklyDiscountInfo: "Bekijk je wekelijkse kortingscode per product in de product sectie",
+                featuredProducts: "Uitgelichte Producten",
+                viewAll: "Alles zien",
+                loadingProducts: "Producten laden...",
+                searchPlaceholder: "Zoek 3D producten...",
+                filterAll: "Alles",
+                filterHome: "Huis",
+                filterTech: "Tech",
+                filterCustom: "Custom",
+                filterFidgets: "Fidgets",
+                favoritesTitle: "Jouw Favorieten",
+                loadingFavorites: "Favorieten laden...",
+                settingsAccount: "Account",
+                accountStatus: "Account Status",
+                notLoggedIn: "Niet ingelogd",
+                login: "Inloggen",
+                logout: "Uitloggen",
+                settingsLanguage: "Taal",
+                appLanguage: "App Taal",
+                currentLanguage: "Nederlands",
+                settingsDisplay: "Weergave",
+                darkMode: "Donkere Modus",
+                darkModeDesc: "Schakel tussen licht en donker thema",
+                settingsAbout: "Over",
+                version: "Versie",
+                contact: "Contact",
+                navHome: "Home",
+                navProducts: "Producten",
+                navFavorites: "Favorieten",
+                navSettings: "Instellingen",
+                authTitle: "PrintSome Account",
+                productDetails: "Product Details",
+                emailPlaceholder: "je@email.nl",
+                passwordPlaceholder: "Minimaal 6 karakters",
+                namePlaceholder: "Je naam",
+                confirmPasswordPlaceholder: "Herhaal wachtwoord",
+                loginBtn: "Inloggen",
+                signupBtn: "Account Aanmaken",
+                googleLogin: "Inloggen met Google",
+                googleSignup: "Registreren met Google",
+                orWithEmail: "of met email",
+                forgotPassword: "Wachtwoord vergeten?",
+                dataSecure: "Je gegevens zijn veilig bij ons",
+                discountCode: "Kortingscode",
+                validUntil: "Geldig tot",
+                addToFavorites: "Toevoegen aan favorieten",
+                removeFromFavorites: "Verwijderen uit favorieten"
+            },
+            en: {
+                welcomeTitle: "Welcome to PrintSome!",
+                welcomeSubtitle: "3D printing shop",
+                welcomeUser: "Log in for personal discount codes",
+                weeklyDiscountTitle: "Your Weekly Discount Code",
+                weeklyDiscountInfo: "View your weekly discount code per product in the products section",
+                featuredProducts: "Featured Products",
+                viewAll: "View all",
+                loadingProducts: "Loading products...",
+                searchPlaceholder: "Search 3D products...",
+                filterAll: "All",
+                filterHome: "Home",
+                filterTech: "Tech",
+                filterCustom: "Custom",
+                filterFidgets: "Fidgets",
+                favoritesTitle: "Your Favorites",
+                loadingFavorites: "Loading favorites...",
+                settingsAccount: "Account",
+                accountStatus: "Account Status",
+                notLoggedIn: "Not logged in",
+                login: "Log in",
+                logout: "Log out",
+                settingsLanguage: "Language",
+                appLanguage: "App Language",
+                currentLanguage: "English",
+                settingsDisplay: "Display",
+                darkMode: "Dark Mode",
+                darkModeDesc: "Switch between light and dark theme",
+                settingsAbout: "About",
+                version: "Version",
+                contact: "Contact",
+                navHome: "Home",
+                navProducts: "Products",
+                navFavorites: "Favorites",
+                navSettings: "Settings",
+                authTitle: "PrintSome Account",
+                productDetails: "Product Details",
+                emailPlaceholder: "your@email.com",
+                passwordPlaceholder: "Minimum 6 characters",
+                namePlaceholder: "Your name",
+                confirmPasswordPlaceholder: "Repeat password",
+                loginBtn: "Log in",
+                signupBtn: "Create Account",
+                googleLogin: "Log in with Google",
+                googleSignup: "Sign up with Google",
+                orWithEmail: "or with email",
+                forgotPassword: "Forgot password?",
+                dataSecure: "Your data is safe with us",
+                discountCode: "Discount code",
+                validUntil: "Valid until",
+                addToFavorites: "Add to favorites",
+                removeFromFavorites: "Remove from favorites"
+            },
+            de: {
+                welcomeTitle: "Willkommen bei PrintSome!",
+                welcomeSubtitle: "3D-Druck-Shop",
+                welcomeUser: "Einloggen für persönliche Rabattcodes",
+                weeklyDiscountTitle: "Ihr wöchentlicher Rabattcode",
+                weeklyDiscountInfo: "Sehen Sie Ihren wöchentlichen Rabattcode pro Produkt im Produktbereich",
+                featuredProducts: "Ausgewählte Produkte",
+                viewAll: "Alle anzeigen",
+                loadingProducts: "Produkte laden...",
+                searchPlaceholder: "3D-Produkte suchen...",
+                filterAll: "Alle",
+                filterHome: "Zuhause",
+                filterTech: "Technik",
+                filterCustom: "Benutzerdefiniert",
+                filterFidgets: "Fidgets",
+                favoritesTitle: "Ihre Favoriten",
+                loadingFavorites: "Favoriten laden...",
+                settingsAccount: "Konto",
+                accountStatus: "Kontostatus",
+                notLoggedIn: "Nicht eingeloggt",
+                login: "Einloggen",
+                logout: "Ausloggen",
+                settingsLanguage: "Sprache",
+                appLanguage: "App-Sprache",
+                currentLanguage: "Deutsch",
+                settingsDisplay: "Anzeige",
+                darkMode: "Dunkler Modus",
+                darkModeDesc: "Wechseln zwischen hellem und dunklem Thema",
+                settingsAbout: "Über",
+                version: "Version",
+                contact: "Kontakt",
+                navHome: "Start",
+                navProducts: "Produkte",
+                navFavorites: "Favoriten",
+                navSettings: "Einstellungen",
+                authTitle: "PrintSome Konto",
+                productDetails: "Produktdetails",
+                emailPlaceholder: "ihre@email.de",
+                passwordPlaceholder: "Mindestens 6 Zeichen",
+                namePlaceholder: "Ihr Name",
+                confirmPasswordPlaceholder: "Passwort wiederholen",
+                loginBtn: "Einloggen",
+                signupBtn: "Konto erstellen",
+                googleLogin: "Mit Google einloggen",
+                googleSignup: "Mit Google registrieren",
+                orWithEmail: "oder mit E-Mail",
+                forgotPassword: "Passwort vergessen?",
+                dataSecure: "Ihre Daten sind bei uns sicher",
+                discountCode: "Rabattcode",
+                validUntil: "Gültig bis",
+                addToFavorites: "Zu Favoriten hinzufügen",
+                removeFromFavorites: "Aus Favoriten entfernen"
+            },
+            fr: {
+                welcomeTitle: "Bienvenue chez PrintSome!",
+                welcomeSubtitle: "Boutique d'impression 3D",
+                welcomeUser: "Connectez-vous pour des codes de réduction personnels",
+                weeklyDiscountTitle: "Votre code de réduction hebdomadaire",
+                weeklyDiscountInfo: "Voir votre code de réduction hebdomadaire par produit dans la section produits",
+                featuredProducts: "Produits en vedette",
+                viewAll: "Voir tout",
+                loadingProducts: "Chargement des produits...",
+                searchPlaceholder: "Rechercher des produits 3D...",
+                filterAll: "Tous",
+                filterHome: "Maison",
+                filterTech: "Tech",
+                filterCustom: "Personnalisé",
+                filterFidgets: "Fidgets",
+                favoritesTitle: "Vos favoris",
+                loadingFavorites: "Chargement des favoris...",
+                settingsAccount: "Compte",
+                accountStatus: "Statut du compte",
+                notLoggedIn: "Non connecté",
+                login: "Se connecter",
+                logout: "Se déconnecter",
+                settingsLanguage: "Langue",
+                appLanguage: "Langue de l'app",
+                currentLanguage: "Français",
+                settingsDisplay: "Affichage",
+                darkMode: "Mode sombre",
+                darkModeDesc: "Basculer entre thème clair et sombre",
+                settingsAbout: "À propos",
+                version: "Version",
+                contact: "Contact",
+                navHome: "Accueil",
+                navProducts: "Produits",
+                navFavorites: "Favoris",
+                navSettings: "Paramètres",
+                authTitle: "Compte PrintSome",
+                productDetails: "Détails du produit",
+                emailPlaceholder: "votre@email.fr",
+                passwordPlaceholder: "Minimum 6 caractères",
+                namePlaceholder: "Votre nom",
+                confirmPasswordPlaceholder: "Répéter le mot de passe",
+                loginBtn: "Se connecter",
+                signupBtn: "Créer un compte",
+                googleLogin: "Se connecter avec Google",
+                googleSignup: "S'inscrire avec Google",
+                orWithEmail: "ou avec email",
+                forgotPassword: "Mot de passe oublié?",
+                dataSecure: "Vos données sont en sécurité chez nous",
+                discountCode: "Code de réduction",
+                validUntil: "Valable jusqu'au",
+                addToFavorites: "Ajouter aux favoris",
+                removeFromFavorites: "Retirer des favoris"
+            },
+            es: {
+                welcomeTitle: "¡Bienvenido a PrintSome!",
+                welcomeSubtitle: "Tienda de impresión 3D",
+                welcomeUser: "Inicia sesión para códigos de descuento personales",
+                weeklyDiscountTitle: "Tu código de descuento semanal",
+                weeklyDiscountInfo: "Ve tu código de descuento semanal por producto en la sección de productos",
+                featuredProducts: "Productos destacados",
+                viewAll: "Ver todo",
+                loadingProducts: "Cargando productos...",
+                searchPlaceholder: "Buscar productos 3D...",
+                filterAll: "Todo",
+                filterHome: "Hogar",
+                filterTech: "Tecnología",
+                filterCustom: "Personalizado",
+                filterFidgets: "Fidgets",
+                favoritesTitle: "Tus favoritos",
+                loadingFavorites: "Cargando favoritos...",
+                settingsAccount: "Cuenta",
+                accountStatus: "Estado de la cuenta",
+                notLoggedIn: "No conectado",
+                login: "Iniciar sesión",
+                logout: "Cerrar sesión",
+                settingsLanguage: "Idioma",
+                appLanguage: "Idioma de la app",
+                currentLanguage: "Español",
+                settingsDisplay: "Pantalla",
+                darkMode: "Modo oscuro",
+                darkModeDesc: "Cambiar entre tema claro y oscuro",
+                settingsAbout: "Acerca de",
+                version: "Versión",
+                contact: "Contacto",
+                navHome: "Inicio",
+                navProducts: "Productos",
+                navFavorites: "Favoritos",
+                navSettings: "Ajustes",
+                authTitle: "Cuenta PrintSome",
+                productDetails: "Detalles del producto",
+                emailPlaceholder: "tu@email.com",
+                passwordPlaceholder: "Mínimo 6 caracteres",
+                namePlaceholder: "Tu nombre",
+                confirmPasswordPlaceholder: "Repetir contraseña",
+                loginBtn: "Iniciar sesión",
+                signupBtn: "Crear cuenta",
+                googleLogin: "Iniciar sesión con Google",
+                googleSignup: "Registrarse con Google",
+                orWithEmail: "o con email",
+                forgotPassword: "¿Olvidaste tu contraseña?",
+                dataSecure: "Tus datos están seguros con nosotros",
+                discountCode: "Código de descuento",
+                validUntil: "Válido hasta",
+                addToFavorites: "Añadir a favoritos",
+                removeFromFavorites: "Eliminar de favoritos"
+            },
+            zh: {
+                welcomeTitle: "欢迎来到 PrintSome！",
+                welcomeSubtitle: "3D打印商店",
+                welcomeUser: "登录获取个人折扣码",
+                weeklyDiscountTitle: "您的每周折扣码",
+                weeklyDiscountInfo: "在产品部分查看每个产品的每周折扣码",
+                featuredProducts: "精选产品",
+                viewAll: "查看全部",
+                loadingProducts: "正在加载产品...",
+                searchPlaceholder: "搜索3D产品...",
+                filterAll: "全部",
+                filterHome: "家居",
+                filterTech: "科技",
+                filterCustom: "定制",
+                filterFidgets: "减压玩具",
+                favoritesTitle: "您的收藏",
+                loadingFavorites: "正在加载收藏...",
+                settingsAccount: "账户",
+                accountStatus: "账户状态",
+                notLoggedIn: "未登录",
+                login: "登录",
+                logout: "退出登录",
+                settingsLanguage: "语言",
+                appLanguage: "应用语言",
+                currentLanguage: "中文",
+                settingsDisplay: "显示",
+                darkMode: "深色模式",
+                darkModeDesc: "切换浅色和深色主题",
+                settingsAbout: "关于",
+                version: "版本",
+                contact: "联系",
+                navHome: "首页",
+                navProducts: "产品",
+                navFavorites: "收藏",
+                navSettings: "设置",
+                authTitle: "PrintSome 账户",
+                productDetails: "产品详情",
+                emailPlaceholder: "您的@邮箱.com",
+                passwordPlaceholder: "至少6个字符",
+                namePlaceholder: "您的名字",
+                confirmPasswordPlaceholder: "重复密码",
+                loginBtn: "登录",
+                signupBtn: "创建账户",
+                googleLogin: "使用 Google 登录",
+                googleSignup: "使用 Google 注册",
+                orWithEmail: "或使用邮箱",
+                forgotPassword: "忘记密码？",
+                dataSecure: "您的数据在我们这里是安全的",
+                discountCode: "折扣码",
+                validUntil: "有效期至",
+                addToFavorites: "添加到收藏",
+                removeFromFavorites: "从收藏移除"
+            },
+            ar: {
+                welcomeTitle: "مرحبًا بكم في PrintSome!",
+                welcomeSubtitle: "متجر الطباعة ثلاثية الأبعاد",
+                welcomeUser: "سجل الدخول للحصول على رموز خصم شخصية",
+                weeklyDiscountTitle: "رمز الخصم الأسبوعي الخاص بك",
+                weeklyDiscountInfo: "شاهد رمز الخصم الأسبوعي لكل منتج في قسم المنتجات",
+                featuredProducts: "المنتجات المميزة",
+                viewAll: "عرض الكل",
+                loadingProducts: "جارٍ تحميل المنتجات...",
+                searchPlaceholder: "بحث عن منتجات ثلاثية الأبعاد...",
+                filterAll: "الكل",
+                filterHome: "المنزل",
+                filterTech: "التكنولوجيا",
+                filterCustom: "مخصص",
+                filterFidgets: "ألعاب التوتر",
+                favoritesTitle: "المفضلة لديك",
+                loadingFavorites: "جارٍ تحميل المفضلة...",
+                settingsAccount: "الحساب",
+                accountStatus: "حالة الحساب",
+                notLoggedIn: "غير مسجل الدخول",
+                login: "تسجيل الدخول",
+                logout: "تسجيل الخروج",
+                settingsLanguage: "اللغة",
+                appLanguage: "لغة التطبيق",
+                currentLanguage: "العربية",
+                settingsDisplay: "العرض",
+                darkMode: "الوضع الداكن",
+                darkModeDesc: "التبديل بين الوضع الفاتح والداكن",
+                settingsAbout: "حول",
+                version: "الإصدار",
+                contact: "الاتصال",
+                navHome: "الرئيسية",
+                navProducts: "المنتجات",
+                navFavorites: "المفضلة",
+                navSettings: "الإعدادات",
+                authTitle: "حساب PrintSome",
+                productDetails: "تفاصيل المنتج",
+                emailPlaceholder: "بريدك@الإلكتروني",
+                passwordPlaceholder: "6 أحرف على الأقل",
+                namePlaceholder: "اسمك",
+                confirmPasswordPlaceholder: "كرر كلمة المرور",
+                loginBtn: "تسجيل الدخول",
+                signupBtn: "إنشاء حساب",
+                googleLogin: "تسجيل الدخول باستخدام Google",
+                googleSignup: "التسجيل باستخدام Google",
+                orWithEmail: "أو باستخدام البريد الإلكتروني",
+                forgotPassword: "نسيت كلمة المرور؟",
+                dataSecure: "بياناتك آمنة معنا",
+                discountCode: "رمز الخصم",
+                validUntil: "صالح حتى",
+                addToFavorites: "إضافة إلى المفضلة",
+                removeFromFavorites: "إزالة من المفضلة"
+            },
+            hi: {
+                welcomeTitle: "PrintSome में आपका स्वागत है!",
+                welcomeSubtitle: "3D प्रिंटिंग की दुकान",
+                welcomeUser: "व्यक्तिगत छूट कोड के लिए लॉग इन करें",
+                weeklyDiscountTitle: "आपका साप्ताहिक छूट कोड",
+                weeklyDiscountInfo: "उत्पादों अनुभाग में प्रति उत्पाद अपना साप्ताहिक छूट कोड देखें",
+                featuredProducts: "विशेष उत्पाद",
+                viewAll: "सभी देखें",
+                loadingProducts: "उत्पाद लोड हो रहे हैं...",
+                searchPlaceholder: "3D उत्पाद खोजें...",
+                filterAll: "सभी",
+                filterHome: "घर",
+                filterTech: "टेक",
+                filterCustom: "कस्टम",
+                filterFidgets: "फिजेट्स",
+                favoritesTitle: "आपकी पसंदीदा",
+                loadingFavorites: "पसंदीदा लोड हो रही हैं...",
+                settingsAccount: "खाता",
+                accountStatus: "खाता स्थिति",
+                notLoggedIn: "लॉग इन नहीं",
+                login: "लॉग इन",
+                logout: "लॉग आउट",
+                settingsLanguage: "भाषा",
+                appLanguage: "ऐप भाषा",
+                currentLanguage: "हिन्दी",
+                settingsDisplay: "प्रदर्शन",
+                darkMode: "डार्क मोड",
+                darkModeDesc: "हल्के और गहरे थीम के बीच स्विच करें",
+                settingsAbout: "के बारे में",
+                version: "संस्करण",
+                contact: "संपर्क",
+                navHome: "होम",
+                navProducts: "उत्पाद",
+                navFavorites: "पसंदीदा",
+                navSettings: "सेटिंग्स",
+                authTitle: "PrintSome खाता",
+                productDetails: "उत्पाद विवरण",
+                emailPlaceholder: "आपका@ईमेल.कॉम",
+                passwordPlaceholder: "न्यूनतम 6 अक्षर",
+                namePlaceholder: "आपका नाम",
+                confirmPasswordPlaceholder: "पासवर्ड दोहराएं",
+                loginBtn: "लॉग इन",
+                signupBtn: "खाता बनाएं",
+                googleLogin: "Google से लॉग इन करें",
+                googleSignup: "Google से साइन अप करें",
+                orWithEmail: "या ईमेल से",
+                forgotPassword: "पासवर्ड भूल गए?",
+                dataSecure: "आपका डेटा हमारे पास सुरक्षित है",
+                discountCode: "छूट कोड",
+                validUntil: "तक वैध",
+                addToFavorites: "पसंदीदा में जोड़ें",
+                removeFromFavorites: "पसंदीदा से हटाएं"
+            },
+            ru: {
+                welcomeTitle: "Добро пожаловать в PrintSome!",
+                welcomeSubtitle: "Магазин 3D-печати",
+                welcomeUser: "Войдите для получения персональных кодов скидок",
+                weeklyDiscountTitle: "Ваш еженедельный код скидки",
+                weeklyDiscountInfo: "Смотрите ваш еженедельный код скидки на каждый товар в разделе товаров",
+                featuredProducts: "Рекомендуемые товары",
+                viewAll: "Просмотреть все",
+                loadingProducts: "Загрузка товаров...",
+                searchPlaceholder: "Поиск 3D товаров...",
+                filterAll: "Все",
+                filterHome: "Дом",
+                filterTech: "Техника",
+                filterCustom: "На заказ",
+                filterFidgets: "Фиджет-игрушки",
+                favoritesTitle: "Ваши избранные",
+                loadingFavorites: "Загрузка избранного...",
+                settingsAccount: "Аккаунт",
+                accountStatus: "Статус аккаунта",
+                notLoggedIn: "Не вошел",
+                login: "Войти",
+                logout: "Выйти",
+                settingsLanguage: "Язык",
+                appLanguage: "Язык приложения",
+                currentLanguage: "Русский",
+                settingsDisplay: "Отображение",
+                darkMode: "Темный режим",
+                darkModeDesc: "Переключение между светлой и темной темой",
+                settingsAbout: "О приложении",
+                version: "Версия",
+                contact: "Контакты",
+                navHome: "Главная",
+                navProducts: "Товары",
+                navFavorites: "Избранное",
+                navSettings: "Настройки",
+                authTitle: "Аккаунт PrintSome",
+                productDetails: "Детали товара",
+                emailPlaceholder: "ваш@email.ru",
+                passwordPlaceholder: "Минимум 6 символов",
+                namePlaceholder: "Ваше имя",
+                confirmPasswordPlaceholder: "Повторите пароль",
+                loginBtn: "Войти",
+                signupBtn: "Создать аккаунт",
+                googleLogin: "Войти через Google",
+                googleSignup: "Зарегистрироваться через Google",
+                orWithEmail: "или через email",
+                forgotPassword: "Забыли пароль?",
+                dataSecure: "Ваши данные в безопасности",
+                discountCode: "Код скидки",
+                validUntil: "Действителен до",
+                addToFavorites: "Добавить в избранное",
+                removeFromFavorites: "Удалить из избранного"
+            }
         };
         
-        let authMode = 'login'; // 'login' or 'signup'
-        let currentDiscountCode = null;
-        let discountCodeExpiry = null;
-        
-        // DOM Elements
-        const appContainer = document.getElementById('appContainer');
-        const mainContent = document.getElementById('mainContent');
-        const userAvatar = document.getElementById('userAvatar');
-        const themeToggle = document.getElementById('themeToggle');
-        const authModal = document.getElementById('authModal');
-        const closeAuth = document.getElementById('closeAuth');
-        const authContainer = document.getElementById('authContainer');
-        const loginButton = document.getElementById('loginButton');
-        const productModal = document.getElementById('productModal');
-        const productModalContent = document.getElementById('productModalContent');
-        const closeProductModal = document.getElementById('closeProductModal');
-        const toast = document.getElementById('toast');
-        const toastMessage = document.getElementById('toastMessage');
-        
-        // Firebase Auth Functions
-        async function signInWithGoogle() {
-            try {
-                console.log('🔑 Google login starten...');
-                const provider = new firebase.auth.GoogleAuthProvider();
-                provider.addScope('profile');
-                provider.addScope('email');
-                
-                const result = await auth.signInWithPopup(provider);
-                console.log('✅ Google login succes!', result.user.email);
-                
-                currentUser = result.user;
-                updateAuthUI();
-                authModal.classList.remove('active');
-                showToast(`Welkom ${result.user.displayName || result.user.email}!`, 3000);
-                
-                // Load user data from Firebase
-                loadUserData(currentUser.uid);
-                
-            } catch (error) {
-                console.error('❌ Google login error:', error);
-                showAuthError('Google login mislukt: ' + error.message);
-            }
-        }
-        
-        async function signUpWithEmail(email, password, name) {
-            try {
-                console.log('📝 Account aanmaken voor:', email);
-                
-                // Create user
-                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-                
-                // Update profile with name
-                if (name) {
-                    await userCredential.user.updateProfile({
-                        displayName: name
-                    });
+        function translatePage() {
+            const lang = translations[currentLanguage];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (lang[key]) {
+                    if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
+                        el.placeholder = lang[key];
+                    } else {
+                        el.textContent = lang[key];
+                    }
                 }
-                
-                console.log('✅ Account aangemaakt!', userCredential.user.email);
-                
-                currentUser = userCredential.user;
-                updateAuthUI();
-                authModal.classList.remove('active');
-                showToast(`Welkom bij PrintSome!`, 3000);
-                
-                // Load user data
-                loadUserData(currentUser.uid);
-                
-            } catch (error) {
-                console.error('❌ Signup error:', error);
-                
-                let errorMessage = 'Account aanmaken mislukt: ';
-                switch(error.code) {
-                    case 'auth/email-already-in-use':
-                        errorMessage = 'Dit emailadres is al in gebruik';
-                        break;
-                    case 'auth/invalid-email':
-                        errorMessage = 'Ongeldig emailadres';
-                        break;
-                    case 'auth/weak-password':
-                        errorMessage = 'Wachtwoord moet minstens 6 karakters hebben';
-                        break;
-                    default:
-                        errorMessage += error.message;
-                }
-                
-                showAuthError(errorMessage);
-            }
+            });
+            document.getElementById('currentLanguage').textContent = lang['currentLanguage'];
         }
         
-        async function signInWithEmail(email, password) {
-            try {
-                console.log('🔐 Login voor:', email);
-                
-                const userCredential = await auth.signInWithEmailAndPassword(email, password);
-                console.log('✅ Login succes!', userCredential.user.email);
-                
-                currentUser = userCredential.user;
-                updateAuthUI();
-                authModal.classList.remove('active');
-                showToast(`Welkom terug ${userCredential.user.displayName || userCredential.user.email}!`, 3000);
-                
-                // Load user data
-                loadUserData(currentUser.uid);
-                
-            } catch (error) {
-                console.error('❌ Login error:', error);
-                
-                let errorMessage = 'Login mislukt: ';
-                switch(error.code) {
-                    case 'auth/user-not-found':
-                        errorMessage = 'Gebruiker niet gevonden';
-                        break;
-                    case 'auth/wrong-password':
-                        errorMessage = 'Onjuist wachtwoord';
-                        break;
-                    case 'auth/invalid-email':
-                        errorMessage = 'Ongeldig emailadres';
-                        break;
-                    default:
-                        errorMessage += error.message;
-                }
-                
-                showAuthError(errorMessage);
-            }
+        function showToast(message, duration = 3000) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), duration);
         }
         
-        async function logout() {
-            try {
-                await auth.signOut();
-                console.log('✅ Uitgelogd');
-                currentUser = null;
-                userFavorites = [];
-                viewedProducts = [];
-                currentDiscountCode = null;
-                discountCodeExpiry = null;
-                updateAuthUI();
-                updateProductCards();
-                showToast('Succesvol uitgelogd', 2000);
-            } catch (error) {
-                console.error('❌ Logout error:', error);
-                showToast('Uitloggen mislukt', 2000);
-            }
-        }
+        auth.onAuthStateChanged((user) => {
+            currentUser = user;
+            updateAuthUI();
+            if (user) loadUserData(user.uid);
+        });
         
-        // Update UI based on auth state
         function updateAuthUI() {
-            const userAvatar = document.getElementById('userAvatar');
             const welcomeUser = document.getElementById('welcomeUser');
             const accountStatus = document.getElementById('accountStatus');
             const loginButton = document.getElementById('loginButton');
-            
-            if (!userAvatar || !welcomeUser || !accountStatus) return;
+            const weeklyDiscountSection = document.getElementById('weeklyDiscountSection');
             
             if (currentUser) {
-                // Update avatar
-                if (currentUser.photoURL) {
-                    userAvatar.innerHTML = `<img src="${currentUser.photoURL}" alt="${currentUser.displayName || 'User'}">`;
-                } else {
-                    const initials = currentUser.displayName ? 
-                        currentUser.displayName.charAt(0).toUpperCase() : 
-                        currentUser.email ? currentUser.email.charAt(0).toUpperCase() : 'U';
-                    userAvatar.innerHTML = initials;
-                }
-                
-                // Update welcome message
-                const displayName = currentUser.displayName || currentUser.email.split('@')[0] || 'Gebruiker';
-                welcomeUser.textContent = `Welkom, ${displayName}!`;
+                welcomeUser.textContent = translations[currentLanguage].welcomeUser;
                 accountStatus.textContent = 'Ingelogd';
-                
-                if (loginButton) {
-                    loginButton.innerHTML = '<i class="fas fa-sign-out-alt"></i> Uitloggen';
-                    loginButton.onclick = logout;
-                }
-                
-                // Generate weekly discount code
-                generateWeeklyDiscountCode();
-                updateDiscountCodeDisplay();
-                
+                loginButton.textContent = translations[currentLanguage].logout;
+                loginButton.onclick = logout;
+                weeklyDiscountSection.style.display = 'block';
             } else {
-                userAvatar.innerHTML = '<i class="fas fa-user"></i>';
-                welcomeUser.textContent = 'Log in voor persoonlijke kortingscodes';
-                accountStatus.textContent = 'Niet ingelogd';
-                
-                if (loginButton) {
-                    loginButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> Inloggen';
-                    loginButton.onclick = () => {
-                        authModal.classList.add('active');
-                        renderAuthForm();
-                    };
-                }
-                
-                // Hide discount sections
-                const weeklyDiscountSection = document.getElementById('weeklyDiscountSection');
-                const settingsDiscountBox = document.getElementById('settingsDiscountBox');
-                if (weeklyDiscountSection) weeklyDiscountSection.style.display = 'none';
-                if (settingsDiscountBox) settingsDiscountBox.style.display = 'none';
-            }
-            
-            userAvatar.onclick = () => {
-                if (currentUser) {
-                    // Show user profile or logout option
-                    showToast(`Ingelogd als ${currentUser.email}`, 3000);
-                } else {
-                    authModal.classList.add('active');
+                welcomeUser.textContent = translations[currentLanguage].welcomeUser;
+                accountStatus.textContent = translations[currentLanguage].notLoggedIn;
+                loginButton.textContent = translations[currentLanguage].login;
+                loginButton.onclick = () => {
+                    document.getElementById('authModal').classList.add('active');
                     renderAuthForm();
-                }
-            };
-        }
-        
-        // Generate weekly discount code
-        function generateWeeklyDiscountCode() {
-            if (!currentUser) return;
-            
-            const now = new Date();
-            const storedCode = localStorage.getItem(`discountCode_${currentUser.uid}`);
-            const storedExpiry = localStorage.getItem(`discountCodeExpiry_${currentUser.uid}`);
-            const storedWeekNumber = localStorage.getItem(`weekNumber_${currentUser.uid}`);
-            
-            // Calculate current week number
-            const weekNumber = Math.floor(now.getTime() / (7 * 24 * 60 * 60 * 1000));
-            
-            // Check if we need to generate a new code (every Sunday)
-            const isSunday = now.getDay() === 0; // 0 = Sunday
-            const needsNewCode = !storedCode || !storedExpiry || new Date(storedExpiry) <= now || storedWeekNumber !== weekNumber.toString();
-            
-            if (needsNewCode) {
-                // Generate a random discount code
-                const randomCode = generateRandomDiscountCode();
-                currentDiscountCode = randomCode;
-                
-                // Set expiry to end of week (next Sunday at midnight)
-                const expiryDate = new Date(now);
-                const daysUntilSunday = (7 - now.getDay()) % 7 || 7; // If today is Sunday, next week
-                expiryDate.setDate(expiryDate.getDate() + daysUntilSunday);
-                expiryDate.setHours(23, 59, 59, 999);
-                
-                discountCodeExpiry = expiryDate;
-                
-                // Store in localStorage
-                localStorage.setItem(`discountCode_${currentUser.uid}`, currentDiscountCode);
-                localStorage.setItem(`discountCodeExpiry_${currentUser.uid}`, discountCodeExpiry.toISOString());
-                localStorage.setItem(`weekNumber_${currentUser.uid}`, weekNumber.toString());
-                
-                // Show notification for new code
-                showToast(`Nieuwe weekkorting: ${currentDiscountCode}`, 5000);
-            } else {
-                currentDiscountCode = storedCode;
-                discountCodeExpiry = new Date(storedExpiry);
+                };
+                weeklyDiscountSection.style.display = 'none';
             }
         }
         
-        // Generate a random discount code
-        function generateRandomDiscountCode() {
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            let result = '';
-            for (let i = 0; i < 6; i++) {
-                result += characters.charAt(Math.floor(Math.random() * characters.length));
-            }
-            return result;
-        }
-        
-        // Update discount code display
-        function updateDiscountCodeDisplay() {
-            // Update home page discount section
-            const weeklyDiscountSection = document.getElementById('weeklyDiscountSection');
-            const weeklyDiscountCode = document.getElementById('weeklyDiscountCode');
-            const weeklyDiscountInfo = document.getElementById('weeklyDiscountInfo');
-            const weeklyDiscountTimer = document.getElementById('weeklyDiscountTimer');
-            
-            // Update settings discount section
-            const settingsDiscountBox = document.getElementById('settingsDiscountBox');
-            const settingsDiscountCode = document.getElementById('settingsDiscountCode');
-            const settingsDiscountTimer = document.getElementById('settingsDiscountTimer');
-            
-            if (currentUser && currentDiscountCode) {
-                // Show discount sections
-                if (weeklyDiscountSection) weeklyDiscountSection.style.display = 'block';
-                if (settingsDiscountBox) settingsDiscountBox.style.display = 'block';
-                
-                const now = new Date();
-                const timeDiff = discountCodeExpiry - now;
-                
-                // Calculate days, hours, minutes left
-                const daysLeft = Math.max(0, Math.floor(timeDiff / (1000 * 60 * 60 * 24)));
-                const hoursLeft = Math.max(0, Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-                const minutesLeft = Math.max(0, Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60)));
-                
-                let timerText = '';
-                if (daysLeft > 1) {
-                    timerText = `Nog ${daysLeft} dagen geldig`;
-                } else if (daysLeft === 1) {
-                    timerText = `Nog 1 dag geldig`;
-                } else if (hoursLeft > 0) {
-                    timerText = `Nog ${hoursLeft} uur geldig`;
-                } else {
-                    timerText = `Nog ${minutesLeft} minuten geldig`;
-                }
-                
-                // Update home page
-                if (weeklyDiscountCode) weeklyDiscountCode.textContent = currentDiscountCode;
-                if (weeklyDiscountInfo) weeklyDiscountInfo.textContent = 'Deze code is geldig bij alle producten';
-                if (weeklyDiscountTimer) {
-                    weeklyDiscountTimer.innerHTML = `<i class="fas fa-clock"></i><span>${timerText}</span>`;
-                }
-                
-                // Update settings page
-                if (settingsDiscountCode) settingsDiscountCode.textContent = currentDiscountCode;
-                if (settingsDiscountTimer) {
-                    settingsDiscountTimer.innerHTML = `<i class="fas fa-clock"></i><span>${timerText}</span>`;
-                }
-                
-            } else if (currentUser) {
-                // User logged in but no code (shouldn't happen)
-                if (weeklyDiscountSection) weeklyDiscountSection.style.display = 'none';
-                if (settingsDiscountBox) settingsDiscountBox.style.display = 'none';
-            } else {
-                // Not logged in
-                if (weeklyDiscountSection) weeklyDiscountSection.style.display = 'none';
-                if (settingsDiscountBox) settingsDiscountBox.style.display = 'none';
-            }
-        }
-        
-        // Render auth form
-        function renderAuthForm() {
-            const container = document.getElementById('authContainer');
-            if (!container) return;
-            
-            container.innerHTML = `
-                <div class="auth-tabs">
-                    <button class="auth-tab ${authMode === 'login' ? 'active' : ''}" onclick="switchAuthMode('login')">
-                        Inloggen
-                    </button>
-                    <button class="auth-tab ${authMode === 'signup' ? 'active' : ''}" onclick="switchAuthMode('signup')">
-                        Registreren
-                    </button>
-                </div>
-                
-                <div class="auth-error" id="authError"></div>
-                <div class="auth-success" id="authSuccess"></div>
-                
-                <button class="auth-button google" onclick="signInWithGoogle()">
-                    <i class="fab fa-google"></i>
-                    ${authMode === 'login' ? 'Inloggen met Google' : 'Registreren met Google'}
-                </button>
-                
-                <div class="auth-divider">
-                    <span>of met email</span>
-                </div>
-                
-                <form class="auth-form" id="authForm" onsubmit="return handleAuthSubmit(event)">
-                    ${authMode === 'signup' ? `
-                        <div class="form-group">
-                            <label class="form-label" for="name">Naam</label>
-                            <input type="text" class="form-input" id="name" placeholder="Je naam" required>
-                        </div>
-                    ` : ''}
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="email">Email</label>
-                        <input type="email" class="form-input" id="email" placeholder="je@email.nl" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="password">Wachtwoord</label>
-                        <input type="password" class="form-input" id="password" placeholder="Minimaal 6 karakters" required minlength="6">
-                    </div>
-                    
-                    ${authMode === 'signup' ? `
-                        <div class="form-group">
-                            <label class="form-label" for="confirmPassword">Bevestig wachtwoord</label>
-                            <input type="password" class="form-input" id="confirmPassword" placeholder="Herhaal wachtwoord" required minlength="6">
-                        </div>
-                    ` : ''}
-                    
-                    <button type="submit" class="auth-button">
-                        <i class="fas fa-${authMode === 'login' ? 'sign-in-alt' : 'user-plus'}"></i>
-                        ${authMode === 'login' ? 'Inloggen' : 'Account Aanmaken'}
-                    </button>
-                </form>
-                
-                ${authMode === 'login' ? `
-                    <div style="text-align: center; margin-top: 20px;">
-                        <a href="#" onclick="showToast('Neem contact op: PrintSome-webapp@outlook.com', 5000)" style="color: var(--primary-color); text-decoration: none; font-size: 14px;">
-                            <i class="fas fa-key"></i> Wachtwoord vergeten?
-                        </a>
-                    </div>
-                ` : ''}
-                
-                <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--gray-200);">
-                    <p style="color: var(--gray-600); font-size: 12px;">
-                        <i class="fas fa-shield-alt"></i> Je gegevens zijn veilig bij ons
-                    </p>
-                </div>
-            `;
-        }
-        
-        function switchAuthMode(mode) {
-            authMode = mode;
-            renderAuthForm();
-        }
-        
-        function handleAuthSubmit(event) {
-            event.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            if (authMode === 'signup') {
-                const name = document.getElementById('name').value;
-                const confirmPassword = document.getElementById('confirmPassword').value;
-                
-                if (password !== confirmPassword) {
-                    showAuthError('Wachtwoorden komen niet overeen');
-                    return false;
-                }
-                
-                signUpWithEmail(email, password, name);
-            } else {
-                signInWithEmail(email, password);
-            }
-            
-            return false;
-        }
-        
-        function showAuthError(message) {
-            const errorElement = document.getElementById('authError');
-            if (errorElement) {
-                errorElement.textContent = message;
-                errorElement.classList.add('show');
-                
-                setTimeout(() => {
-                    errorElement.classList.remove('show');
-                }, 5000);
-            }
-        }
-        
-        // Fix viewport height for mobile
-        function setViewportHeight() {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        }
-        
-        // Firebase auth state listener
-        auth.onAuthStateChanged((user) => {
-            console.log('🔥 Firebase auth state changed:', user ? 'Logged in' : 'Logged out');
-            
-            if (user) {
-                currentUser = user;
+        async function signInWithGoogle() {
+            try {
+                const provider = new firebase.auth.GoogleAuthProvider();
+                const result = await auth.signInWithPopup(provider);
+                currentUser = result.user;
                 updateAuthUI();
-                loadUserData(user.uid);
-            } else {
-                currentUser = null;
-                userFavorites = [];
-                viewedProducts = [];
-                currentDiscountCode = null;
-                discountCodeExpiry = null;
-                updateAuthUI();
-                updateProductCards();
-                updateFavoritesDisplay();
+                document.getElementById('authModal').classList.remove('active');
+                showToast(translations[currentLanguage].welcomeTitle);
+                loadUserData(currentUser.uid);
+            } catch (error) {
+                showToast('Error: ' + error.message);
             }
-        });
+        }
         
-        // Load products from Firebase
         async function loadProducts() {
             try {
-                const featuredContainer = document.getElementById('featuredProducts');
-                const allContainer = document.getElementById('allProducts');
-                
-                if (featuredContainer) {
-                    featuredContainer.innerHTML = `
-                        <div class="loading">
-                            <div class="loading-spinner"></div>
-                            <p>Producten laden...</p>
-                        </div>
-                    `;
-                }
-                
                 const snapshot = await db.collection('products').get();
                 products = [];
-                
                 snapshot.forEach(doc => {
-                    products.push({
-                        id: doc.id,
-                        ...doc.data()
-                    });
+                    const product = doc.data();
+                    product.id = doc.id;
+                    
+                    if (currentUser && !product.weeklyDiscountCode) {
+                        const now = new Date();
+                        const nextSunday = new Date(now);
+                        nextSunday.setDate(now.getDate() + ((7 - now.getDay()) % 7));
+                        nextSunday.setHours(23, 59, 59, 999);
+                        
+                        product.weeklyDiscountCode = generateDiscountCode();
+                        product.discountValidUntil = nextSunday;
+                        
+                        db.collection('products').doc(doc.id).update({
+                            weeklyDiscountCode: product.weeklyDiscountCode,
+                            discountValidUntil: product.discountValidUntil
+                        });
+                    }
+                    
+                    products.push(product);
                 });
                 
                 if (products.length === 0) {
@@ -2462,154 +1410,87 @@
                 displayFeaturedProducts();
                 displayAllProducts();
                 updateProductCards();
-                
             } catch (error) {
-                console.error('Error loading products:', error);
-                showToast('Fout bij laden van producten', 3000);
+                showToast(translations[currentLanguage].loadingProducts + ' Error');
             }
         }
         
-        // Create initial products in Firebase
+        function generateDiscountCode() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let code = '';
+            for (let i = 0; i < 8; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        }
+        
         async function createInitialProducts() {
-            const initialProducts = [
+            const products = [
                 {
                     name: 'Fidget Toggle Switch',
-                    description: 'Heb je onrustige handen? Deze toggle switch helpt je focussen tijdens school, gamen of huiswerk. Het klikgeluid maakt hem heel satisfying!',
+                    description: 'Perfect for focusing during school, gaming or homework.',
                     price: 0.99,
                     material: 'PLA Basic',
                     category: 'fidgets',
                     featured: true,
                     rating: 4.7,
-                    imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Fidget-Toggle-switch.png',
-                    discount: 0
+                    imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Fidget-Toggle-switch.png'
                 },
                 {
                     name: 'Hexagon Fidget',
-                    description: 'Hexagon fidget – perfect om mee te friemelen, ontspannen en je focus te verbeteren, waar je ook bent.',
+                    description: 'Hexagon fidget – perfect for fidgeting and relaxation.',
                     price: 0.99,
                     material: 'PLA Basic',
                     category: 'fidgets',
                     featured: true,
                     rating: 4.6,
-                    imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Hexagon-fidget.png',
-                    discount: 0
-                },
-                {
-                    name: 'Sleutelhanger',
-                    description: 'Personaliseerbare sleutelhanger met naam.',
-                    price: 1.99,
-                    material: 'PLA Basic',
-                    category: 'home',
-                    category2: 'custom',
-                    featured: false,
-                    rating: 4.5,
-                    imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Binnenkort-beschikbaar_Tekst.png',
-                    discount: 0
-                },
+                    imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Hexagon-fidget.png'
+                }
             ];
             
-            for (const product of initialProducts) {
+            for (const product of products) {
                 await db.collection('products').add(product);
             }
-            
-            console.log('Initial products created');
         }
         
-        // Display featured products
         function displayFeaturedProducts() {
             const container = document.getElementById('featuredProducts');
-            if (!container) return;
-            
             const featured = products.filter(p => p.featured).slice(0, 6);
             
             if (featured.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-cube"></i>
-                        <h3>Geen uitgelichte producten</h3>
-                    </div>
-                `;
+                container.innerHTML = '<div class="empty-state">Geen uitgelichte producten</div>';
                 return;
             }
             
             container.innerHTML = '';
-            
-            featured.forEach(product => {
-                const productCard = createProductCard(product, true);
-                container.appendChild(productCard);
-            });
+            featured.forEach(product => container.appendChild(createProductCard(product)));
         }
         
-        // Display all products
         function displayAllProducts(filter = 'all') {
             const container = document.getElementById('allProducts');
-            if (!container) return;
-            
-            if (filter === 'all') {
-                filteredProducts = [...products];
-            } else {
-                filteredProducts = products.filter(p => p.category === filter || p.category2 === filter);
-            }
+            let filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
             
             if (filteredProducts.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-search"></i>
-                        <h3>Geen producten gevonden</h3>
-                    </div>
-                `;
+                container.innerHTML = '<div class="empty-state">Geen producten gevonden</div>';
                 return;
             }
             
             container.innerHTML = '';
-            
-            filteredProducts.forEach(product => {
-                const productCard = createProductCard(product, false);
-                container.appendChild(productCard);
-            });
+            filteredProducts.forEach(product => container.appendChild(createProductCard(product)));
         }
         
-        // Create product card
-        function createProductCard(product, isFeatured) {
+        function createProductCard(product) {
             const card = document.createElement('div');
             card.className = 'product-card';
             card.dataset.id = product.id;
-            card.dataset.category = product.category;
-            if (product.category2) {
-                card.dataset.category2 = product.category2;
-            }
             
             const isFavorite = userFavorites.includes(product.id);
             const favoriteIcon = isFavorite ? 'fas fa-heart' : 'far fa-heart';
             
-            let priceDisplay = `€${product.price.toFixed(2)}`;
-            let discountDisplay = '';
-            
-            if (product.discount > 0) {
-                const discountedPrice = product.price * (1 - product.discount / 100);
-                priceDisplay = `€${discountedPrice.toFixed(2)}`;
-                discountDisplay = `
-                    <div class="product-badge">-${product.discount}%</div>
-                    <div style="text-decoration: line-through; color: var(--gray-400); font-size: 12px;">
-                        €${product.price.toFixed(2)}
-                    </div>
-                `;
-            }
-            
-            // Determine image to show
-            let imageContent = '';
-            if (product.imageUrl) {
-                imageContent = `<img src="${product.imageUrl}" alt="${product.name}" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\\'fas fa-cube\\'></i>';">`;
-            } else {
-                imageContent = `<i class="fas fa-cube"></i>`;
-            }
-            
             card.innerHTML = `
                 <div class="product-image">
-                    ${imageContent}
-                    ${discountDisplay}
-                    <button class="header-action-btn" style="position: absolute; bottom: 8px; right: 8px; background: rgba(255,255,255,0.9);" 
-                            data-product-id="${product.id}" data-favorite="${isFavorite}">
+                    ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${product.name}">` : '<i class="fas fa-cube"></i>'}
+                    <button class="header-action-btn" style="position: absolute; bottom: 8px; right: 8px; background: rgba(255,255,255,0.9);" data-product-id="${product.id}">
                         <i class="${favoriteIcon}"></i>
                     </button>
                 </div>
@@ -2618,15 +1499,12 @@
                     <div class="product-categories">
                         <span class="product-material">${product.material}</span>
                         <span class="product-category">${product.category}</span>
-                        ${product.category2 ? `<span class="product-category">${product.category2}</span>` : ''}
                     </div>
-                    <div class="product-price">${priceDisplay}</div>
+                    <div class="product-price">€${product.price.toFixed(2)}</div>
                 </div>
             `;
             
-            card.addEventListener('click', () => {
-                showProductDetails(product.id);
-            });
+            card.addEventListener('click', () => showProductDetails(product.id));
             
             const favoriteBtn = card.querySelector('.header-action-btn');
             favoriteBtn.addEventListener('click', (e) => {
@@ -2637,257 +1515,87 @@
             return card;
         }
         
-        // Update all product cards with current state
-        function updateProductCards() {
-            const featuredCards = document.querySelectorAll('#featuredProducts .product-card');
-            featuredCards.forEach(card => {
-                updateProductCard(card);
-            });
-            
-            const allCards = document.querySelectorAll('#allProducts .product-card');
-            allCards.forEach(card => {
-                updateProductCard(card);
-            });
-            
-            updateFavoritesDisplay();
-        }
-        
-        // Update single product card
-        function updateProductCard(card) {
-            const productId = card.dataset.id;
-            const favoriteBtn = card.querySelector('.header-action-btn');
-            const favoriteIcon = favoriteBtn.querySelector('i');
-            
-            const isFavorite = userFavorites.includes(productId);
-            favoriteBtn.dataset.favorite = isFavorite;
-            favoriteIcon.className = isFavorite ? 'fas fa-heart' : 'far fa-heart';
-        }
-        
-        // Show product details modal
-        async function showProductDetails(productId) {
+        function showProductDetails(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
             
-            if (currentUser && !viewedProducts.includes(productId)) {
-                viewedProducts.push(productId);
-            }
-            
-            let priceDisplay = `€${product.price.toFixed(2)}`;
-            if (product.discount > 0) {
-                const discountedPrice = product.price * (1 - product.discount / 100);
-                priceDisplay = `€${discountedPrice.toFixed(2)}`;
-            }
-            
-            // Determine image to show
-            let imageContent = '';
-            if (product.imageUrl) {
-                imageContent = `<img src="${product.imageUrl}" alt="${product.name}" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\\'fas fa-cube\\'></i>';">`;
-            } else {
-                imageContent = '<i class="fas fa-cube"></i>';
-            }
-            
-            productModalContent.innerHTML = `
-                <div class="product-info-columns">
-                    <div class="product-info-content">
-                        <h1 class="product-modal-name">${product.name}</h1>
-                        <p class="product-modal-description">${product.description}</p>
-                        
-                        <div class="product-modal-details">
-                            <div class="detail-item">
-                                <div class="detail-label">Materiaal</div>
-                                <div class="detail-value">${product.material}</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Categorie</div>
-                                <div class="detail-value">${product.category}${product.category2 ? ', ' + product.category2 : ''}</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Beoordeling</div>
-                                <div class="detail-value">${product.rating || '4.5'}</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Levertijd</div>
-                                <div class="detail-value">2-3 dagen</div>
-                            </div>
+            const now = new Date();
+            let discountInfo = '';
+            if (currentUser && product.weeklyDiscountCode) {
+                const validUntil = new Date(product.discountValidUntil?.seconds * 1000 || product.discountValidUntil);
+                discountInfo = `
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(255, 215, 0, 0.1); border-radius: 10px; text-align: center;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">${translations[currentLanguage].discountCode}</h3>
+                        <div style="font-size: 24px; font-weight: bold; letter-spacing: 3px; color: var(--accent-color); margin: 10px 0;">
+                            ${product.weeklyDiscountCode}
                         </div>
-
-                        <div class="product-modal-price">${priceDisplay}</div>
-
-                        <div class="product-modal-discount ${currentUser ? 'show' : ''}" id="productModalDiscount">
-                            <div class="discount-title">Gebruik je wekelijkse kortingscode</div>
-                            <div class="discount-code" id="productDiscountCode">
-                                ${currentUser && currentDiscountCode ? currentDiscountCode : 'LOGIN VOOR KORTING'}
-                            </div>
-                            <div class="discount-info" id="productDiscountInfo">
-                                ${currentUser ? 'Deze code is geldig bij alle producten deze week' : 'Log in voor een persoonlijke kortingscode'}
-                            </div>
-                        </div>
+                        <p style="color: var(--gray-600); font-size: 14px;">
+                            ${translations[currentLanguage].validUntil}: ${validUntil.toLocaleDateString()}
+                        </p>
                     </div>
-                    
-                    <div class="product-modal-image">
-                        ${imageContent}
+                `;
+            }
+            
+            document.getElementById('productModalContent').innerHTML = `
+                <div style="text-align: center;">
+                    <h1 style="font-size: 24px; margin-bottom: 15px;">${product.name}</h1>
+                    <p style="color: var(--gray-600); margin-bottom: 20px;">${product.description}</p>
+                    <div style="font-size: 28px; font-weight: bold; color: var(--primary-color); margin: 20px 0;">
+                        €${product.price.toFixed(2)}
                     </div>
+                    ${discountInfo}
                 </div>
             `;
             
-            productModal.classList.add('active');
+            document.getElementById('productModal').classList.add('active');
         }
         
-        // Load user data from Firebase
+        async function toggleFavorite(productId) {
+            if (!currentUser) {
+                showToast(translations[currentLanguage].login);
+                document.getElementById('authModal').classList.add('active');
+                renderAuthForm();
+                return;
+            }
+            
+            const index = userFavorites.indexOf(productId);
+            if (index === -1) {
+                userFavorites.push(productId);
+                showToast(translations[currentLanguage].addToFavorites);
+            } else {
+                userFavorites.splice(index, 1);
+                showToast(translations[currentLanguage].removeFromFavorites);
+            }
+            
+            await saveUserData();
+            updateProductCards();
+        }
+        
         async function loadUserData(userId) {
             try {
-                const favoritesDoc = await db.collection('userFavorites').doc(userId).get();
-                if (favoritesDoc.exists) {
-                    userFavorites = favoritesDoc.data().productIds || [];
-                }
-                
+                const doc = await db.collection('userFavorites').doc(userId).get();
+                if (doc.exists) userFavorites = doc.data().productIds || [];
                 updateProductCards();
-                updateFavoritesDisplay();
-                
             } catch (error) {
                 console.error('Error loading user data:', error);
             }
         }
         
-        // Save user data to Firebase
         async function saveUserData() {
             if (!currentUser) return;
-            
             try {
-                // Save favorites
                 await db.collection('userFavorites').doc(currentUser.uid).set({
                     productIds: userFavorites,
-                    lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
-                    email: currentUser.email
+                    lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
                 }, { merge: true });
-                
-                console.log('✅ User data saved');
-                
             } catch (error) {
                 console.error('Error saving user data:', error);
             }
         }
         
-        // Load user settings
-        function loadUserSettings() {
-            const savedSettings = localStorage.getItem('printsomeSettings');
-            if (savedSettings) {
-                userSettings = { ...userSettings, ...JSON.parse(savedSettings) };
-                applyUserSettings();
-            }
-        }
-        
-        // Apply user settings to UI
-        function applyUserSettings() {
-            if (userSettings.darkMode) {
-                document.documentElement.classList.add('dark-theme');
-                document.documentElement.classList.remove('light-theme');
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            } else {
-                document.documentElement.classList.add('light-theme');
-                document.documentElement.classList.remove('dark-theme');
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-            }
-            
-            document.getElementById('darkModeToggle').checked = userSettings.darkMode;
-        }
-        
-        // Toggle favorite status
-        async function toggleFavorite(productId) {
-            if (!currentUser) {
-                showToast('Log in om favorieten op te slaan', 3000);
-                authModal.classList.add('active');
-                renderAuthForm();
-                return;
-            }
-            
-            try {
-                const index = userFavorites.indexOf(productId);
-                if (index === -1) {
-                    userFavorites.push(productId);
-                    showToast('Toegevoegd aan favorieten', 2000);
-                } else {
-                    userFavorites.splice(index, 1);
-                    showToast('Verwijderd uit favorieten', 2000);
-                }
-                
-                await saveUserData();
-                updateProductCards();
-                updateFavoritesDisplay();
-                
-            } catch (error) {
-                console.error('Error toggling favorite:', error);
-                showToast('Fout bij opslaan favoriet', 2000);
-            }
-        }
-        
-        // Update favorites display
-        async function updateFavoritesDisplay() {
-            const container = document.getElementById('favoritesProducts');
-            if (!container) return;
-            
-            if (userFavorites.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-heart"></i>
-                        <h3>Geen favorieten</h3>
-                        <p>${currentUser ? 'Voeg producten toe aan je favorieten' : 'Log in om je favorieten te zien'}</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            const favoriteProducts = products.filter(p => userFavorites.includes(p.id));
-            
-            if (favoriteProducts.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-heart"></i>
-                        <h3>Geen favorieten</h3>
-                    </div>
-                `;
-                return;
-            }
-            
-            container.innerHTML = '';
-            
-            favoriteProducts.forEach(product => {
-                const productCard = createProductCard(product, false);
-                container.appendChild(productCard);
-            });
-        }
-        
-        // FAQ functionality
-        function setupFAQ() {
-            document.querySelectorAll('.faq-question').forEach(question => {
-                question.addEventListener('click', () => {
-                    const answer = question.nextElementSibling;
-                    const isActive = question.classList.contains('active');
-                    
-                    // Close all other FAQ items
-                    document.querySelectorAll('.faq-question').forEach(q => {
-                        q.classList.remove('active');
-                        q.nextElementSibling.classList.remove('show');
-                    });
-                    
-                    // Open clicked item if it wasn't active
-                    if (!isActive) {
-                        question.classList.add('active');
-                        answer.classList.add('show');
-                    }
-                });
-            });
-        }
-        
-        // Show page
         function showPage(page) {
-            document.querySelectorAll('.page').forEach(p => {
-                p.classList.remove('active');
-            });
-            
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
             
             currentPage = page;
             document.getElementById(page + 'Page').classList.add('active');
@@ -2895,162 +1603,137 @@
             
             const headerTitle = document.getElementById('headerTitle');
             switch(page) {
-                case 'home':
-                    headerTitle.textContent = 'PrintSome';
-                    // Setup FAQ and update discount display
-                    setTimeout(setupFAQ, 100);
-                    updateDiscountCodeDisplay();
-                    break;
-                case 'products':
-                    headerTitle.textContent = 'Producten';
-                    displayAllProducts();
-                    break;
-                case 'favorites':
-                    headerTitle.textContent = 'Favorieten';
-                    updateFavoritesDisplay();
-                    break;
-                case 'privacy':
-                    headerTitle.textContent = 'Privacybeleid';
-                    break;
-                case 'settings':
-                    headerTitle.textContent = 'Instellingen';
-                    updateDiscountCodeDisplay();
-                    break;
+                case 'home': headerTitle.textContent = 'PrintSome'; break;
+                case 'products': headerTitle.textContent = translations[currentLanguage].navProducts; displayAllProducts(); break;
+                case 'favorites': headerTitle.textContent = translations[currentLanguage].favoritesTitle; updateFavoritesDisplay(); break;
+                case 'settings': headerTitle.textContent = translations[currentLanguage].navSettings; break;
             }
         }
         
-        // Show toast notification
-        function showToast(message, duration = 3000) {
-            toastMessage.textContent = message;
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, duration);
+        function updateProductCards() {
+            document.querySelectorAll('.product-card').forEach(card => {
+                const productId = card.dataset.id;
+                const favoriteBtn = card.querySelector('.header-action-btn i');
+                favoriteBtn.className = userFavorites.includes(productId) ? 'fas fa-heart' : 'far fa-heart';
+            });
         }
         
-        // Set up event listeners
-        function setupEventListeners() {
-            // Bottom navigation
+        function updateFavoritesDisplay() {
+            const container = document.getElementById('favoritesProducts');
+            const favoriteProducts = products.filter(p => userFavorites.includes(p.id));
+            
+            if (favoriteProducts.length === 0) {
+                container.innerHTML = '<div class="empty-state">' + translations[currentLanguage].favoritesTitle + '</div>';
+                return;
+            }
+            
+            container.innerHTML = '';
+            favoriteProducts.forEach(product => container.appendChild(createProductCard(product)));
+        }
+        
+        function renderAuthForm() {
+            const container = document.getElementById('authContainer');
+            if (!container) return;
+            
+            const lang = translations[currentLanguage];
+            container.innerHTML = `
+                <button class="auth-button google" onclick="signInWithGoogle()">
+                    <i class="fab fa-google"></i> ${lang.googleLogin}
+                </button>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="#" onclick="showToast('${translations[currentLanguage].contact}: PrintSome-webapp@outlook.com', 5000)" style="color: var(--primary-color);">
+                        <i class="fas fa-key"></i> ${lang.forgotPassword}
+                    </a>
+                </div>
+            `;
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
+            translatePage();
+            
+            const savedLang = localStorage.getItem('printsomeLanguage');
+            if (savedLang) {
+                currentLanguage = savedLang;
+                translatePage();
+            }
+            
+            document.getElementById('languageToggle').addEventListener('click', (e) => {
+                e.stopPropagation();
+                document.getElementById('languageDropdown').classList.toggle('show');
+            });
+            
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    currentLanguage = option.dataset.lang;
+                    localStorage.setItem('printsomeLanguage', currentLanguage);
+                    translatePage();
+                    updateAuthUI();
+                    document.getElementById('languageDropdown').classList.remove('show');
+                });
+            });
+            
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const page = item.dataset.page;
-                    showPage(page);
+                    showPage(item.dataset.page);
                 });
             });
             
-            // Theme toggle
-            themeToggle.addEventListener('click', () => {
-                userSettings.darkMode = !userSettings.darkMode;
-                applyUserSettings();
-                localStorage.setItem('printsomeSettings', JSON.stringify(userSettings));
+            document.getElementById('themeToggle').addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-theme');
+                document.documentElement.classList.toggle('light-theme');
+                localStorage.setItem('printsomeDarkMode', document.documentElement.classList.contains('dark-theme'));
             });
             
-            // Close auth modal
-            closeAuth.addEventListener('click', () => {
-                authModal.classList.remove('active');
+            document.getElementById('closeAuth').addEventListener('click', () => {
+                document.getElementById('authModal').classList.remove('active');
             });
             
-            // Close product modal
-            closeProductModal.addEventListener('click', () => {
-                productModal.classList.remove('active');
+            document.getElementById('closeProductModal').addEventListener('click', () => {
+                document.getElementById('productModal').classList.remove('active');
             });
             
-            // Filter chips
+            document.getElementById('allProductsLink').addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage('products');
+            });
+            
             document.querySelectorAll('.filter-chip').forEach(chip => {
-                chip.addEventListener('click', (e) => {
-                    if (chip.id === 'loginButton') return;
-                    
-                    document.querySelectorAll('.filter-chip').forEach(c => {
-                        c.classList.remove('active');
-                    });
+                chip.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
                     chip.classList.add('active');
-                    
-                    const filter = chip.dataset.filter;
-                    displayAllProducts(filter);
+                    displayAllProducts(chip.dataset.filter);
                 });
             });
             
-            // Search input
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', (e) => {
-                const searchTerm = e.target.value.toLowerCase();
-                
-                if (searchTerm.length === 0) {
-                    displayAllProducts();
-                    return;
-                }
-                
-                const filtered = products.filter(product => 
-                    product.name.toLowerCase().includes(searchTerm) ||
-                    product.description.toLowerCase().includes(searchTerm) ||
-                    product.material.toLowerCase().includes(searchTerm) ||
-                    product.category.toLowerCase().includes(searchTerm) ||
-                    (product.category2 && product.category2.toLowerCase().includes(searchTerm))
-                );
-                
-                const container = document.getElementById('allProducts');
-                
-                if (filtered.length === 0) {
-                    container.innerHTML = `
-                        <div class="empty-state">
-                            <i class="fas fa-search"></i>
-                            <h3>Geen producten gevonden</h3>
-                        </div>
-                    `;
-                    return;
-                }
-                
-                container.innerHTML = '';
-                
-                filtered.forEach(product => {
-                    const productCard = createProductCard(product, false);
-                    container.appendChild(productCard);
-                });
-            });
-            
-            // Settings toggle
-            document.getElementById('darkModeToggle').addEventListener('change', (e) => {
-                userSettings.darkMode = e.target.checked;
-                applyUserSettings();
-                localStorage.setItem('printsomeSettings', JSON.stringify(userSettings));
-            });
-            
-            // All products link
-            const allProductsLink = document.getElementById('allProductsLink');
-            if (allProductsLink) {
-                allProductsLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showPage('products');
-                });
+            const darkMode = localStorage.getItem('printsomeDarkMode') === 'true';
+            if (darkMode) {
+                document.documentElement.classList.add('dark-theme');
+                document.documentElement.classList.remove('light-theme');
             }
-        }
-        
-        // Initialize the app
-        document.addEventListener('DOMContentLoaded', async () => {
-            console.log('🚀 PrintSome app starten...');
             
-            // Fix mobile viewport height
-            setViewportHeight();
-            window.addEventListener('resize', setViewportHeight);
+            document.getElementById('darkModeToggle').checked = darkMode;
+            document.getElementById('darkModeToggle').addEventListener('change', (e) => {
+                document.documentElement.classList.toggle('dark-theme', e.target.checked);
+                document.documentElement.classList.toggle('light-theme', !e.target.checked);
+                localStorage.setItem('printsomeDarkMode', e.target.checked);
+            });
             
-            // Load data and setup
-            loadUserSettings();
-            loadProducts();
-            setupEventListeners();
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                if (term.length === 0) return displayAllProducts();
+                const filtered = products.filter(p => p.name.toLowerCase().includes(term));
+                const container = document.getElementById('allProducts');
+                container.innerHTML = filtered.length ? '' : '<div class="empty-state">Geen producten gevonden</div>';
+                filtered.forEach(p => container.appendChild(createProductCard(p)));
+            });
             
-            // Update discount timer every minute
-            setInterval(() => {
-                if (currentUser) {
-                    updateDiscountCodeDisplay();
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.language-selector')) {
+                    document.getElementById('languageDropdown').classList.remove('show');
                 }
-            }, 60000);
-            
-            // Welcome message
-            setTimeout(() => {
-                showToast('Welkom bij PrintSome!', 3000);
-            }, 1000);
+            });
         });
     </script>
 </body>

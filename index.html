@@ -11,6 +11,10 @@
     <meta name="theme-color" content="#FFD700">
     <meta name="description" content="PrintSome">
     
+    <!-- Apple Touch Icon (voor startscherm pictogram) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAAXNSR0IArs4c6QAABn9JREFUeJztnU1qI0cYgOvewXgXniUHyDkC2WZrgp3V2AnGhrxJYpsQYmxjwOCwCvgygZwhB8gZsrH3yVtXxBCE+rvqra+q3wfCLNp86OlWP5qq7iIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA1cl5vv/c9/GfT/m+cZ7n+1VfAwC+KnlefHbU9/HvYb47TPN8UPE1AOCr8DfB/6bva0nzYr/iawDAV+Avgn+V5rvtM/CfJvnuWcXXAICP7Ih8J6xwB7n6m+DvP4j+A7Ab9uM8H1V9kW1Q8cXZcdj/4h/H/f0Hm/z10r7YePPF8e3VW/I8+b0oSjKp6n3aosjz5FexLx5UvRdtyYt8UvVltyF/4l88SvP8YdUXs20qvgC8U1xmx6uU5sVxxZcDgC04K5I8L34pf/l4xZcDgA3UYp+sCv+If3lS8eUAYAO1Cv5Rnhe/KsJ/FN/9t/I3WZYXf1R8hU/Is/yXiveqF8+/67L8sOLL+Z3j4nI46f+d5fnzii/3SVmWp7Vd/yj+X8V3YJdUfAHYiix/lBc/Kv7hY7bY7+xT8nz/F0X4j/L99lPRh6L/N3kWf/uD6P9tWe4+qPjaT+I8f1b7R5a/mOf5f1P0/1aU5YeKL3mjKMv7m/jyZ/Fn8N+wvEjL8r2/+J93VXF98b8f13wNvhV8D+9/fvOZb1/yfeP8V3u98l8Wn73b3+mDl4ovf1L5/eD/x7crf+ZtP8mLe1VfsP28/Fm+H71XfAe2juK7j2V5/qfFh6z46t3L8nJf0f9b3vd/lu93v3sQn7q3qyw//Pj9iZ8Hn2xZli9WvEdd6fA5se+fePufxbf/fQf/zvL8qOo71ot3j8tvH1Z80Q/Ki4cv/v5FWe4/WvF6r9/lp4ov3wqK7y5a/v+/9f2y/H6eF7t6Lrz8l9J7lqLiC9cSxfeHf0VR3n+e58Urxd/f1t/wf6X4Dmybik+9Kyy+42lZ3j8tyn3Fp2RZ/utiD+/B9yrK8k7Vl6xBeV7cUny/hj8ty/3D/C9fmvF98a+XxceT5tVnxeNp2e/N8+JpxZe/UZY/o/RuSxXfrS7t/1V8yrYs9h8rPn5LFN9zX1+U5dP8L9+v4rt3I+NF/n2+2L8L8/37iv/mq6L4LssN/rX4VF1ZPqz4lE0r3y9vKb5/XS8+1RfF+6VZ6e1Z8p2S58UjxZ/fgv1b+V4pFF9nXZblH1Z8x7Yo3y8aFX9+a/Zv5XuF4ru8V74Hv1V8vwPlxR+Kj9+W4h3yA2W5eFb1HdiU4j2SouLrt60sz39RfP62FJ+2W5YfN1/yvP1H8V3aVv5w8cd/v6/4Tq2I57n5Y9V3olXFe6T7Vd+xS4p3yO8rvms3FHv4h1VfgE3FZ+2Gog+/2Ypvl+fFk4rv1I6yfKf8Tp7v/6n4Lq0r3iF/VnznLhXvkB9UfddNUZa/qPjOXSv2kP9S8d27Vnwv/yC+g29I8V1+0fP8ccXX3Kj4DDiUU7F37iv+7k3Fe+R91XfumrJ8V/FdOFU8S95XfPdOFWfIB1Xf+T9RlHcrvgtnKt4jf1b8+V0r3iPvqL4Dm1J8l74ryh9UfOcuFe+Qn1d9x74oy3cV34VTxTvkn1Z8B04Vz5Cbqk9dU5aL7xRf45/Kcvmj4rs3pXj2+6riOwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALAz/g/4oRn1wQdWhgAAAABJRU5ErkJggg==">
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAolJREFUWEftlk1IVGEQhp95/9zUEqJ20SpqYR8iRbtWbSJoEUEiLcKoiBbdCNEiIqgWEUF/IG0i6EeM/kBLi8IiarUJ2kQfggRtguLv6npazp273HvvbULUbh1m7r2Zed6Z970j8I8b+d3iBvw32B1oA24Cp4EDFv+zB/hYB2gzHwDfAaeBb8B4PZAGm1wH7gH3gb0a/7sCuB08A84D7w1vB7BtwU3gKTAHHAR+ACeA74Bv+U8DeyvMfgL2AD8q7t+17r3uR2Ed0AFsmLkddA9g3F9j0A84CawLvm4DngItQbAduAR0AH8MNgM0WW+3kE1N+9b+Qes0m5AzoTlMk5mG2czI3ObYTHzE3i8uO9N3Qk6b+cVQhNsxM5dJm9kQOc2b+UnLZkbk9Hh/OzNz6c05E9qOzb6N2N1qTp5kPrds/82M5WfZnn56Qw7Yw6c6m/6bI81qTj6Ly3bLsp87/jHfT1r2uuf0//9w6+1Qp8ZP2u2lZ/fVnBw3c9myPfd8ns/H1hFg5C7mbNt62dHqTO9odT6Yt8R7L/8HYt0KRgy4AxKbBLgG3AQe2fde4A7wMvBjB3gA3A2+N4FTgZ+5qgF7gQvA2gh3O3AS2B2cvQH6gB3AajvXgS6QpT8s1Aq4BnQAE8ATm/cB7wPb58q8kQdAr+0nwEfgBrC2woQ4LMDzMN4z87B1Tw3wPLwpcx2xbAROAK2O0gFcA1qAIcvgLvALOAR8A8YBvTZ4E+mwA9lqBmjTmgZugG4PjTjQlYB3A0+A2ShgNzAShZgA9kf3dGswCrgI7I0CrgC7opBHQDfKi1rVhD1e4sJYg9HnFwAAAAAAAAAAAAAAAAAAAAAAAPA/8BeOAHWrJvNp4AAAAABJRU5ErkJggg==">
+    
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
@@ -391,6 +395,67 @@
             font-size: 12px;
         }
 
+        /* FAQ Styles */
+        .faq-section {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius-lg);
+            padding: 20px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--gray-100);
+            padding: 16px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark-color);
+            font-size: 16px;
+        }
+
+        .faq-question i {
+            color: var(--primary-color);
+            transition: transform var(--transition);
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition);
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
+
+        .faq-answer.show {
+            max-height: 300px;
+            margin-top: 12px;
+        }
+
         /* Products Grid */
         .products-grid {
             display: grid;
@@ -631,7 +696,26 @@
             color: var(--gray-500);
         }
 
-        /* Privacy Page - Telefoon vriendelijk */
+        /* Language Selector */
+        .language-selector {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--gray-100);
+            border: 2px solid transparent;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            color: var(--dark-color);
+            transition: all var(--transition);
+            margin-top: 8px;
+        }
+
+        .language-selector:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: var(--gray-200);
+        }
+
+        /* Privacy Page - Telefoon vriendelijk - GEEN GELE TEKST MEER */
         .privacy-content {
             background-color: var(--light-color);
             border-radius: var(--border-radius);
@@ -643,7 +727,7 @@
         .privacy-title {
             font-size: 24px;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--dark-color); /* ZWART ipv geel */
             margin-bottom: 20px;
             text-align: center;
             display: flex;
@@ -721,15 +805,18 @@
 
         .contact-info p {
             margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: var(--gray-700);
+            font-size: 14px;
+            line-height: 1.4;
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
 
         .contact-info a {
             color: var(--primary-color);
             text-decoration: none;
             font-weight: 500;
+            word-break: break-all;
         }
 
         .contact-info a:hover {
@@ -1200,36 +1287,6 @@
             display: inline-block;
         }
 
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .stat-card {
-            background-color: var(--light-color);
-            border-radius: var(--border-radius);
-            padding: 20px;
-            text-align: center;
-            border: 1px solid var(--gray-100);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .stat-value {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: var(--gray-600);
-            font-weight: 500;
-        }
-
         /* Loading State */
         .loading {
             display: flex;
@@ -1400,18 +1457,41 @@
                     </div>
                 </div>
 
-                <div class="section-header">
-                    <h2 class="section-title">Jouw Statistieken</h2>
-                </div>
-
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-value" id="bonusCount">0</div>
-                        <div class="stat-label">Bonuscodes</div>
+                <!-- FAQ Section -->
+                <div class="faq-section">
+                    <h2 class="faq-title">
+                        <i class="fas fa-question-circle"></i>
+                        Veelgestelde vragen
+                    </h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Hoe kan ik producten kopen?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Op dit moment is het nog niet mogelijk om online te kopen. Aankopen zijn wel offline (in real life) mogelijk.
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="viewedCount">0</div>
-                        <div class="stat-label">Bekeken</div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Hoe werken bonuscodes?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Bonuscodes kun je invoeren tijdens het reserveren. Zodra de code geldig is, wordt de korting automatisch verrekend.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Wat voor producten verkoopt PrintSome?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Op dit moment verkopen wij voornamelijk fidget toys. Ons assortiment wordt regelmatig uitgebreid. Neem een kijkje bij onze producten om te zien wat wij momenteel aanbieden.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1427,7 +1507,7 @@
                         <button class="filter-chip active" data-filter="all">Alles</button>
                         <button class="filter-chip" data-filter="home">Huis</button>
                         <button class="filter-chip" data-filter="tech">Tech</button>
-                        <button class="filter-chip" data-filter="costum">Costum</button>
+                        <button class="filter-chip" data-filter="custom">Custom</button>
                         <button class="filter-chip" data-filter="fidgets">Fidgets</button>
                     </div>
                 </div>
@@ -1471,8 +1551,27 @@
                     <div class="settings-item">
                         <div class="settings-info">
                             <h4>Bonuscodes</h4>
-                            <p id="settingsBonusCount">0 actieve codes</p>
+                            <p id="settingsBonusCount">Log in voor bonuscodes</p>
                         </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3 class="settings-title">
+                        <i class="fas fa-globe"></i>
+                        Taal
+                    </h3>
+                    <div class="settings-item">
+                        <div class="settings-info">
+                            <h4>Taal selecteren</h4>
+                            <p id="currentLanguage">Nederlands</p>
+                        </div>
+                        <select class="language-selector" id="languageSelector" style="width: auto; min-width: 120px;">
+                            <option value="nl" selected>Nederlands</option>
+                            <option value="en">English</option>
+                            <option value="fr">Français</option>
+                            <option value="de">Deutsch</option>
+                        </select>
                     </div>
                 </div>
 
@@ -1541,8 +1640,8 @@
                     
                     <h2 class="privacy-subtitle">Contactgegevens</h2>
                     <div class="contact-info">
-                        <p><i class="fas fa-globe"></i> <strong>Website:</strong> https://PrintSome.pages.dev</p>
-                        <p><i class="fas fa-envelope"></i> <strong>E-mailadres:</strong> PrintSome-webapp@outlook.com</p>
+                        <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://PrintSome.pages.dev" target="_blank">https://PrintSome.pages.dev</a></p>
+                        <p><i class="fas fa-envelope"></i> <strong>E-mailadres:</strong> <a href="mailto:PrintSome-webapp@outlook.com">PrintSome-webapp@outlook.com</a></p>
                     </div>
                     
                     <h2 class="privacy-subtitle">Persoonsgegevens die wij verwerken</h2>
@@ -1552,6 +1651,7 @@
                     <ul class="privacy-list">
                         <li>Voor- en achternaam</li>
                         <li>E-mailadres</li>
+                        <li>Taalvoorkeur</li>
                         <li>IP-adres</li>
                         <li>Internetbrowser en apparaattype</li>
                         <li>Locatiegegevens</li>
@@ -1658,7 +1758,7 @@
                     </p>
                     <p class="privacy-text">
                         Meer informatie over cookies vindt u op:<br>
-                        https://veiliginternetten.nl/cookies-wat-zijn-het-en-wat-doe-ik-ermee/
+                        <a href="https://veiliginternetten.nl/wat-zijn-cookies/" target="_blank">https://veiliginternetten.nl/wat-zijn-cookies/</a>
                     </p>
                     
                     <h2 class="privacy-subtitle">Gegevens inzien, aanpassen of verwijderen</h2>
@@ -1667,14 +1767,14 @@
                     </p>
                     <p class="privacy-text">
                         U kunt een verzoek sturen naar:<br>
-                        PrintSome-webapp@outlook.com
+                        <a href="mailto:PrintSome-webapp@outlook.com">PrintSome-webapp@outlook.com</a>
                     </p>
                     <p class="privacy-text">
                         Om misbruik te voorkomen kunnen wij u vragen zich te identificeren. We reageren zo snel mogelijk, maar uiterlijk binnen vier weken.
                     </p>
                     <p class="privacy-text">
                         Daarnaast heeft u het recht een klacht in te dienen bij de Autoriteit Persoonsgegevens:<br>
-                        https://autoriteitpersoonsgegevens.nl/
+                        <a href="https://autoriteitpersoonsgegevens.nl/" target="_blank">https://autoriteitpersoonsgegevens.nl/</a>
                     </p>
                     
                     <h2 class="privacy-subtitle">Hoe wij persoonsgegevens beveiligen</h2>
@@ -1790,6 +1890,14 @@
         };
         
         let authMode = 'login'; // 'login' or 'signup'
+        let currentDiscountCode = null;
+        let discountCodeExpiry = null;
+        
+        // Weekly discount codes - GROTERE SET VOOR MEER VARIATIE
+        const possibleDiscountCodes = [
+            'KEY91', 'SWITCH64', 'HEXAGON27', 'PRINT20', 'FIDGET15', 
+            '3DEXTRA', 'BONUS10', 'SAVE25', 'WELCOME5', 'SPECIAL30'
+        ];
         
         // DOM Elements
         const appContainer = document.getElementById('appContainer');
@@ -1805,6 +1913,7 @@
         const closeProductModal = document.getElementById('closeProductModal');
         const toast = document.getElementById('toast');
         const toastMessage = document.getElementById('toastMessage');
+        const languageSelector = document.getElementById('languageSelector');
         
         // Firebase Auth Functions
         async function signInWithGoogle() {
@@ -1831,7 +1940,7 @@
             }
         }
         
-        async function signUpWithEmail(email, password, name) {
+        async function signUpWithEmail(email, password, name, language) {
             try {
                 console.log('📝 Account aanmaken voor:', email);
                 
@@ -1848,9 +1957,25 @@
                 console.log('✅ Account aangemaakt!', userCredential.user.email);
                 
                 currentUser = userCredential.user;
+                
+                // Sla taalvoorkeur op in Firestore
+                await db.collection('userSettings').doc(currentUser.uid).set({
+                    language: language || 'nl',
+                    darkMode: userSettings.darkMode,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    email: currentUser.email
+                }, { merge: true });
+                
+                // Update userSettings
+                userSettings.language = language || 'nl';
+                localStorage.setItem('printsomeSettings', JSON.stringify(userSettings));
+                
                 updateAuthUI();
                 authModal.classList.remove('active');
                 showToast(`Welkom bij PrintSome!`, 3000);
+                
+                // Pas taal aan
+                applyLanguage(userSettings.language);
                 
                 // Load user data
                 loadUserData(currentUser.uid);
@@ -1889,7 +2014,8 @@
                 authModal.classList.remove('active');
                 showToast(`Welkom terug ${userCredential.user.displayName || userCredential.user.email}!`, 3000);
                 
-                // Load user data
+                // Load user data including language preference
+                await loadUserSettingsFromFirebase(currentUser.uid);
                 loadUserData(currentUser.uid);
                 
             } catch (error) {
@@ -1921,6 +2047,11 @@
                 currentUser = null;
                 userBonuses = [];
                 userFavorites = [];
+                currentDiscountCode = null;
+                discountCodeExpiry = null;
+                userSettings.language = 'nl'; // Reset naar Nederlands
+                localStorage.setItem('printsomeSettings', JSON.stringify(userSettings));
+                applyLanguage('nl');
                 updateAuthUI();
                 updateProductCards();
                 showToast('Succesvol uitgelogd', 2000);
@@ -1928,6 +2059,54 @@
                 console.error('❌ Logout error:', error);
                 showToast('Uitloggen mislukt', 2000);
             }
+        }
+        
+        // Load user settings from Firebase
+        async function loadUserSettingsFromFirebase(userId) {
+            try {
+                const settingsDoc = await db.collection('userSettings').doc(userId).get();
+                if (settingsDoc.exists) {
+                    const data = settingsDoc.data();
+                    if (data.language) {
+                        userSettings.language = data.language;
+                        localStorage.setItem('printsomeSettings', JSON.stringify(userSettings));
+                        applyLanguage(data.language);
+                        
+                        // Update language selector
+                        if (languageSelector) {
+                            languageSelector.value = data.language;
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading user settings:', error);
+            }
+        }
+        
+        // Apply language to UI
+        function applyLanguage(lang) {
+            if (!lang) lang = 'nl';
+            
+            // Update current language display
+            const currentLanguageEl = document.getElementById('currentLanguage');
+            if (currentLanguageEl) {
+                const langNames = {
+                    'nl': 'Nederlands',
+                    'en': 'English',
+                    'fr': 'Français',
+                    'de': 'Deutsch'
+                };
+                currentLanguageEl.textContent = langNames[lang] || 'Nederlands';
+            }
+            
+            // Update language selector if exists
+            if (languageSelector) {
+                languageSelector.value = lang;
+            }
+            
+            // Hier zou je vertalingen kunnen toevoegen
+            // Voor nu alleen de taal opslaan en weergave aanpassen
+            console.log('Taal gewijzigd naar:', lang);
         }
         
         // Update UI based on auth state
@@ -1959,6 +2138,9 @@
                     loginButton.innerHTML = '<i class="fas fa-sign-out-alt"></i> Uitloggen';
                     loginButton.onclick = logout;
                 }
+                
+                // Generate weekly discount code if needed
+                generateWeeklyDiscountCode();
             } else {
                 userAvatar.innerHTML = '<i class="fas fa-user"></i>';
                 welcomeUser.textContent = 'Log in voor persoonlijke bonussen';
@@ -1984,7 +2166,102 @@
             };
         }
         
-        // Render auth form
+        // Generate weekly discount code - VERBETERDE VERSIE
+        function generateWeeklyDiscountCode() {
+            if (!currentUser) return;
+            
+            const now = new Date();
+            
+            // Gebruik weeknummer gebaseerd op ISO week
+            const getWeekNumber = (date) => {
+                const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+                d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+                const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+                return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+            };
+            
+            const weekNumber = getWeekNumber(now);
+            const year = now.getFullYear();
+            const weekKey = `${year}-W${weekNumber}`;
+            
+            const storedCode = localStorage.getItem(`discountCode_${currentUser.uid}`);
+            const storedExpiry = localStorage.getItem(`discountCodeExpiry_${currentUser.uid}`);
+            const storedWeekKey = localStorage.getItem(`weekKey_${currentUser.uid}`);
+            
+            // Check of we een nieuwe code nodig hebben
+            const needsNewCode = !storedCode || !storedExpiry || new Date(storedExpiry) <= now || storedWeekKey !== weekKey;
+            
+            if (needsNewCode) {
+                // Genereer willekeurige code uit de lijst
+                const randomIndex = Math.floor(Math.random() * possibleDiscountCodes.length);
+                currentDiscountCode = possibleDiscountCodes[randomIndex];
+                
+                // Geldig tot het einde van de huidige week (zondag 23:59:59)
+                const expiryDate = new Date(now);
+                const daysUntilSunday = (7 - now.getDay()) % 7;
+                expiryDate.setDate(expiryDate.getDate() + daysUntilSunday);
+                expiryDate.setHours(23, 59, 59, 999);
+                
+                // Als vandaag zondag is, dan is daysUntilSunday = 0, dus einde vandaag
+                if (now.getDay() === 0) {
+                    expiryDate.setHours(23, 59, 59, 999);
+                }
+                
+                discountCodeExpiry = expiryDate;
+                
+                // Opslaan in localStorage
+                localStorage.setItem(`discountCode_${currentUser.uid}`, currentDiscountCode);
+                localStorage.setItem(`discountCodeExpiry_${currentUser.uid}`, discountCodeExpiry.toISOString());
+                localStorage.setItem(`weekKey_${currentUser.uid}`, weekKey);
+                
+                // Opslaan in Firestore voor persistentie
+                db.collection('userDiscounts').doc(currentUser.uid).set({
+                    code: currentDiscountCode,
+                    expiryDate: discountCodeExpiry.toISOString(),
+                    weekKey: weekKey,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                }, { merge: true });
+                
+                updateDiscountCodeDisplay();
+                
+                // Toon notificatie voor nieuwe code
+                showToast(`Nieuwe weekkorting: ${currentDiscountCode}`, 5000);
+            } else {
+                currentDiscountCode = storedCode;
+                discountCodeExpiry = new Date(storedExpiry);
+                updateDiscountCodeDisplay();
+            }
+        }
+        
+        // Update discount code display in settings
+        function updateDiscountCodeDisplay() {
+            const settingsBonusCount = document.getElementById('settingsBonusCount');
+            if (!settingsBonusCount) return;
+            
+            if (currentUser && currentDiscountCode && discountCodeExpiry) {
+                const now = new Date();
+                const timeDiff = discountCodeExpiry - now;
+                const daysLeft = Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
+                const hoursLeft = Math.max(0, Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+                
+                let displayText = '';
+                if (daysLeft > 0) {
+                    displayText = `${currentDiscountCode} - Nog ${daysLeft} dag${daysLeft !== 1 ? 'en' : ''} geldig`;
+                } else if (hoursLeft > 0) {
+                    displayText = `${currentDiscountCode} - Nog ${hoursLeft} uur${hoursLeft !== 1 ? 'en' : ''} geldig`;
+                } else {
+                    displayText = `${currentDiscountCode} - Vandaag nog geldig!`;
+                }
+                
+                settingsBonusCount.textContent = displayText;
+            } else if (currentUser) {
+                settingsBonusCount.textContent = "Geen actieve code";
+            } else {
+                settingsBonusCount.textContent = "Log in voor bonuscodes";
+            }
+        }
+        
+        // Render auth form - MET TAALSELECTIE
         function renderAuthForm() {
             const container = document.getElementById('authContainer');
             if (!container) return;
@@ -2016,6 +2293,16 @@
                         <div class="form-group">
                             <label class="form-label" for="name">Naam</label>
                             <input type="text" class="form-input" id="name" placeholder="Je naam" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="signupLanguage">Taal selecteren</label>
+                            <select class="language-selector" id="signupLanguage">
+                                <option value="nl" selected>Nederlands</option>
+                                <option value="en">English</option>
+                                <option value="fr">Français</option>
+                                <option value="de">Deutsch</option>
+                            </select>
                         </div>
                     ` : ''}
                     
@@ -2072,13 +2359,14 @@
             if (authMode === 'signup') {
                 const name = document.getElementById('name').value;
                 const confirmPassword = document.getElementById('confirmPassword').value;
+                const selectedLanguage = document.getElementById('signupLanguage')?.value || 'nl';
                 
                 if (password !== confirmPassword) {
                     showAuthError('Wachtwoorden komen niet overeen');
                     return false;
                 }
                 
-                signUpWithEmail(email, password, name);
+                signUpWithEmail(email, password, name, selectedLanguage);
             } else {
                 signInWithEmail(email, password);
             }
@@ -2125,14 +2413,17 @@
             if (user) {
                 currentUser = user;
                 updateAuthUI();
+                loadUserSettingsFromFirebase(user.uid);
                 loadUserData(user.uid);
             } else {
                 currentUser = null;
                 userBonuses = [];
                 userFavorites = [];
                 viewedProducts = [];
+                currentDiscountCode = null;
+                discountCodeExpiry = null;
                 updateAuthUI();
-                updateBonusCount();
+                updateProductCards();
                 updateFavoritesDisplay();
             }
         });
@@ -2187,78 +2478,37 @@
                     price: 0.99,
                     material: 'PLA Basic',
                     category: 'fidgets',
-                    category2: 'costum',
                     featured: true,
                     rating: 4.7,
                     imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Fidget-Toggle-switch.png',
                     discount: 0,
-                    bonusCode: 'SWITCH20T'
+                    bonusCode: 'SWITCH64'
                 },
                 {
-                    name: 'Smartphone Stand',
-                    description: 'Een ergonomische smartphone stand voor alle telefoons.',
-                    price: 19.99,
-                    material: 'PETG',
-                    category: 'tech',
-                    category2: 'home',
-                    featured: true,
-                    rating: 4.5,
-                    imageUrl: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-                    discount: 0,
-                    bonusCode: 'STAND5'
-                },
-                {
-                    name: 'Boekensteun',
-                    description: 'Moderne boekensteun in de vorm van een berg.',
-                    price: 24.99,
-                    material: 'PLA',
-                    category: 'home',
-                    category2: null,
-                    featured: true,
-                    rating: 4.7,
-                    imageUrl: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-                    discount: 5,
-                    bonusCode: 'BOOK5'
-                },
-                {
-                    name: 'USB Hub',
-                    description: 'Compacte USB hub in de vorm van een robot.',
-                    price: 34.99,
-                    material: 'ABS',
-                    category: 'tech',
-                    category2: 'home',
+                    name: 'Hexagon Fidget',
+                    description: 'Hexagon fidget – perfect om mee te friemelen, ontspannen en je focus te verbeteren, waar je ook bent.',
+                    price: 0.99,
+                    material: 'PLA Basic',
+                    category: 'fidgets',
                     featured: true,
                     rating: 4.6,
-                    imageUrl: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-                    discount: 15,
-                    bonusCode: 'USB15'
+                    imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Hexagon-fidget.png',
+                    discount: 0,
+                    bonusCode: 'HEXAGON27'
                 },
                 {
                     name: 'Sleutelhanger',
                     description: 'Personaliseerbare sleutelhanger met naam.',
-                    price: 12.99,
-                    material: 'PLA',
+                    price: 1.99,
+                    material: 'PLA Basic',
                     category: 'home',
-                    category2: 'costum',
+                    category2: 'custom',
                     featured: false,
-                    rating: 4.4,
-                    imageUrl: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    rating: 4.5,
+                    imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Binnenkort-beschikbaar_Tekst.png',
                     discount: 0,
-                    bonusCode: 'KEY5'
+                    bonusCode: 'KEY91'
                 },
-                {
-                    name: 'Plantenbak',
-                    description: 'Hangende plantenbak met zelf-watergevend systeem.',
-                    price: 29.99,
-                    material: 'PETG',
-                    category: 'home',
-                    category2: 'tech',
-                    featured: true,
-                    rating: 4.9,
-                    imageUrl: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-                    discount: 20,
-                    bonusCode: 'PLANT20'
-                }
             ];
             
             for (const product of initialProducts) {
@@ -2436,7 +2686,7 @@
             
             if (currentUser && !viewedProducts.includes(productId)) {
                 viewedProducts.push(productId);
-                document.getElementById('viewedCount').textContent = viewedProducts.length;
+                // Not showing viewed count anymore as per requirement
             }
             
             let priceDisplay = `€${product.price.toFixed(2)}`;
@@ -2482,10 +2732,14 @@
 
                         <div class="product-modal-price">${priceDisplay}</div>
 
-                        <div class="product-modal-bonus ${hasBonus && currentUser ? 'show' : ''}" id="productModalBonus">
+                        <div class="product-modal-bonus ${(hasBonus || currentDiscountCode) && currentUser ? 'show' : ''}" id="productModalBonus">
                             <div class="bonus-title">Jouw Exclusieve Bonuscode</div>
-                            <div class="bonus-code" id="productBonusCode">${product.bonusCode || 'BONUS10'}</div>
-                            <p style="margin-top: 8px; font-size: 12px; color: var(--gray-500);">Geldig bij je volgende bestelling</p>
+                            <div class="bonus-code" id="productBonusCode">
+                                ${currentDiscountCode || product.bonusCode || 'BONUS10'}
+                            </div>
+                            <p style="margin-top: 8px; font-size: 12px; color: var(--gray-500);">
+                                ${currentDiscountCode ? 'Wekelijkse kortingscode' : 'Geldig bij je volgende bestelling'}
+                            </p>
                         </div>
                     </div>
                     
@@ -2518,9 +2772,29 @@
                     userFavorites = favoritesDoc.data().productIds || [];
                 }
                 
-                updateBonusCount();
+                // Load user's discount code from Firestore
+                const discountDoc = await db.collection('userDiscounts').doc(userId).get();
+                if (discountDoc.exists) {
+                    const data = discountDoc.data();
+                    if (data.code && data.expiryDate) {
+                        const expiryDate = new Date(data.expiryDate);
+                        if (expiryDate > new Date()) {
+                            currentDiscountCode = data.code;
+                            discountCodeExpiry = expiryDate;
+                            
+                            // Update localStorage
+                            localStorage.setItem(`discountCode_${userId}`, data.code);
+                            localStorage.setItem(`discountCodeExpiry_${userId}`, data.expiryDate);
+                            if (data.weekKey) {
+                                localStorage.setItem(`weekKey_${userId}`, data.weekKey);
+                            }
+                        }
+                    }
+                }
+                
                 updateProductCards();
                 updateFavoritesDisplay();
+                updateDiscountCodeDisplay();
                 
             } catch (error) {
                 console.error('Error loading user data:', error);
@@ -2577,18 +2851,19 @@
                 }, { merge: true });
                 
                 // Update UI
-                updateBonusCount();
                 updateProductCards();
                 
                 // Update modal bonus section
                 const bonusSection = document.getElementById('productModalBonus');
                 if (bonusSection) {
                     bonusSection.classList.add('show');
-                    document.getElementById('productBonusCode').textContent = product.bonusCode || 'BONUS10';
+                    const codeToShow = currentDiscountCode || product.bonusCode || 'BONUS10';
+                    document.getElementById('productBonusCode').textContent = codeToShow;
                 }
                 
                 // Show success message with the actual code
-                showToast(`Bonuscode ontvangen: ${product.bonusCode || 'BONUS10'}`, 5000);
+                const codeToShow = currentDiscountCode || product.bonusCode || 'BONUS10';
+                showToast(`Bonuscode ontvangen: ${codeToShow}`, 5000);
                 
                 return true;
                 
@@ -2602,9 +2877,14 @@
         function loadUserSettings() {
             const savedSettings = localStorage.getItem('printsomeSettings');
             if (savedSettings) {
-                userSettings = { ...userSettings, ...JSON.parse(savedSettings) };
-                applyUserSettings();
+                try {
+                    userSettings = { ...userSettings, ...JSON.parse(savedSettings) };
+                } catch (e) {
+                    console.error('Error parsing settings:', e);
+                }
             }
+            applyUserSettings();
+            applyLanguage(userSettings.language);
         }
         
         // Apply user settings to UI
@@ -2619,7 +2899,10 @@
                 themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
             }
             
-            document.getElementById('darkModeToggle').checked = userSettings.darkMode;
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (darkModeToggle) {
+                darkModeToggle.checked = userSettings.darkMode;
+            }
         }
         
         // Toggle favorite status
@@ -2687,10 +2970,26 @@
             });
         }
         
-        // Update bonus count display
-        function updateBonusCount() {
-            document.getElementById('bonusCount').textContent = userBonuses.length;
-            document.getElementById('settingsBonusCount').textContent = `${userBonuses.length} actieve codes`;
+        // FAQ functionality
+        function setupFAQ() {
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isActive = question.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    document.querySelectorAll('.faq-question').forEach(q => {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('show');
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        question.classList.add('active');
+                        answer.classList.add('show');
+                    }
+                });
+            });
         }
         
         // Show page
@@ -2711,6 +3010,8 @@
             switch(page) {
                 case 'home':
                     headerTitle.textContent = 'PrintSome';
+                    // Setup FAQ when home page is shown
+                    setTimeout(setupFAQ, 100);
                     break;
                 case 'products':
                     headerTitle.textContent = 'Producten';
@@ -2725,6 +3026,7 @@
                     break;
                 case 'settings':
                     headerTitle.textContent = 'Instellingen';
+                    updateDiscountCodeDisplay();
                     break;
             }
         }
@@ -2755,7 +3057,35 @@
                 userSettings.darkMode = !userSettings.darkMode;
                 applyUserSettings();
                 localStorage.setItem('printsomeSettings', JSON.stringify(userSettings));
+                
+                // Save to Firestore if logged in
+                if (currentUser) {
+                    db.collection('userSettings').doc(currentUser.uid).set({
+                        darkMode: userSettings.darkMode,
+                        language: userSettings.language
+                    }, { merge: true });
+                }
             });
+            
+            // Language selector in settings
+            if (languageSelector) {
+                languageSelector.addEventListener('change', (e) => {
+                    const newLang = e.target.value;
+                    userSettings.language = newLang;
+                    localStorage.setItem('printsomeSettings', JSON.stringify(userSettings));
+                    applyLanguage(newLang);
+                    
+                    // Save to Firestore if logged in
+                    if (currentUser) {
+                        db.collection('userSettings').doc(currentUser.uid).set({
+                            language: newLang,
+                            darkMode: userSettings.darkMode
+                        }, { merge: true });
+                        
+                        showToast(`Taal gewijzigd naar ${e.target.options[e.target.selectedIndex].text}`, 2000);
+                    }
+                });
+            }
             
             // Close auth modal
             closeAuth.addEventListener('click', () => {
@@ -2784,48 +3114,61 @@
             
             // Search input
             const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', (e) => {
-                const searchTerm = e.target.value.toLowerCase();
-                
-                if (searchTerm.length === 0) {
-                    displayAllProducts();
-                    return;
-                }
-                
-                const filtered = products.filter(product => 
-                    product.name.toLowerCase().includes(searchTerm) ||
-                    product.description.toLowerCase().includes(searchTerm) ||
-                    product.material.toLowerCase().includes(searchTerm) ||
-                    product.category.toLowerCase().includes(searchTerm) ||
-                    (product.category2 && product.category2.toLowerCase().includes(searchTerm))
-                );
-                
-                const container = document.getElementById('allProducts');
-                
-                if (filtered.length === 0) {
-                    container.innerHTML = `
-                        <div class="empty-state">
-                            <i class="fas fa-search"></i>
-                            <h3>Geen producten gevonden</h3>
-                        </div>
-                    `;
-                    return;
-                }
-                
-                container.innerHTML = '';
-                
-                filtered.forEach(product => {
-                    const productCard = createProductCard(product, false);
-                    container.appendChild(productCard);
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const searchTerm = e.target.value.toLowerCase();
+                    
+                    if (searchTerm.length === 0) {
+                        displayAllProducts();
+                        return;
+                    }
+                    
+                    const filtered = products.filter(product => 
+                        product.name.toLowerCase().includes(searchTerm) ||
+                        product.description.toLowerCase().includes(searchTerm) ||
+                        product.material.toLowerCase().includes(searchTerm) ||
+                        product.category.toLowerCase().includes(searchTerm) ||
+                        (product.category2 && product.category2.toLowerCase().includes(searchTerm))
+                    );
+                    
+                    const container = document.getElementById('allProducts');
+                    
+                    if (filtered.length === 0) {
+                        container.innerHTML = `
+                            <div class="empty-state">
+                                <i class="fas fa-search"></i>
+                                <h3>Geen producten gevonden</h3>
+                            </div>
+                        `;
+                        return;
+                    }
+                    
+                    container.innerHTML = '';
+                    
+                    filtered.forEach(product => {
+                        const productCard = createProductCard(product, false);
+                        container.appendChild(productCard);
+                    });
                 });
-            });
+            }
             
             // Settings toggle
-            document.getElementById('darkModeToggle').addEventListener('change', (e) => {
-                userSettings.darkMode = e.target.checked;
-                applyUserSettings();
-                localStorage.setItem('printsomeSettings', JSON.stringify(userSettings));
-            });
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('change', (e) => {
+                    userSettings.darkMode = e.target.checked;
+                    applyUserSettings();
+                    localStorage.setItem('printsomeSettings', JSON.stringify(userSettings));
+                    
+                    // Save to Firestore if logged in
+                    if (currentUser) {
+                        db.collection('userSettings').doc(currentUser.uid).set({
+                            darkMode: userSettings.darkMode,
+                            language: userSettings.language
+                        }, { merge: true });
+                    }
+                });
+            }
             
             // All products link
             const allProductsLink = document.getElementById('allProductsLink');
@@ -2835,6 +3178,13 @@
                     showPage('products');
                 });
             }
+            
+            // Check for expired discount codes every hour
+            setInterval(() => {
+                if (currentUser) {
+                    generateWeeklyDiscountCode();
+                }
+            }, 60 * 60 * 1000); // Elk uur
         }
         
         // Initialize the app

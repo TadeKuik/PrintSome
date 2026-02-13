@@ -9,15 +9,43 @@
     <meta name="apple-mobile-web-app-title" content="PrintSome">
     <meta name="application-name" content="PrintSome">
     <meta name="theme-color" content="#FFD700">
-    <meta name="description" content="PrintSome">
+    <meta name="description" content="PrintSome - 3D printing shop">
+    <meta name="format-detection" content="telephone=no">
     
-    <!-- App Icoon - toegevoegd volgens verzoek -->
-    <link rel="icon" type="image/png" href="https://printsome.ct.ws/wp-content/uploads/2025/12/Screenshot_20250927_124444_Canva2-8-150x150.jpg">
+    <!-- Manifest voor iOS en Android -->
+    <link rel="manifest" href="data:application/manifest+json,{
+        %22name%22:%22PrintSome%22,
+        %22short_name%22:%22PrintSome%22,
+        %22start_url%22:%22/%22,
+        %22display%22:%22standalone%22,
+        %22background_color%22:%22%23FFD700%22,
+        %22theme_color%22:%22%23FFD700%22,
+        %22icons%22:[
+            {
+                %22src%22:%22https://printsome.ct.ws/wp-content/uploads/2025/12/Screenshot_20250927_124444_Canva2-8-150x150.jpg%22,
+                %22sizes%22:%22192x192%22,
+                %22type%22:%22image/png%22
+            },
+            {
+                %22src%22:%22https://printsome.ct.ws/wp-content/uploads/2025/12/Screenshot_20250927_124444_Canva2-8-150x150.jpg%22,
+                %22sizes%22:%22512x512%22,
+                %22type%22:%22image/png%22
+            }
+        ]
+    }">
+    
+    <!-- App Iconen - Alleen echte URLs voor iOS -->
+    <link rel="icon" type="image/png" sizes="16x16" href="https://printsome.ct.ws/wp-content/uploads/2025/12/Screenshot_20250927_124444_Canva2-8-150x150.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://printsome.ct.ws/wp-content/uploads/2025/12/Screenshot_20250927_124444_Canva2-8-150x150.jpg">
     <link rel="apple-touch-icon" href="https://printsome.ct.ws/wp-content/uploads/2025/12/Screenshot_20250927_124444_Canva2-8-150x150.jpg">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://printsome.ct.ws/wp-content/uploads/2025/12/Screenshot_20250927_124444_Canva2-8-150x150.jpg">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://printsome.ct.ws/wp-content/uploads/2025/12/Screenshot_20250927_124444_Canva2-8-150x150.jpg">
     
-    <!-- Originele iconen blijven behouden, maar worden overschreven door bovenstaande -->
-    <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAAXNSR0IArs4c6QAABn9JREFUeJztnU1qI0cYgOvewXgXniUHyDkC2WZrgp3V2AnGhrxJYpsQYmxjwOCwCvgygZwhB8gZsrH3yVtXxBCE+rvqra+q3wfCLNp86OlWP5qq7iIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA1cl5vv/c9/GfT/m+cZ7n+1VfAwC+KnlefHbU9/HvYb47TPN8UPE1AOCr8DfB/6bva0nzYr/iawDAV+Avgn+V5rvtM/CfJvnuWcXXAICP7Ih8J6xwB7n6m+DvP4j+A7Ab9uM8H1V9kW1Q8cXZcdj/4h/H/f0Hm/z10r7YePPF8e3VW/I8+b0oSjKp6n3aosjz5FexLx5UvRdtyYt8UvVltyF/4l88SvP8YdUXs20qvgC8U1xmx6uU5sVxxZcDgC04K5I8L34pf/l4xZcDgA3UYp+sCv+If3lS8eUAYAO1Cv5Rnhe/KsJ/FN/9t/I3WZYXf1R8hU/Is/y3iveqF8+/67L8sOLL+Z3j4nI46f+d5fnzii/3SVmWp7Vd/yj+X8V3YJdUfAHYiix/lBc/Kv7hY7bY7+xT8nz/F0X4j/L99lPRh6L/N3kWf/uD6P9tWe4+qPjaT+I8f1b7R5a/mOf5f1P0/1aU5YeKL3mjKMv7m/jyZ/Fn8N+wvEjL8r2/+J93VXF98b8f13wNvhV8D+9/fvOZb1/yfeP8V3u98l8Wn73b3+mDl4ovf1L5/eD/x7crf+ZtP8mLe1VfsP28/Fm+H71XfAe2juK7j2V5/qfFh6z46t3L8nJf0f9b3vd/lu93v3sQn7q3qyw//Pj9iZ8Hn2xZli9WvEdd6fA5se+fePufxbf/fQf/zvL8qOo71ot3j8tvH1Z80Q/Ki4cv/v5FWe4/WvF6r9/lp4ov3wqK7y5a/v+/9f2y/H6eF7t6Lrz8l9J7lqLiC9cSxfeHf0VR3n+e58Urxd/f1t/wf6X4Dmybik+9Kyy+42lZ3j8tyn3Fp2RZ/utiD+/B9yrK8k7Vl6xBeV7cUny/hj8ty/3D/C9fmvF98a+XxceT5tVnxeNp2e/N8+JpxZe/UZY/o/RuSxXfrS7t/1V8yrYs9h8rPn5LFN9zX1+U5dP8L9+v4rt3I+NF/n2+2L8L8/37iv/mq6L4LssN/rX4VF1ZPqz4lE0r3y9vKb5/XS8+1RfF+6VZ6e1Z8p2S58UjxZ/fgv1b+V4pFF9nXZblH1Z8x7Yo3y8aFX9+a/Zv5XuF4ru8V74Hv1V8vwPlxR+Kj9+W4h3yA2W5eFb1HdiU4j2SouLrt60sz39RfP62FJ+2W5YfN1/yvP1H8V3aVv5w8cd/v6/4Tq2I57n5Y9V3olXFe6T7Vd+xS4p3yO8rvms3FHv4h1VfgE3FZ+2Gog+/2Ypvl+fFk4rv1I6yfKf8Tp7v/6n4Lq0r3iF/VnznLhXvkB9UfddNUZa/qPjOXSv2kP9S8d27Vnwv/yC+g29I8V1+0fP8ccXX3Kj4DDiUU7F37iv+7k3Fe+R91XfumrJ8V/FdOFU8S95XfPdOFWfIB1Xf+T9RlHcrvgtnKt4jf1b8+V0r3iPvqL4Dm1J8l74ryh9UfOcuFe+Qn1d9x74oy3cV34VTxTvkn1Z8B04Vz5Cbqk9dU5aL7xRf45/Kcvmj4rs3pXj2+6riOwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALAz/g/4oRn1wQdWhgAAAABJRU5ErkJggg==">
-    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAolJREFUWEftlk1IVGEQhp95/9zUEqJ20SpqYR8iRbtWbSJoEUEiLcKoiBbdCNEiIqgWEUF/IG0i6EeM/kBLi8IiarUJ2kQfggRtguLv6npazp273HvvbULUbh1m7r2Zed6Z970j8I8b+d3iBvw32B1oA24Cp4EDFv+zB/hYB2gzHwDfAaeBb8B4PZAGm1wH7gH3gb0a/7sCuB08A84D7w1vB7BtwU3gKTAHHAR+ACeA74Bv+U8DeyvMfgL2AD8q7t+17r3uR2Ed0AFsmLkddA9g3F9j0A84CawLvm4DngItQbAduAR0AH8MNgM0WW+3kE1N+9b+Qes0m5AzoTlMk5mG2czI3ObYTHzE3i8uO9N3Qk6b+cVQhNsxM5dJm9kQOc2b+UnLZkbk9Hh/OzNz6c05E9qOzb6N2N1qTp5kPrds/82M5WfZnn56Qw7Yw6c6m/6bI81qTj6Ly3bLsp87/jHfT1r2uuf0//9w6+1Qp8ZP2u2lZ/fVnBw3c9myPfd8ns/H1hFg5C7mbNt62dHqTO9odT6Yt8R7L/8HYt0KRgy4AxKbBLgG3AQe2fde4A7wMvBjB3gA3A2+d4FTgZ+5qgF7gQvA2gh3O3AS2B2cvQH6gB3AajvXgS6QpT8s1Aq4BnQAE8ATm/cB7wPb58q8kQdAr+0nwEfgBrC2woQ4LMDzMN4z87B1Tw3wPLwpcx2xbAROAK2O0gFcA1qAIcvgLvALOAR8A8YBvTZ4E+mwA9lqBmjTmgZugG4PjTjQlYB3A0+A2ShgNzAShZgA9kf3dGswCrgI7I0CrgC7opBHQDfKi1rVhD1e4sJYg9HnFwAAAAAAAAAAAAAAAAAAAAAAAPA/8BeOAHWrJvNp4AAAAABJRU5ErkJggg==">
+    <!-- iOS Splash Screens -->
+    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='375' height='667' viewBox='0 0 375 667'%3E%3Crect width='375' height='667' fill='%23FFD700'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23000000' text-anchor='middle' dy='.3em'%3EPrintSome%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='375' height='812' viewBox='0 0 375 812'%3E%3Crect width='375' height='812' fill='%23FFD700'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23000000' text-anchor='middle' dy='.3em'%3EPrintSome%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='390' height='844' viewBox='0 0 390 844'%3E%3Crect width='390' height='844' fill='%23FFD700'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23000000' text-anchor='middle' dy='.3em'%3EPrintSome%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3)" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='428' height='926' viewBox='0 0 428 926'%3E%3Crect width='428' height='926' fill='%23FFD700'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23000000' text-anchor='middle' dy='.3em'%3EPrintSome%3C/text%3E%3C/svg%3E">
     
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -80,6 +108,8 @@
             --header-height: 60px;
             --nav-height: 70px;
             --container-max-width: 768px;
+            
+            --link-color: #0066cc;
         }
 
         .dark-theme {
@@ -102,6 +132,7 @@
             --gray-700: #e0e0e0;
             --gray-800: #eeeeee;
             --gray-900: #ffffff;
+            --link-color: #66b0ff;
         }
 
         html {
@@ -782,7 +813,7 @@
         }
 
         .contact-info a {
-            color: var(--dark-color);
+            color: var(--link-color);
             text-decoration: none;
             font-weight: 500;
             word-break: break-all;
@@ -1509,13 +1540,13 @@
                     <div class="settings-item">
                         <div class="settings-info">
                             <h4>Versie</h4>
-                            <p>PrintSome App v1.0</p>
+                            <p>PrintSome App v1.9</p>
                         </div>
                     </div>
                     <div class="settings-item">
                         <div class="settings-info">
                             <h4>Contact</h4>
-                            <p>PrintSome-webapp@outlook.com</p>
+                            <p>printsome-webapp@outlook.com</p>
                         </div>
                     </div>
                 </div>
@@ -1549,8 +1580,8 @@
                     
                     <h2 class="privacy-subtitle">Contactgegevens</h2>
                     <div class="contact-info">
-                        <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://PrintSome.pages.dev" target="_blank">https://PrintSome.pages.dev</a></p>
-                        <p><i class="fas fa-envelope"></i> <strong>E-mailadres:</strong> <a href="mailto:PrintSome-webapp@outlook.com">PrintSome-webapp@outlook.com</a></p>
+                        <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://printsome.pages.dev" target="_blank">https://printsome.pages.dev</a></p>
+                        <p><i class="fas fa-envelope"></i> <strong>E-mailadres:</strong> <a href="mailto:printsome-webapp@outlook.com">printsome-webapp@outlook.com</a></p>
                     </div>
                     
                     <h2 class="privacy-subtitle">Persoonsgegevens die wij verwerken</h2>
@@ -1572,7 +1603,7 @@
                         Onze website en/of dienst heeft niet de intentie gegevens te verzamelen over websitebezoekers die jonger zijn dan 16 jaar, tenzij zij toestemming hebben van ouders of voogd. Wij kunnen echter niet controleren of een bezoeker ouder dan 16 is. Wij raden ouders aan betrokken te zijn bij de online activiteiten van hun kinderen om zo te voorkomen dat er gegevens over kinderen worden verzameld zonder ouderlijke toestemming.
                     </p>
                     <p class="privacy-text">
-                        Als u ervan overtuigd bent dat wij zonder die toestemming persoonlijke gegevens hebben verzameld over een minderjarige, neem dan contact met ons op via PrintSome-webapp@outlook.com, dan verwijderen wij deze informatie.
+                        Als u ervan overtuigd bent dat wij zonder die toestemming persoonlijke gegevens hebben verzameld over een minderjarige, neem dan contact met ons op via printsome-webapp@outlook.com, dan verwijderen wij deze informatie.
                     </p>
                     
                     <h2 class="privacy-subtitle">Doelen en grondslagen</h2>
@@ -1667,7 +1698,7 @@
                     </p>
                     <p class="privacy-text">
                         Meer informatie over cookies vindt u op:<br>
-                        <a href="https://veiliginternetten.nl/wat-zijn-cookies/" target="_blank" style="color: var(--dark-color);">https://veiliginternetten.nl/wat-zijn-cookies/</a>
+                        <a href="https://veiliginternetten.nl/wat-zijn-cookies/" target="_blank" style="color: var(--link-color);">https://veiliginternetten.nl/wat-zijn-cookies/</a>
                     </p>
                     
                     <h2 class="privacy-subtitle">Gegevens inzien, aanpassen of verwijderen</h2>
@@ -1676,14 +1707,14 @@
                     </p>
                     <p class="privacy-text">
                         U kunt een verzoek sturen naar:<br>
-                        <a href="mailto:PrintSome-webapp@outlook.com" style="color: var(--dark-color);">PrintSome-webapp@outlook.com</a>
+                        <a href="mailto:printsome-webapp@outlook.com" style="color: var(--link-color);">printsome-webapp@outlook.com</a>
                     </p>
                     <p class="privacy-text">
                         Om misbruik te voorkomen kunnen wij u vragen zich te identificeren. We reageren zo snel mogelijk, maar uiterlijk binnen vier weken.
                     </p>
                     <p class="privacy-text">
                         Daarnaast heeft u het recht een klacht in te dienen bij de Autoriteit Persoonsgegevens:<br>
-                        <a href="https://autoriteitpersoonsgegevens.nl/" target="_blank" style="color: var(--dark-color);">https://autoriteitpersoonsgegevens.nl/</a>
+                        <a href="https://autoriteitpersoonsgegevens.nl/" target="_blank" style="color: var(--link-color);">https://autoriteitpersoonsgegevens.nl/</a>
                     </p>
                     
                     <h2 class="privacy-subtitle">Hoe wij persoonsgegevens beveiligen</h2>
@@ -1691,7 +1722,7 @@
                         PrintSome neemt passende maatregelen om uw gegevens te beschermen tegen misbruik, verlies, onbevoegde toegang, ongewenste openbaarmaking en ongeoorloofde wijziging.
                     </p>
                     <p class="privacy-text">
-                        Als u denkt dat uw gegevens niet goed beveiligd zijn of er sprake is van misbruik, neem dan contact op via PrintSome-webapp@outlook.com.
+                        Als u denkt dat uw gegevens niet goed beveiligd zijn of er sprake is van misbruik, neem dan contact op via printsome-webapp@outlook.com.
                     </p>
                     
                     <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--gray-200);">
@@ -1712,22 +1743,22 @@
             <a href="#" class="nav-item active" data-page="home">
                 <span class="nav-indicator"></span>
                 <i class="fas fa-home nav-icon"></i>
-                <span class="nav-label">Home</span>
+                <span class="nav-label" id="navHome">Home</span>
             </a>
             <a href="#" class="nav-item" data-page="products" id="productsNav">
                 <span class="nav-indicator"></span>
                 <i class="fas fa-cube nav-icon"></i>
-                <span class="nav-label">Producten</span>
+                <span class="nav-label" id="navProducts">Producten</span>
             </a>
             <a href="#" class="nav-item" data-page="favorites" id="favoritesNav">
                 <span class="nav-indicator"></span>
                 <i class="fas fa-heart nav-icon"></i>
-                <span class="nav-label">Favorieten</span>
+                <span class="nav-label" id="navFavorites">Favorieten</span>
             </a>
             <a href="#" class="nav-item" data-page="settings">
                 <span class="nav-indicator"></span>
                 <i class="fas fa-cog nav-icon"></i>
-                <span class="nav-label">Instellingen</span>
+                <span class="nav-label" id="navSettings">Instellingen</span>
             </a>
         </nav>
     </div>
@@ -1846,7 +1877,64 @@
                 category: 'Categorie',
                 rating: 'Beoordeling',
                 delivery: 'Levertijd',
-                days: '2-3 dagen'
+                days: '2-3 dagen',
+                navHome: 'Home',
+                navProducts: 'Producten',
+                navFavorites: 'Favorieten',
+                navSettings: 'Instellingen',
+                privacyTitle: 'Privacyverklaring PrintSome',
+                privacyResponsible: 'PrintSome is verantwoordelijk voor de verwerking van persoonsgegevens zoals weergegeven in deze privacyverklaring.',
+                privacyContactTitle: 'Contactgegevens',
+                privacyWebsite: 'Website:',
+                privacyEmail: 'E-mailadres:',
+                privacyDataTitle: 'Persoonsgegevens die wij verwerken',
+                privacyDataText: 'PrintSome verwerkt uw persoonsgegevens doordat u gebruik maakt van onze diensten en/of omdat u deze zelf aan ons verstrekt. Hieronder vindt u een overzicht van de persoonsgegevens die wij verwerken:',
+                privacySensitiveTitle: 'Bijzondere en/of gevoelige persoonsgegevens',
+                privacySensitiveText1: 'Onze website en/of dienst heeft niet de intentie gegevens te verzamelen over websitebezoekers die jonger zijn dan 16 jaar, tenzij zij toestemming hebben van ouders of voogd. Wij kunnen echter niet controleren of een bezoeker ouder dan 16 is. Wij raden ouders aan betrokken te zijn bij de online activiteiten van hun kinderen om zo te voorkomen dat er gegevens over kinderen worden verzameld zonder ouderlijke toestemming.',
+                privacySensitiveText2: 'Als u ervan overtuigd bent dat wij zonder die toestemming persoonlijke gegevens hebben verzameld over een minderjarige, neem dan contact met ons op via',
+                privacySensitiveText2End: 'dan verwijderen wij deze informatie.',
+                privacyPurposesTitle: 'Doelen en grondslagen',
+                privacyPurposesText: 'PrintSome verwerkt uw persoonsgegevens voor de volgende doelen:',
+                privacyAutomatedTitle: 'Geautomatiseerde besluitvorming',
+                privacyAutomatedText: 'PrintSome neemt geen besluiten op basis van geautomatiseerde verwerkingen die (aanzienlijke) gevolgen kunnen hebben voor personen.',
+                privacyRetentionTitle: 'Hoe lang we persoonsgegevens bewaren',
+                privacyRetentionText: 'PrintSome bewaart uw persoonsgegevens niet langer dan strikt nodig is om de doelen te realiseren waarvoor uw gegevens worden verzameld. Wij hanteren de volgende bewaartermijnen:',
+                privacyRetentionAccount: 'Accountgegevens:',
+                privacyRetentionAccountDesc: 'tot 1 maand na het verwijderen van het account',
+                privacyRetentionContact: 'Contactgegevens:',
+                privacyRetentionContactDesc: 'zolang als nodig is voor communicatie of ondersteuning',
+                privacySharingTitle: 'Delen van persoonsgegevens met derden',
+                privacySharingText: 'PrintSome deelt uw persoonsgegevens uitsluitend met derden als dit noodzakelijk is voor het functioneren van de dienst. Met deze partijen zijn verwerkersovereenkomsten gesloten.',
+                privacyTableCategory: 'Categorie',
+                privacyTableName: 'Naam',
+                privacyTableJurisdiction: 'Jurisdictie',
+                privacyTablePurpose: 'Doel',
+                privacyTableData: 'Gegevens',
+                privacyTableHosting: 'Hosting',
+                privacyTableHostingDesc: 'Websitebeveiliging en -hosting',
+                privacyTableBackend: 'Hosting & backend',
+                privacyTableBackendDesc: 'Authenticatie en opslag',
+                privacyTableCode: 'Code & infrastructuur',
+                privacyTableCodeDesc: 'Broncodebeheer',
+                privacyTableAnalytics: 'Analyse',
+                privacyTableAnalyticsDesc: 'Website-inzichten',
+                privacyTableEmail: 'E-mail',
+                privacyTableEmailDesc: 'Communicatie',
+                privacyNoSell: 'PrintSome verkoopt geen persoonsgegevens aan derden.',
+                privacyCookiesTitle: 'Cookies en vergelijkbare technieken',
+                privacyCookiesText1: 'PrintSome gebruikt zelf geen cookies.',
+                privacyCookiesText2: 'Wel kan het voorkomen dat derde partijen, zoals Google (bijvoorbeeld via Firebase of ingesloten diensten), cookies plaatsen die nodig zijn voor hun functioneren. Deze cookies vallen onder het privacybeleid van de betreffende derde partij.',
+                privacyCookiesMoreInfo: 'Meer informatie over cookies vindt u op:',
+                privacyRightsTitle: 'Gegevens inzien, aanpassen of verwijderen',
+                privacyRightsText1: 'U heeft het recht om uw persoonsgegevens in te zien, te corrigeren of te verwijderen. Daarnaast heeft u het recht om bezwaar te maken tegen de verwerking van uw persoonsgegevens en heeft u recht op gegevensoverdraagbaarheid.',
+                privacyRightsText2: 'U kunt een verzoek sturen naar:',
+                privacyRightsText3: 'Om misbruik te voorkomen kunnen wij u vragen zich te identificeren. We reageren zo snel mogelijk, maar uiterlijk binnen vier weken.',
+                privacyRightsText4: 'Daarnaast heeft u het recht een klacht in te dienen bij de Autoriteit Persoonsgegevens:',
+                privacySecurityTitle: 'Hoe wij persoonsgegevens beveiligen',
+                privacySecurityText1: 'PrintSome neemt passende maatregelen om uw gegevens te beschermen tegen misbruik, verlies, onbevoegde toegang, ongewenste openbaarmaking en ongeoorloofde wijziging.',
+                privacySecurityText2: 'Als u denkt dat uw gegevens niet goed beveiligd zijn of er sprake is van misbruik, neem dan contact op via',
+                privacyLastUpdated: 'Laatst bijgewerkt: Februari 2026',
+                privacyBackBtn: 'Terug naar Instellingen'
             },
             en: {
                 headerTitle: 'PrintSome',
@@ -1898,7 +1986,64 @@
                 category: 'Category',
                 rating: 'Rating',
                 delivery: 'Delivery time',
-                days: '2-3 days'
+                days: '2-3 days',
+                navHome: 'Home',
+                navProducts: 'Products',
+                navFavorites: 'Favorites',
+                navSettings: 'Settings',
+                privacyTitle: 'Privacy Statement PrintSome',
+                privacyResponsible: 'PrintSome is responsible for the processing of personal data as shown in this privacy statement.',
+                privacyContactTitle: 'Contact details',
+                privacyWebsite: 'Website:',
+                privacyEmail: 'Email:',
+                privacyDataTitle: 'Personal data we process',
+                privacyDataText: 'PrintSome processes your personal data because you use our services and/or because you provide it to us yourself. Below you will find an overview of the personal data we process:',
+                privacySensitiveTitle: 'Special and/or sensitive personal data',
+                privacySensitiveText1: 'Our website and/or service does not intend to collect data about website visitors under the age of 16, unless they have permission from parents or guardian. However, we cannot check whether a visitor is over 16. We encourage parents to be involved in their children\'s online activities to prevent data from being collected about children without parental consent.',
+                privacySensitiveText2: 'If you are convinced that we have collected personal data about a minor without that consent, please contact us at',
+                privacySensitiveText2End: 'and we will delete this information.',
+                privacyPurposesTitle: 'Purposes and bases',
+                privacyPurposesText: 'PrintSome processes your personal data for the following purposes:',
+                privacyAutomatedTitle: 'Automated decision-making',
+                privacyAutomatedText: 'PrintSome does not make decisions based on automated processing that could have (significant) consequences for individuals.',
+                privacyRetentionTitle: 'How long we keep personal data',
+                privacyRetentionText: 'PrintSome does not keep your personal data longer than strictly necessary to achieve the purposes for which your data is collected. We apply the following retention periods:',
+                privacyRetentionAccount: 'Account data:',
+                privacyRetentionAccountDesc: 'up to 1 month after account deletion',
+                privacyRetentionContact: 'Contact data:',
+                privacyRetentionContactDesc: 'as long as necessary for communication or support',
+                privacySharingTitle: 'Sharing personal data with third parties',
+                privacySharingText: 'PrintSome only shares your personal data with third parties if this is necessary for the functioning of the service. Processor agreements have been concluded with these parties.',
+                privacyTableCategory: 'Category',
+                privacyTableName: 'Name',
+                privacyTableJurisdiction: 'Jurisdiction',
+                privacyTablePurpose: 'Purpose',
+                privacyTableData: 'Data',
+                privacyTableHosting: 'Hosting',
+                privacyTableHostingDesc: 'Website security and hosting',
+                privacyTableBackend: 'Hosting & backend',
+                privacyTableBackendDesc: 'Authentication and storage',
+                privacyTableCode: 'Code & infrastructure',
+                privacyTableCodeDesc: 'Source code management',
+                privacyTableAnalytics: 'Analytics',
+                privacyTableAnalyticsDesc: 'Website insights',
+                privacyTableEmail: 'Email',
+                privacyTableEmailDesc: 'Communication',
+                privacyNoSell: 'PrintSome does not sell personal data to third parties.',
+                privacyCookiesTitle: 'Cookies and similar techniques',
+                privacyCookiesText1: 'PrintSome does not use cookies itself.',
+                privacyCookiesText2: 'However, third parties such as Google (for example via Firebase or embedded services) may place cookies necessary for their functioning. These cookies are subject to the privacy policy of the respective third party.',
+                privacyCookiesMoreInfo: 'More information about cookies can be found at:',
+                privacyRightsTitle: 'View, modify or delete data',
+                privacyRightsText1: 'You have the right to view, correct or delete your personal data. You also have the right to object to the processing of your personal data and you have the right to data portability.',
+                privacyRightsText2: 'You can send a request to:',
+                privacyRightsText3: 'To prevent abuse, we may ask you to identify yourself. We will respond as soon as possible, but within four weeks at the latest.',
+                privacyRightsText4: 'You also have the right to file a complaint with the Dutch Data Protection Authority:',
+                privacySecurityTitle: 'How we protect personal data',
+                privacySecurityText1: 'PrintSome takes appropriate measures to protect your data from misuse, loss, unauthorized access, unwanted disclosure and unauthorized modification.',
+                privacySecurityText2: 'If you believe that your data is not properly secured or there is evidence of misuse, please contact us at',
+                privacyLastUpdated: 'Last updated: February 2026',
+                privacyBackBtn: 'Back to Settings'
             },
             fr: {
                 headerTitle: 'PrintSome',
@@ -1950,7 +2095,64 @@
                 category: 'Catégorie',
                 rating: 'Évaluation',
                 delivery: 'Délai de livraison',
-                days: '2-3 jours'
+                days: '2-3 jours',
+                navHome: 'Accueil',
+                navProducts: 'Produits',
+                navFavorites: 'Favoris',
+                navSettings: 'Paramètres',
+                privacyTitle: 'Déclaration de confidentialité PrintSome',
+                privacyResponsible: 'PrintSome est responsable du traitement des données personnelles comme indiqué dans cette déclaration de confidentialité.',
+                privacyContactTitle: 'Coordonnées',
+                privacyWebsite: 'Site web:',
+                privacyEmail: 'E-mail:',
+                privacyDataTitle: 'Données personnelles que nous traitons',
+                privacyDataText: 'PrintSome traite vos données personnelles parce que vous utilisez nos services et/ou parce que vous les fournissez vous-même. Vous trouverez ci-dessous un aperçu des données personnelles que nous traitons:',
+                privacySensitiveTitle: 'Données personnelles spéciales et/ou sensibles',
+                privacySensitiveText1: 'Notre site web et/ou service n\'a pas l\'intention de collecter des données sur les visiteurs du site de moins de 16 ans, sauf s\'ils ont l\'autorisation de leurs parents ou tuteur. Cependant, nous ne pouvons pas vérifier si un visiteur a plus de 16 ans. Nous encourageons les parents à s\'impliquer dans les activités en ligne de leurs enfants afin d\'éviter que des données ne soient collectées sur des enfants sans le consentement parental.',
+                privacySensitiveText2: 'Si vous êtes convaincu que nous avons collecté des données personnelles sur un mineur sans ce consentement, veuillez nous contacter à',
+                privacySensitiveText2End: 'et nous supprimerons ces informations.',
+                privacyPurposesTitle: 'Objectifs et bases',
+                privacyPurposesText: 'PrintSome traite vos données personnelles pour les objectifs suivants:',
+                privacyAutomatedTitle: 'Prise de décision automatisée',
+                privacyAutomatedText: 'PrintSome ne prend pas de décisions basées sur un traitement automatisé qui pourraient avoir des conséquences (importantes) pour les individus.',
+                privacyRetentionTitle: 'Combien de temps nous conservons les données personnelles',
+                privacyRetentionText: 'PrintSome ne conserve pas vos données personnelles plus longtemps que strictement nécessaire pour atteindre les objectifs pour lesquels vos données sont collectées. Nous appliquons les périodes de conservation suivantes:',
+                privacyRetentionAccount: 'Données du compte:',
+                privacyRetentionAccountDesc: 'jusqu\'à 1 mois après la suppression du compte',
+                privacyRetentionContact: 'Données de contact:',
+                privacyRetentionContactDesc: 'aussi longtemps que nécessaire pour la communication ou le support',
+                privacySharingTitle: 'Partage de données personnelles avec des tiers',
+                privacySharingText: 'PrintSome ne partage vos données personnelles avec des tiers que si cela est nécessaire au fonctionnement du service. Des accords de traitement ont été conclus avec ces parties.',
+                privacyTableCategory: 'Catégorie',
+                privacyTableName: 'Nom',
+                privacyTableJurisdiction: 'Juridiction',
+                privacyTablePurpose: 'Objectif',
+                privacyTableData: 'Données',
+                privacyTableHosting: 'Hébergement',
+                privacyTableHostingDesc: 'Sécurité et hébergement du site web',
+                privacyTableBackend: 'Hébergement & backend',
+                privacyTableBackendDesc: 'Authentification et stockage',
+                privacyTableCode: 'Code & infrastructure',
+                privacyTableCodeDesc: 'Gestion du code source',
+                privacyTableAnalytics: 'Analytique',
+                privacyTableAnalyticsDesc: 'Aperçus du site web',
+                privacyTableEmail: 'E-mail',
+                privacyTableEmailDesc: 'Communication',
+                privacyNoSell: 'PrintSome ne vend pas de données personnelles à des tiers.',
+                privacyCookiesTitle: 'Cookies et techniques similaires',
+                privacyCookiesText1: 'PrintSome n\'utilise pas de cookies lui-même.',
+                privacyCookiesText2: 'Cependant, des tiers tels que Google (par exemple via Firebase ou des services intégrés) peuvent placer des cookies nécessaires à leur fonctionnement. Ces cookies sont soumis à la politique de confidentialité du tiers respectif.',
+                privacyCookiesMoreInfo: 'Plus d\'informations sur les cookies peuvent être trouvées sur:',
+                privacyRightsTitle: 'Consulter, modifier ou supprimer des données',
+                privacyRightsText1: 'Vous avez le droit de consulter, corriger ou supprimer vos données personnelles. Vous avez également le droit de vous opposer au traitement de vos données personnelles et vous avez droit à la portabilité des données.',
+                privacyRightsText2: 'Vous pouvez envoyer une demande à:',
+                privacyRightsText3: 'Pour éviter les abus, nous pouvons vous demander de vous identifier. Nous répondrons dès que possible, mais au plus tard dans les quatre semaines.',
+                privacyRightsText4: 'Vous avez également le droit de déposer une plainte auprès de l\'Autorité néerlandaise de protection des données:',
+                privacySecurityTitle: 'Comment nous protégeons les données personnelles',
+                privacySecurityText1: 'PrintSome prend des mesures appropriées pour protéger vos données contre l\'utilisation abusive, la perte, l\'accès non autorisé, la divulgation non souhaitée et la modification non autorisée.',
+                privacySecurityText2: 'Si vous pensez que vos données ne sont pas correctement sécurisées ou qu\'il y a des preuves d\'utilisation abusive, veuillez nous contacter à',
+                privacyLastUpdated: 'Dernière mise à jour: Février 2026',
+                privacyBackBtn: 'Retour aux Paramètres'
             },
             de: {
                 headerTitle: 'PrintSome',
@@ -2002,7 +2204,64 @@
                 category: 'Kategorie',
                 rating: 'Bewertung',
                 delivery: 'Lieferzeit',
-                days: '2-3 Tage'
+                days: '2-3 Tage',
+                navHome: 'Start',
+                navProducts: 'Produkte',
+                navFavorites: 'Favoriten',
+                navSettings: 'Einstellungen',
+                privacyTitle: 'Datenschutzerklärung PrintSome',
+                privacyResponsible: 'PrintSome ist verantwortlich für die Verarbeitung personenbezogener Daten, wie in dieser Datenschutzerklärung dargestellt.',
+                privacyContactTitle: 'Kontaktdaten',
+                privacyWebsite: 'Webseite:',
+                privacyEmail: 'E-Mail:',
+                privacyDataTitle: 'Personenbezogene Daten, die wir verarbeiten',
+                privacyDataText: 'PrintSome verarbeitet Ihre personenbezogenen Daten, weil Sie unsere Dienste nutzen und/oder weil Sie sie selbst bereitstellen. Nachfolgend finden Sie eine Übersicht der personenbezogenen Daten, die wir verarbeiten:',
+                privacySensitiveTitle: 'Besondere und/oder sensible personenbezogene Daten',
+                privacySensitiveText1: 'Unsere Website und/oder unser Dienst hat nicht die Absicht, Daten über Website-Besucher zu sammeln, die jünger als 16 Jahre sind, es sei denn, sie haben die Erlaubnis von Eltern oder Vormund. Wir können jedoch nicht überprüfen, ob ein Besucher über 16 ist. Wir empfehlen Eltern, sich an den Online-Aktivitäten ihrer Kinder zu beteiligen, um zu verhindern, dass ohne elterliche Zustimmung Daten über Kinder gesammelt werden.',
+                privacySensitiveText2: 'Wenn Sie davon überzeugt sind, dass wir ohne diese Zustimmung personenbezogene Daten über einen Minderjährigen gesammelt haben, kontaktieren Sie uns bitte unter',
+                privacySensitiveText2End: 'und wir werden diese Informationen löschen.',
+                privacyPurposesTitle: 'Zwecke und Grundlagen',
+                privacyPurposesText: 'PrintSome verarbeitet Ihre personenbezogenen Daten für folgende Zwecke:',
+                privacyAutomatedTitle: 'Automatisierte Entscheidungsfindung',
+                privacyAutomatedText: 'PrintSome trifft keine Entscheidungen auf der Grundlage automatisierter Verarbeitung, die (erhebliche) Auswirkungen auf Einzelpersonen haben könnten.',
+                privacyRetentionTitle: 'Wie lange wir personenbezogene Daten aufbewahren',
+                privacyRetentionText: 'PrintSome bewahrt Ihre personenbezogenen Daten nicht länger auf als unbedingt notwendig, um die Zwecke zu erreichen, für die Ihre Daten erhoben werden. Wir wenden die folgenden Aufbewahrungsfristen an:',
+                privacyRetentionAccount: 'Kontodaten:',
+                privacyRetentionAccountDesc: 'bis zu 1 Monat nach Löschung des Kontos',
+                privacyRetentionContact: 'Kontaktdaten:',
+                privacyRetentionContactDesc: 'so lange wie für Kommunikation oder Support erforderlich',
+                privacySharingTitle: 'Weitergabe personenbezogener Daten an Dritte',
+                privacySharingText: 'PrintSome gibt Ihre personenbezogenen Daten nur dann an Dritte weiter, wenn dies für die Funktion des Dienstes erforderlich ist. Mit diesen Parteien wurden Auftragsverarbeitungsverträge geschlossen.',
+                privacyTableCategory: 'Kategorie',
+                privacyTableName: 'Name',
+                privacyTableJurisdiction: 'Zuständigkeit',
+                privacyTablePurpose: 'Zweck',
+                privacyTableData: 'Daten',
+                privacyTableHosting: 'Hosting',
+                privacyTableHostingDesc: 'Websitesicherheit und -hosting',
+                privacyTableBackend: 'Hosting & Backend',
+                privacyTableBackendDesc: 'Authentifizierung und Speicherung',
+                privacyTableCode: 'Code & Infrastruktur',
+                privacyTableCodeDesc: 'Quellcodeverwaltung',
+                privacyTableAnalytics: 'Analyse',
+                privacyTableAnalyticsDesc: 'Website-Einblicke',
+                privacyTableEmail: 'E-Mail',
+                privacyTableEmailDesc: 'Kommunikation',
+                privacyNoSell: 'PrintSome verkauft keine personenbezogenen Daten an Dritte.',
+                privacyCookiesTitle: 'Cookies und ähnliche Techniken',
+                privacyCookiesText1: 'PrintSome verwendet selbst keine Cookies.',
+                privacyCookiesText2: 'Es kann jedoch vorkommen, dass Dritte wie Google (z.B. über Firebase oder eingebettete Dienste) Cookies setzen, die für ihre Funktion notwendig sind. Diese Cookies unterliegen der Datenschutzrichtlinie des jeweiligen Dritten.',
+                privacyCookiesMoreInfo: 'Weitere Informationen zu Cookies finden Sie unter:',
+                privacyRightsTitle: 'Daten einsehen, ändern oder löschen',
+                privacyRightsText1: 'Sie haben das Recht, Ihre personenbezogenen Daten einzusehen, zu korrigieren oder zu löschen. Sie haben auch das Recht, der Verarbeitung Ihrer personenbezogenen Daten zu widersprechen, und Sie haben das Recht auf Datenübertragbarkeit.',
+                privacyRightsText2: 'Sie können eine Anfrage senden an:',
+                privacyRightsText3: 'Um Missbrauch zu verhindern, können wir Sie bitten, sich zu identifizieren. Wir werden so schnell wie möglich, spätestens aber innerhalb von vier Wochen antworten.',
+                privacyRightsText4: 'Sie haben auch das Recht, eine Beschwerde bei der niederländischen Datenschutzbehörde einzureichen:',
+                privacySecurityTitle: 'Wie wir personenbezogene Daten schützen',
+                privacySecurityText1: 'PrintSome ergreift angemessene Maßnahmen, um Ihre Daten vor Missbrauch, Verlust, unbefugtem Zugriff, unerwünschter Offenlegung und unbefugter Änderung zu schützen.',
+                privacySecurityText2: 'Wenn Sie glauben, dass Ihre Daten nicht ordnungsgemäß gesichert sind oder es Anzeichen für Missbrauch gibt, kontaktieren Sie uns bitte unter',
+                privacyLastUpdated: 'Zuletzt aktualisiert: Februar 2026',
+                privacyBackBtn: 'Zurück zu Einstellungen'
             }
         };
         
@@ -2165,8 +2424,10 @@
             const t = translations[lang];
             if (!t) return;
             
+            // Header
             if (headerTitle) headerTitle.textContent = t.headerTitle;
             
+            // Home page
             const welcomeTitle = document.querySelector('.welcome-title');
             if (welcomeTitle) welcomeTitle.textContent = t.welcomeTitle;
             
@@ -2183,6 +2444,7 @@
                 allProductsLink.innerHTML = `${t.allProducts} <i class="fas fa-chevron-right"></i>`;
             }
             
+            // FAQ
             const faqTitle = document.querySelector('.faq-title');
             if (faqTitle) faqTitle.innerHTML = `<i class="fas fa-question-circle"></i> ${t.faqTitle}`;
             
@@ -2198,6 +2460,7 @@
                 faqAnswers[1].textContent = t.faqA2;
             }
             
+            // Products page
             const searchInput = document.getElementById('searchInput');
             if (searchInput) searchInput.placeholder = t.searchPlaceholder;
             
@@ -2210,29 +2473,35 @@
                 filterChips[4].textContent = t.filterFidgets;
             }
             
+            // Favorites page
             const favoritesTitle = document.querySelector('#favoritesPage .section-title');
             if (favoritesTitle) favoritesTitle.textContent = t.favoritesTitle;
             
-            const settingsAccountTitle = document.querySelectorAll('.settings-title');
-            if (settingsAccountTitle.length >= 1) settingsAccountTitle[0].innerHTML = `<i class="fas fa-user-cog"></i> ${t.settingsAccount}`;
-            if (settingsAccountTitle.length >= 2) settingsAccountTitle[1].innerHTML = `<i class="fas fa-globe"></i> ${t.language}`;
-            if (settingsAccountTitle.length >= 3) settingsAccountTitle[2].innerHTML = `<i class="fas fa-palette"></i> ${t.display}`;
-            if (settingsAccountTitle.length >= 4) settingsAccountTitle[3].innerHTML = `<i class="fas fa-info-circle"></i> ${t.about}`;
-            if (settingsAccountTitle.length >= 5) settingsAccountTitle[4].innerHTML = `<i class="fas fa-shield-alt"></i> ${t.privacy}`;
+            // Settings page
+            const settingsTitles = document.querySelectorAll('.settings-title');
+            if (settingsTitles.length >= 1) settingsTitles[0].innerHTML = `<i class="fas fa-user-cog"></i> ${t.settingsAccount}`;
+            if (settingsTitles.length >= 2) settingsTitles[1].innerHTML = `<i class="fas fa-globe"></i> ${t.language}`;
+            if (settingsTitles.length >= 3) settingsTitles[2].innerHTML = `<i class="fas fa-palette"></i> ${t.display}`;
+            if (settingsTitles.length >= 4) settingsTitles[3].innerHTML = `<i class="fas fa-info-circle"></i> ${t.about}`;
+            if (settingsTitles.length >= 5) settingsTitles[4].innerHTML = `<i class="fas fa-shield-alt"></i> ${t.privacy}`;
             
-            const accountStatusLabel = document.querySelectorAll('.settings-info h4');
-            if (accountStatusLabel.length >= 1) accountStatusLabel[0].textContent = t.accountStatus;
-            if (accountStatusLabel.length >= 2) accountStatusLabel[1].textContent = t.selectLanguage;
-            if (accountStatusLabel.length >= 3) accountStatusLabel[2].textContent = t.darkMode;
-            if (accountStatusLabel.length >= 4) accountStatusLabel[3].textContent = t.version;
-            if (accountStatusLabel.length >= 5) accountStatusLabel[4].textContent = t.contact;
-            if (accountStatusLabel.length >= 6) accountStatusLabel[5].textContent = t.privacy;
+            const settingsInfoTitles = document.querySelectorAll('.settings-info h4');
+            if (settingsInfoTitles.length >= 1) settingsInfoTitles[0].textContent = t.accountStatus;
+            if (settingsInfoTitles.length >= 2) settingsInfoTitles[1].textContent = t.selectLanguage;
+            if (settingsInfoTitles.length >= 3) settingsInfoTitles[2].textContent = t.darkMode;
+            if (settingsInfoTitles.length >= 4) settingsInfoTitles[3].textContent = t.version;
+            if (settingsInfoTitles.length >= 5) settingsInfoTitles[4].textContent = t.contact;
+            if (settingsInfoTitles.length >= 6) settingsInfoTitles[5].textContent = t.privacy;
             
-            const darkModeDesc = document.querySelectorAll('.settings-info p');
-            if (darkModeDesc.length >= 2) darkModeDesc[1].textContent = t.darkModeDesc;
-            if (darkModeDesc.length >= 3) darkModeDesc[2].textContent = 'PrintSome App v1.0';
-            if (darkModeDesc.length >= 4) darkModeDesc[3].textContent = 'PrintSome-webapp@outlook.com';
-            if (darkModeDesc.length >= 5) darkModeDesc[4].textContent = t.privacyDesc;
+            const settingsInfoDesc = document.querySelectorAll('.settings-info p');
+            if (settingsInfoDesc.length >= 2) settingsInfoDesc[1].textContent = t.darkModeDesc;
+            if (settingsInfoDesc.length >= 3) settingsInfoDesc[2].textContent = 'PrintSome App v1.9';
+            if (settingsInfoDesc.length >= 4) settingsInfoDesc[3].textContent = 'printsome-webapp@outlook.com';
+            if (settingsInfoDesc.length >= 5) settingsInfoDesc[4].textContent = t.privacyDesc;
+            
+            // Account status update
+            const accountStatus = document.getElementById('accountStatus');
+            if (accountStatus && !currentUser) accountStatus.textContent = t.notLoggedIn;
             
             const loginBtn = document.getElementById('loginButton');
             if (loginBtn && !currentUser) loginBtn.innerHTML = `<i class="fas fa-sign-in-alt"></i> ${t.login}`;
@@ -2245,6 +2514,166 @@
             }
             
             if (languageSelector) languageSelector.value = lang;
+            
+            // Navigation
+            const navHome = document.getElementById('navHome');
+            const navProducts = document.getElementById('navProducts');
+            const navFavorites = document.getElementById('navFavorites');
+            const navSettings = document.getElementById('navSettings');
+            
+            if (navHome) navHome.textContent = t.navHome;
+            if (navProducts) navProducts.textContent = t.navProducts;
+            if (navFavorites) navFavorites.textContent = t.navFavorites;
+            if (navSettings) navSettings.textContent = t.navSettings;
+            
+            // Privacy page
+            applyPrivacyTranslations(t);
+        }
+        
+        function applyPrivacyTranslations(t) {
+            // Privacy page vertalingen
+            const privacyTitle = document.querySelector('#privacyPage .privacy-title');
+            if (privacyTitle) privacyTitle.innerHTML = `<i class="fas fa-shield-alt"></i> ${t.privacyTitle}`;
+            
+            const privacyTexts = document.querySelectorAll('#privacyPage .privacy-text');
+            if (privacyTexts.length >= 1) privacyTexts[0].textContent = t.privacyResponsible;
+            
+            const privacySubtitles = document.querySelectorAll('#privacyPage .privacy-subtitle');
+            if (privacySubtitles.length >= 1) privacySubtitles[0].textContent = t.privacyContactTitle;
+            if (privacySubtitles.length >= 2) privacySubtitles[1].textContent = t.privacyDataTitle;
+            if (privacySubtitles.length >= 3) privacySubtitles[2].textContent = t.privacySensitiveTitle;
+            if (privacySubtitles.length >= 4) privacySubtitles[3].textContent = t.privacyPurposesTitle;
+            if (privacySubtitles.length >= 5) privacySubtitles[4].textContent = t.privacyAutomatedTitle;
+            if (privacySubtitles.length >= 6) privacySubtitles[5].textContent = t.privacyRetentionTitle;
+            if (privacySubtitles.length >= 7) privacySubtitles[6].textContent = t.privacySharingTitle;
+            if (privacySubtitles.length >= 8) privacySubtitles[7].textContent = t.privacyCookiesTitle;
+            if (privacySubtitles.length >= 9) privacySubtitles[8].textContent = t.privacyRightsTitle;
+            if (privacySubtitles.length >= 10) privacySubtitles[9].textContent = t.privacySecurityTitle;
+            
+            // Contact info
+            const contactInfo = document.querySelector('#privacyPage .contact-info');
+            if (contactInfo) {
+                const contactPs = contactInfo.querySelectorAll('p');
+                if (contactPs.length >= 2) {
+                    contactPs[0].innerHTML = `<i class="fas fa-globe"></i> <strong>${t.privacyWebsite}</strong> <a href="https://printsome.pages.dev" target="_blank">https://printsome.pages.dev</a>`;
+                    contactPs[1].innerHTML = `<i class="fas fa-envelope"></i> <strong>${t.privacyEmail}</strong> <a href="mailto:printsome-webapp@outlook.com">printsome-webapp@outlook.com</a>`;
+                }
+            }
+            
+            // Data list
+            if (privacyTexts.length >= 2) privacyTexts[1].textContent = t.privacyDataText;
+            
+            // Sensitive data
+            if (privacyTexts.length >= 3) privacyTexts[2].textContent = t.privacySensitiveText1;
+            if (privacyTexts.length >= 4) {
+                privacyTexts[3].innerHTML = `${t.privacySensitiveText2} <a href="mailto:printsome-webapp@outlook.com" style="color: var(--link-color);">printsome-webapp@outlook.com</a>, ${t.privacySensitiveText2End}`;
+            }
+            
+            // Purposes
+            if (privacyTexts.length >= 5) privacyTexts[4].textContent = t.privacyPurposesText;
+            
+            // Automated
+            if (privacyTexts.length >= 6) privacyTexts[5].textContent = t.privacyAutomatedText;
+            
+            // Retention
+            if (privacyTexts.length >= 7) privacyTexts[6].textContent = t.privacyRetentionText;
+            
+            // Retention list items
+            const privacyLists = document.querySelectorAll('#privacyPage .privacy-list');
+            if (privacyLists.length >= 3) {
+                const listItems = privacyLists[2].querySelectorAll('li');
+                if (listItems.length >= 2) {
+                    listItems[0].innerHTML = `<strong>${t.privacyRetentionAccount}</strong> ${t.privacyRetentionAccountDesc}`;
+                    listItems[1].innerHTML = `<strong>${t.privacyRetentionContact}</strong> ${t.privacyRetentionContactDesc}`;
+                }
+            }
+            
+            // Sharing
+            if (privacyTexts.length >= 8) privacyTexts[7].textContent = t.privacySharingText;
+            
+            // Table headers
+            const tableHeaders = document.querySelectorAll('#privacyPage .privacy-table th');
+            if (tableHeaders.length >= 5) {
+                tableHeaders[0].textContent = t.privacyTableCategory;
+                tableHeaders[1].textContent = t.privacyTableName;
+                tableHeaders[2].textContent = t.privacyTableJurisdiction;
+                tableHeaders[3].textContent = t.privacyTablePurpose;
+                tableHeaders[4].textContent = t.privacyTableData;
+            }
+            
+            // Table content
+            const tableRows = document.querySelectorAll('#privacyPage .privacy-table tbody tr');
+            if (tableRows.length >= 5) {
+                const row1Cells = tableRows[0].querySelectorAll('td');
+                if (row1Cells.length >= 4) {
+                    row1Cells[0].textContent = t.privacyTableHosting;
+                    row1Cells[3].textContent = t.privacyTableHostingDesc;
+                }
+                
+                const row2Cells = tableRows[1].querySelectorAll('td');
+                if (row2Cells.length >= 4) {
+                    row2Cells[0].textContent = t.privacyTableBackend;
+                    row2Cells[3].textContent = t.privacyTableBackendDesc;
+                }
+                
+                const row3Cells = tableRows[2].querySelectorAll('td');
+                if (row3Cells.length >= 4) {
+                    row3Cells[0].textContent = t.privacyTableCode;
+                    row3Cells[3].textContent = t.privacyTableCodeDesc;
+                }
+                
+                const row4Cells = tableRows[3].querySelectorAll('td');
+                if (row4Cells.length >= 4) {
+                    row4Cells[0].textContent = t.privacyTableAnalytics;
+                    row4Cells[3].textContent = t.privacyTableAnalyticsDesc;
+                }
+                
+                const row5Cells = tableRows[4].querySelectorAll('td');
+                if (row5Cells.length >= 4) {
+                    row5Cells[0].textContent = t.privacyTableEmail;
+                    row5Cells[3].textContent = t.privacyTableEmailDesc;
+                }
+            }
+            
+            // No sell
+            const noSellText = document.querySelector('#privacyPage .privacy-text[style*="margin-top: 16px"]');
+            if (noSellText) noSellText.textContent = t.privacyNoSell;
+            
+            // Cookies
+            if (privacyTexts.length >= 9) privacyTexts[8].textContent = t.privacyCookiesText1;
+            if (privacyTexts.length >= 10) privacyTexts[9].textContent = t.privacyCookiesText2;
+            
+            const cookieLink = document.querySelector('#privacyPage .privacy-text a[href*="veiliginternetten"]');
+            if (cookieLink) {
+                cookieLink.textContent = 'https://veiliginternetten.nl/wat-zijn-cookies/';
+                cookieLink.parentElement.innerHTML = `${t.privacyCookiesMoreInfo}<br>${cookieLink.outerHTML}`;
+            }
+            
+            // Rights
+            if (privacyTexts.length >= 11) privacyTexts[10].textContent = t.privacyRightsText1;
+            if (privacyTexts.length >= 12) {
+                privacyTexts[11].innerHTML = `${t.privacyRightsText2}<br><a href="mailto:printsome-webapp@outlook.com" style="color: var(--link-color);">printsome-webapp@outlook.com</a>`;
+            }
+            if (privacyTexts.length >= 13) privacyTexts[12].textContent = t.privacyRightsText3;
+            if (privacyTexts.length >= 14) {
+                privacyTexts[13].innerHTML = `${t.privacyRightsText4}<br><a href="https://autoriteitpersoonsgegevens.nl/" target="_blank" style="color: var(--link-color);">https://autoriteitpersoonsgegevens.nl/</a>`;
+            }
+            
+            // Security
+            if (privacyTexts.length >= 15) privacyTexts[14].textContent = t.privacySecurityText1;
+            if (privacyTexts.length >= 16) {
+                privacyTexts[15].innerHTML = `${t.privacySecurityText2} <a href="mailto:printsome-webapp@outlook.com" style="color: var(--link-color);">printsome-webapp@outlook.com</a>.`;
+            }
+            
+            // Last updated
+            const lastUpdated = document.querySelector('#privacyPage .privacy-content > div:last-child p');
+            if (lastUpdated) lastUpdated.innerHTML = `<i class="fas fa-calendar-alt"></i> ${t.privacyLastUpdated}`;
+            
+            // Back button
+            const backBtn = document.querySelector('#privacyPage .privacy-back-btn');
+            if (backBtn) {
+                backBtn.innerHTML = `<i class="fas fa-arrow-left"></i> ${t.privacyBackBtn}`;
+            }
         }
         
         function updateAuthUI() {
@@ -2368,7 +2797,7 @@
                 
                 ${authMode === 'login' ? `
                     <div style="text-align: center; margin-top: 20px;">
-                        <a href="#" onclick="showToast('Neem contact op: PrintSome-webapp@outlook.com', 5000)" style="color: var(--primary-color); text-decoration: none; font-size: 14px;">
+                        <a href="#" onclick="showToast('Neem contact op: printsome-webapp@outlook.com', 5000)" style="color: var(--primary-color); text-decoration: none; font-size: 14px;">
                             <i class="fas fa-key"></i> Wachtwoord vergeten?
                         </a>
                     </div>
@@ -2919,7 +3348,7 @@
                     updateFavoritesDisplay();
                     break;
                 case 'privacy':
-                    headerTitle.textContent = 'Privacybeleid';
+                    headerTitle.textContent = t.privacyTitle;
                     break;
                 case 'settings':
                     headerTitle.textContent = t.settingsAccount;

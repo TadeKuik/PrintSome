@@ -3,24 +3,13 @@ Het project richt zich op een moderne en gebruiksvriendelijke website voor 3D-pr
 
 
 
-🚧 Huidige status
+🚧 Huidige status:
 
-Nog geen online bestellingen
+- Nog geen online bestellingen
 
-Zichtbare producten
+- Zichtbare producten
 
-Inlog mogelijkheid
+- Inlog mogelijkheid
 
 
 ⚠️ Online bestellen en betalingen zijn nog niet beschikbaar.
-
-
-🎯 Doel van het project
-
-Bestand upload (STL/OBJ)
-
-Materiaal- en printinstellingen
-
-Online bestellingen
-
-Inlog bonussen

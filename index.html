@@ -1835,7 +1835,7 @@
         // Vertalingen - ALLEEN Nederlands en Engels
         const translations = {
             nl: {
-                headerTitle: 'PrintSome',
+                headerTitle: 'Home',  // Gewijzigd: op homepage staat nu "Home" i.p.v. "PrintSome"
                 welcomeTitle: 'Welkom bij PrintSome!',
                 welcomeSubtitle: '3D printing shop',
                 welcomeUserNotLogged: 'Log in voor persoonlijke ervaring',
@@ -1889,6 +1889,7 @@
                 navProducts: 'Producten',
                 navFavorites: 'Favorieten',
                 navSettings: 'Instellingen',
+                loggedInAs: 'ingelogd als',  // Nieuwe vertaling voor ingelogd als
                 // Privacy pagina vertalingen
                 privacyTitle: 'Privacyverklaring PrintSome',
                 privacyResponsible: 'PrintSome is verantwoordelijk voor de verwerking van persoonsgegevens zoals weergegeven in deze privacyverklaring.',
@@ -1952,7 +1953,7 @@
                 privacyBackBtn: 'Terug naar Instellingen'
             },
             en: {
-                headerTitle: 'PrintSome',
+                headerTitle: 'Home',  // Gewijzigd: op homepage staat nu "Home" i.p.v. "PrintSome"
                 welcomeTitle: 'Welcome to PrintSome!',
                 welcomeSubtitle: '3D printing shop',
                 welcomeUserNotLogged: 'Log in for personalized experience',
@@ -2006,6 +2007,7 @@
                 navProducts: 'Products',
                 navFavorites: 'Favorites',
                 navSettings: 'Settings',
+                loggedInAs: 'logged in as',  // Nieuwe vertaling voor ingelogd als
                 // Privacy pagina vertalingen (Engels)
                 privacyTitle: 'Privacy Statement PrintSome',
                 privacyResponsible: 'PrintSome is responsible for the processing of personal data as shown in this privacy statement.',
@@ -2230,8 +2232,8 @@
             const t = translations[lang];
             if (!t) return;
             
-            // Header
-            if (headerTitle) headerTitle.textContent = t.headerTitle;
+            // Header - titel wordt apart beheerd in showPage functie
+            // We updaten hier niet de headerTitle omdat die afhankelijk is van de pagina
             
             // Home page
             const welcomeTitle = document.querySelector('.welcome-title');
@@ -2543,9 +2545,10 @@
                 }
             }
             
+            // Gewijzigd: Wanneer je op je profiel klikt krijg je "ingelogd als: email" i.p.v. "inloggen: email"
             userAvatar.onclick = () => {
                 if (currentUser) {
-                    showToast(`${t.login}: ${currentUser.email}`, 3000);
+                    showToast(`${t.loggedInAs}: ${currentUser.email}`, 3000);
                 } else {
                     authModal.classList.add('active');
                     renderAuthForm();
@@ -3164,22 +3167,22 @@
             
             switch(page) {
                 case 'home':
-                    headerTitle.textContent = t.headerTitle;
+                    headerTitle.textContent = t.headerTitle;  // Nu "Home" i.p.v. "PrintSome"
                     setTimeout(setupFAQ, 100);
                     break;
                 case 'products':
-                    headerTitle.textContent = t.featuredProducts;
+                    headerTitle.textContent = t.featuredProducts;  // "Uitgelichte Producten" of "Featured Products"
                     displayAllProducts();
                     break;
                 case 'favorites':
-                    headerTitle.textContent = t.favoritesTitle;
+                    headerTitle.textContent = t.favoritesTitle;  // "Jouw Favorieten" of "Your Favorites"
                     updateFavoritesDisplay();
                     break;
                 case 'privacy':
-                    headerTitle.textContent = t.privacyTitle;
+                    headerTitle.textContent = t.privacyTitle;  // Privacy titel blijft zoals eerder
                     break;
                 case 'settings':
-                    headerTitle.textContent = t.settingsAccount;
+                    headerTitle.textContent = t.settingsAccount;  // "Account" blijft zoals eerder
                     break;
             }
         };

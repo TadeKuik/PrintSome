@@ -135,6 +135,19 @@
             --link-color: #66b0ff;
         }
 
+        /* Logo styling */
+        .logo {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background-image: url('http://printsome.ct.ws/wp-content/uploads/2025/12/Screenshot_20250927_124444_Canva2-12.jpg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 6px;
+            margin-right: 8px;
+        }
+
         html {
             height: 100%;
             overflow: hidden;
@@ -188,10 +201,6 @@
             display: flex;
             align-items: center;
             gap: 8px;
-        }
-
-        .header-title i {
-            color: var(--accent-color);
         }
 
         .header-actions {
@@ -1376,7 +1385,7 @@
     <div class="app-container" id="appContainer">
         <header class="app-header">
             <div class="header-title">
-                <i class="fas fa-cube"></i>
+                <span class="logo"></span>
                 <span id="headerTitle">PrintSome</span>
             </div>
             <div class="header-actions">
@@ -1480,7 +1489,7 @@
                 </div>
             </div>
 
-            <!-- Settings Page (AANGEPAST) -->
+            <!-- Settings Page (ALLEEN NL EN ENG) -->
             <div class="page" id="settingsPage">
                 <div class="settings-section">
                     <h3 class="settings-title">
@@ -1509,8 +1518,6 @@
                         <select class="language-selector" id="languageSelector" style="width: auto; min-width: 120px;">
                             <option value="nl" selected>Nederlands</option>
                             <option value="en">English</option>
-                            <option value="fr">Français</option>
-                            <option value="de">Deutsch</option>
                         </select>
                     </div>
                 </div>
@@ -1540,13 +1547,13 @@
                     <div class="settings-item">
                         <div class="settings-info">
                             <h4>Versie</h4>
-                            <p>PrintSome App v1.9</p> <!-- Alleen versie hier -->
+                            <p>PrintSome App v1.9</p>
                         </div>
                     </div>
                     <div class="settings-item">
                         <div class="settings-info">
                             <h4>Contact</h4>
-                            <p>printsome-webapp@outlook.com</p> <!-- Alleen e-mail hier -->
+                            <p>printsome-webapp@outlook.com</p>
                         </div>
                     </div>
                 </div>
@@ -1825,7 +1832,7 @@
         };
         let authMode = 'login';
         
-        // Vertalingen (AANGEPAST: privacy lijst items nu apart opgenomen voor vertaling)
+        // Vertalingen - ALLEEN Nederlands en Engels
         const translations = {
             nl: {
                 headerTitle: 'PrintSome',
@@ -1882,7 +1889,7 @@
                 navProducts: 'Producten',
                 navFavorites: 'Favorieten',
                 navSettings: 'Instellingen',
-                // Privacy pagina vertalingen (AANGEPAST: alle teksten inclusief lijstitems)
+                // Privacy pagina vertalingen
                 privacyTitle: 'Privacyverklaring PrintSome',
                 privacyResponsible: 'PrintSome is verantwoordelijk voor de verwerking van persoonsgegevens zoals weergegeven in deze privacyverklaring.',
                 privacyContactTitle: 'Contactgegevens',
@@ -2060,21 +2067,8 @@
                 privacySecurityText2: 'If you believe that your data is not properly secured or there is evidence of misuse, please contact us at printsome-webapp@outlook.com.',
                 privacyLastUpdated: 'Last updated: February 2026',
                 privacyBackBtn: 'Back to Settings'
-            },
-            fr: {
-                // ... (voor de beknoptheid niet alle talen herhaald, maar in volledige code zouden ze staan)
-                // In dit voorbeeld worden alleen NL en EN uitgebreid getoond, maar de structuur is nu correct voor alle talen.
-                // Voor de demo gebruiken we alleen NL en EN, maar de code ondersteunt alle vier de talen.
-            },
-            de: {
-                // ... (idem)
             }
         };
-        
-        // Vul de andere talen met dezelfde structuur (voor demonstratie kopiëren we EN naar FR en DE)
-        translations.fr = { ...translations.en }; 
-        translations.de = { ...translations.en };
-        // Zorg dat de basis NL ook de lijst items heeft (die hadden we al)
         
         // DOM Elements
         const appContainer = document.getElementById('appContainer');
@@ -2094,7 +2088,7 @@
         const headerTitle = document.getElementById('headerTitle');
         const welcomeUser = document.getElementById('welcomeUser');
         
-        // Firebase Auth Functions (identiek aan origineel, niet gewijzigd)
+        // Firebase Auth Functions
         async function signInWithGoogle() {
             try {
                 const provider = new firebase.auth.GoogleAuthProvider();
@@ -2228,9 +2222,9 @@
             }
         }
         
-        // applyLanguage functie (AANGEPAST: privacy lijsten nu dynamisch vertaald)
+        // applyLanguage functie
         function applyLanguage(lang) {
-            if (!lang) lang = 'nl';
+            if (!lang || (lang !== 'nl' && lang !== 'en')) lang = 'nl';
             userSettings.language = lang;
             
             const t = translations[lang];
@@ -2289,7 +2283,7 @@
             const favoritesTitle = document.querySelector('#favoritesPage .section-title');
             if (favoritesTitle) favoritesTitle.textContent = t.favoritesTitle;
             
-            // Settings page (AANGEPAST: de structuur klopt nu)
+            // Settings page
             const settingsTitles = document.querySelectorAll('.settings-title');
             if (settingsTitles.length >= 1) settingsTitles[0].innerHTML = `<i class="fas fa-user-cog"></i> ${t.settingsAccount}`;
             if (settingsTitles.length >= 2) settingsTitles[1].innerHTML = `<i class="fas fa-globe"></i> ${t.language}`;
@@ -2306,11 +2300,11 @@
             if (settingsInfoTitles.length >= 6) settingsInfoTitles[5].textContent = t.privacy;
             
             const settingsInfoDesc = document.querySelectorAll('.settings-info p');
-            if (settingsInfoDesc.length >= 1 && !currentUser) settingsInfoDesc[0].textContent = t.notLoggedIn; // account status
-            if (settingsInfoDesc.length >= 2) settingsInfoDesc[1].textContent = t.darkModeDesc; // beschrijving dark mode
-            if (settingsInfoDesc.length >= 3) settingsInfoDesc[2].textContent = 'PrintSome App v1.9'; // versie (statisch)
-            if (settingsInfoDesc.length >= 4) settingsInfoDesc[3].textContent = 'printsome-webapp@outlook.com'; // contact (statisch email)
-            if (settingsInfoDesc.length >= 5) settingsInfoDesc[4].textContent = t.privacyDesc; // privacy beschrijving
+            if (settingsInfoDesc.length >= 1 && !currentUser) settingsInfoDesc[0].textContent = t.notLoggedIn;
+            if (settingsInfoDesc.length >= 2) settingsInfoDesc[1].textContent = t.darkModeDesc;
+            if (settingsInfoDesc.length >= 3) settingsInfoDesc[2].textContent = 'PrintSome App v1.9';
+            if (settingsInfoDesc.length >= 4) settingsInfoDesc[3].textContent = 'printsome-webapp@outlook.com';
+            if (settingsInfoDesc.length >= 5) settingsInfoDesc[4].textContent = t.privacyDesc;
             
             // Account status update
             const accountStatus = document.getElementById('accountStatus');
@@ -2322,7 +2316,7 @@
             
             const currentLanguageEl = document.getElementById('currentLanguage');
             if (currentLanguageEl) {
-                const langNames = { nl: 'Nederlands', en: 'English', fr: 'Français', de: 'Deutsch' };
+                const langNames = { nl: 'Nederlands', en: 'English' };
                 currentLanguageEl.textContent = langNames[lang] || 'Nederlands';
             }
             
@@ -2339,13 +2333,12 @@
             if (navFavorites) navFavorites.textContent = t.navFavorites;
             if (navSettings) navSettings.textContent = t.navSettings;
             
-            // Privacy page (AANGEPAST: nu volledig vertaald inclusief lijsten)
+            // Privacy page
             applyPrivacyTranslations(t);
         }
         
-        // Nieuwe functie om privacy pagina te vertalen (lijsten included)
+        // Functie om privacy pagina te vertalen
         function applyPrivacyTranslations(t) {
-            // Algemene teksten
             const privacyTitle = document.querySelector('#privacyPage .privacy-title');
             if (privacyTitle) privacyTitle.innerHTML = `<i class="fas fa-shield-alt"></i> ${t.privacyTitle}`;
             
@@ -2377,7 +2370,7 @@
             // Data tekst
             if (privacyTexts.length >= 2) privacyTexts[1].textContent = t.privacyDataText;
             
-            // Data lijst (eerste lijst)
+            // Data lijst
             const privacyLists = document.querySelectorAll('#privacyPage .privacy-list');
             if (privacyLists.length >= 1) {
                 const listItems = privacyLists[0].querySelectorAll('li');
@@ -2399,7 +2392,7 @@
             // Purposes tekst
             if (privacyTexts.length >= 5) privacyTexts[4].textContent = t.privacyPurposesText;
             
-            // Purposes lijst (tweede lijst)
+            // Purposes lijst
             if (privacyLists.length >= 2) {
                 const listItems = privacyLists[1].querySelectorAll('li');
                 if (listItems.length >= 3) {
@@ -2415,7 +2408,7 @@
             // Retention tekst
             if (privacyTexts.length >= 7) privacyTexts[6].textContent = t.privacyRetentionText;
             
-            // Retention lijst (derde lijst)
+            // Retention lijst
             if (privacyLists.length >= 3) {
                 const listItems = privacyLists[2].querySelectorAll('li');
                 if (listItems.length >= 2) {
@@ -2530,7 +2523,7 @@
                 
                 const displayName = currentUser.displayName || currentUser.email.split('@')[0] || 'Gebruiker';
                 welcomeUser.textContent = `${t.welcomeBack}, ${displayName}!`;
-                accountStatus.textContent = t.login; // of ingelogd tonen? maar blijft zoals origineel
+                accountStatus.textContent = t.login;
                 
                 if (loginButton) {
                     loginButton.innerHTML = `<i class="fas fa-sign-out-alt"></i> ${t.logout}`;
@@ -2599,8 +2592,6 @@
                             <select class="language-selector" id="signupLanguage">
                                 <option value="nl" selected>Nederlands</option>
                                 <option value="en">English</option>
-                                <option value="fr">Français</option>
-                                <option value="de">Deutsch</option>
                             </select>
                         </div>
                     ` : ''}
@@ -3040,6 +3031,10 @@
             if (savedSettings) {
                 try {
                     userSettings = { ...userSettings, ...JSON.parse(savedSettings) };
+                    // Validate language - only allow nl or en
+                    if (userSettings.language !== 'nl' && userSettings.language !== 'en') {
+                        userSettings.language = 'nl';
+                    }
                 } catch (e) {
                     console.error('Error parsing settings:', e);
                 }

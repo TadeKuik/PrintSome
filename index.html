@@ -1378,6 +1378,204 @@
         .dark-theme ::-webkit-scrollbar-thumb {
             background: var(--gray-600);
         }
+
+        /* Installatie instructie modals */
+        .install-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+        
+        .install-modal {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius-lg);
+            max-width: 400px;
+            width: 100%;
+            padding: 24px;
+            box-shadow: var(--shadow-xl);
+            animation: scaleIn 0.3s ease;
+        }
+        
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .install-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .install-modal-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .install-modal-header i {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+        
+        .install-modal-content {
+            margin-bottom: 24px;
+        }
+        
+        .install-step {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 12px;
+            background-color: var(--gray-50);
+            border-radius: var(--border-radius);
+        }
+        
+        .install-step-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .install-step-text {
+            flex: 1;
+        }
+        
+        .install-step-text p {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .install-step-text small {
+            color: var(--gray-600);
+            font-size: 13px;
+            line-height: 1.4;
+            display: block;
+        }
+        
+        .install-close-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-color);
+            color: #000000;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        
+        .install-close-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Privacy popup */
+        .privacy-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 2500;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+        
+        .privacy-popup {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius-lg);
+            max-width: 450px;
+            width: 100%;
+            padding: 28px 24px;
+            box-shadow: var(--shadow-xl);
+            animation: slideUp 0.4s ease;
+        }
+        
+        .privacy-popup-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .privacy-popup-header i {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+        
+        .privacy-popup-header h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        
+        .privacy-popup-content {
+            margin-bottom: 28px;
+            color: var(--gray-700);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        .privacy-popup-link {
+            display: inline-block;
+            color: var(--link-color);
+            text-decoration: underline;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+        
+        .privacy-popup-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .privacy-popup-buttons button {
+            flex: 1;
+            padding: 14px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            border: none;
+            font-size: 16px;
+        }
+        
+        .privacy-popup-btn-primary {
+            background-color: var(--primary-color);
+            color: #000000;
+        }
+        
+        .privacy-popup-btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .privacy-popup-btn-secondary {
+            background-color: var(--gray-100);
+            color: var(--dark-color);
+        }
+        
+        .privacy-popup-btn-secondary:hover {
+            background-color: var(--gray-200);
+        }
     </style>
 </head>
 
@@ -1547,7 +1745,7 @@
                     <div class="settings-item">
                         <div class="settings-info">
                             <h4>Versie</h4>
-                            <p>PrintSome App v1.9</p>
+                            <p>PrintSome App v2.0</p>
                         </div>
                     </div>
                     <div class="settings-item">
@@ -1768,6 +1966,104 @@
                 <span class="nav-label" id="navSettings">Instellingen</span>
             </a>
         </nav>
+    </div>
+
+    <!-- Installatie instructie modal (iPhone) -->
+    <div class="install-modal-overlay" id="installIPhoneModal">
+        <div class="install-modal">
+            <div class="install-modal-header">
+                <h3>Installeer PrintSome</h3>
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="install-modal-content">
+                <div class="install-step">
+                    <div class="install-step-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <div class="install-step-text">
+                        <p>Stap 1: Open in Safari</p>
+                        <small>Tik op het deel-icoon onderaan je scherm.</small>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="install-step-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div class="install-step-text">
+                        <p>Stap 2: "Zet in beginscherm"</p>
+                        <small>Scroll naar beneden en tik op "Zet in beginscherm".</small>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="install-step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="install-step-text">
+                        <p>Stap 3: Bevestig</p>
+                        <small>Tik rechtsboven op "Voeg toe". De app staat nu op je beginscherm.</small>
+                    </div>
+                </div>
+            </div>
+            <button class="install-close-btn" onclick="closeInstallModal('iphone')">Sluiten</button>
+        </div>
+    </div>
+
+    <!-- Installatie instructie modal (Samsung) -->
+    <div class="install-modal-overlay" id="installSamsungModal">
+        <div class="install-modal">
+            <div class="install-modal-header">
+                <h3>Installeer PrintSome</h3>
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="install-modal-content">
+                <div class="install-step">
+                    <div class="install-step-icon">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                    <div class="install-step-text">
+                        <p>Stap 1: Open menu</p>
+                        <small>Tik op de drie puntjes rechtsboven in je browser.</small>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="install-step-icon">
+                        <i class="fas fa-plus-square"></i>
+                    </div>
+                    <div class="install-step-text">
+                        <p>Stap 2: "App installeren"</p>
+                        <small>Tik op "App installeren" of "Toevoegen aan beginscherm".</small>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="install-step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="install-step-text">
+                        <p>Stap 3: Bevestig</p>
+                        <small>Tik op "Installeren" en open de app vanuit je beginscherm.</small>
+                    </div>
+                </div>
+            </div>
+            <button class="install-close-btn" onclick="closeInstallModal('samsung')">Sluiten</button>
+        </div>
+    </div>
+
+    <!-- Privacy popup (na installatie) -->
+    <div class="privacy-popup-overlay" id="privacyPopup">
+        <div class="privacy-popup">
+            <div class="privacy-popup-header">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Privacyverklaring</h3>
+            </div>
+            <div class="privacy-popup-content">
+                <p>PrintSome respecteert je privacy. We verzamelen alleen gegevens die nodig zijn voor de werking van de app, zoals accountgegevens en taalvoorkeur. Je gegevens worden niet verkocht aan derden.</p>
+                <p>Lees de volledige privacyverklaring in de instellingen of via onderstaande link:</p>
+                <a href="#" class="privacy-popup-link" onclick="showPrivacyFromPopup(); return false;">Volledige privacyverklaring bekijken</a>
+            </div>
+            <div class="privacy-popup-buttons">
+                <button class="privacy-popup-btn-primary" onclick="acceptPrivacy()">OK</button>
+            </div>
+        </div>
     </div>
 
     <!-- Auth Modal -->
@@ -2089,6 +2385,77 @@
         const languageSelector = document.getElementById('languageSelector');
         const headerTitle = document.getElementById('headerTitle');
         const welcomeUser = document.getElementById('welcomeUser');
+
+        // Installatie en privacy modals
+        const installIPhoneModal = document.getElementById('installIPhoneModal');
+        const installSamsungModal = document.getElementById('installSamsungModal');
+        const privacyPopup = document.getElementById('privacyPopup');
+
+        // Check of de app als PWA is geïnstalleerd
+        function isRunningStandalone() {
+            return window.matchMedia('(display-mode: standalone)').matches || 
+                   window.navigator.standalone === true ||
+                   document.referrer.includes('android-app://');
+        }
+
+        // Toon installatie-instructies bij eerste bezoek (niet geïnstalleerd)
+        function checkAndShowInstallInstructions() {
+            if (isRunningStandalone()) {
+                // App is geïnstalleerd, toon privacy popup
+                setTimeout(() => {
+                    if (!localStorage.getItem('privacyAccepted')) {
+                        privacyPopup.style.display = 'flex';
+                    }
+                }, 1000);
+            } else {
+                // Niet geïnstalleerd, toon installatie-instructies (maximaal 1x per sessie)
+                if (!sessionStorage.getItem('installShown')) {
+                    sessionStorage.setItem('installShown', 'true');
+                    
+                    // Detecteer apparaat (simpele detectie)
+                    const isIPhone = /iPhone|iPad|iPod/.test(navigator.userAgent);
+                    const isSamsung = /Samsung|SM-|GT-/.test(navigator.userAgent);
+                    
+                    if (isIPhone) {
+                        installIPhoneModal.style.display = 'flex';
+                    } else if (isSamsung) {
+                        installSamsungModal.style.display = 'flex';
+                    } else {
+                        // Voor andere Android toestellen ook Samsung instructies (algemeen)
+                        installSamsungModal.style.display = 'flex';
+                    }
+                    
+                    // Verberg de app-inhoud (main content wordt grijs weergegeven)
+                    document.querySelector('.main-content').style.opacity = '0.5';
+                    document.querySelector('.bottom-nav').style.opacity = '0.5';
+                }
+            }
+        }
+
+        // Sluit installatie modal en toon app
+        window.closeInstallModal = function(type) {
+            if (type === 'iphone') {
+                installIPhoneModal.style.display = 'none';
+            } else {
+                installSamsungModal.style.display = 'none';
+            }
+            
+            // Toon app-inhoud
+            document.querySelector('.main-content').style.opacity = '1';
+            document.querySelector('.bottom-nav').style.opacity = '1';
+        };
+
+        // Accepteer privacy
+        window.acceptPrivacy = function() {
+            localStorage.setItem('privacyAccepted', 'true');
+            privacyPopup.style.display = 'none';
+        };
+
+        // Toon privacy pagina vanuit popup
+        window.showPrivacyFromPopup = function() {
+            privacyPopup.style.display = 'none';
+            showPage('privacy');
+        };
         
         // Firebase Auth Functions
         async function signInWithGoogle() {
@@ -2304,7 +2671,7 @@
             const settingsInfoDesc = document.querySelectorAll('.settings-info p');
             if (settingsInfoDesc.length >= 1 && !currentUser) settingsInfoDesc[0].textContent = t.notLoggedIn;
             if (settingsInfoDesc.length >= 2) settingsInfoDesc[1].textContent = t.darkModeDesc;
-            if (settingsInfoDesc.length >= 3) settingsInfoDesc[2].textContent = 'PrintSome App v1.9';
+            if (settingsInfoDesc.length >= 3) settingsInfoDesc[2].textContent = 'PrintSome App v2.0';
             if (settingsInfoDesc.length >= 4) settingsInfoDesc[3].textContent = 'printsome-webapp@outlook.com';
             if (settingsInfoDesc.length >= 5) settingsInfoDesc[4].textContent = t.privacyDesc;
             
@@ -3337,6 +3704,8 @@
             loadUserSettings();
             loadProducts();
             setupEventListeners();
+            
+            checkAndShowInstallInstructions();
             
             setTimeout(() => {
                 const t = translations[userSettings.language] || translations.nl;

@@ -110,6 +110,10 @@
             --container-max-width: 768px;
             
             --link-color: #0066cc;
+            
+            /* Nieuwe variabele voor sterren */
+            --star-color: #ffc107;
+            --star-inactive: #e4e5e9;
         }
 
         .dark-theme {
@@ -133,6 +137,7 @@
             --gray-800: #eeeeee;
             --gray-900: #ffffff;
             --link-color: #66b0ff;
+            --star-inactive: #4d4d4d;
         }
 
         /* Logo styling */
@@ -1260,6 +1265,49 @@
             margin: 16px 0;
         }
 
+        /* Nieuwe stijlen voor sterrenbeoordeling */
+        .rating-container {
+            background-color: var(--gray-100);
+            padding: 16px;
+            border-radius: var(--border-radius);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .average-rating {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 8px;
+        }
+        
+        .stars {
+            display: inline-flex;
+            gap: 8px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .star {
+            color: var(--star-inactive);
+            transition: color var(--transition-fast);
+        }
+        
+        .star.active,
+        .star:hover,
+        .star:hover ~ .star {
+            color: var(--star-color);
+        }
+        
+        .stars[data-user-rating] .star {
+            cursor: pointer;
+        }
+        
+        .stars[data-user-rating] .star:hover,
+        .stars[data-user-rating] .star:hover ~ .star {
+            color: var(--star-color);
+        }
+
         .loading {
             display: flex;
             flex-direction: column;
@@ -1646,6 +1694,77 @@
                             Op dit moment verkopen wij voornamelijk fidget toys. Ons assortiment wordt regelmatig uitgebreid. Neem een kijkje bij onze producten om te zien wat wij momenteel aanbieden.
                         </div>
                     </div>
+
+                    <!-- NIEUW: Installatie FAQ item -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="install-question-nl">Hoe installeer ik PrintSome op mijn apparaat?</span>
+                            <span class="install-question-en" style="display: none;">How do I install PrintSome on my device?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <!-- Stappen voor iPhone (standaard zichtbaar) -->
+                            <div class="install-steps-iphone">
+                                <div class="install-step" style="background: none; padding: 8px 0;">
+                                    <div class="install-step-icon" style="width: 32px; height: 32px; font-size: 16px;">
+                                        <i class="fas fa-share-alt"></i>
+                                    </div>
+                                    <div class="install-step-text">
+                                        <p>Stap 1: Open in Safari</p>
+                                        <small>Tik op het deel-icoon onderaan je scherm.</small>
+                                    </div>
+                                </div>
+                                <div class="install-step" style="background: none; padding: 8px 0;">
+                                    <div class="install-step-icon" style="width: 32px; height: 32px; font-size: 16px;">
+                                        <i class="fas fa-plus-circle"></i>
+                                    </div>
+                                    <div class="install-step-text">
+                                        <p>Stap 2: "Zet in beginscherm"</p>
+                                        <small>Scroll naar beneden en tik op "Zet in beginscherm".</small>
+                                    </div>
+                                </div>
+                                <div class="install-step" style="background: none; padding: 8px 0;">
+                                    <div class="install-step-icon" style="width: 32px; height: 32px; font-size: 16px;">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div class="install-step-text">
+                                        <p>Stap 3: Bevestig</p>
+                                        <small>Tik rechtsboven op "Voeg toe". De app staat nu op je beginscherm.</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Stappen voor Android (standaard verborgen) -->
+                            <div class="install-steps-android" style="display: none;">
+                                <div class="install-step" style="background: none; padding: 8px 0;">
+                                    <div class="install-step-icon" style="width: 32px; height: 32px; font-size: 16px;">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </div>
+                                    <div class="install-step-text">
+                                        <p>Stap 1: Open menu</p>
+                                        <small>Tik op de drie puntjes rechtsboven in je browser.</small>
+                                    </div>
+                                </div>
+                                <div class="install-step" style="background: none; padding: 8px 0;">
+                                    <div class="install-step-icon" style="width: 32px; height: 32px; font-size: 16px;">
+                                        <i class="fas fa-plus-square"></i>
+                                    </div>
+                                    <div class="install-step-text">
+                                        <p>Stap 2: "App installeren"</p>
+                                        <small>Tik op "App installeren" of "Toevoegen aan beginscherm".</small>
+                                    </div>
+                                </div>
+                                <div class="install-step" style="background: none; padding: 8px 0;">
+                                    <div class="install-step-icon" style="width: 32px; height: 32px; font-size: 16px;">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div class="install-step-text">
+                                        <p>Stap 3: Bevestig</p>
+                                        <small>Tik op "Installeren" en open de app vanuit je beginscherm.</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1700,6 +1819,24 @@
                             <p id="accountStatus">Niet ingelogd</p>
                         </div>
                         <button class="filter-chip" id="loginButton">Inloggen</button>
+                    </div>
+                </div>
+
+                <!-- NIEUW: Installatie item in instellingen (alleen zichtbaar als app NIET is geïnstalleerd) -->
+                <div class="settings-section" id="installSettingsItem" style="display: none;">
+                    <h3 class="settings-title">
+                        <i class="fas fa-download"></i>
+                        <span class="install-settings-nl">App installeren</span>
+                        <span class="install-settings-en" style="display: none;">Install App</span>
+                    </h3>
+                    <div class="settings-item" id="installSettingsButton">
+                        <div class="settings-info">
+                            <h4 class="install-settings-sub-nl">Installeer PrintSome op je apparaat</h4>
+                            <h4 class="install-settings-sub-en" style="display: none;">Install PrintSome on your device</h4>
+                            <p class="install-settings-desc-nl">Voeg PrintSome toe aan je beginscherm voor de beste ervaring</p>
+                            <p class="install-settings-desc-en" style="display: none;">Add PrintSome to your home screen for the best experience</p>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color: var(--gray-400);"></i>
                     </div>
                 </div>
 
@@ -2127,11 +2264,14 @@
             language: 'nl'
         };
         let authMode = 'login';
+        // Nieuje state voor beoordelingen
+        let userRatings = {}; // { productId: rating }
+        let productRatings = {}; // { productId: { total: aantal, sum: som, average: gemiddelde } }
         
         // Vertalingen - ALLEEN Nederlands en Engels
         const translations = {
             nl: {
-                headerTitle: 'Home',  // Gewijzigd: op homepage staat nu "Home" i.p.v. "PrintSome"
+                headerTitle: 'Home',
                 welcomeTitle: 'Welkom bij PrintSome!',
                 welcomeSubtitle: '3D printing shop',
                 welcomeUserNotLogged: 'Log in voor persoonlijke ervaring',
@@ -2142,6 +2282,9 @@
                 faqA1: 'Op dit moment is het nog niet mogelijk om online te kopen. Aankopen zijn wel offline (in real life) mogelijk.',
                 faqQ2: 'Wat voor producten verkoopt PrintSome?',
                 faqA2: 'Op dit moment verkopen wij voornamelijk fidget toys. Ons assortiment wordt regelmatig uitgebreid. Neem een kijkje bij onze producten om te zien wat wij momenteel aanbieden.',
+                // Nieuwe FAQ vraag over installatie
+                faqQ3: 'Hoe installeer ik PrintSome op mijn apparaat?',
+                faqA3: 'Volg de stappen hieronder.',
                 searchPlaceholder: 'Zoek 3D producten...',
                 filterAlles: 'Alles',
                 filterHuis: 'Huis',
@@ -2185,7 +2328,16 @@
                 navProducts: 'Producten',
                 navFavorites: 'Favorieten',
                 navSettings: 'Instellingen',
-                loggedInAs: 'Ingelogd als',  // Nieuwe vertaling voor ingelogd als
+                loggedInAs: 'Ingelogd als',
+                // Nieuwe vertalingen voor installatie
+                installSettings: 'App installeren',
+                installSettingsSub: 'Installeer PrintSome op je apparaat',
+                installSettingsDesc: 'Voeg PrintSome toe aan je beginscherm voor de beste ervaring',
+                // Nieuwe vertalingen voor beoordeling
+                yourRating: 'Jouw beoordeling',
+                averageRating: 'Gemiddelde beoordeling',
+                ratingSaved: 'Beoordeling opgeslagen',
+                loginToRate: 'Log in om te beoordelen',
                 // Privacy pagina vertalingen
                 privacyTitle: 'Privacyverklaring PrintSome',
                 privacyResponsible: 'PrintSome is verantwoordelijk voor de verwerking van persoonsgegevens zoals weergegeven in deze privacyverklaring.',
@@ -2249,7 +2401,7 @@
                 privacyBackBtn: 'Terug naar Instellingen'
             },
             en: {
-                headerTitle: 'Home',  // Gewijzigd: op homepage staat nu "Home" i.p.v. "PrintSome"
+                headerTitle: 'Home',
                 welcomeTitle: 'Welcome to PrintSome!',
                 welcomeSubtitle: '3D printing shop',
                 welcomeUserNotLogged: 'Log in for personalized experience',
@@ -2260,6 +2412,9 @@
                 faqA1: 'At the moment it is not possible to buy online. Purchases are possible offline (in real life).',
                 faqQ2: 'What products does PrintSome sell?',
                 faqA2: 'We currently sell mainly fidget toys. Our assortment is regularly expanded. Take a look at our products to see what we currently offer.',
+                // Nieuwe FAQ vraag over installatie
+                faqQ3: 'How do I install PrintSome on my device?',
+                faqA3: 'Follow the steps below.',
                 searchPlaceholder: 'Search 3D products...',
                 filterAlles: 'All',
                 filterHuis: 'Home',
@@ -2303,7 +2458,16 @@
                 navProducts: 'Products',
                 navFavorites: 'Favorites',
                 navSettings: 'Settings',
-                loggedInAs: 'logged in as',  // Nieuwe vertaling voor ingelogd als
+                loggedInAs: 'logged in as',
+                // Nieuwe vertalingen voor installatie
+                installSettings: 'Install App',
+                installSettingsSub: 'Install PrintSome on your device',
+                installSettingsDesc: 'Add PrintSome to your home screen for the best experience',
+                // Nieuwe vertalingen voor beoordeling
+                yourRating: 'Your rating',
+                averageRating: 'Average rating',
+                ratingSaved: 'Rating saved',
+                loginToRate: 'Log in to rate',
                 // Privacy pagina vertalingen (Engels)
                 privacyTitle: 'Privacy Statement PrintSome',
                 privacyResponsible: 'PrintSome is responsible for the processing of personal data as shown in this privacy statement.',
@@ -2428,6 +2592,16 @@
                     // Verberg de app-inhoud (main content wordt grijs weergegeven)
                     document.querySelector('.main-content').style.opacity = '0.5';
                     document.querySelector('.bottom-nav').style.opacity = '0.5';
+                }
+            }
+
+            // Toon of verberg installatie-item in instellingen
+            const installSettingsItem = document.getElementById('installSettingsItem');
+            if (installSettingsItem) {
+                if (isRunningStandalone()) {
+                    installSettingsItem.style.display = 'none';
+                } else {
+                    installSettingsItem.style.display = 'block';
                 }
             }
         }
@@ -2558,6 +2732,7 @@
                 await auth.signOut();
                 currentUser = null;
                 userFavorites = [];
+                userRatings = {};
                 updateAuthUI();
                 updateProductCards();
                 updateFavoritesDisplay();
@@ -2591,6 +2766,94 @@
             }
         }
         
+        // Nieuwe functies voor beoordelingen
+        async function loadUserRatings(userId) {
+            try {
+                const ratingsSnapshot = await db.collection('userRatings').where('userId', '==', userId).get();
+                userRatings = {};
+                ratingsSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    userRatings[data.productId] = data.rating;
+                });
+            } catch (error) {
+                console.error('Error loading user ratings:', error);
+            }
+        }
+
+        async function loadProductRatings() {
+            try {
+                const ratingsSnapshot = await db.collection('productRatings').get();
+                productRatings = {};
+                ratingsSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    productRatings[doc.id] = data;
+                });
+            } catch (error) {
+                console.error('Error loading product ratings:', error);
+            }
+        }
+
+        async function saveRating(productId, rating) {
+            if (!currentUser) {
+                showToast(translations[userSettings.language].loginToRate, 3000);
+                return false;
+            }
+
+            try {
+                // Sla individuele rating op
+                const ratingId = `${currentUser.uid}_${productId}`;
+                await db.collection('userRatings').doc(ratingId).set({
+                    userId: currentUser.uid,
+                    productId: productId,
+                    rating: rating,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                // Update product ratings in Firestore
+                const productRatingRef = db.collection('productRatings').doc(productId);
+                const productRatingDoc = await productRatingRef.get();
+                
+                let newTotal = 1;
+                let newSum = rating;
+                
+                if (productRatingDoc.exists) {
+                    const data = productRatingDoc.data();
+                    // Check of gebruiker al een eerdere rating had
+                    if (userRatings[productId]) {
+                        // Vervang oude rating
+                        newTotal = data.total;
+                        newSum = data.sum - userRatings[productId] + rating;
+                    } else {
+                        // Voeg nieuwe rating toe
+                        newTotal = data.total + 1;
+                        newSum = data.sum + rating;
+                    }
+                }
+                
+                await productRatingRef.set({
+                    total: newTotal,
+                    sum: newSum,
+                    average: newSum / newTotal,
+                    lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+                }, { merge: true });
+
+                // Update lokale state
+                userRatings[productId] = rating;
+                productRatings[productId] = {
+                    total: newTotal,
+                    sum: newSum,
+                    average: newSum / newTotal
+                };
+
+                showToast(translations[userSettings.language].ratingSaved, 2000);
+                return true;
+            } catch (error) {
+                console.error('Error saving rating:', error);
+                showToast('Fout bij opslaan beoordeling', 2000);
+                return false;
+            }
+        }
+        
         // applyLanguage functie
         function applyLanguage(lang) {
             if (!lang || (lang !== 'nl' && lang !== 'en')) lang = 'nl';
@@ -2600,7 +2863,6 @@
             if (!t) return;
             
             // Header - titel wordt apart beheerd in showPage functie
-            // We updaten hier niet de headerTitle omdat die afhankelijk is van de pagina
             
             // Home page
             const welcomeTitle = document.querySelector('.welcome-title');
@@ -2624,15 +2886,67 @@
             if (faqTitle) faqTitle.innerHTML = `<i class="fas fa-question-circle"></i> ${t.faqTitle}`;
             
             const faqQuestions = document.querySelectorAll('.faq-question span');
-            if (faqQuestions.length >= 2) {
+            if (faqQuestions.length >= 3) {
                 faqQuestions[0].textContent = t.faqQ1;
                 faqQuestions[1].textContent = t.faqQ2;
+                // De derde FAQ vraag is voor installatie, die wordt apart behandeld met verborgen elementen
             }
             
             const faqAnswers = document.querySelectorAll('.faq-answer');
-            if (faqAnswers.length >= 2) {
+            if (faqAnswers.length >= 3) {
                 faqAnswers[0].textContent = t.faqA1;
                 faqAnswers[1].textContent = t.faqA2;
+                // De derde FAQ antwoord bevat HTML, die laten we zoals het is
+            }
+
+            // Update installatie FAQ teksten
+            const installQuestionNl = document.querySelector('.install-question-nl');
+            const installQuestionEn = document.querySelector('.install-question-en');
+            if (lang === 'nl') {
+                if (installQuestionNl) installQuestionNl.style.display = 'inline';
+                if (installQuestionEn) installQuestionEn.style.display = 'none';
+            } else {
+                if (installQuestionNl) installQuestionNl.style.display = 'none';
+                if (installQuestionEn) installQuestionEn.style.display = 'inline';
+            }
+            
+            // Update installatie stappen op basis van apparaat detectie
+            const isIPhone = /iPhone|iPad|iPod/.test(navigator.userAgent);
+            const installStepsIphone = document.querySelector('.install-steps-iphone');
+            const installStepsAndroid = document.querySelector('.install-steps-android');
+            
+            if (installStepsIphone && installStepsAndroid) {
+                if (isIPhone) {
+                    installStepsIphone.style.display = 'block';
+                    installStepsAndroid.style.display = 'none';
+                } else {
+                    installStepsIphone.style.display = 'none';
+                    installStepsAndroid.style.display = 'block';
+                }
+            }
+
+            // Update installatie instellingen teksten
+            const installSettingsNl = document.querySelectorAll('.install-settings-nl');
+            const installSettingsEn = document.querySelectorAll('.install-settings-en');
+            const installSettingsSubNl = document.querySelector('.install-settings-sub-nl');
+            const installSettingsSubEn = document.querySelector('.install-settings-sub-en');
+            const installSettingsDescNl = document.querySelector('.install-settings-desc-nl');
+            const installSettingsDescEn = document.querySelector('.install-settings-desc-en');
+            
+            if (lang === 'nl') {
+                installSettingsNl.forEach(el => el.style.display = 'inline');
+                installSettingsEn.forEach(el => el.style.display = 'none');
+                if (installSettingsSubNl) installSettingsSubNl.style.display = 'block';
+                if (installSettingsSubEn) installSettingsSubEn.style.display = 'none';
+                if (installSettingsDescNl) installSettingsDescNl.style.display = 'block';
+                if (installSettingsDescEn) installSettingsDescEn.style.display = 'none';
+            } else {
+                installSettingsNl.forEach(el => el.style.display = 'none');
+                installSettingsEn.forEach(el => el.style.display = 'inline');
+                if (installSettingsSubNl) installSettingsSubNl.style.display = 'none';
+                if (installSettingsSubEn) installSettingsSubEn.style.display = 'block';
+                if (installSettingsDescNl) installSettingsDescNl.style.display = 'none';
+                if (installSettingsDescEn) installSettingsDescEn.style.display = 'block';
             }
             
             // Products page
@@ -2655,14 +2969,22 @@
             // Settings page
             const settingsTitles = document.querySelectorAll('.settings-title');
             if (settingsTitles.length >= 1) settingsTitles[0].innerHTML = `<i class="fas fa-user-cog"></i> ${t.settingsAccount}`;
-            if (settingsTitles.length >= 2) settingsTitles[1].innerHTML = `<i class="fas fa-globe"></i> ${t.language}`;
-            if (settingsTitles.length >= 3) settingsTitles[2].innerHTML = `<i class="fas fa-palette"></i> ${t.display}`;
-            if (settingsTitles.length >= 4) settingsTitles[3].innerHTML = `<i class="fas fa-info-circle"></i> ${t.about}`;
-            if (settingsTitles.length >= 5) settingsTitles[4].innerHTML = `<i class="fas fa-shield-alt"></i> ${t.privacy}`;
+            if (settingsTitles.length >= 2) settingsTitles[1].innerHTML = `<i class="fas fa-download"></i> <span class="install-settings-nl">${t.installSettings}</span><span class="install-settings-en" style="display:none;">${t.installSettings}</span>`;
+            if (settingsTitles.length >= 3) settingsTitles[2].innerHTML = `<i class="fas fa-globe"></i> ${t.language}`;
+            if (settingsTitles.length >= 4) settingsTitles[3].innerHTML = `<i class="fas fa-palette"></i> ${t.display}`;
+            if (settingsTitles.length >= 5) settingsTitles[4].innerHTML = `<i class="fas fa-info-circle"></i> ${t.about}`;
+            if (settingsTitles.length >= 6) settingsTitles[5].innerHTML = `<i class="fas fa-shield-alt"></i> ${t.privacy}`;
             
             const settingsInfoTitles = document.querySelectorAll('.settings-info h4');
             if (settingsInfoTitles.length >= 1) settingsInfoTitles[0].textContent = t.accountStatus;
-            if (settingsInfoTitles.length >= 2) settingsInfoTitles[1].textContent = t.selectLanguage;
+            if (settingsInfoTitles.length >= 2) {
+                // Het installatie item heeft een speciale titel
+                if (settingsInfoTitles[1].classList.contains('install-settings-sub-nl')) {
+                    // Wordt apart behandeld
+                } else {
+                    settingsInfoTitles[1].textContent = t.selectLanguage;
+                }
+            }
             if (settingsInfoTitles.length >= 3) settingsInfoTitles[2].textContent = t.darkMode;
             if (settingsInfoTitles.length >= 4) settingsInfoTitles[3].textContent = t.version;
             if (settingsInfoTitles.length >= 5) settingsInfoTitles[4].textContent = t.contact;
@@ -2670,10 +2992,13 @@
             
             const settingsInfoDesc = document.querySelectorAll('.settings-info p');
             if (settingsInfoDesc.length >= 1 && !currentUser) settingsInfoDesc[0].textContent = t.notLoggedIn;
-            if (settingsInfoDesc.length >= 2) settingsInfoDesc[1].textContent = t.darkModeDesc;
-            if (settingsInfoDesc.length >= 3) settingsInfoDesc[2].textContent = 'PrintSome App v2.0';
-            if (settingsInfoDesc.length >= 4) settingsInfoDesc[3].textContent = 'printsome-webapp@outlook.com';
-            if (settingsInfoDesc.length >= 5) settingsInfoDesc[4].textContent = t.privacyDesc;
+            if (settingsInfoDesc.length >= 2) {
+                // Installatie beschrijving wordt apart behandeld
+            }
+            if (settingsInfoDesc.length >= 3) settingsInfoDesc[2].textContent = t.darkModeDesc;
+            if (settingsInfoDesc.length >= 4) settingsInfoDesc[3].textContent = 'PrintSome App v2.0';
+            if (settingsInfoDesc.length >= 5) settingsInfoDesc[4].textContent = 'printsome-webapp@outlook.com';
+            if (settingsInfoDesc.length >= 6) settingsInfoDesc[5].textContent = t.privacyDesc;
             
             // Account status update
             const accountStatus = document.getElementById('accountStatus');
@@ -2912,7 +3237,6 @@
                 }
             }
             
-            // Gewijzigd: Wanneer je op je profiel klikt krijg je "ingelogd als: email" i.p.v. "inloggen: email"
             userAvatar.onclick = () => {
                 if (currentUser) {
                     showToast(`${t.loggedInAs}: ${currentUser.email}`, 3000);
@@ -3072,6 +3396,7 @@
             } else {
                 currentUser = null;
                 userFavorites = [];
+                userRatings = {};
                 viewedProducts = [];
                 updateAuthUI();
                 updateProductCards();
@@ -3329,6 +3654,18 @@
             } else {
                 imageContent = '<i class="fas fa-cube"></i>';
             }
+
+            // Haal gemiddelde beoordeling op
+            const ratingData = productRatings[productId] || { total: 0, sum: 0, average: 0 };
+            const averageRating = ratingData.average ? ratingData.average.toFixed(1) : '0.0';
+            const userRating = currentUser ? (userRatings[productId] || 0) : 0;
+            
+            // Genereer sterren HTML
+            let starsHtml = '';
+            for (let i = 1; i <= 5; i++) {
+                const activeClass = i <= userRating ? 'active' : '';
+                starsHtml += `<i class="fas fa-star star ${activeClass}" data-rating="${i}"></i>`;
+            }
             
             productModalContent.innerHTML = `
                 <div class="product-info-columns">
@@ -3347,11 +3684,18 @@
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">${t.rating}</div>
-                                <div class="detail-value">${product.rating || '4.5'}</div>
+                                <div class="detail-value">${averageRating} (${ratingData.total} ${ratingData.total === 1 ? 'stem' : 'stemmen'})</div>
                             </div>
-                            <div class="detail-item">
-                                <div class="detail-label">${t.delivery}</div>
-                                <div class="detail-value">${t.days}</div>
+                            <!-- Levertijd verwijderd -->
+                        </div>
+
+                        <div class="rating-container">
+                            <div class="average-rating">${t.averageRating}: ${averageRating}/5</div>
+                            <div class="stars" data-product-id="${productId}" data-user-rating="${userRating}">
+                                ${starsHtml}
+                            </div>
+                            <div style="margin-top: 8px; font-size: 14px; color: var(--gray-600);">
+                                ${currentUser ? (userRating > 0 ? `${t.yourRating}: ${userRating}/5` : t.loginToRate) : t.loginToRate}
                             </div>
                         </div>
 
@@ -3363,6 +3707,44 @@
                     </div>
                 </div>
             `;
+
+            // Voeg event listeners toe voor sterren
+            const starsContainer = productModalContent.querySelector('.stars');
+            if (starsContainer && currentUser) {
+                const stars = starsContainer.querySelectorAll('.star');
+                stars.forEach(star => {
+                    star.addEventListener('click', async (e) => {
+                        e.stopPropagation();
+                        const rating = parseInt(star.dataset.rating);
+                        const success = await saveRating(productId, rating);
+                        if (success) {
+                            // Update weergave
+                            showProductDetails(productId); // Herlaad modal met nieuwe rating
+                        }
+                    });
+
+                    star.addEventListener('mouseenter', () => {
+                        const rating = parseInt(star.dataset.rating);
+                        stars.forEach((s, index) => {
+                            if (index < rating) {
+                                s.style.color = 'var(--star-color)';
+                            } else {
+                                s.style.color = 'var(--star-inactive)';
+                            }
+                        });
+                    });
+
+                    star.addEventListener('mouseleave', () => {
+                        stars.forEach((s, index) => {
+                            if (index < userRatings[productId]) {
+                                s.style.color = 'var(--star-color)';
+                            } else {
+                                s.style.color = 'var(--star-inactive)';
+                            }
+                        });
+                    });
+                });
+            }
             
             productModal.classList.add('active');
         }
@@ -3373,6 +3755,9 @@
                 if (favoritesDoc.exists) {
                     userFavorites = favoritesDoc.data().productIds || [];
                 }
+                
+                await loadUserRatings(userId);
+                await loadProductRatings();
                 
                 updateProductCards();
                 updateFavoritesDisplay();
@@ -3534,22 +3919,22 @@
             
             switch(page) {
                 case 'home':
-                    headerTitle.textContent = t.headerTitle;  // Nu "Home" i.p.v. "PrintSome"
+                    headerTitle.textContent = t.headerTitle;
                     setTimeout(setupFAQ, 100);
                     break;
                 case 'products':
-                    headerTitle.textContent = t.featuredProducts;  // "Uitgelichte Producten" of "Featured Products"
+                    headerTitle.textContent = t.featuredProducts;
                     displayAllProducts();
                     break;
                 case 'favorites':
-                    headerTitle.textContent = t.favoritesTitle;  // "Jouw Favorieten" of "Your Favorites"
+                    headerTitle.textContent = t.favoritesTitle;
                     updateFavoritesDisplay();
                     break;
                 case 'privacy':
-                    headerTitle.textContent = t.privacyTitle;  // Privacy titel blijft zoals eerder
+                    headerTitle.textContent = t.privacyTitle;
                     break;
                 case 'settings':
-                    headerTitle.textContent = t.settingsAccount;  // "Account" blijft zoals eerder
+                    headerTitle.textContent = t.settingsAccount;
                     break;
             }
         };
@@ -3693,6 +4078,20 @@
                 allProductsLink.addEventListener('click', (e) => {
                     e.preventDefault();
                     window.showPage('products');
+                });
+            }
+
+            // Installatie item in instellingen
+            const installSettingsButton = document.getElementById('installSettingsButton');
+            if (installSettingsButton) {
+                installSettingsButton.addEventListener('click', () => {
+                    // Toon de juiste installatie modal op basis van apparaat
+                    const isIPhone = /iPhone|iPad|iPod/.test(navigator.userAgent);
+                    if (isIPhone) {
+                        installIPhoneModal.style.display = 'flex';
+                    } else {
+                        installSamsungModal.style.display = 'flex';
+                    }
                 });
             }
         }

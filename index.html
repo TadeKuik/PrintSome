@@ -89,7 +89,6 @@
             --star-off: #333;
         }
 
-        /* === LAYOUT === */
         html { height: 100%; overflow: hidden; }
         body {
             background: var(--bg); color: var(--text);
@@ -104,7 +103,6 @@
             height: 100%; overflow: hidden; background: var(--bg);
         }
 
-        /* === HEADER === */
         .app-header {
             height: var(--header-h);
             background: var(--bg);
@@ -146,7 +144,6 @@
         .user-avatar:hover { border-color: var(--accent); transform: scale(1.06); }
         .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* === NAVIGATION === */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; right: 0;
             height: var(--nav-h); background: var(--bg);
@@ -185,7 +182,6 @@
             border: 2px solid var(--bg);
         }
 
-        /* === PAGES === */
         .main-content {
             flex: 1; overflow-y: auto; overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
@@ -198,7 +194,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* === WELCOME CARD === */
         .welcome-card {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             color: #000; border-radius: var(--radius-xl); padding: 24px;
@@ -223,7 +218,6 @@
             position: relative; z-index: 1;
         }
 
-        /* === SECTION HEADERS === */
         .section-header {
             display: flex; justify-content: space-between; align-items: center;
             margin-bottom: 14px; margin-top: 24px;
@@ -241,7 +235,6 @@
         }
         .section-link:hover { background: var(--primary); color: #000; }
 
-        /* === PRODUCT CARDS === */
         .products-grid {
             display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
         }
@@ -264,13 +257,6 @@
             transition: transform 300ms ease;
         }
         .product-card:hover .product-img img { transform: scale(1.06); }
-        .product-badge-tag {
-            position: absolute; top: 8px; left: 8px;
-            background: var(--accent); color: #fff;
-            padding: 3px 8px; border-radius: 8px;
-            font-size: 10px; font-weight: 700; z-index: 2;
-            letter-spacing: 0.3px;
-        }
         .fav-btn {
             position: absolute; bottom: 8px; right: 8px;
             background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
@@ -307,7 +293,6 @@
         }
         .product-stars i { font-size: 10px; color: var(--star); }
 
-        /* === SEARCH === */
         .search-bar { position: relative; margin-bottom: 14px; }
         .search-input {
             width: 100%; padding: 13px 16px 13px 44px;
@@ -326,7 +311,6 @@
         }
         .chip.active { background: var(--primary); color: #000; border-color: var(--primary); }
 
-        /* === SETTINGS PAGE === */
         .settings-group {
             background: var(--surface); border: 1px solid var(--border);
             border-radius: var(--radius-lg); overflow: hidden;
@@ -355,7 +339,6 @@
         .settings-row-info p { font-size: 12px; color: var(--text-3); margin-top: 1px; }
         .settings-row-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 
-        /* === TOGGLE === */
         .toggle { position: relative; display: inline-block; width: 50px; height: 28px; }
         .toggle input { opacity: 0; width: 0; height: 0; }
         .slider {
@@ -372,7 +355,6 @@
         input:checked + .slider { background: var(--primary); }
         input:checked + .slider:before { transform: translateX(22px); }
 
-        /* === AUTH MODAL === */
         .modal-overlay {
             position: fixed; inset: 0; z-index: 1000;
             background: var(--bg); display: none; flex-direction: column;
@@ -399,7 +381,6 @@
         .modal-close:hover { transform: scale(1.1); background: var(--bg-3); }
         .modal-content { flex: 1; overflow-y: auto; padding: 24px 18px; }
 
-        /* === AUTH FORM === */
         .auth-tabs { display: flex; gap: 6px; margin-bottom: 24px; background: var(--bg-3); padding: 4px; border-radius: var(--radius); }
         .auth-tab {
             flex: 1; padding: 10px; background: transparent; border: none;
@@ -445,7 +426,6 @@
         .auth-alert.success { background: rgba(34,197,94,0.1); border: 1px solid var(--success); color: var(--success); }
         .auth-alert.show { display: block; }
 
-        /* === PRODUCT DETAIL MODAL === */
         .product-modal-img {
             width: 100%; max-height: 280px; object-fit: contain;
             border-radius: var(--radius); background: var(--bg-3);
@@ -471,7 +451,6 @@
             text-align: center; margin: 16px 0;
         }
 
-        /* === RATING WIDGET === */
         .rating-section {
             background: var(--surface-2); border: 1px solid var(--border);
             border-radius: var(--radius); padding: 16px; margin-bottom: 16px;
@@ -512,7 +491,6 @@
         .review-stars i { font-size: 12px; color: var(--star); }
         .review-text { font-size: 13px; color: var(--text-2); line-height: 1.5; }
 
-        /* === RESERVATION === */
         .reserve-btn {
             width: 100%; padding: 15px; background: var(--primary); color: #000;
             border: none; border-radius: var(--radius); font-size: 15px;
@@ -534,7 +512,6 @@
         .color-swatch.selected { border-color: var(--text); box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--text); }
         .color-label { font-size: 11px; text-align: center; color: var(--text-3); margin-top: 4px; }
 
-        /* === RESERVATIONS PAGE === */
         .reservation-card {
             background: var(--surface); border: 1px solid var(--border);
             border-radius: var(--radius); padding: 16px; margin-bottom: 12px;
@@ -557,7 +534,7 @@
         .res-status.confirmed { background: rgba(34,197,94,0.15); color: var(--success); }
         .res-status.cancelled { background: rgba(239,68,68,0.15); color: var(--danger); }
 
-        /* === ADMIN PANEL === */
+        /* ADMIN */
         .admin-tabs { display: flex; gap: 6px; margin-bottom: 18px; overflow-x: auto; scrollbar-width: none; }
         .admin-tabs::-webkit-scrollbar { display: none; }
         .admin-tab {
@@ -580,7 +557,48 @@
         }
         .stat-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
 
-        /* === PRIVACY PAGE === */
+        /* Admin product form */
+        .admin-form {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 18px; margin-bottom: 16px;
+        }
+        .admin-form-title {
+            font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700;
+            margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+        }
+        .admin-input {
+            width: 100%; padding: 10px 12px; background: var(--bg-2);
+            border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+            font-size: 14px; color: var(--text); transition: all var(--transition);
+            font-family: inherit;
+        }
+        .admin-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(255,215,0,0.15); }
+        .admin-input-label { font-size: 12px; font-weight: 600; color: var(--text-2); margin-bottom: 5px; display: block; }
+        .admin-form-group { margin-bottom: 12px; }
+        .admin-btn {
+            padding: 10px 18px; border: none; border-radius: var(--radius-sm);
+            font-size: 13px; font-weight: 700; cursor: pointer;
+            transition: all var(--transition); display: inline-flex;
+            align-items: center; gap: 6px;
+        }
+        .admin-btn-primary { background: var(--primary); color: #000; }
+        .admin-btn-primary:hover { background: var(--primary-dark); }
+        .admin-btn-danger { background: var(--danger); color: #fff; }
+        .admin-btn-danger:hover { opacity: 0.85; }
+        .admin-btn-secondary { background: var(--bg-3); color: var(--text-2); border: 1px solid var(--border); }
+        .admin-btn-secondary:hover { background: var(--border); }
+        .admin-btn-success { background: var(--success); color: #fff; }
+        .admin-btn-success:hover { opacity: 0.85; }
+        .admin-color-entry {
+            display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+            padding: 8px; background: var(--bg-2); border-radius: var(--radius-sm);
+        }
+        .admin-color-circle {
+            width: 28px; height: 28px; border-radius: 50%;
+            border: 2px solid var(--border); flex-shrink: 0;
+        }
+
+        /* PRIVACY */
         .privacy-wrap { max-width: 100%; }
         .privacy-h1 {
             font-family: 'Outfit', sans-serif;
@@ -607,7 +625,7 @@
         .contact-card p { font-size: 13px; color: var(--text-2); margin-bottom: 6px; line-height: 1.5; }
         .contact-card a { color: var(--link); text-decoration: none; font-weight: 500; word-break: break-all; }
 
-        /* === FAQ === */
+        /* FAQ */
         .faq-section { margin-top: 24px; margin-bottom: 20px; }
         .faq-header {
             font-family: 'Outfit', sans-serif;
@@ -636,7 +654,7 @@
         }
         .faq-a.open { max-height: 400px; padding: 0 16px 16px; }
 
-        /* === TOAST === */
+        /* TOAST */
         .toast {
             position: fixed; bottom: calc(var(--nav-h) + 16px); left: 50%;
             transform: translateX(-50%) translateY(80px);
@@ -651,7 +669,6 @@
         .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
         .toast i { color: var(--primary); }
 
-        /* === LOADING === */
         .loading {
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
@@ -670,7 +687,7 @@
         .empty-state h3 { font-size: 17px; color: var(--text-2); margin-bottom: 6px; }
         .empty-state p { font-size: 13px; }
 
-        /* === COOKIE BANNER === */
+        /* COOKIE BANNER */
         .cookie-banner {
             position: fixed; bottom: calc(var(--nav-h) + 10px); left: 0; right: 0;
             background: var(--surface); border-top: 1px solid var(--border);
@@ -695,7 +712,7 @@
         .cookie-reject:hover { background: var(--border); }
         .cookie-more { background: none; color: var(--link); font-weight: 600; font-size: 12px; flex: 0; padding: 11px 6px; text-decoration: underline; }
 
-        /* === POPUP OVERLAYS === */
+        /* POPUP OVERLAYS */
         .popup-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.5);
             z-index: 2100; display: none; justify-content: center; align-items: flex-end;
@@ -712,7 +729,6 @@
         .popup-sheet-handle { width: 40px; height: 4px; background: var(--border-2); border-radius: 2px; margin: 0 auto 20px; }
         .popup-sheet-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; margin-bottom: 16px; }
 
-        /* === INSTALL MODAL === */
         .install-sheet .install-step {
             display: flex; align-items: center; gap: 14px;
             padding: 12px; background: var(--bg-2); border-radius: var(--radius-sm); margin-bottom: 10px;
@@ -726,7 +742,6 @@
         .install-step-info p { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
         .install-step-info small { font-size: 12px; color: var(--text-3); }
 
-        /* === PRIVACY POPUP === */
         .privacy-popup-btns { display: flex; gap: 8px; margin-top: 16px; }
         .privacy-popup-btns button {
             flex: 1; padding: 13px; border-radius: var(--radius);
@@ -734,7 +749,6 @@
             transition: all var(--transition);
         }
 
-        /* === LANGUAGE SELECT === */
         .lang-select {
             padding: 8px 12px; background: var(--surface-2);
             border: 1.5px solid var(--border); border-radius: var(--radius-sm);
@@ -744,13 +758,11 @@
         .lang-select:focus { outline: none; border-color: var(--primary); }
         .dark-theme .lang-select { background: var(--bg-2); }
 
-        /* === SCROLLBAR === */
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
         .dark-theme ::-webkit-scrollbar-thumb { background: var(--border); }
 
-        /* === MISC === */
         .hidden { display: none !important; }
         .text-primary { color: var(--primary); }
         .text-success { color: var(--success); }
@@ -758,7 +770,6 @@
         .bold { font-weight: 700; }
         a { color: var(--link); }
 
-        /* === RESERVATION FORM === */
         .reserve-form { padding: 4px 0; }
         .reserve-form .form-group { margin-bottom: 14px; }
         .note-input {
@@ -774,6 +785,25 @@
             margin-top: 6px; font-size: 13px; color: var(--text-2);
         }
         .selected-color-circle { width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--border); }
+
+        /* Confirm dialog */
+        .confirm-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+            z-index: 3000; display: none; justify-content: center; align-items: center;
+            padding: 20px;
+        }
+        .confirm-overlay.show { display: flex; }
+        .confirm-box {
+            background: var(--surface); border-radius: var(--radius-lg);
+            padding: 24px; width: 100%; max-width: 320px;
+            box-shadow: var(--shadow-xl);
+        }
+        .confirm-title { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+        .confirm-msg { font-size: 14px; color: var(--text-2); margin-bottom: 20px; line-height: 1.5; }
+        .confirm-btns { display: flex; gap: 8px; }
+        .confirm-btns button { flex: 1; padding: 12px; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; transition: all var(--transition); }
+        .confirm-cancel { background: var(--bg-3); color: var(--text-2); }
+        .confirm-ok { background: var(--danger); color: #fff; }
     </style>
 </head>
 
@@ -863,7 +893,6 @@
         <!-- SETTINGS PAGE -->
         <div class="page" id="settingsPage">
 
-            <!-- Account -->
             <div class="settings-group">
                 <div class="settings-group-title" id="sAccountTitle">ACCOUNT</div>
                 <div class="settings-row" id="loginSettingsRow">
@@ -880,7 +909,6 @@
                 </div>
             </div>
 
-            <!-- App Installeren -->
             <div class="settings-group" id="installGroup" style="display:none;">
                 <div class="settings-group-title" id="sInstallTitle">INSTALLATIE</div>
                 <div class="settings-row" id="installBtn">
@@ -895,7 +923,6 @@
                 </div>
             </div>
 
-            <!-- Weergave -->
             <div class="settings-group">
                 <div class="settings-group-title" id="sDisplayTitle">WEERGAVE</div>
                 <div class="settings-row">
@@ -916,7 +943,6 @@
                 </div>
             </div>
 
-            <!-- Taal -->
             <div class="settings-group">
                 <div class="settings-group-title" id="sLangTitle">TAAL</div>
                 <div class="settings-row">
@@ -936,7 +962,6 @@
                 </div>
             </div>
 
-            <!-- Notifications / Privacy -->
             <div class="settings-group">
                 <div class="settings-group-title" id="sPrivacyTitle">PRIVACY & BELEID</div>
                 <div class="settings-row" onclick="showPage('privacy')">
@@ -961,7 +986,6 @@
                 </div>
             </div>
 
-            <!-- Over -->
             <div class="settings-group">
                 <div class="settings-group-title" id="sAboutTitle">OVER</div>
                 <div class="settings-row" style="cursor:default;">
@@ -969,7 +993,7 @@
                         <div class="settings-row-icon" style="background:#f0f9ff;"><i class="fas fa-info-circle" style="color:#0284c7;"></i></div>
                         <div class="settings-row-info">
                             <h4 id="sVersionLabel">Versie</h4>
-                            <p>PrintSome App v3.0</p>
+                            <p>PrintSome App v3.1</p>
                         </div>
                     </div>
                 </div>
@@ -978,13 +1002,12 @@
                         <div class="settings-row-icon" style="background:#f0f9ff;"><i class="fas fa-envelope" style="color:#0284c7;"></i></div>
                         <div class="settings-row-info">
                             <h4 id="sContactLabel">Contact</h4>
-                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0777756e697374686a622a706265667777476872736b68686c2964686a">[email&#160;protected]</a></p>
+                            <p><a href="mailto:printsome-webapp@outlook.com">printsome-webapp@outlook.com</a></p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Admin -->
             <div class="settings-group" id="adminSection" style="display:none;">
                 <div class="settings-group-title">BEHEER</div>
                 <div class="settings-row" onclick="showPage('admin')">
@@ -1106,7 +1129,7 @@
     </div>
 </div>
 
-<!-- PRIVACY POPUP (first visit as PWA) -->
+<!-- PRIVACY POPUP -->
 <div class="popup-overlay" id="privacyPopupOverlay">
     <div class="popup-sheet">
         <div class="popup-sheet-handle"></div>
@@ -1122,14 +1145,25 @@
     </div>
 </div>
 
+<!-- CONFIRM DIALOG -->
+<div class="confirm-overlay" id="confirmOverlay">
+    <div class="confirm-box">
+        <div class="confirm-title" id="confirmTitle">Bevestigen</div>
+        <div class="confirm-msg" id="confirmMsg">Weet je het zeker?</div>
+        <div class="confirm-btns">
+            <button class="confirm-cancel" onclick="closeConfirm()">Annuleren</button>
+            <button class="confirm-ok" id="confirmOkBtn">Verwijderen</button>
+        </div>
+    </div>
+</div>
+
 <!-- TOAST -->
 <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg">Bericht</span></div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ============================================================
 // FIREBASE CONFIG
 // ============================================================
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBHmq2hPEyb2z89XIR4y-FlKJYpSObh8Iw",
   authDomain: "printsome-b5197.firebaseapp.com",
@@ -1156,31 +1190,45 @@ let productRatings = {};
 let productReviews = {};
 let authMode = 'login';
 let currentAdminTab = 'overview';
-let adminEmails = [];
+let isAdmin = false;
 
-let settings = {
-    theme: 'system',
-    language: 'nl'
-};
+let settings = { theme: 'system', language: 'nl' };
+
+// ============================================================
+// CONFIRM DIALOG
+// ============================================================
+let confirmCallback = null;
+function showConfirm(title, msg, okLabel, cb) {
+    document.getElementById('confirmTitle').textContent = title;
+    document.getElementById('confirmMsg').textContent = msg;
+    document.getElementById('confirmOkBtn').textContent = okLabel || 'Verwijderen';
+    confirmCallback = cb;
+    document.getElementById('confirmOverlay').classList.add('show');
+}
+function closeConfirm() {
+    document.getElementById('confirmOverlay').classList.remove('show');
+    confirmCallback = null;
+}
+document.getElementById('confirmOkBtn').addEventListener('click', () => {
+    if (confirmCallback) confirmCallback();
+    closeConfirm();
+});
 
 // ============================================================
 // TRANSLATIONS
 // ============================================================
 const T = {
     nl: {
-        // general
         appName: 'PrintSome',
         home: 'Home', products: 'Producten', favorites: 'Favorieten',
         reservations: 'Reserveringen', settings: 'Instellingen',
         login: 'Inloggen', logout: 'Uitloggen', register: 'Registreren',
         loading: 'Laden...', save: 'Opslaan', cancel: 'Annuleren',
         close: 'Sluiten', back: 'Terug', confirm: 'Bevestigen',
-        // welcome
         welcomeTitle: 'Welkom bij PrintSome!',
         welcomeSubtitle: '3D printing shop',
         welcomeDefault: 'Log in voor persoonlijke ervaring',
         welcomeBack: 'Welkom terug',
-        // products
         featuredTitle: 'Uitgelichte Producten',
         allSee: 'Alles zien',
         noProducts: 'Geen producten gevonden',
@@ -1188,12 +1236,10 @@ const T = {
         filterAll: 'Alles', filterHome: 'Huis', filterTech: 'Tech',
         filterCustom: 'Custom', filterFidgets: 'Fidgets',
         searchPlaceholder: 'Zoek 3D producten...',
-        // favorites
         favTitle: 'Jouw Favorieten',
         noFav: 'Geen favorieten', noFavDesc: 'Voeg producten toe via het hart-icoon',
         addedFav: 'Toegevoegd aan favorieten', removedFav: 'Verwijderd uit favorieten',
         loginFav: 'Log in om favorieten op te slaan',
-        // reservations
         resTitle: 'Mijn Reserveringen',
         noRes: 'Geen reserveringen', noResDesc: 'Reserveer een product via de productpagina',
         reserveBtn: 'Reserveren',
@@ -1205,7 +1251,6 @@ const T = {
         addNote: 'Opmerking (optioneel)',
         selectedColor: 'Geselecteerde kleur:',
         resStatus: { pending: 'In behandeling', confirmed: 'Bevestigd', cancelled: 'Geannuleerd' },
-        // ratings
         ratingTitle: 'Beoordelingen',
         avgRating: 'Gemiddelde beoordeling',
         yourRating: 'Jouw beoordeling',
@@ -1219,7 +1264,6 @@ const T = {
         reviews: 'Recensies',
         noReviews: 'Nog geen recensies',
         votes: 'stemmen', vote: 'stem',
-        // settings
         sAccountTitle: 'ACCOUNT', sDisplayTitle: 'WEERGAVE',
         sLangTitle: 'TAAL', sPrivacyTitle: 'PRIVACY & BELEID', sAboutTitle: 'OVER',
         sInstallTitle: 'INSTALLATIE',
@@ -1230,11 +1274,8 @@ const T = {
         sCookieLabel: 'Cookie-instellingen', sCookieDesc: 'Beheer jouw voorkeuren',
         sVersionLabel: 'Versie', sContactLabel: 'Contact',
         sInstallLabel: 'App installeren', sInstallDesc: 'Voeg toe aan beginscherm',
-        // auth
         loggedOut: 'Succesvol uitgelogd', loggedInAs: 'Ingelogd als',
-        // privacy
         privacyBackBtn: 'Terug naar Instellingen',
-        // faq
         faqTitle: 'Veelgestelde vragen',
         faqs: [
             { q: 'Hoe kan ik producten kopen?', a: 'Op dit moment is het nog niet mogelijk om online te kopen. Aankopen zijn wel offline (in real life) mogelijk.' },
@@ -1242,15 +1283,12 @@ const T = {
             { q: 'Wat is een reservering?', a: 'Met een reservering geef je aan dat je een product wilt. Selecteer de gewenste kleur en wij nemen contact op om de aankoop te bevestigen.' },
             { q: 'Hoe installeer ik de app?', a: 'Zie de installatie-instructies in Instellingen of tap hieronder.' }
         ],
-        // cookies
         cookieBannerTitle: 'We gebruiken cookies',
         cookieBannerText: 'PrintSome zelf gebruikt geen tracking cookies. Derde partijen zoals Firebase (Google) kunnen functionele cookies plaatsen die nodig zijn voor de werking van de app.',
-        // privacy popup
         privacyPopTitle: 'Privacyverklaring',
         privacyPopText: 'PrintSome respecteert je privacy. We verzamelen alleen gegevens die nodig zijn voor de werking van de app. Je gegevens worden niet verkocht aan derden.',
         privacyPopLink: 'Lees volledige privacyverklaring',
         privacyPopOk: 'OK, ik begrijp het',
-        // install
         installTitle: 'Installeer PrintSome',
         installDoneBtn: 'Begrepen',
         installIphone: [
@@ -1366,7 +1404,6 @@ function applyTheme(themeValue) {
     } else if (themeValue === 'light') {
         html.classList.add('light-theme'); html.classList.remove('dark-theme');
     } else {
-        // system
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         if (prefersDark) { html.classList.add('dark-theme'); html.classList.remove('light-theme'); }
         else { html.classList.add('light-theme'); html.classList.remove('dark-theme'); }
@@ -1380,7 +1417,7 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () 
 });
 
 // ============================================================
-// SETTINGS LOAD / SAVE
+// SETTINGS
 // ============================================================
 function loadSettings() {
     try {
@@ -1423,37 +1460,28 @@ function applyLanguageUI() {
     const lang = settings.language;
     const el = (id) => document.getElementById(id);
 
-    // nav
     if(el('navHome')) el('navHome').textContent = t('home');
     if(el('navProducts')) el('navProducts').textContent = t('products');
     if(el('navFav')) el('navFav').textContent = t('favorites');
     if(el('navRes')) el('navRes').textContent = t('reservations');
     if(el('navSettings')) el('navSettings').textContent = t('settings');
-    // header
     if(el('headerTitle')) el('headerTitle').textContent = t('appName');
-    // welcome
     if(el('welcomeTitle')) el('welcomeTitle').textContent = t('welcomeTitle');
     const ws = document.querySelector('.welcome-subtitle');
     if(ws) ws.textContent = t('welcomeSubtitle');
     if(!currentUser && el('welcomeUserText')) el('welcomeUserText').textContent = t('welcomeDefault');
-    // featured
     if(el('featuredTitle')) el('featuredTitle').textContent = t('featuredTitle');
     if(el('allProductsLink')) el('allProductsLink').innerHTML = t('allSee') + ' <i class="fas fa-chevron-right"></i>';
-    // faq
     if(el('faqTitle')) el('faqTitle').textContent = t('faqTitle');
     buildFAQ();
-    // products page
     if(el('searchInput')) el('searchInput').placeholder = t('searchPlaceholder');
     if(el('fAlles')) el('fAlles').textContent = t('filterAll');
     if(el('fHuis')) el('fHuis').textContent = t('filterHome');
     if(el('fTech')) el('fTech').textContent = t('filterTech');
     if(el('fCustom')) el('fCustom').textContent = t('filterCustom');
     if(el('fFidgets')) el('fFidgets').textContent = t('filterFidgets');
-    // favorites
     if(el('favTitle')) el('favTitle').textContent = t('favTitle');
-    // reservations
     if(el('resTitle')) el('resTitle').textContent = t('resTitle');
-    // settings
     if(el('sAccountTitle')) el('sAccountTitle').textContent = t('sAccountTitle');
     if(el('sDisplayTitle')) el('sDisplayTitle').textContent = t('sDisplayTitle');
     if(el('sLangTitle')) el('sLangTitle').textContent = t('sLangTitle');
@@ -1473,23 +1501,19 @@ function applyLanguageUI() {
     if(el('sInstallDesc')) el('sInstallDesc').textContent = t('sInstallDesc');
     if(el('privacyBackBtn')) el('privacyBackBtn').textContent = t('privacyBackBtn');
     if(el('languageSelector')) el('languageSelector').value = lang;
-    // cookie banner
     if(el('cookieBannerTitle')) el('cookieBannerTitle').textContent = t('cookieBannerTitle');
     if(el('cookieBannerText')) el('cookieBannerText').textContent = t('cookieBannerText');
-    // privacy popup
     if(el('privacyPopTitle')) el('privacyPopTitle').textContent = t('privacyPopTitle');
     if(el('privacyPopText')) el('privacyPopText').textContent = t('privacyPopText');
     if(el('privacyPopLink')) el('privacyPopLink').textContent = t('privacyPopLink');
     if(el('privacyPopOk')) el('privacyPopOk').textContent = t('privacyPopOk');
-    // install
     if(el('installTitle')) el('installTitle').textContent = t('installTitle');
     if(el('installDoneBtn')) el('installDoneBtn').textContent = t('installDoneBtn');
-    // privacy page
     buildPrivacyPage();
 }
 
 // ============================================================
-// FAQ BUILD
+// FAQ
 // ============================================================
 function buildFAQ() {
     const container = document.getElementById('faqItems');
@@ -1521,24 +1545,21 @@ function buildFAQ() {
 }
 
 // ============================================================
-// PRIVACY PAGE BUILD
+// PRIVACY PAGE
 // ============================================================
 function buildPrivacyPage() {
     const c = document.getElementById('privacyContent');
     if (!c) return;
-    const lang = settings.language;
-    const isNL = lang === 'nl';
+    const isNL = settings.language === 'nl';
 
     c.innerHTML = `
         <div class="privacy-h1"><i class="fas fa-shield-alt" style="color:var(--primary);"></i> ${isNL ? 'Privacyverklaring PrintSome' : 'Privacy Statement PrintSome'}</div>
         <p class="privacy-p">${isNL ? 'PrintSome is verantwoordelijk voor de verwerking van persoonsgegevens zoals weergegeven in deze privacyverklaring.' : 'PrintSome is responsible for the processing of personal data as shown in this privacy statement.'}</p>
-        
         <div class="privacy-h2">${isNL ? 'Contactgegevens' : 'Contact details'}</div>
         <div class="contact-card">
             <p><strong>Website:</strong> <a href="https://printsome.pages.dev" target="_blank">https://printsome.pages.dev</a></p>
             <p><strong>E-mail:</strong> <a href="mailto:printsome-webapp@outlook.com">printsome-webapp@outlook.com</a></p>
         </div>
-
         <div class="privacy-h2">${isNL ? 'Persoonsgegevens die wij verwerken' : 'Personal data we process'}</div>
         <p class="privacy-p">${isNL ? 'PrintSome verwerkt uw persoonsgegevens doordat u gebruik maakt van onze diensten en/of omdat u deze zelf aan ons verstrekt.' : 'PrintSome processes your personal data because you use our services and/or because you provide it yourself.'}</p>
         <ul class="privacy-ul">
@@ -1549,35 +1570,28 @@ function buildPrivacyPage() {
             <li>${isNL ? 'Internetbrowser en apparaattype' : 'Internet browser and device type'}</li>
             <li>${isNL ? 'Locatiegegevens' : 'Location data'}</li>
         </ul>
-
         <div class="privacy-h2">${isNL ? 'Bijzondere persoonsgegevens' : 'Special personal data'}</div>
         <p class="privacy-p">${isNL ? 'Onze website heeft niet de intentie gegevens te verzamelen over bezoekers jonger dan 16 jaar, tenzij zij toestemming hebben van ouders of voogd.' : 'Our website does not intend to collect data about visitors under 16 years old, unless they have parental or guardian consent.'}</p>
-
         <div class="privacy-h2">${isNL ? 'Doelen en grondslagen' : 'Purposes and legal bases'}</div>
         <ul class="privacy-ul">
             <li>${isNL ? 'U de mogelijkheid te bieden een account aan te maken' : 'To provide you with the ability to create an account'}</li>
             <li>${isNL ? 'Contact met u op te nemen indien nodig' : 'To contact you if necessary'}</li>
             <li>${isNL ? 'Het technisch functioneren en verbeteren van de website' : 'For the technical functioning and improvement of the website'}</li>
         </ul>
-
         <div class="privacy-h2">${isNL ? 'Bewaartermijnen' : 'Retention periods'}</div>
         <ul class="privacy-ul">
             <li><strong>${isNL ? 'Accountgegevens:' : 'Account data:'}</strong> ${isNL ? 'tot 1 maand na verwijdering account' : 'up to 1 month after account deletion'}</li>
             <li><strong>${isNL ? 'Contactgegevens:' : 'Contact data:'}</strong> ${isNL ? 'zolang nodig voor communicatie' : 'as long as needed for communication'}</li>
         </ul>
-
         <div class="privacy-h2">${isNL ? 'Delen met derden' : 'Sharing with third parties'}</div>
         <p class="privacy-p">${isNL ? 'PrintSome deelt uw persoonsgegevens uitsluitend met derden als dit noodzakelijk is voor het functioneren van de dienst.' : 'PrintSome only shares your personal data with third parties if this is necessary for the functioning of the service.'}</p>
         <div class="privacy-table-wrap">
             <table class="privacy-table">
                 <thead><tr>
-                    <th>${isNL ? 'Categorie' : 'Category'}</th>
-                    <th>${isNL ? 'Naam' : 'Name'}</th>
-                    <th>${isNL ? 'Jurisdictie' : 'Jurisdiction'}</th>
-                    <th>${isNL ? 'Doel' : 'Purpose'}</th>
+                    <th>${isNL?'Categorie':'Category'}</th><th>${isNL?'Naam':'Name'}</th><th>${isNL?'Jurisdictie':'Jurisdiction'}</th><th>${isNL?'Doel':'Purpose'}</th>
                 </tr></thead>
                 <tbody>
-                    <tr><td>${isNL?'Hosting':'Hosting'}</td><td>Cloudflare</td><td>VS/EU</td><td>${isNL?'Websitebeveiliging':'Website security'}</td></tr>
+                    <tr><td>Hosting</td><td>Cloudflare</td><td>VS/EU</td><td>${isNL?'Websitebeveiliging':'Website security'}</td></tr>
                     <tr><td>${isNL?'Hosting & backend':'Hosting & backend'}</td><td>Firebase (Google)</td><td>VS</td><td>${isNL?'Authenticatie en opslag':'Authentication and storage'}</td></tr>
                     <tr><td>${isNL?'Code & infrastructuur':'Code & infrastructure'}</td><td>GitHub</td><td>VS</td><td>${isNL?'Broncodebeheer':'Source code management'}</td></tr>
                     <tr><td>${isNL?'Analyse':'Analytics'}</td><td>Cloudflare Analytics</td><td>VS/EU</td><td>${isNL?'Website-inzichten':'Website insights'}</td></tr>
@@ -1586,18 +1600,14 @@ function buildPrivacyPage() {
             </table>
         </div>
         <p class="privacy-p">${isNL ? 'PrintSome verkoopt geen persoonsgegevens aan derden.' : 'PrintSome does not sell personal data to third parties.'}</p>
-
         <div class="privacy-h2">${isNL ? 'Cookies' : 'Cookies'}</div>
         <p class="privacy-p">${isNL ? 'PrintSome gebruikt zelf geen tracking cookies. Derde partijen zoals Google (via Firebase) kunnen cookies plaatsen die nodig zijn voor hun functioneren.' : 'PrintSome itself does not use tracking cookies. Third parties such as Google (via Firebase) may place cookies necessary for their functioning.'}</p>
         <p class="privacy-p">${isNL ? 'Meer informatie:' : 'More information:'} <a href="https://veiliginternetten.nl/wat-zijn-cookies/" target="_blank">veiliginternetten.nl</a></p>
-
         <div class="privacy-h2">${isNL ? 'Uw rechten' : 'Your rights'}</div>
         <p class="privacy-p">${isNL ? 'U heeft het recht om uw persoonsgegevens in te zien, te corrigeren of te verwijderen. U kunt een verzoek sturen naar:' : 'You have the right to view, correct or delete your personal data. You can send a request to:'} <a href="mailto:printsome-webapp@outlook.com">printsome-webapp@outlook.com</a></p>
         <p class="privacy-p">${isNL ? 'U kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens:' : 'You can also file a complaint with the Dutch Data Protection Authority:'} <a href="https://autoriteitpersoonsgegevens.nl/" target="_blank">autoriteitpersoonsgegevens.nl</a></p>
-
         <div class="privacy-h2">${isNL ? 'Beveiliging' : 'Security'}</div>
         <p class="privacy-p">${isNL ? 'PrintSome neemt passende maatregelen om uw gegevens te beschermen tegen misbruik, verlies en onbevoegde toegang.' : 'PrintSome takes appropriate measures to protect your data against misuse, loss, and unauthorized access.'}</p>
-
         <div style="text-align:center;margin-top:24px;padding-top:16px;border-top:1px solid var(--border);">
             <p style="font-size:12px;color:var(--text-3);"><i class="fas fa-calendar-alt"></i> ${isNL?'Laatst bijgewerkt: Februari 2026':'Last updated: February 2026'}</p>
         </div>
@@ -1610,8 +1620,7 @@ function buildPrivacyPage() {
 function renderAuthForm() {
     const c = document.getElementById('authContainer');
     if (!c) return;
-    const lang = settings.language;
-    const isNL = lang === 'nl';
+    const isNL = settings.language === 'nl';
 
     c.innerHTML = `
         <div class="auth-tabs">
@@ -1626,24 +1635,10 @@ function renderAuthForm() {
         </button>
         <div class="divider"><span>${isNL?'of met email':'or with email'}</span></div>
         <div id="authForm">
-            ${authMode==='signup'?`
-            <div class="form-group">
-                <label class="form-label">${isNL?'Naam':'Name'}</label>
-                <input type="text" class="form-input" id="fName" placeholder="${isNL?'Je naam':'Your name'}" required>
-            </div>`:``}
-            <div class="form-group">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-input" id="fEmail" placeholder="${isNL?'je@email.nl':'you@email.com'}" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label">${isNL?'Wachtwoord':'Password'}</label>
-                <input type="password" class="form-input" id="fPass" placeholder="${isNL?'Minimaal 6 tekens':'At least 6 characters'}" required minlength="6">
-            </div>
-            ${authMode==='signup'?`
-            <div class="form-group">
-                <label class="form-label">${isNL?'Bevestig wachtwoord':'Confirm password'}</label>
-                <input type="password" class="form-input" id="fPass2" placeholder="${isNL?'Herhaal wachtwoord':'Repeat password'}" required minlength="6">
-            </div>`:``}
+            ${authMode==='signup'?`<div class="form-group"><label class="form-label">${isNL?'Naam':'Name'}</label><input type="text" class="form-input" id="fName" placeholder="${isNL?'Je naam':'Your name'}"></div>`:``}
+            <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="fEmail" placeholder="${isNL?'je@email.nl':'you@email.com'}"></div>
+            <div class="form-group"><label class="form-label">${isNL?'Wachtwoord':'Password'}</label><input type="password" class="form-input" id="fPass" placeholder="${isNL?'Minimaal 6 tekens':'At least 6 characters'}"></div>
+            ${authMode==='signup'?`<div class="form-group"><label class="form-label">${isNL?'Bevestig wachtwoord':'Confirm password'}</label><input type="password" class="form-input" id="fPass2" placeholder="${isNL?'Herhaal wachtwoord':'Repeat password'}"></div>`:``}
             <button class="btn-primary" onclick="handleAuthSubmit()">
                 <i class="fas fa-${authMode==='login'?'sign-in-alt':'user-plus'}"></i>
                 ${authMode==='login'?t('login'):isNL?'Account aanmaken':'Create account'}
@@ -1720,7 +1715,7 @@ async function signInEmail(email, pass) {
 
 async function logout() {
     await auth.signOut();
-    currentUser = null;
+    currentUser = null; isAdmin = false;
     userFavorites = []; userReservations = []; userRatings = {};
     updateAuthUI(); displayFeaturedProducts(); displayAllProducts(); updateFavoritesUI(); updateReservationsUI();
     showToast(t('loggedOut'));
@@ -1737,7 +1732,7 @@ auth.onAuthStateChanged(async (user) => {
         await loadUserSettingsFromFirebase(user.uid);
         await loadUserData(user.uid);
     } else {
-        currentUser = null;
+        currentUser = null; isAdmin = false;
         userFavorites = []; userReservations = []; userRatings = {};
     }
     updateAuthUI();
@@ -1797,9 +1792,9 @@ async function loadProducts() {
 
 async function createInitialProducts() {
     const initial = [
-        { name: 'Fidget Toggle Switch', description: 'Heb je onrustige handen? Deze toggle switch helpt je focussen. Het klikgeluid maakt hem heel satisfying!', price: 0.99, material: 'PLA Basic', category: 'fidgets', featured: true, imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Fidget-Toggle-switch.png', colors: [{ name: 'Zwart', hex: '#111111' }, { name: 'Wit', hex: '#f5f5f5' }, { name: 'Geel', hex: '#FFD700' }, { name: 'Rood', hex: '#ef4444' }] },
-        { name: 'Hexagon Fidget', description: 'Hexagon fidget – perfect om mee te friemelen, ontspannen en focus te verbeteren.', price: 0.99, material: 'PLA Basic', category: 'fidgets', featured: true, imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Hexagon-fidget.png', colors: [{ name: 'Blauw', hex: '#3b82f6' }, { name: 'Groen', hex: '#22c55e' }, { name: 'Oranje', hex: '#f97316' }, { name: 'Paars', hex: '#a855f7' }] },
-        { name: 'Sleutelhanger', description: 'Personaliseerbare sleutelhanger met naam.', price: 1.99, material: 'PLA Basic', category: 'home', category2: 'custom', featured: false, imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Binnenkort-beschikbaar_Tekst.png', colors: [{ name: 'Zwart', hex: '#111111' }, { name: 'Wit', hex: '#f5f5f5' }] }
+        { name: 'Fidget Toggle Switch', nameEn: 'Fidget Toggle Switch', description: 'Heb je onrustige handen? Deze toggle switch helpt je focussen. Het klikgeluid maakt hem heel satisfying!', descriptionEn: 'Restless hands? This toggle switch helps you focus. The click sound makes it super satisfying!', price: 0.99, material: 'PLA Basic', category: 'fidgets', featured: true, imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Fidget-Toggle-switch.png', colors: [{ name: 'Zwart', hex: '#111111' }, { name: 'Wit', hex: '#f5f5f5' }, { name: 'Geel', hex: '#FFD700' }, { name: 'Rood', hex: '#ef4444' }] },
+        { name: 'Hexagon Fidget', nameEn: 'Hexagon Fidget', description: 'Hexagon fidget – perfect om mee te friemelen, ontspannen en focus te verbeteren.', descriptionEn: 'Hexagon fidget – perfect for fidgeting, relaxing and improving focus.', price: 0.99, material: 'PLA Basic', category: 'fidgets', featured: true, imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Hexagon-fidget.png', colors: [{ name: 'Blauw', hex: '#3b82f6' }, { name: 'Groen', hex: '#22c55e' }, { name: 'Oranje', hex: '#f97316' }, { name: 'Paars', hex: '#a855f7' }] },
+        { name: 'Sleutelhanger', nameEn: 'Keychain', description: 'Personaliseerbare sleutelhanger met naam.', descriptionEn: 'Personalizable keychain with name.', price: 1.99, material: 'PLA Basic', category: 'home', category2: 'custom', featured: false, imageUrl: 'http://printsome.ct.ws/wp-content/uploads/2026/02/Binnenkort-beschikbaar_Tekst.png', colors: [{ name: 'Zwart', hex: '#111111' }, { name: 'Wit', hex: '#f5f5f5' }] }
     ];
     for (const p of initial) await db.collection('products').add(p);
 }
@@ -1814,17 +1809,23 @@ async function loadProductRatings() {
 
 async function loadProductReviews(productId) {
     try {
-        // No orderBy here to avoid requiring a Firestore composite index
         const snap = await db.collection('productReviews').where('productId', '==', productId).limit(20).get();
         productReviews[productId] = [];
         snap.forEach(doc => productReviews[productId].push({ id: doc.id, ...doc.data() }));
-        // Sort by createdAt descending in JS
         productReviews[productId].sort((a, b) => {
             const ta = a.createdAt ? a.createdAt.toMillis() : 0;
             const tb = b.createdAt ? b.createdAt.toMillis() : 0;
             return tb - ta;
         });
     } catch(e) { console.error('loadProductReviews error:', e); }
+}
+
+// Helper: get translated product field
+function getProductField(product, field) {
+    const lang = settings.language;
+    const enField = field + 'En';
+    if (lang === 'en' && product[enField]) return product[enField];
+    return product[field] || '';
 }
 
 function createProductCard(product) {
@@ -1834,19 +1835,20 @@ function createProductCard(product) {
     const rating = productRatings[product.id];
     const avg = rating ? rating.average.toFixed(1) : '–';
     const cnt = rating ? rating.total : 0;
+    const displayName = getProductField(product, 'name');
 
     const starsHtml = [1,2,3,4,5].map(i => `<i class="fas fa-star" style="color:${rating && i <= Math.round(rating.average) ? 'var(--star)' : 'var(--star-off)'};font-size:10px;"></i>`).join('');
 
     card.innerHTML = `
         <div class="product-img">
-            ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${product.name}" onerror="this.onerror=null;this.parentElement.innerHTML='<i class=\\'fas fa-cube\\'></i>';">` : `<i class="fas fa-cube" style="font-size:28px;"></i>`}
-            <button class="fav-btn ${isFav?'active':''}" data-pid="${product.id}" title="${isFav?t('removedFav'):t('addedFav')}">
+            ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${displayName}" onerror="this.onerror=null;this.parentElement.innerHTML='<i class=\\'fas fa-cube\\'></i>';">` : `<i class="fas fa-cube" style="font-size:28px;"></i>`}
+            <button class="fav-btn ${isFav?'active':''}" data-pid="${product.id}">
                 <i class="${isFav?'fas':'far'} fa-heart" style="color:${isFav?'#ef4444':'var(--text-3)'};"></i>
             </button>
         </div>
         <div class="product-info">
             <div class="product-stars">${starsHtml}<span style="margin-left:2px;">${avg} (${cnt})</span></div>
-            <h3 class="product-name">${product.name}</h3>
+            <h3 class="product-name">${displayName}</h3>
             <div class="product-tags">
                 <span class="tag">${product.material}</span>
                 <span class="tag">${product.category}</span>
@@ -1875,7 +1877,11 @@ function displayAllProducts(filter = 'all', search = '') {
     if (!c) return;
     let list = products;
     if (filter !== 'all') list = list.filter(p => p.category === filter || p.category2 === filter);
-    if (search) list = list.filter(p => p.name.toLowerCase().includes(search) || (p.description||'').toLowerCase().includes(search) || p.material.toLowerCase().includes(search));
+    if (search) list = list.filter(p => {
+        const name = getProductField(p, 'name').toLowerCase();
+        const desc = getProductField(p, 'description').toLowerCase();
+        return name.includes(search) || desc.includes(search) || (p.material||'').toLowerCase().includes(search);
+    });
     if (!list.length) { c.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-search"></i><h3>${t('noProducts')}</h3></div>`; return; }
     c.innerHTML = '';
     list.forEach(p => c.appendChild(createProductCard(p)));
@@ -1893,6 +1899,8 @@ async function openProductModal(productId) {
     const cnt = rating ? rating.total : 0;
     const userRating = userRatings[productId] || 0;
     const reviews = productReviews[productId] || [];
+    const displayName = getProductField(product, 'name');
+    const displayDesc = getProductField(product, 'description');
 
     const starsInput = [1,2,3,4,5].map(i => `
         <i class="fas fa-star star-icon ${i <= userRating ? 'filled' : ''}" data-r="${i}" data-pid="${productId}"></i>
@@ -1913,15 +1921,12 @@ async function openProductModal(productId) {
         </div>
     `).join('') : `<p style="font-size:13px;color:var(--text-3);text-align:center;padding:12px;">${t('noReviews')}</p>`;
 
-    const lang = settings.language;
-    const isNL = lang === 'nl';
-
     document.getElementById('productModalContent').innerHTML = `
         <div class="product-modal-img">
-            ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${product.name}">` : `<i class="fas fa-cube" style="font-size:48px;color:var(--text-3);"></i>`}
+            ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${displayName}">` : `<i class="fas fa-cube" style="font-size:48px;color:var(--text-3);"></i>`}
         </div>
-        <h1 class="product-modal-name">${product.name}</h1>
-        <p class="product-modal-desc">${product.description}</p>
+        <h1 class="product-modal-name">${displayName}</h1>
+        <p class="product-modal-desc">${displayDesc}</p>
         <div class="detail-grid">
             <div class="detail-box">
                 <div class="detail-box-label">${t('material')}</div>
@@ -1933,8 +1938,6 @@ async function openProductModal(productId) {
             </div>
         </div>
         <div class="modal-price">€${product.price.toFixed(2)}</div>
-
-        <!-- RATING SECTION -->
         <div class="rating-section">
             <div class="rating-title">${t('ratingTitle')}</div>
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
@@ -1944,7 +1947,6 @@ async function openProductModal(productId) {
             </div>
             <div style="font-size:13px;font-weight:600;margin-bottom:6px;">${currentUser ? t('yourRating') + ':' : t('loginRate')}</div>
             ${currentUser ? `<div class="stars-display" id="starInput_${productId}">${starsInput}</div>` : ''}
-
             <div class="review-form-toggle" onclick="toggleReviewForm('${productId}')">
                 <i class="fas fa-pen"></i> ${t('writeReview')}
             </div>
@@ -1955,18 +1957,14 @@ async function openProductModal(productId) {
                     <i class="fas fa-paper-plane"></i> ${t('submitReview')}
                 </button>` : `<p style="font-size:13px;color:var(--text-3);margin-top:8px;">${t('loginReview')} <a href="#" onclick="openAuth();return false;">${t('login')}</a></p>`}
             </div>
-
             <div style="font-size:14px;font-weight:600;margin-top:16px;margin-bottom:8px;">${t('reviews')}</div>
             <div class="reviews-list">${reviewsHtml}</div>
         </div>
-
-        <!-- RESERVE BUTTON -->
         <button class="reserve-btn" onclick="openReserveModal('${productId}')">
             <i class="fas fa-calendar-plus"></i> ${t('reserveBtn')}
         </button>
     `;
 
-    // Star rating click
     document.querySelectorAll(`#starInput_${productId} .star-icon`).forEach(star => {
         star.addEventListener('mouseenter', () => {
             const r = parseInt(star.dataset.r);
@@ -2007,11 +2005,9 @@ async function saveRating(productId, rating) {
             else { total = d.total + 1; sum = d.sum + rating; }
         }
         await ref.set({ total, sum, average: sum/total, lastUpdated: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
-        // Update local cache immediately
         userRatings[productId] = rating;
         productRatings[productId] = { total, sum, average: sum/total };
         showToast(t('ratingSaved'));
-        // Force re-fetch reviews so modal shows fresh data
         delete productReviews[productId];
         await openProductModal(productId);
     } catch(e) { console.error(e); showToast('Fout bij opslaan beoordeling'); }
@@ -2032,7 +2028,6 @@ async function submitReview(productId) {
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
         showToast(t('reviewSaved'));
-        // Clear cache so openProductModal re-fetches fresh from Firestore
         delete productReviews[productId];
         await openProductModal(productId);
     } catch(e) { console.error(e); showToast('Fout bij plaatsen recensie'); }
@@ -2048,7 +2043,7 @@ function openReserveModal(productId) {
     if (!product) return;
     closeModal('product');
     const colors = product.colors || [];
-    let selectedColor = null;
+    const displayName = getProductField(product, 'name');
 
     const colorSwatchesHtml = colors.length ? colors.map((c, i) => `
         <div style="text-align:center;">
@@ -2059,9 +2054,8 @@ function openReserveModal(productId) {
 
     document.getElementById('reserveModalContent').innerHTML = `
         <div class="reserve-form">
-            <h2 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;">${product.name}</h2>
+            <h2 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;">${displayName}</h2>
             <p style="font-size:13px;color:var(--text-3);margin-bottom:18px;">€${product.price.toFixed(2)}</p>
-            
             <div class="color-picker-section">
                 <div class="color-picker-title">${t('chooseColor')} *</div>
                 <div class="color-swatches" id="colorSwatches_${productId}">${colorSwatchesHtml}</div>
@@ -2070,26 +2064,21 @@ function openReserveModal(productId) {
                     <span id="colorPreviewName">${t('noColorSelected')}</span>
                 </div>
             </div>
-
             <div class="form-group" style="margin-top:16px;">
                 <label class="form-label">${t('addNote')}</label>
                 <textarea class="note-input" id="reserveNote" placeholder="${t('addNote')}..."></textarea>
             </div>
-
             <div class="auth-alert error" id="reserveError" style="display:none;"></div>
-
             <button class="reserve-btn" onclick="submitReservation('${productId}')" style="margin-top:6px;">
                 <i class="fas fa-calendar-check"></i> ${t('confirm')} ${t('reserveBtn').toLowerCase()}
             </button>
         </div>
     `;
 
-    // Color swatch click
     document.querySelectorAll(`#colorSwatches_${productId} .color-swatch`).forEach(swatch => {
         swatch.addEventListener('click', () => {
             document.querySelectorAll(`#colorSwatches_${productId} .color-swatch`).forEach(s => s.classList.remove('selected'));
             swatch.classList.add('selected');
-            selectedColor = { name: swatch.dataset.name, hex: swatch.dataset.hex };
             const circle = document.getElementById('colorPreviewCircle');
             const name = document.getElementById('colorPreviewName');
             const preview = document.getElementById('colorPreview');
@@ -2108,17 +2097,14 @@ async function submitReservation(productId) {
     if (!currentUser) return;
     const product = products.find(p => p.id === productId);
     if (!product) return;
-
     const selectedSwatch = document.querySelector(`#colorSwatches_${productId} .color-swatch.selected`);
     if (!selectedSwatch && (product.colors || []).length > 0) {
         const errEl = document.getElementById('reserveError');
         if (errEl) { errEl.textContent = t('colorRequired'); errEl.style.display = 'block'; setTimeout(() => errEl.style.display = 'none', 3000); }
         return;
     }
-
     const color = selectedSwatch ? { name: selectedSwatch.dataset.name, hex: selectedSwatch.dataset.hex } : null;
     const note = document.getElementById('reserveNote')?.value?.trim() || '';
-
     try {
         await db.collection('reservations').add({
             userId: currentUser.uid,
@@ -2127,14 +2113,12 @@ async function submitReservation(productId) {
             productId,
             productName: product.name,
             productPrice: product.price,
-            color,
-            note,
+            color, note,
             status: 'pending',
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
         showToast(t('reserveSuccess'));
         closeModal('reserve');
-        // Re-fetch all user data so reservations page shows the new entry immediately
         await loadUserData(currentUser.uid);
         showPage('reservations');
     } catch(e) { console.error('submitReservation error:', e); showToast('Fout bij reservering: ' + e.message); }
@@ -2146,7 +2130,6 @@ window.submitReservation = submitReservation;
 // ============================================================
 async function loadUserData(uid) {
     try {
-        // Note: no orderBy on reservations to avoid needing a composite Firestore index
         const [favDoc, ratingsSnap, resSnap, ratingsAllSnap] = await Promise.all([
             db.collection('userFavorites').doc(uid).get(),
             db.collection('userRatings').where('userId', '==', uid).get(),
@@ -2159,13 +2142,11 @@ async function loadUserData(uid) {
         userRatings = {};
         ratingsSnap.forEach(doc => { const d = doc.data(); userRatings[d.productId] = d.rating; });
 
-        // Re-load all product ratings so product cards show updated stars
         productRatings = {};
         ratingsAllSnap.forEach(doc => { productRatings[doc.id] = doc.data(); });
 
         userReservations = [];
         resSnap.forEach(doc => userReservations.push({ id: doc.id, ...doc.data() }));
-        // Sort by createdAt descending in JS (avoids needing Firestore composite index)
         userReservations.sort((a, b) => {
             const ta = a.createdAt ? a.createdAt.toMillis() : 0;
             const tb = b.createdAt ? b.createdAt.toMillis() : 0;
@@ -2252,17 +2233,22 @@ function updateResBadge() {
 async function checkAdminAccess() {
     const section = document.getElementById('adminSection');
     if (!section) return;
-    if (!currentUser) { section.style.display = 'none'; return; }
+    if (!currentUser) { section.style.display = 'none'; isAdmin = false; return; }
     try {
         const doc = await db.collection('admins').doc(currentUser.uid).get();
         if (doc.exists && doc.data().isAdmin) {
             section.style.display = 'block';
-            adminEmails = doc.data().emails || [];
+            isAdmin = true;
         } else {
             section.style.display = 'none';
+            isAdmin = false;
         }
-    } catch(e) { section.style.display = 'none'; }
+    } catch(e) { section.style.display = 'none'; isAdmin = false; }
 }
+
+// Admin: temp color list while editing/adding
+let adminEditColors = [];
+let adminEditingProductId = null;
 
 async function loadAdminContent(tab) {
     currentAdminTab = tab;
@@ -2298,7 +2284,6 @@ async function loadAdminContent(tab) {
     } else if (tab === 'reservations') {
         const snap = await db.collection('reservations').get();
         if (!snap.size) { c.innerHTML = `<div class="empty-state"><i class="fas fa-calendar-times"></i><h3>Geen reserveringen</h3></div>`; return; }
-        // Sort by createdAt descending in JS (no composite index needed)
         const allRes = [];
         snap.forEach(doc => allRes.push({ id: doc.id, ...doc.data() }));
         allRes.sort((a, b) => {
@@ -2321,37 +2306,48 @@ async function loadAdminContent(tab) {
                 <div class="admin-stat" style="margin-top:3px;">🎨 ${res.color ? res.color.name : 'Geen kleur'} ${res.color ? `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${res.color.hex};border:1px solid #ccc;margin-left:3px;"></span>` : ''}</div>
                 ${res.note ? `<div class="admin-stat" style="margin-top:3px;">📝 ${res.note}</div>` : ''}
                 <div class="admin-stat" style="margin-top:3px;">📅 ${date}</div>
-                <div style="display:flex;gap:6px;margin-top:10px;">
-                    <button onclick="updateResStatus('${res.id}','confirmed')" style="flex:1;padding:7px;background:var(--success);color:#fff;border:none;border-radius:var(--radius-sm);font-size:12px;font-weight:600;cursor:pointer;">✓ Bevestigen</button>
-                    <button onclick="updateResStatus('${res.id}','cancelled')" style="flex:1;padding:7px;background:var(--danger);color:#fff;border:none;border-radius:var(--radius-sm);font-size:12px;font-weight:600;cursor:pointer;">✗ Annuleren</button>
+                <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;">
+                    <button onclick="updateResStatus('${res.id}','confirmed')" class="admin-btn admin-btn-success"><i class="fas fa-check"></i> Bevestigen</button>
+                    <button onclick="updateResStatus('${res.id}','cancelled')" class="admin-btn admin-btn-danger"><i class="fas fa-times"></i> Annuleren</button>
+                    <button onclick="deleteReservation('${res.id}')" class="admin-btn admin-btn-secondary"><i class="fas fa-trash"></i> Verwijderen</button>
                 </div>
             `;
             c.appendChild(card);
         });
     } else if (tab === 'products') {
-        const snap = await db.collection('products').get();
         c.innerHTML = '';
-        const addBtn = document.createElement('button');
-        addBtn.className = 'btn-primary';
-        addBtn.style.marginBottom = '12px';
-        addBtn.innerHTML = '<i class="fas fa-plus"></i> Product toevoegen (via Firebase console)';
-        addBtn.onclick = () => showToast('Voeg producten toe in de Firebase Firestore console', 4000);
-        c.appendChild(addBtn);
+        // Add product form
+        const addForm = renderProductForm(null);
+        c.appendChild(addForm);
+
+        // Existing products
+        const snap = await db.collection('products').get();
+        const header = document.createElement('div');
+        header.style.cssText = 'font-family:Outfit,sans-serif;font-size:16px;font-weight:700;margin:18px 0 10px;';
+        header.textContent = 'Bestaande producten';
+        c.appendChild(header);
+
         snap.forEach(doc => {
             const p = { id: doc.id, ...doc.data() };
             const card = document.createElement('div');
             card.className = 'admin-card';
             const rating = productRatings[p.id];
             card.innerHTML = `
-                <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
                     <div>
-                        <div class="admin-card-title">${p.name}</div>
-                        <div class="admin-stat">€${p.price?.toFixed(2)} · ${p.material} · ${p.category}</div>
-                        <div class="admin-stat" style="margin-top:2px;">⭐ ${rating ? rating.average.toFixed(1) : '–'} (${rating ? rating.total : 0} stemmen)</div>
-                        <div class="admin-stat" style="margin-top:2px;">🎨 ${(p.colors||[]).map(c=>c.name).join(', ') || 'Geen kleuren'}</div>
+                        <div class="admin-card-title">${p.name}${p.nameEn ? ` / ${p.nameEn}` : ''}</div>
+                        <div class="admin-stat">€${p.price?.toFixed(2)} · ${p.material} · ${p.category}${p.category2?'/'+p.category2:''}</div>
+                        <div class="admin-stat" style="margin-top:2px;">⭐ ${rating ? rating.average.toFixed(1) : '–'} (${rating ? rating.total : 0})</div>
+                        <div class="admin-stat" style="margin-top:2px;">🎨 ${(p.colors||[]).map(c=>c.name).join(', ')||'Geen kleuren'}</div>
+                        <div class="admin-stat" style="margin-top:2px;">Featured: ${p.featured ? '✅' : '❌'}</div>
                     </div>
-                    <span style="background:${p.featured?'var(--primary)':'var(--bg-3)'};color:${p.featured?'#000':'var(--text-3)'};padding:3px 9px;border-radius:12px;font-size:11px;font-weight:700;">${p.featured?'Featured':'–'}</span>
+                    ${p.imageUrl ? `<img src="${p.imageUrl}" style="width:56px;height:56px;object-fit:cover;border-radius:8px;border:1px solid var(--border);" onerror="this.style.display='none'">` : ''}
                 </div>
+                <div style="display:flex;gap:6px;margin-top:10px;">
+                    <button onclick="showEditProductForm('${p.id}')" class="admin-btn admin-btn-primary"><i class="fas fa-edit"></i> Bewerken</button>
+                    <button onclick="confirmDeleteProduct('${p.id}','${p.name.replace(/'/g,"\\'")}') " class="admin-btn admin-btn-danger"><i class="fas fa-trash"></i> Verwijderen</button>
+                </div>
+                <div id="editForm_${p.id}" style="display:none;margin-top:14px;border-top:1px solid var(--border);padding-top:14px;"></div>
             `;
             c.appendChild(card);
         });
@@ -2379,7 +2375,7 @@ async function loadAdminContent(tab) {
                 <div class="admin-stat" style="margin-bottom:4px;">${rv.productId}</div>
                 <p style="font-size:13px;color:var(--text-2);line-height:1.5;">${rv.text}</p>
                 <div class="admin-stat" style="margin-top:6px;">📅 ${date}</div>
-                <button onclick="deleteReview('${rv.id}')" style="margin-top:8px;padding:6px 12px;background:var(--danger);color:#fff;border:none;border-radius:var(--radius-sm);font-size:12px;font-weight:600;cursor:pointer;">
+                <button onclick="deleteReview('${rv.id}')" class="admin-btn admin-btn-danger" style="margin-top:8px;">
                     <i class="fas fa-trash"></i> Verwijderen
                 </button>
             `;
@@ -2388,12 +2384,266 @@ async function loadAdminContent(tab) {
     }
 }
 
+// Build product add/edit form
+function renderProductForm(productData) {
+    const isEdit = !!productData;
+    const p = productData || {};
+    const colors = (p.colors || []);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'admin-form';
+    const formId = isEdit ? `editProductForm_${p.id}` : 'newProductForm';
+    const colorListId = isEdit ? `colorList_${p.id}` : 'colorListNew';
+    const tempKey = isEdit ? `edit_${p.id}` : 'new';
+
+    // Initialize temp colors
+    adminColorLists[tempKey] = [...colors];
+
+    wrap.innerHTML = `
+        <div class="admin-form-title">
+            <i class="fas fa-${isEdit?'edit':'plus-circle'}" style="color:var(--primary);"></i>
+            ${isEdit ? 'Product bewerken' : 'Nieuw product toevoegen'}
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div class="admin-form-group">
+                <label class="admin-input-label">Naam (NL) *</label>
+                <input class="admin-input" id="${formId}_name" value="${p.name||''}" placeholder="Nederlandse naam">
+            </div>
+            <div class="admin-form-group">
+                <label class="admin-input-label">Name (EN)</label>
+                <input class="admin-input" id="${formId}_nameEn" value="${p.nameEn||''}" placeholder="English name">
+            </div>
+        </div>
+        <div class="admin-form-group">
+            <label class="admin-input-label">Beschrijving (NL) *</label>
+            <textarea class="admin-input" id="${formId}_desc" rows="3" placeholder="Nederlandstalige beschrijving" style="resize:vertical;">${p.description||''}</textarea>
+        </div>
+        <div class="admin-form-group">
+            <label class="admin-input-label">Description (EN)</label>
+            <textarea class="admin-input" id="${formId}_descEn" rows="2" placeholder="English description" style="resize:vertical;">${p.descriptionEn||''}</textarea>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+            <div class="admin-form-group">
+                <label class="admin-input-label">Prijs (€) *</label>
+                <input class="admin-input" type="number" step="0.01" id="${formId}_price" value="${p.price||''}" placeholder="0.00">
+            </div>
+            <div class="admin-form-group">
+                <label class="admin-input-label">Materiaal *</label>
+                <input class="admin-input" id="${formId}_material" value="${p.material||'PLA Basic'}" placeholder="PLA Basic">
+            </div>
+            <div class="admin-form-group">
+                <label class="admin-input-label">Categorie *</label>
+                <select class="admin-input" id="${formId}_category">
+                    <option value="home" ${p.category==='home'?'selected':''}>Huis</option>
+                    <option value="tech" ${p.category==='tech'?'selected':''}>Tech</option>
+                    <option value="custom" ${p.category==='custom'?'selected':''}>Custom</option>
+                    <option value="fidgets" ${p.category==='fidgets'?'selected':''}>Fidgets</option>
+                </select>
+            </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div class="admin-form-group">
+                <label class="admin-input-label">Extra categorie</label>
+                <select class="admin-input" id="${formId}_category2">
+                    <option value="" ${!p.category2?'selected':''}>Geen</option>
+                    <option value="home" ${p.category2==='home'?'selected':''}>Huis</option>
+                    <option value="tech" ${p.category2==='tech'?'selected':''}>Tech</option>
+                    <option value="custom" ${p.category2==='custom'?'selected':''}>Custom</option>
+                    <option value="fidgets" ${p.category2==='fidgets'?'selected':''}>Fidgets</option>
+                </select>
+            </div>
+            <div class="admin-form-group">
+                <label class="admin-input-label">Featured</label>
+                <select class="admin-input" id="${formId}_featured">
+                    <option value="false" ${!p.featured?'selected':''}>Nee</option>
+                    <option value="true" ${p.featured?'selected':''}>Ja</option>
+                </select>
+            </div>
+        </div>
+        <div class="admin-form-group">
+            <label class="admin-input-label">Afbeelding URL</label>
+            <input class="admin-input" id="${formId}_imageUrl" value="${p.imageUrl||''}" placeholder="https://...">
+        </div>
+
+        <div class="admin-form-group">
+            <label class="admin-input-label">Kleuren</label>
+            <div id="${colorListId}" style="margin-bottom:10px;"></div>
+            <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;">
+                <div>
+                    <label class="admin-input-label" style="margin-bottom:4px;">Naam</label>
+                    <input class="admin-input" id="${formId}_colorName" placeholder="bijv. Rood" style="width:120px;">
+                </div>
+                <div>
+                    <label class="admin-input-label" style="margin-bottom:4px;">Kleur</label>
+                    <input type="color" id="${formId}_colorHex" value="#ef4444" style="height:42px;width:60px;border:1.5px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;background:none;padding:2px;">
+                </div>
+                <button class="admin-btn admin-btn-primary" onclick="adminAddColor('${tempKey}','${colorListId}','${formId}_colorName','${formId}_colorHex')">
+                    <i class="fas fa-plus"></i> Kleur toevoegen
+                </button>
+            </div>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:6px;">
+            <button class="admin-btn admin-btn-primary" onclick="saveAdminProduct('${isEdit?p.id:''}','${formId}','${tempKey}')">
+                <i class="fas fa-save"></i> ${isEdit?'Opslaan':'Product toevoegen'}
+            </button>
+            ${isEdit ? `<button class="admin-btn admin-btn-secondary" onclick="cancelEditProduct('${p.id}')"><i class="fas fa-times"></i> Annuleren</button>` : ''}
+        </div>
+        <div class="auth-alert error" id="${formId}_error" style="margin-top:10px;"></div>
+    `;
+
+    // Render color list after inserting into DOM
+    setTimeout(() => renderAdminColorList(tempKey, colorListId, formId), 0);
+    return wrap;
+}
+
+// Color lists per form (keyed by tempKey)
+const adminColorLists = {};
+
+function renderAdminColorList(tempKey, colorListId, formId) {
+    const container = document.getElementById(colorListId);
+    if (!container) return;
+    const colors = adminColorLists[tempKey] || [];
+    if (!colors.length) { container.innerHTML = `<p style="font-size:12px;color:var(--text-3);">Nog geen kleuren</p>`; return; }
+    container.innerHTML = '';
+    colors.forEach((c, i) => {
+        const entry = document.createElement('div');
+        entry.className = 'admin-color-entry';
+        entry.innerHTML = `
+            <div class="admin-color-circle" style="background:${c.hex};"></div>
+            <span style="font-size:14px;font-weight:600;flex:1;">${c.name}</span>
+            <span style="font-size:12px;color:var(--text-3);">${c.hex}</span>
+            <button onclick="adminRemoveColor('${tempKey}','${colorListId}','${formId}',${i})" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:14px;padding:4px 6px;">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+        container.appendChild(entry);
+    });
+}
+
+window.adminAddColor = function(tempKey, colorListId, nameId, hexId) {
+    const name = document.getElementById(nameId)?.value?.trim();
+    const hex = document.getElementById(hexId)?.value;
+    if (!name) { showToast('Voer een kleurnaam in'); return; }
+    if (!adminColorLists[tempKey]) adminColorLists[tempKey] = [];
+    adminColorLists[tempKey].push({ name, hex });
+    document.getElementById(nameId).value = '';
+    // find formId from nameId
+    const formId = nameId.replace('_colorName', '');
+    renderAdminColorList(tempKey, colorListId, formId);
+};
+
+window.adminRemoveColor = function(tempKey, colorListId, formId, idx) {
+    if (!adminColorLists[tempKey]) return;
+    adminColorLists[tempKey].splice(idx, 1);
+    renderAdminColorList(tempKey, colorListId, formId);
+};
+
+window.showEditProductForm = function(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    const container = document.getElementById(`editForm_${productId}`);
+    if (!container) return;
+    const isVisible = container.style.display !== 'none';
+    if (isVisible) { container.style.display = 'none'; return; }
+    container.style.display = 'block';
+    container.innerHTML = '';
+    const form = renderProductForm(product);
+    container.appendChild(form);
+};
+
+window.cancelEditProduct = function(productId) {
+    const container = document.getElementById(`editForm_${productId}`);
+    if (container) container.style.display = 'none';
+};
+
+window.saveAdminProduct = async function(productId, formId, tempKey) {
+    const get = (suffix) => document.getElementById(`${formId}_${suffix}`);
+    const name = get('name')?.value?.trim();
+    const nameEn = get('nameEn')?.value?.trim() || '';
+    const description = get('desc')?.value?.trim();
+    const descriptionEn = get('descEn')?.value?.trim() || '';
+    const priceStr = get('price')?.value;
+    const material = get('material')?.value?.trim();
+    const category = get('category')?.value;
+    const category2 = get('category2')?.value || '';
+    const featured = get('featured')?.value === 'true';
+    const imageUrl = get('imageUrl')?.value?.trim() || '';
+    const errEl = document.getElementById(`${formId}_error`);
+
+    if (!name || !description || !priceStr || !material || !category) {
+        if (errEl) { errEl.textContent = 'Vul alle verplichte velden in'; errEl.style.display = 'block'; }
+        return;
+    }
+
+    const price = parseFloat(priceStr);
+    if (isNaN(price) || price < 0) {
+        if (errEl) { errEl.textContent = 'Ongeldige prijs'; errEl.style.display = 'block'; }
+        return;
+    }
+
+    const colors = adminColorLists[tempKey] || [];
+    const data = { name, nameEn, description, descriptionEn, price, material, category, featured, imageUrl, colors };
+    if (category2) data.category2 = category2; else data.category2 = '';
+
+    try {
+        if (productId) {
+            // Update existing
+            await db.collection('products').doc(productId).update(data);
+            showToast('Product bijgewerkt!');
+        } else {
+            // Add new
+            await db.collection('products').add(data);
+            showToast('Product toegevoegd!');
+        }
+        // Reload products and admin tab
+        await loadProducts();
+        loadAdminContent('products');
+    } catch(e) {
+        console.error(e);
+        if (errEl) { errEl.textContent = 'Fout: ' + e.message; errEl.style.display = 'block'; }
+    }
+};
+
+window.confirmDeleteProduct = function(productId, productName) {
+    showConfirm(
+        'Product verwijderen',
+        `Weet je zeker dat je "${productName}" wilt verwijderen? Dit kan niet ongedaan gemaakt worden.`,
+        'Verwijderen',
+        () => deleteProduct(productId)
+    );
+};
+
+async function deleteProduct(productId) {
+    try {
+        await db.collection('products').doc(productId).delete();
+        showToast('Product verwijderd');
+        await loadProducts();
+        loadAdminContent('products');
+    } catch(e) { showToast('Fout bij verwijderen: ' + e.message); }
+}
+
 window.updateResStatus = async function(resId, status) {
     try {
         await db.collection('reservations').doc(resId).update({ status, updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
         showToast('Status bijgewerkt');
         loadAdminContent('reservations');
     } catch(e) { showToast('Fout bij bijwerken'); }
+};
+
+window.deleteReservation = function(resId) {
+    showConfirm(
+        'Reservering verwijderen',
+        'Weet je zeker dat je deze reservering permanent wilt verwijderen?',
+        'Verwijderen',
+        async () => {
+            try {
+                await db.collection('reservations').doc(resId).delete();
+                showToast('Reservering verwijderd');
+                loadAdminContent('reservations');
+            } catch(e) { showToast('Fout bij verwijderen'); }
+        }
+    );
 };
 
 window.deleteReview = async function(reviewId) {
@@ -2447,24 +2697,35 @@ window.closeModal = function(type) {
 };
 
 // ============================================================
-// COOKIE & PRIVACY
+// COOKIE - FIX: properly hide banner and store preference
 // ============================================================
 window.acceptCookies = function() {
     localStorage.setItem('ps3_cookies', 'accepted');
-    document.getElementById('cookieBanner').classList.remove('show');
+    const banner = document.getElementById('cookieBanner');
+    banner.classList.remove('show');
+    banner.style.display = 'none';
 };
+
 window.rejectCookies = function() {
     localStorage.setItem('ps3_cookies', 'functional');
-    document.getElementById('cookieBanner').classList.remove('show');
+    const banner = document.getElementById('cookieBanner');
+    banner.classList.remove('show');
+    banner.style.display = 'none';
 };
+
 window.showCookieSettings = function() {
-    localStorage.removeItem('ps3_cookies');
-    document.getElementById('cookieBanner').classList.add('show');
+    const banner = document.getElementById('cookieBanner');
+    banner.style.display = '';
+    setTimeout(() => banner.classList.add('show'), 10);
 };
 
 function checkCookieBanner() {
     if (!localStorage.getItem('ps3_cookies')) {
-        setTimeout(() => document.getElementById('cookieBanner').classList.add('show'), 1500);
+        setTimeout(() => {
+            const banner = document.getElementById('cookieBanner');
+            banner.style.display = '';
+            banner.classList.add('show');
+        }, 1500);
     }
 }
 
@@ -2530,7 +2791,7 @@ function showToast(msg, dur = 2800) {
 window.showToast = showToast;
 
 // ============================================================
-// VIEWPORT HEIGHT FIX
+// VIEWPORT
 // ============================================================
 function setVH() { document.documentElement.style.setProperty('--vh', `${window.innerHeight*0.01}px`); }
 
@@ -2538,12 +2799,10 @@ function setVH() { document.documentElement.style.setProperty('--vh', `${window.
 // EVENT LISTENERS
 // ============================================================
 function setupEvents() {
-    // Nav
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', e => { e.preventDefault(); showPage(item.dataset.page); });
     });
 
-    // Language
     document.getElementById('languageSelector')?.addEventListener('change', e => {
         settings.language = e.target.value;
         saveSettings();
@@ -2552,16 +2811,13 @@ function setupEvents() {
         if (currentPage === 'admin') loadAdminContent(currentAdminTab);
     });
 
-    // Theme
     document.getElementById('themeSelect')?.addEventListener('change', e => {
         applyTheme(e.target.value);
         saveSettings();
     });
 
-    // All products link
     document.getElementById('allProductsLink')?.addEventListener('click', e => { e.preventDefault(); showPage('products'); });
 
-    // Filter chips
     document.querySelectorAll('.filter-chips .chip').forEach(chip => {
         chip.addEventListener('click', () => {
             document.querySelectorAll('.filter-chips .chip').forEach(c => c.classList.remove('active'));
@@ -2570,22 +2826,18 @@ function setupEvents() {
         });
     });
 
-    // Search
     document.getElementById('searchInput')?.addEventListener('input', e => {
         const activeChip = document.querySelector('.filter-chips .chip.active');
         const filter = activeChip?.dataset.filter || 'all';
         displayAllProducts(filter, e.target.value.toLowerCase());
     });
 
-    // Admin tabs
     document.querySelectorAll('.admin-tab').forEach(tab => {
         tab.addEventListener('click', () => loadAdminContent(tab.dataset.atab));
     });
 
-    // Install btn in settings
     document.getElementById('installBtn')?.addEventListener('click', showInstallSheet);
 
-    // Login button
     document.getElementById('loginButton')?.addEventListener('click', function() {
         if (currentUser) logout();
         else openAuth();
@@ -2598,12 +2850,10 @@ function setupEvents() {
 document.addEventListener('DOMContentLoaded', async () => {
     setVH();
     window.addEventListener('resize', setVH);
-
     loadSettings();
     setupEvents();
     buildFAQ();
     buildPrivacyPage();
-
     await loadProducts();
     checkCookieBanner();
     checkPrivacyPopup();

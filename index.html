@@ -292,6 +292,13 @@
             font-size: 11px; color: var(--text-3); margin-bottom: 4px;
         }
         .product-stars i { font-size: 10px; color: var(--star); }
+        /* Discount badge on product card */
+        .discount-badge-card {
+            position: absolute; top: 8px; left: 8px;
+            background: var(--danger); color: #fff;
+            font-size: 10px; font-weight: 800; padding: 3px 8px;
+            border-radius: 10px; z-index: 2; letter-spacing: 0.3px;
+        }
 
         .search-bar { position: relative; margin-bottom: 14px; }
         .search-input {
@@ -354,6 +361,53 @@
         }
         input:checked + .slider { background: var(--primary); }
         input:checked + .slider:before { transform: translateX(22px); }
+
+        /* DISCOUNT CODE CARD in settings */
+        .discount-code-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: var(--radius-lg); padding: 20px;
+            margin: 0 16px 16px; position: relative; overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .discount-code-card::before {
+            content: ''; position: absolute; top: -20px; right: -20px;
+            width: 100px; height: 100px; border-radius: 50%;
+            background: rgba(255,215,0,0.1);
+        }
+        .discount-code-card::after {
+            content: ''; position: absolute; bottom: -30px; left: -10px;
+            width: 80px; height: 80px; border-radius: 50%;
+            background: rgba(255,140,0,0.08);
+        }
+        .discount-badge-label {
+            font-size: 11px; font-weight: 700; color: var(--primary);
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+        }
+        .discount-code-value {
+            font-family: 'Outfit', monospace; font-size: 26px; font-weight: 900;
+            color: #fff; letter-spacing: 4px; margin-bottom: 8px;
+            position: relative; z-index: 1;
+        }
+        .discount-code-info {
+            font-size: 12px; color: rgba(255,255,255,0.6);
+            margin-bottom: 14px; position: relative; z-index: 1; line-height: 1.5;
+        }
+        .discount-copy-btn {
+            display: inline-flex; align-items: center; gap: 7px;
+            background: var(--primary); color: #000;
+            border: none; padding: 9px 18px; border-radius: 20px;
+            font-size: 13px; font-weight: 700; cursor: pointer;
+            transition: all var(--transition-bounce);
+            position: relative; z-index: 1;
+        }
+        .discount-copy-btn:hover { transform: scale(1.05); }
+        .discount-expiry {
+            position: absolute; top: 16px; right: 16px;
+            background: rgba(255,255,255,0.1); border-radius: 8px;
+            padding: 4px 10px; font-size: 11px; color: rgba(255,255,255,0.7);
+            z-index: 1;
+        }
 
         .modal-overlay {
             position: fixed; inset: 0; z-index: 1000;
@@ -450,6 +504,22 @@
             font-size: 30px; font-weight: 900; color: var(--primary);
             text-align: center; margin: 16px 0;
         }
+        /* Discount highlight on product modal */
+        .discount-highlight {
+            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,140,0,0.1));
+            border: 1.5px solid var(--primary); border-radius: var(--radius);
+            padding: 14px 16px; margin-bottom: 16px;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .discount-highlight-icon {
+            width: 40px; height: 40px; background: var(--primary);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            font-size: 18px; flex-shrink: 0;
+        }
+        .discount-highlight-text h4 {
+            font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; margin-bottom: 2px;
+        }
+        .discount-highlight-text p { font-size: 12px; color: var(--text-2); }
 
         .rating-section {
             background: var(--surface-2); border: 1px solid var(--border);
@@ -511,6 +581,48 @@
         .color-swatch:hover { transform: scale(1.15); }
         .color-swatch.selected { border-color: var(--text); box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--text); }
         .color-label { font-size: 11px; text-align: center; color: var(--text-3); margin-top: 4px; }
+
+        /* Discount code input in reserve modal */
+        .discount-input-wrap {
+            background: var(--bg-2); border: 1.5px solid var(--border);
+            border-radius: var(--radius); padding: 14px; margin-top: 16px;
+        }
+        .discount-input-title {
+            font-size: 13px; font-weight: 700; margin-bottom: 10px;
+            display: flex; align-items: center; gap: 7px;
+        }
+        .discount-input-title i { color: var(--primary); }
+        .discount-input-row { display: flex; gap: 8px; align-items: stretch; }
+        .discount-code-input {
+            flex: 1; padding: 11px 14px; background: var(--surface);
+            border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+            font-size: 14px; color: var(--text); font-family: 'Outfit', monospace;
+            font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+            transition: all var(--transition);
+        }
+        .discount-code-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(255,215,0,0.15); }
+        .discount-apply-btn {
+            padding: 11px 16px; background: var(--primary); color: #000;
+            border: none; border-radius: var(--radius-sm); font-size: 13px;
+            font-weight: 700; cursor: pointer; transition: all var(--transition); white-space: nowrap;
+        }
+        .discount-apply-btn:hover { background: var(--primary-dark); }
+        .discount-result {
+            margin-top: 10px; padding: 10px 12px; border-radius: var(--radius-sm);
+            font-size: 13px; display: none;
+        }
+        .discount-result.valid { background: rgba(34,197,94,0.1); border: 1px solid var(--success); color: var(--success); display: block; }
+        .discount-result.invalid { background: rgba(239,68,68,0.1); border: 1px solid var(--danger); color: var(--danger); display: block; }
+        .price-breakdown {
+            margin-top: 12px; padding: 12px; background: var(--surface);
+            border: 1px solid var(--border); border-radius: var(--radius-sm);
+        }
+        .price-breakdown-row {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 13px; margin-bottom: 6px;
+        }
+        .price-breakdown-row:last-child { margin-bottom: 0; font-size: 16px; font-weight: 800; color: var(--primary); border-top: 1px solid var(--border); padding-top: 8px; margin-top: 4px; }
+        .price-breakdown-row .strikethrough { text-decoration: line-through; color: var(--text-3); }
 
         .reservation-card {
             background: var(--surface); border: 1px solid var(--border);
@@ -589,6 +701,8 @@
         .admin-btn-secondary:hover { background: var(--border); }
         .admin-btn-success { background: var(--success); color: #fff; }
         .admin-btn-success:hover { opacity: 0.85; }
+        .admin-btn-info { background: var(--info); color: #fff; }
+        .admin-btn-info:hover { opacity: 0.85; }
         .admin-color-entry {
             display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
             padding: 8px; background: var(--bg-2); border-radius: var(--radius-sm);
@@ -597,6 +711,49 @@
             width: 28px; height: 28px; border-radius: 50%;
             border: 2px solid var(--border); flex-shrink: 0;
         }
+
+        /* Admin discount code management */
+        .discount-admin-card {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: var(--radius-lg); padding: 20px; margin-bottom: 16px;
+            color: #fff; position: relative; overflow: hidden;
+        }
+        .discount-admin-card::before {
+            content: ''; position: absolute; top: -20px; right: -20px;
+            width: 120px; height: 120px; border-radius: 50%;
+            background: rgba(255,215,0,0.08);
+        }
+        .discount-admin-title {
+            font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800;
+            margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+            position: relative; z-index: 1;
+        }
+        .discount-admin-title i { color: var(--primary); }
+        .discount-admin-code {
+            font-family: 'Outfit', monospace; font-size: 28px; font-weight: 900;
+            letter-spacing: 5px; color: var(--primary); margin-bottom: 8px;
+            position: relative; z-index: 1;
+        }
+        .discount-admin-meta {
+            font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 14px;
+            position: relative; z-index: 1; line-height: 1.6;
+        }
+
+        /* Receipt/Bon styles */
+        .bon-preview {
+            background: #fff; color: #000; border: 2px solid #000;
+            border-radius: var(--radius); padding: 20px; margin-top: 14px;
+            font-family: 'Courier New', monospace;
+        }
+        .bon-preview h2 {
+            font-size: 18px; font-weight: 900; text-align: center;
+            margin-bottom: 4px; font-family: 'Outfit', sans-serif;
+        }
+        .bon-preview .bon-sub { font-size: 11px; text-align: center; color: #555; margin-bottom: 12px; }
+        .bon-divider { border: none; border-top: 1px dashed #999; margin: 10px 0; }
+        .bon-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
+        .bon-total { display: flex; justify-content: space-between; font-size: 16px; font-weight: 900; margin-top: 8px; padding-top: 8px; border-top: 2px solid #000; }
+        .bon-footer { font-size: 10px; text-align: center; color: #777; margin-top: 12px; line-height: 1.6; }
 
         /* PRIVACY */
         .privacy-wrap { max-width: 100%; }
@@ -804,6 +961,30 @@
         .confirm-btns button { flex: 1; padding: 12px; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; transition: all var(--transition); }
         .confirm-cancel { background: var(--bg-3); color: var(--text-2); }
         .confirm-ok { background: var(--danger); color: #fff; }
+
+        /* Print bon overlay */
+        .bon-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+            z-index: 4000; display: none; justify-content: center; align-items: center;
+            padding: 20px;
+        }
+        .bon-overlay.show { display: flex; }
+        .bon-box {
+            background: var(--surface); border-radius: var(--radius-lg);
+            padding: 20px; width: 100%; max-width: 400px;
+            max-height: 90vh; overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+        }
+        .bon-box-title {
+            font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700;
+            margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+        }
+        .bon-box-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+        @media print {
+            body * { visibility: hidden; }
+            #printBonContent, #printBonContent * { visibility: visible; }
+            #printBonContent { position: fixed; left: 0; top: 0; width: 100%; padding: 20px; }
+        }
     </style>
 </head>
 
@@ -909,6 +1090,14 @@
                 </div>
             </div>
 
+            <!-- WEEKLY DISCOUNT CODE (only when logged in) -->
+            <div class="settings-group" id="discountGroup" style="display:none;">
+                <div class="settings-group-title" id="sDiscountTitle">WEKELIJKSE KORTINGSCODE</div>
+                <div id="discountCardWrap">
+                    <div class="loading" style="height:100px;"><div class="spinner"></div></div>
+                </div>
+            </div>
+
             <div class="settings-group" id="installGroup" style="display:none;">
                 <div class="settings-group-title" id="sInstallTitle">INSTALLATIE</div>
                 <div class="settings-row" id="installBtn">
@@ -993,7 +1182,7 @@
                         <div class="settings-row-icon" style="background:#f0f9ff;"><i class="fas fa-info-circle" style="color:#0284c7;"></i></div>
                         <div class="settings-row-info">
                             <h4 id="sVersionLabel">Versie</h4>
-                            <p>PrintSome App v3.1</p>
+                            <p>PrintSome App v3.2</p>
                         </div>
                     </div>
                 </div>
@@ -1038,6 +1227,7 @@
                 <button class="admin-tab" data-atab="reservations">Reserveringen</button>
                 <button class="admin-tab" data-atab="products">Producten</button>
                 <button class="admin-tab" data-atab="reviews">Reviews</button>
+                <button class="admin-tab" data-atab="discount">Kortingscode</button>
             </div>
             <div id="adminContent">
                 <div class="loading"><div class="spinner"></div><span>Laden...</span></div>
@@ -1137,7 +1327,7 @@
             <i class="fas fa-shield-alt" style="font-size:40px;color:var(--primary);"></i>
         </div>
         <div class="popup-sheet-title" style="text-align:center;" id="privacyPopTitle">Privacyverklaring</div>
-        <p style="font-size:14px;color:var(--text-2);line-height:1.6;margin-bottom:12px;" id="privacyPopText">PrintSome respecteert je privacy. We verzamelen alleen gegevens die nodig zijn voor de werking van de app. Je gegevens worden niet verkocht aan derden.</p>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.6;margin-bottom:12px;" id="privacyPopText">PrintSome respecteert je privacy.</p>
         <a href="#" onclick="document.getElementById('privacyPopupOverlay').classList.remove('show');showPage('privacy');return false;" style="font-size:13px;display:block;margin-bottom:16px;" id="privacyPopLink">Lees volledige privacyverklaring</a>
         <div class="privacy-popup-btns">
             <button style="background:var(--primary);color:#000;" onclick="acceptPrivacyPopup()" id="privacyPopOk">OK, ik begrijp het</button>
@@ -1157,8 +1347,24 @@
     </div>
 </div>
 
+<!-- BON / RECEIPT OVERLAY -->
+<div class="bon-overlay" id="bonOverlay">
+    <div class="bon-box">
+        <div class="bon-box-title"><i class="fas fa-receipt" style="color:var(--primary);"></i> Reserveringsbon</div>
+        <div id="bonContent"></div>
+        <div class="bon-box-actions">
+            <button class="admin-btn admin-btn-primary" onclick="copyBon()"><i class="fas fa-copy"></i> Kopiëren</button>
+            <button class="admin-btn admin-btn-info" onclick="printBon()"><i class="fas fa-print"></i> Printen</button>
+            <button class="admin-btn admin-btn-secondary" onclick="closeBon()"><i class="fas fa-times"></i> Sluiten</button>
+        </div>
+    </div>
+</div>
+
 <!-- TOAST -->
 <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg">Bericht</span></div>
+
+<!-- Hidden print area -->
+<div id="printBonContent" style="display:none;"></div>
 
 <script>
 // ============================================================
@@ -1191,6 +1397,8 @@ let productReviews = {};
 let authMode = 'login';
 let currentAdminTab = 'overview';
 let isAdmin = false;
+let currentWeeklyDiscount = null; // { code, productId, productName, discount, validFrom, validUntil, createdBy }
+let appliedDiscount = null; // discount applied in current reservation modal
 
 let settings = { theme: 'system', language: 'nl' };
 
@@ -1267,6 +1475,7 @@ const T = {
         sAccountTitle: 'ACCOUNT', sDisplayTitle: 'WEERGAVE',
         sLangTitle: 'TAAL', sPrivacyTitle: 'PRIVACY & BELEID', sAboutTitle: 'OVER',
         sInstallTitle: 'INSTALLATIE',
+        sDiscountTitle: 'WEKELIJKSE KORTINGSCODE',
         sAccountStatus: 'Account status', sAccountDesc: 'Niet ingelogd',
         sDarkLabel: 'Donkere modus', sDarkDesc: 'Thema aanpassen',
         sLangLabel: 'Taal', sLangDesc: 'Nederlands',
@@ -1281,6 +1490,7 @@ const T = {
             { q: 'Hoe kan ik producten kopen?', a: 'Op dit moment is het nog niet mogelijk om online te kopen. Aankopen zijn wel offline (in real life) mogelijk.' },
             { q: 'Wat voor producten verkoopt PrintSome?', a: 'Op dit moment verkopen wij voornamelijk fidget toys. Ons assortiment wordt regelmatig uitgebreid.' },
             { q: 'Wat is een reservering?', a: 'Met een reservering geef je aan dat je een product wilt. Selecteer de gewenste kleur en wij nemen contact op om de aankoop te bevestigen.' },
+            { q: 'Hoe werkt de wekelijkse kortingscode?', a: 'Elke week wordt er automatisch een random product gekozen dat 10% korting krijgt. Als je bent ingelogd, krijg je automatisch jouw eigen persoonlijke kortingscode onder Instellingen → Wekelijkse kortingscode. Deze code is uniek voor jou en is eenmalig geldig voor dat product. Kopieer de code en plak hem in het reserveringsformulier — de eindprijs wordt automatisch berekend. Je kunt je persoonlijke code maar één keer gebruiken per week.' },
             { q: 'Hoe installeer ik de app?', a: 'Zie de installatie-instructies in Instellingen.' }
         ],
         cookieBannerTitle: 'We gebruiken cookies',
@@ -1291,6 +1501,23 @@ const T = {
         privacyPopOk: 'OK, ik begrijp het',
         installTitle: 'Installeer PrintSome',
         installDoneBtn: 'Begrepen',
+        discountCardTitle: '🎟️ Jouw Kortingscode',
+        discountCardFor: 'Geldig voor:',
+        discountCardAmount: '10% korting · Persoonlijke code · Eenmalig gebruik',
+        discountCardExpiry: 'Vervalt',
+        discountCardCopy: 'Kopieer code',
+        discountCardCopied: '✓ Gekopieerd!',
+        discountCardNone: 'Geen actieve kortingscode deze week.',
+        discountInputTitle: 'Kortingscode invoeren',
+        discountApply: 'Toepassen',
+        discountValid: '✓ Code geldig! 10% korting toegepast.',
+        discountInvalid: '✗ Ongeldige code. Controleer de code en probeer opnieuw.',
+        discountAlreadyUsed: '✗ Je hebt deze week al een kortingscode gebruikt (max. 1 per week).',
+        discountWrongProduct: '✗ Deze code is niet geldig voor dit product.',
+        discountExpired: '✗ Deze kortingscode is verlopen.',
+        priceOriginal: 'Originele prijs',
+        priceDiscount: '10% korting',
+        priceFinal: 'Eindprijs',
         installIphone: [
             { icon: 'fas fa-share-alt', title: 'Stap 1: Open in Safari', desc: 'Tik op het deel-icoon onderaan je scherm.' },
             { icon: 'fas fa-plus-circle', title: 'Stap 2: "Zet in beginscherm"', desc: 'Scroll naar beneden en tik op "Zet in beginscherm".' },
@@ -1351,6 +1578,7 @@ const T = {
         sAccountTitle: 'ACCOUNT', sDisplayTitle: 'DISPLAY',
         sLangTitle: 'LANGUAGE', sPrivacyTitle: 'PRIVACY & POLICY', sAboutTitle: 'ABOUT',
         sInstallTitle: 'INSTALLATION',
+        sDiscountTitle: 'WEEKLY DISCOUNT CODE',
         sAccountStatus: 'Account status', sAccountDesc: 'Not logged in',
         sDarkLabel: 'Dark mode', sDarkDesc: 'Adjust theme',
         sLangLabel: 'Language', sLangDesc: 'English',
@@ -1365,6 +1593,7 @@ const T = {
             { q: 'How can I buy products?', a: 'At the moment it is not possible to buy online. Purchases are possible offline (in real life).' },
             { q: 'What products does PrintSome sell?', a: 'We currently sell mainly fidget toys. Our assortment is regularly expanded.' },
             { q: 'What is a reservation?', a: 'A reservation lets us know you want a product. Select your preferred color and we\'ll contact you to confirm the purchase.' },
+            { q: 'How does the weekly discount code work?', a: 'Every week a random product is automatically chosen that receives 10% off. When logged in, you automatically receive your own personal discount code under Settings → Weekly Discount Code. This code is unique to you and valid once for that product. Copy the code and paste it in the reservation form — the final price is calculated automatically. Your personal code can only be used once per week.' },
             { q: 'How do I install the app?', a: 'See the installation instructions in Settings.' }
         ],
         cookieBannerTitle: 'We use cookies',
@@ -1375,6 +1604,23 @@ const T = {
         privacyPopOk: 'OK, I understand',
         installTitle: 'Install PrintSome',
         installDoneBtn: 'Got it',
+        discountCardTitle: '🎟️ Your Discount Code',
+        discountCardFor: 'Valid for:',
+        discountCardAmount: '10% discount · Personal code · One-time use',
+        discountCardExpiry: 'Expires',
+        discountCardCopy: 'Copy code',
+        discountCardCopied: '✓ Copied!',
+        discountCardNone: 'No active discount code this week.',
+        discountInputTitle: 'Enter discount code',
+        discountApply: 'Apply',
+        discountValid: '✓ Code valid! 10% discount applied.',
+        discountInvalid: '✗ Invalid code. Check the code and try again.',
+        discountAlreadyUsed: '✗ You have already used a discount code this week (max. 1 per week).',
+        discountWrongProduct: '✗ This code is not valid for this product.',
+        discountExpired: '✗ This discount code has expired.',
+        priceOriginal: 'Original price',
+        priceDiscount: '10% discount',
+        priceFinal: 'Final price',
         installIphone: [
             { icon: 'fas fa-share-alt', title: 'Step 1: Open in Safari', desc: 'Tap the share icon at the bottom of your screen.' },
             { icon: 'fas fa-plus-circle', title: 'Step 2: "Add to Home Screen"', desc: 'Scroll down and tap "Add to Home Screen".' },
@@ -1457,9 +1703,7 @@ async function loadUserSettingsFromFirebase(uid) {
 // LANGUAGE UI
 // ============================================================
 function applyLanguageUI() {
-    const lang = settings.language;
     const el = (id) => document.getElementById(id);
-
     if(el('navHome')) el('navHome').textContent = t('home');
     if(el('navProducts')) el('navProducts').textContent = t('products');
     if(el('navFav')) el('navFav').textContent = t('favorites');
@@ -1488,6 +1732,7 @@ function applyLanguageUI() {
     if(el('sPrivacyTitle')) el('sPrivacyTitle').textContent = t('sPrivacyTitle');
     if(el('sAboutTitle')) el('sAboutTitle').textContent = t('sAboutTitle');
     if(el('sInstallTitle')) el('sInstallTitle').textContent = t('sInstallTitle');
+    if(el('sDiscountTitle')) el('sDiscountTitle').textContent = t('sDiscountTitle');
     if(el('sDarkLabel')) el('sDarkLabel').textContent = t('sDarkLabel');
     if(el('sDarkDesc')) el('sDarkDesc').textContent = t('sDarkDesc');
     if(el('sLangLabel')) el('sLangLabel').textContent = t('sLangLabel');
@@ -1500,7 +1745,7 @@ function applyLanguageUI() {
     if(el('sInstallLabel')) el('sInstallLabel').textContent = t('sInstallLabel');
     if(el('sInstallDesc')) el('sInstallDesc').textContent = t('sInstallDesc');
     if(el('privacyBackBtn')) el('privacyBackBtn').textContent = t('privacyBackBtn');
-    if(el('languageSelector')) el('languageSelector').value = lang;
+    if(el('languageSelector')) el('languageSelector').value = settings.language;
     if(el('cookieBannerTitle')) el('cookieBannerTitle').textContent = t('cookieBannerTitle');
     if(el('cookieBannerText')) el('cookieBannerText').textContent = t('cookieBannerText');
     if(el('privacyPopTitle')) el('privacyPopTitle').textContent = t('privacyPopTitle');
@@ -1551,7 +1796,6 @@ function buildPrivacyPage() {
     const c = document.getElementById('privacyContent');
     if (!c) return;
     const isNL = settings.language === 'nl';
-
     c.innerHTML = `
         <div class="privacy-h1"><i class="fas fa-shield-alt" style="color:var(--primary);"></i> ${isNL ? 'Privacyverklaring PrintSome' : 'Privacy Statement PrintSome'}</div>
         <p class="privacy-p">${isNL ? 'PrintSome is verantwoordelijk voor de verwerking van persoonsgegevens zoals weergegeven in deze privacyverklaring.' : 'PrintSome is responsible for the processing of personal data as shown in this privacy statement.'}</p>
@@ -1561,53 +1805,24 @@ function buildPrivacyPage() {
             <p><strong>E-mail:</strong> <a href="mailto:printsome-webapp@outlook.com">printsome-webapp@outlook.com</a></p>
         </div>
         <div class="privacy-h2">${isNL ? 'Persoonsgegevens die wij verwerken' : 'Personal data we process'}</div>
-        <p class="privacy-p">${isNL ? 'PrintSome verwerkt uw persoonsgegevens doordat u gebruik maakt van onze diensten en/of omdat u deze zelf aan ons verstrekt.' : 'PrintSome processes your personal data because you use our services and/or because you provide it yourself.'}</p>
+        <p class="privacy-p">${isNL ? 'PrintSome verwerkt uw persoonsgegevens doordat u gebruik maakt van onze diensten.' : 'PrintSome processes your personal data because you use our services.'}</p>
         <ul class="privacy-ul">
             <li>${isNL ? 'Voor- en achternaam' : 'First and last name'}</li>
             <li>${isNL ? 'E-mailadres' : 'Email address'}</li>
             <li>${isNL ? 'Taalvoorkeur' : 'Language preference'}</li>
             <li>${isNL ? 'IP-adres' : 'IP address'}</li>
-            <li>${isNL ? 'Internetbrowser en apparaattype' : 'Internet browser and device type'}</li>
-            <li>${isNL ? 'Locatiegegevens' : 'Location data'}</li>
+            <li>${isNL ? 'Gebruik van kortingscodes' : 'Use of discount codes'}</li>
         </ul>
-        <div class="privacy-h2">${isNL ? 'Bijzondere persoonsgegevens' : 'Special personal data'}</div>
-        <p class="privacy-p">${isNL ? 'Onze website heeft niet de intentie gegevens te verzamelen over bezoekers jonger dan 16 jaar, tenzij zij toestemming hebben van ouders of voogd.' : 'Our website does not intend to collect data about visitors under 16 years old, unless they have parental or guardian consent.'}</p>
         <div class="privacy-h2">${isNL ? 'Doelen en grondslagen' : 'Purposes and legal bases'}</div>
         <ul class="privacy-ul">
             <li>${isNL ? 'U de mogelijkheid te bieden een account aan te maken' : 'To provide you with the ability to create an account'}</li>
-            <li>${isNL ? 'Contact met u op te nemen indien nodig' : 'To contact you if necessary'}</li>
+            <li>${isNL ? 'Het verwerken van reserveringen en kortingscodes' : 'Processing reservations and discount codes'}</li>
             <li>${isNL ? 'Het technisch functioneren en verbeteren van de website' : 'For the technical functioning and improvement of the website'}</li>
         </ul>
-        <div class="privacy-h2">${isNL ? 'Bewaartermijnen' : 'Retention periods'}</div>
-        <ul class="privacy-ul">
-            <li><strong>${isNL ? 'Accountgegevens:' : 'Account data:'}</strong> ${isNL ? 'tot 1 maand na verwijdering account' : 'up to 1 month after account deletion'}</li>
-            <li><strong>${isNL ? 'Contactgegevens:' : 'Contact data:'}</strong> ${isNL ? 'zolang nodig voor communicatie' : 'as long as needed for communication'}</li>
-        </ul>
-        <div class="privacy-h2">${isNL ? 'Delen met derden' : 'Sharing with third parties'}</div>
-        <p class="privacy-p">${isNL ? 'PrintSome deelt uw persoonsgegevens uitsluitend met derden als dit noodzakelijk is voor het functioneren van de dienst.' : 'PrintSome only shares your personal data with third parties if this is necessary for the functioning of the service.'}</p>
-        <div class="privacy-table-wrap">
-            <table class="privacy-table">
-                <thead><tr>
-                    <th>${isNL?'Categorie':'Category'}</th><th>${isNL?'Naam':'Name'}</th><th>${isNL?'Jurisdictie':'Jurisdiction'}</th><th>${isNL?'Doel':'Purpose'}</th>
-                </tr></thead>
-                <tbody>
-                    <tr><td>Hosting</td><td>Cloudflare</td><td>VS/EU</td><td>${isNL?'Websitebeveiliging':'Website security'}</td></tr>
-                    <tr><td>${isNL?'Hosting & backend':'Hosting & backend'}</td><td>Firebase (Google)</td><td>VS</td><td>${isNL?'Authenticatie en opslag':'Authentication and storage'}</td></tr>
-                    <tr><td>${isNL?'Code & infrastructuur':'Code & infrastructure'}</td><td>GitHub</td><td>VS</td><td>${isNL?'Broncodebeheer':'Source code management'}</td></tr>
-                    <tr><td>${isNL?'Analyse':'Analytics'}</td><td>Cloudflare Analytics</td><td>VS/EU</td><td>${isNL?'Website-inzichten':'Website insights'}</td></tr>
-                    <tr><td>E-mail</td><td>Outlook, Gmail</td><td>VS/EU</td><td>${isNL?'Communicatie':'Communication'}</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <p class="privacy-p">${isNL ? 'PrintSome verkoopt geen persoonsgegevens aan derden.' : 'PrintSome does not sell personal data to third parties.'}</p>
         <div class="privacy-h2">${isNL ? 'Cookies' : 'Cookies'}</div>
-        <p class="privacy-p">${isNL ? 'PrintSome gebruikt zelf geen tracking cookies. Derde partijen zoals Google (via Firebase) kunnen cookies plaatsen die nodig zijn voor hun functioneren.' : 'PrintSome itself does not use tracking cookies. Third parties such as Google (via Firebase) may place cookies necessary for their functioning.'}</p>
-        <p class="privacy-p">${isNL ? 'Meer informatie:' : 'More information:'} <a href="https://veiliginternetten.nl/wat-zijn-cookies/" target="_blank">veiliginternetten.nl</a></p>
+        <p class="privacy-p">${isNL ? 'PrintSome gebruikt zelf geen tracking cookies.' : 'PrintSome itself does not use tracking cookies.'}</p>
         <div class="privacy-h2">${isNL ? 'Uw rechten' : 'Your rights'}</div>
-        <p class="privacy-p">${isNL ? 'U heeft het recht om uw persoonsgegevens in te zien, te corrigeren of te verwijderen. U kunt een verzoek sturen naar:' : 'You have the right to view, correct or delete your personal data. You can send a request to:'} <a href="mailto:printsome-webapp@outlook.com">printsome-webapp@outlook.com</a></p>
-        <p class="privacy-p">${isNL ? 'U kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens:' : 'You can also file a complaint with the Dutch Data Protection Authority:'} <a href="https://autoriteitpersoonsgegevens.nl/" target="_blank">autoriteitpersoonsgegevens.nl</a></p>
-        <div class="privacy-h2">${isNL ? 'Beveiliging' : 'Security'}</div>
-        <p class="privacy-p">${isNL ? 'PrintSome neemt passende maatregelen om uw gegevens te beschermen tegen misbruik, verlies en onbevoegde toegang.' : 'PrintSome takes appropriate measures to protect your data against misuse, loss, and unauthorized access.'}</p>
+        <p class="privacy-p">${isNL ? 'U kunt een verzoek sturen naar:' : 'You can send a request to:'} <a href="mailto:printsome-webapp@outlook.com">printsome-webapp@outlook.com</a></p>
         <div style="text-align:center;margin-top:24px;padding-top:16px;border-top:1px solid var(--border);">
             <p style="font-size:12px;color:var(--text-3);"><i class="fas fa-calendar-alt"></i> ${isNL?'Laatst bijgewerkt: Februari 2026':'Last updated: February 2026'}</p>
         </div>
@@ -1621,7 +1836,6 @@ function renderAuthForm() {
     const c = document.getElementById('authContainer');
     if (!c) return;
     const isNL = settings.language === 'nl';
-
     c.innerHTML = `
         <div class="auth-tabs">
             <button class="auth-tab ${authMode==='login'?'active':''}" onclick="setAuthMode('login')">${t('login')}</button>
@@ -1645,9 +1859,6 @@ function renderAuthForm() {
             </button>
         </div>
         ${authMode==='login'?`<div style="text-align:center;margin-top:16px;"><a href="#" onclick="showToast('${isNL?'Neem contact op: printsome-webapp@outlook.com':'Contact us: printsome-webapp@outlook.com'}',5000);return false;" style="font-size:13px;">${isNL?'Wachtwoord vergeten?':'Forgot password?'}</a></div>`:``}
-        <div style="text-align:center;margin-top:24px;padding-top:16px;border-top:1px solid var(--border);">
-            <p style="font-size:12px;color:var(--text-3);"><i class="fas fa-lock"></i> ${isNL?'Je gegevens zijn veilig bij ons':'Your data is safe with us'}</p>
-        </div>
     `;
 }
 
@@ -1716,8 +1927,9 @@ async function signInEmail(email, pass) {
 async function logout() {
     await auth.signOut();
     currentUser = null; isAdmin = false;
-    userFavorites = []; userReservations = []; userRatings = {};
+    userFavorites = []; userReservations = []; userRatings = {}; currentWeeklyDiscount = null;
     updateAuthUI(); displayFeaturedProducts(); displayAllProducts(); updateFavoritesUI(); updateReservationsUI();
+    renderDiscountCardInSettings();
     showToast(t('loggedOut'));
 }
 
@@ -1731,14 +1943,16 @@ auth.onAuthStateChanged(async (user) => {
         currentUser = user;
         await loadUserSettingsFromFirebase(user.uid);
         await loadUserData(user.uid);
+        await loadWeeklyDiscount();
     } else {
         currentUser = null; isAdmin = false;
-        userFavorites = []; userReservations = []; userRatings = {};
+        userFavorites = []; userReservations = []; userRatings = {}; currentWeeklyDiscount = null;
     }
     updateAuthUI();
     updateFavoritesUI();
     updateReservationsUI();
     checkAdminAccess();
+    renderDiscountCardInSettings();
 });
 
 function updateAuthUI() {
@@ -1756,11 +1970,15 @@ function updateAuthUI() {
         if (wText) wText.textContent = `${t('welcomeBack')}, ${currentUser.displayName || currentUser.email.split('@')[0]}!`;
         if (lBtn) { lBtn.textContent = t('logout'); lBtn.onclick = logout; }
         if (statusEl) statusEl.textContent = currentUser.email;
+        const dg = document.getElementById('discountGroup');
+        if (dg) dg.style.display = 'block';
     } else {
         av.innerHTML = '<i class="fas fa-user"></i>';
         if (wText) wText.textContent = t('welcomeDefault');
         if (lBtn) { lBtn.textContent = t('login'); lBtn.onclick = openAuth; }
         if (statusEl) statusEl.textContent = t('sAccountDesc');
+        const dg = document.getElementById('discountGroup');
+        if (dg) dg.style.display = 'none';
     }
 
     av.onclick = () => {
@@ -1774,6 +1992,204 @@ function openAuth() {
     document.getElementById('authModal').classList.add('active');
 }
 window.openAuth = openAuth;
+
+// ============================================================
+// WEEKLY DISCOUNT CODE  (per-user individual codes, auto random product)
+// ============================================================
+function getWeekKey() {
+    const now = new Date();
+    const jan1 = new Date(now.getFullYear(), 0, 1);
+    const week = Math.ceil(((now - jan1) / 86400000 + jan1.getDay() + 1) / 7);
+    return `${now.getFullYear()}-W${String(week).padStart(2, '0')}`;
+}
+
+function generateDiscountCode() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = '';
+    for (let i = 0; i < 8; i++) {
+        code += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return code;
+}
+
+// Pick (or retrieve) the weekly product from weeklyDiscountProduct/{weekKey}
+// If it doesn't exist yet, auto-create by picking a random product.
+async function getOrCreateWeeklyProduct() {
+    const weekKey = getWeekKey();
+    try {
+        const doc = await db.collection('weeklyDiscountProduct').doc(weekKey).get();
+        if (doc.exists) return doc.data(); // { productId, productName, productPrice, weekKey, validUntil }
+
+        // Auto-pick a random product from the loaded products list
+        if (!products.length) return null;
+        const pick = products[Math.floor(Math.random() * products.length)];
+        const sunday = (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + (7 - d.getDay()) % 7 || 7);
+            d.setHours(23, 59, 59, 0);
+            return d;
+        })();
+        const data = {
+            productId: pick.id,
+            productName: pick.name,
+            productPrice: pick.price,
+            weekKey,
+            validUntil: firebase.firestore.Timestamp.fromDate(sunday),
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+        await db.collection('weeklyDiscountProduct').doc(weekKey).set(data);
+        return data;
+    } catch(e) {
+        console.error('getOrCreateWeeklyProduct error:', e);
+        return null;
+    }
+}
+
+// Load (or generate) the personal discount code for the current user this week
+async function loadWeeklyDiscount() {
+    if (!currentUser) { currentWeeklyDiscount = null; renderDiscountCardInSettings(); return; }
+    try {
+        const weekKey = getWeekKey();
+        const userDiscountRef = db.collection('userDiscount').doc(`${currentUser.uid}_${weekKey}`);
+        const userDiscountDoc = await userDiscountRef.get();
+
+        if (userDiscountDoc.exists) {
+            currentWeeklyDiscount = { id: userDiscountDoc.id, ...userDiscountDoc.data() };
+        } else {
+            // Get the weekly product (auto-created if needed)
+            const weekProd = await getOrCreateWeeklyProduct();
+            if (!weekProd) { currentWeeklyDiscount = null; renderDiscountCardInSettings(); return; }
+
+            // Generate a unique personal code for this user
+            const personalCode = generateDiscountCode();
+            const data = {
+                userId: currentUser.uid,
+                code: personalCode,
+                productId: weekProd.productId,
+                productName: weekProd.productName,
+                productPrice: weekProd.productPrice,
+                discount: 0.10,
+                weekKey,
+                validUntil: weekProd.validUntil,
+                used: false,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            };
+            await userDiscountRef.set(data);
+            currentWeeklyDiscount = { id: userDiscountRef.id, ...data };
+        }
+        renderDiscountCardInSettings();
+    } catch(e) {
+        console.error('loadWeeklyDiscount error:', e);
+        currentWeeklyDiscount = null;
+        renderDiscountCardInSettings();
+    }
+}
+
+function renderDiscountCardInSettings() {
+    const wrap = document.getElementById('discountCardWrap');
+    if (!wrap) return;
+
+    if (!currentUser) { wrap.innerHTML = ''; return; }
+
+    if (!currentWeeklyDiscount) {
+        wrap.innerHTML = `
+            <div style="padding:14px 16px;font-size:13px;color:var(--text-3);">
+                <i class="fas fa-ticket-alt" style="color:var(--primary);margin-right:6px;"></i>
+                ${t('discountCardNone')}
+            </div>
+        `;
+        return;
+    }
+
+    const d = currentWeeklyDiscount;
+    const expiryDate = d.validUntil
+        ? new Date(d.validUntil.toDate ? d.validUntil.toDate() : d.validUntil)
+            .toLocaleDateString(settings.language === 'nl' ? 'nl-NL' : 'en-GB')
+        : '';
+    const usedLabel = d.used
+        ? `<span style="background:rgba(239,68,68,0.2);color:#ef4444;font-size:11px;padding:2px 8px;border-radius:8px;margin-left:6px;">${settings.language === 'nl' ? 'Gebruikt' : 'Used'}</span>`
+        : '';
+
+    wrap.innerHTML = `
+        <div class="discount-code-card">
+            <div class="discount-expiry">${t('discountCardExpiry')}: ${expiryDate}</div>
+            <div class="discount-badge-label"><i class="fas fa-ticket-alt"></i> ${t('discountCardTitle')} ${usedLabel}</div>
+            <div class="discount-code-value" style="opacity:${d.used ? 0.45 : 1};">${d.code}</div>
+            <div class="discount-code-info">
+                ${t('discountCardFor')} <strong style="color:#fff;">${d.productName || '?'}</strong><br>
+                ${t('discountCardAmount')} · ${settings.language === 'nl' ? 'Persoonlijke code · Eenmalig gebruik' : 'Personal code · One-time use'}
+            </div>
+            ${!d.used ? `
+            <button class="discount-copy-btn" id="discountCopyBtn" onclick="copyDiscountCode('${d.code}')">
+                <i class="fas fa-copy"></i> ${t('discountCardCopy')}
+            </button>` : `
+            <span style="font-size:12px;color:rgba(255,255,255,0.5);position:relative;z-index:1;">
+                ${settings.language === 'nl' ? '✓ Al gebruikt deze week' : '✓ Already used this week'}
+            </span>`}
+        </div>
+    `;
+}
+
+window.copyDiscountCode = function(code) {
+    navigator.clipboard.writeText(code).then(() => {
+        const btn = document.getElementById('discountCopyBtn');
+        if (btn) {
+            btn.innerHTML = `<i class="fas fa-check"></i> ${t('discountCardCopied')}`;
+            setTimeout(() => { btn.innerHTML = `<i class="fas fa-copy"></i> ${t('discountCardCopy')}`; }, 2000);
+        }
+        showToast(t('discountCardCopied'));
+    }).catch(() => showToast(code));
+};
+
+// Check if user has already used their discount code this week
+async function hasUserUsedDiscountThisWeek() {
+    if (!currentUser) return false;
+    const weekKey = getWeekKey();
+    try {
+        const doc = await db.collection('userDiscount').doc(`${currentUser.uid}_${weekKey}`).get();
+        return doc.exists && doc.data().used === true;
+    } catch(e) { return false; }
+}
+
+// Mark the user's personal discount code as used
+async function markDiscountUsed(code) {
+    if (!currentUser) return;
+    const weekKey = getWeekKey();
+    await db.collection('userDiscount').doc(`${currentUser.uid}_${weekKey}`).update({
+        used: true,
+        usedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    if (currentWeeklyDiscount) currentWeeklyDiscount.used = true;
+}
+
+// Validate the entered discount code for a given product
+async function validateDiscountCode(code, productId) {
+    if (!currentUser) return { valid: false, reason: 'notLoggedIn' };
+    if (!code) return { valid: false, reason: 'empty' };
+
+    // Check if user already used their code this week
+    const alreadyUsed = await hasUserUsedDiscountThisWeek();
+    if (alreadyUsed) return { valid: false, reason: 'alreadyUsed' };
+
+    // Check user's own personal code
+    const weekKey = getWeekKey();
+    try {
+        const doc = await db.collection('userDiscount').doc(`${currentUser.uid}_${weekKey}`).get();
+        if (!doc.exists) return { valid: false, reason: 'noDiscount' };
+        const d = doc.data();
+        if (d.code.toUpperCase() !== code.toUpperCase()) return { valid: false, reason: 'invalidCode' };
+        if (d.productId !== productId) return { valid: false, reason: 'wrongProduct' };
+        if (d.used) return { valid: false, reason: 'alreadyUsed' };
+        // Check expiry
+        if (d.validUntil) {
+            const expiry = d.validUntil.toDate ? d.validUntil.toDate() : new Date(d.validUntil);
+            if (new Date() > expiry) return { valid: false, reason: 'expired' };
+        }
+        return { valid: true, discount: 0.10, discountData: d };
+    } catch(e) {
+        return { valid: false, reason: 'error' };
+    }
+}
 
 // ============================================================
 // PRODUCTS
@@ -1817,15 +2233,18 @@ async function loadProductReviews(productId) {
             const tb = b.createdAt ? b.createdAt.toMillis() : 0;
             return tb - ta;
         });
-    } catch(e) { console.error('loadProductReviews error:', e); }
+    } catch(e) {}
 }
 
-// Helper: get translated product field
 function getProductField(product, field) {
     const lang = settings.language;
     const enField = field + 'En';
     if (lang === 'en' && product[enField]) return product[enField];
     return product[field] || '';
+}
+
+function isDiscountProduct(productId) {
+    return currentWeeklyDiscount && currentWeeklyDiscount.productId === productId;
 }
 
 function createProductCard(product) {
@@ -1836,12 +2255,14 @@ function createProductCard(product) {
     const avg = rating ? rating.average.toFixed(1) : '–';
     const cnt = rating ? rating.total : 0;
     const displayName = getProductField(product, 'name');
+    const isDiscount = isDiscountProduct(product.id);
 
     const starsHtml = [1,2,3,4,5].map(i => `<i class="fas fa-star" style="color:${rating && i <= Math.round(rating.average) ? 'var(--star)' : 'var(--star-off)'};font-size:10px;"></i>`).join('');
 
     card.innerHTML = `
         <div class="product-img">
             ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${displayName}" onerror="this.onerror=null;this.parentElement.innerHTML='<i class=\\'fas fa-cube\\'></i>';">` : `<i class="fas fa-cube" style="font-size:28px;"></i>`}
+            ${isDiscount ? `<div class="discount-badge-card">🎟️ -10%</div>` : ''}
             <button class="fav-btn ${isFav?'active':''}" data-pid="${product.id}">
                 <i class="${isFav?'fas':'far'} fa-heart" style="color:${isFav?'#ef4444':'var(--text-3)'};"></i>
             </button>
@@ -1901,6 +2322,7 @@ async function openProductModal(productId) {
     const reviews = productReviews[productId] || [];
     const displayName = getProductField(product, 'name');
     const displayDesc = getProductField(product, 'description');
+    const isDiscount = isDiscountProduct(productId);
 
     const starsInput = [1,2,3,4,5].map(i => `
         <i class="fas fa-star star-icon ${i <= userRating ? 'filled' : ''}" data-r="${i}" data-pid="${productId}"></i>
@@ -1921,11 +2343,23 @@ async function openProductModal(productId) {
         </div>
     `).join('') : `<p style="font-size:13px;color:var(--text-3);text-align:center;padding:12px;">${t('noReviews')}</p>`;
 
+    // Discount highlight if this is the discount product
+    const discountHighlightHtml = isDiscount && currentWeeklyDiscount ? `
+        <div class="discount-highlight">
+            <div class="discount-highlight-icon">🎟️</div>
+            <div class="discount-highlight-text">
+                <h4>${settings.language==='nl' ? 'Kortingscode beschikbaar!' : 'Discount code available!'}</h4>
+                <p>${settings.language==='nl' ? 'Gebruik jouw wekelijkse kortingscode voor 10% korting bij reservering.' : 'Use your weekly discount code for 10% off when reserving.'}</p>
+            </div>
+        </div>
+    ` : '';
+
     document.getElementById('productModalContent').innerHTML = `
         <div class="product-modal-img">
             ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${displayName}">` : `<i class="fas fa-cube" style="font-size:48px;color:var(--text-3);"></i>`}
         </div>
         <h1 class="product-modal-name">${displayName}</h1>
+        ${discountHighlightHtml}
         <p class="product-modal-desc">${displayDesc}</p>
         <div class="detail-grid">
             <div class="detail-box">
@@ -2010,7 +2444,7 @@ async function saveRating(productId, rating) {
         showToast(t('ratingSaved'));
         delete productReviews[productId];
         await openProductModal(productId);
-    } catch(e) { console.error(e); showToast('Fout bij opslaan beoordeling'); }
+    } catch(e) { console.error(e); }
 }
 window.saveRating = saveRating;
 
@@ -2030,7 +2464,7 @@ async function submitReview(productId) {
         showToast(t('reviewSaved'));
         delete productReviews[productId];
         await openProductModal(productId);
-    } catch(e) { console.error(e); showToast('Fout bij plaatsen recensie'); }
+    } catch(e) { console.error(e); }
 }
 window.submitReview = submitReview;
 
@@ -2042,8 +2476,10 @@ function openReserveModal(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
     closeModal('product');
+    appliedDiscount = null;
     const colors = product.colors || [];
     const displayName = getProductField(product, 'name');
+    const isDiscount = isDiscountProduct(productId);
 
     const colorSwatchesHtml = colors.length ? colors.map((c, i) => `
         <div style="text-align:center;">
@@ -2051,6 +2487,41 @@ function openReserveModal(productId) {
             <div class="color-label">${c.name}</div>
         </div>
     `).join('') : `<p style="font-size:13px;color:var(--text-3);">${settings.language==='nl'?'Geen kleuropties beschikbaar':'No color options available'}</p>`;
+
+    // Only show discount section if this is the discount product of the week
+    const discountSectionHtml = isDiscount ? `
+        <div class="discount-input-wrap">
+            <div class="discount-input-title">
+                <i class="fas fa-ticket-alt"></i>
+                ${t('discountInputTitle')}
+            </div>
+            <div class="discount-input-row">
+                <input type="text" class="discount-code-input" id="discountCodeInput_${productId}" 
+                    placeholder="XXXXXXXX" maxlength="8"
+                    oninput="this.value=this.value.toUpperCase()">
+                <button class="discount-apply-btn" onclick="applyDiscountCode('${productId}', ${product.price})">
+                    ${t('discountApply')}
+                </button>
+            </div>
+            <div class="discount-result" id="discountResult_${productId}"></div>
+            <div id="priceBreakdown_${productId}" style="display:none;">
+                <div class="price-breakdown">
+                    <div class="price-breakdown-row">
+                        <span>${t('priceOriginal')}</span>
+                        <span class="strikethrough">€${product.price.toFixed(2)}</span>
+                    </div>
+                    <div class="price-breakdown-row">
+                        <span>${t('priceDiscount')}</span>
+                        <span style="color:var(--success);">-€${(product.price * 0.10).toFixed(2)}</span>
+                    </div>
+                    <div class="price-breakdown-row">
+                        <span>${t('priceFinal')}</span>
+                        <span>€${(product.price * 0.90).toFixed(2)}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    ` : '';
 
     document.getElementById('reserveModalContent').innerHTML = `
         <div class="reserve-form">
@@ -2064,6 +2535,7 @@ function openReserveModal(productId) {
                     <span id="colorPreviewName">${t('noColorSelected')}</span>
                 </div>
             </div>
+            ${discountSectionHtml}
             <div class="form-group" style="margin-top:16px;">
                 <label class="form-label">${t('addNote')}</label>
                 <textarea class="note-input" id="reserveNote" placeholder="${t('addNote')}..."></textarea>
@@ -2093,6 +2565,37 @@ function openReserveModal(productId) {
 }
 window.openReserveModal = openReserveModal;
 
+window.applyDiscountCode = async function(productId, originalPrice) {
+    const input = document.getElementById(`discountCodeInput_${productId}`);
+    const resultEl = document.getElementById(`discountResult_${productId}`);
+    const breakdownEl = document.getElementById(`priceBreakdown_${productId}`);
+    if (!input || !resultEl) return;
+
+    const code = input.value.trim().toUpperCase();
+    if (!code) return;
+
+    resultEl.className = 'discount-result';
+    resultEl.textContent = settings.language === 'nl' ? 'Controleren...' : 'Checking...';
+    resultEl.style.display = 'block';
+
+    const result = await validateDiscountCode(code, productId);
+
+    if (result.valid) {
+        appliedDiscount = { code, discount: 0.10, originalPrice, finalPrice: originalPrice * 0.90 };
+        resultEl.className = 'discount-result valid';
+        resultEl.textContent = t('discountValid');
+        if (breakdownEl) breakdownEl.style.display = 'block';
+    } else {
+        appliedDiscount = null;
+        if (breakdownEl) breakdownEl.style.display = 'none';
+        resultEl.className = 'discount-result invalid';
+        if (result.reason === 'alreadyUsed') resultEl.textContent = t('discountAlreadyUsed');
+        else if (result.reason === 'wrongProduct') resultEl.textContent = t('discountWrongProduct');
+        else if (result.reason === 'expired') resultEl.textContent = t('discountExpired');
+        else resultEl.textContent = t('discountInvalid');
+    }
+};
+
 async function submitReservation(productId) {
     if (!currentUser) return;
     const product = products.find(p => p.id === productId);
@@ -2105,6 +2608,33 @@ async function submitReservation(productId) {
     }
     const color = selectedSwatch ? { name: selectedSwatch.dataset.name, hex: selectedSwatch.dataset.hex } : null;
     const note = document.getElementById('reserveNote')?.value?.trim() || '';
+
+    // Handle discount
+    let discountCode = null;
+    let discountAmount = 0;
+    let finalPrice = product.price;
+
+    if (appliedDiscount) {
+        // Double-check server side before saving
+        const recheck = await validateDiscountCode(appliedDiscount.code, productId);
+        if (recheck.valid) {
+            discountCode = appliedDiscount.code;
+            discountAmount = product.price * 0.10;
+            finalPrice = product.price * 0.90;
+            await markDiscountUsed(appliedDiscount.code);
+        } else {
+            // Discount no longer valid
+            appliedDiscount = null;
+            const errEl = document.getElementById('reserveError');
+            if (errEl) {
+                errEl.textContent = recheck.reason === 'alreadyUsed' ? t('discountAlreadyUsed') : t('discountInvalid');
+                errEl.style.display = 'block';
+                setTimeout(() => errEl.style.display = 'none', 4000);
+            }
+            return;
+        }
+    }
+
     try {
         await db.collection('reservations').add({
             userId: currentUser.uid,
@@ -2113,10 +2643,14 @@ async function submitReservation(productId) {
             productId,
             productName: product.name,
             productPrice: product.price,
+            discountCode: discountCode || null,
+            discountAmount: discountAmount,
+            finalPrice: finalPrice,
             color, note,
             status: 'pending',
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
+        appliedDiscount = null;
         showToast(t('reserveSuccess'));
         closeModal('reserve');
         await loadUserData(currentUser.uid);
@@ -2207,12 +2741,13 @@ function updateReservationsUI() {
         const statusLabels = t('resStatus');
         const statusLabel = statusLabels[res.status] || res.status;
         const date = res.createdAt ? new Date(res.createdAt.toDate()).toLocaleDateString(settings.language==='nl'?'nl-NL':'en-GB') : '';
+        const priceInfo = res.discountCode ? `€${res.finalPrice?.toFixed(2)} <span style="font-size:10px;background:rgba(34,197,94,0.15);color:var(--success);padding:2px 6px;border-radius:6px;margin-left:4px;">-10%</span>` : `€${res.productPrice?.toFixed(2)}`;
         card.innerHTML = `
             <div class="res-product">${res.productName}</div>
             <div class="res-color">
                 ${res.color ? `<div class="res-color-dot" style="background:${res.color.hex};"></div>${res.color.name}` : t('noColorSelected')}
             </div>
-            <div class="res-meta">${date}${res.note ? ` · ${res.note}` : ''}</div>
+            <div class="res-meta">${date}${res.note ? ` · ${res.note}` : ''} · ${priceInfo}</div>
             <span class="res-status ${res.status}">${statusLabel}</span>
         `;
         c.appendChild(card);
@@ -2246,9 +2781,9 @@ async function checkAdminAccess() {
     } catch(e) { section.style.display = 'none'; isAdmin = false; }
 }
 
-// Admin: temp color list while editing/adding
 let adminEditColors = [];
 let adminEditingProductId = null;
+const adminColorLists = {};
 
 async function loadAdminContent(tab) {
     currentAdminTab = tab;
@@ -2258,27 +2793,31 @@ async function loadAdminContent(tab) {
     document.querySelectorAll('.admin-tab').forEach(t => t.classList.toggle('active', t.dataset.atab === tab));
 
     if (tab === 'overview') {
-        const [prodsSnap, resSnap, reviewsSnap] = await Promise.all([
+        const [prodsSnap, resSnap, reviewsSnap, discountSnap] = await Promise.all([
             db.collection('products').get(),
             db.collection('reservations').get(),
-            db.collection('productReviews').get()
+            db.collection('productReviews').get(),
+            db.collection('weeklyDiscount').limit(1).get()
         ]);
-        const totalProducts = prodsSnap.size;
-        const totalRes = resSnap.size;
-        const pendingRes = resSnap.docs.filter(d => d.data().status === 'pending').length;
-        const totalReviews = reviewsSnap.size;
+        const weekKey = getWeekKey();
+        const activeDiscount = discountSnap.docs.find(d => d.id === weekKey);
         c.innerHTML = `
             <div class="stat-row">
                 <div class="stat-icon" style="background:#fef3c7;"><i class="fas fa-cube" style="color:#d97706;"></i></div>
-                <div><div style="font-weight:700;">${totalProducts} producten</div><div class="admin-stat">In database</div></div>
+                <div><div style="font-weight:700;">${prodsSnap.size} producten</div><div class="admin-stat">In database</div></div>
             </div>
             <div class="stat-row">
                 <div class="stat-icon" style="background:#f0fdf4;"><i class="fas fa-calendar-check" style="color:#16a34a;"></i></div>
-                <div><div style="font-weight:700;">${totalRes} reserveringen</div><div class="admin-stat">${pendingRes} in behandeling</div></div>
+                <div><div style="font-weight:700;">${resSnap.size} reserveringen</div><div class="admin-stat">${resSnap.docs.filter(d=>d.data().status==='pending').length} in behandeling</div></div>
             </div>
             <div class="stat-row">
                 <div class="stat-icon" style="background:#eff6ff;"><i class="fas fa-star" style="color:#2563eb;"></i></div>
-                <div><div style="font-weight:700;">${totalReviews} recensies</div><div class="admin-stat">Van alle producten</div></div>
+                <div><div style="font-weight:700;">${reviewsSnap.size} recensies</div></div>
+            </div>
+            <div class="stat-row">
+                <div class="stat-icon" style="background:#fce7f3;"><i class="fas fa-ticket-alt" style="color:#db2777;"></i></div>
+                <div><div style="font-weight:700;">${activeDiscount ? 'Kortingscode actief' : 'Geen kortingscode'}</div>
+                <div class="admin-stat">${activeDiscount ? 'Code: ' + activeDiscount.data().code : 'Geen actieve code deze week'}</div></div>
             </div>
         `;
     } else if (tab === 'reservations') {
@@ -2297,6 +2836,9 @@ async function loadAdminContent(tab) {
             card.className = 'admin-card';
             const date = res.createdAt ? new Date(res.createdAt.toDate()).toLocaleString('nl-NL') : '';
             const statusMap = { pending: 'In behandeling', confirmed: 'Bevestigd', cancelled: 'Geannuleerd' };
+            const priceHtml = res.discountCode ?
+                `<div class="admin-stat" style="margin-top:3px;">💰 Prijs: <span style="text-decoration:line-through;color:var(--text-3);">€${res.productPrice?.toFixed(2)}</span> → <strong style="color:var(--success);">€${res.finalPrice?.toFixed(2)}</strong> (code: ${res.discountCode})</div>` :
+                `<div class="admin-stat" style="margin-top:3px;">💰 Prijs: €${res.productPrice?.toFixed(2)}</div>`;
             card.innerHTML = `
                 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
                     <div class="admin-card-title">${res.productName}</div>
@@ -2304,11 +2846,13 @@ async function loadAdminContent(tab) {
                 </div>
                 <div class="admin-stat">👤 ${res.userName} (${res.userEmail})</div>
                 <div class="admin-stat" style="margin-top:3px;">🎨 ${res.color ? res.color.name : 'Geen kleur'} ${res.color ? `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${res.color.hex};border:1px solid #ccc;margin-left:3px;"></span>` : ''}</div>
+                ${priceHtml}
                 ${res.note ? `<div class="admin-stat" style="margin-top:3px;">📝 ${res.note}</div>` : ''}
                 <div class="admin-stat" style="margin-top:3px;">📅 ${date}</div>
                 <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;">
-                    <button onclick="updateResStatus('${res.id}','confirmed')" class="admin-btn admin-btn-success"><i class="fas fa-check"></i> Bevestigen</button>
+                    <button onclick="confirmAndShowBon('${res.id}')" class="admin-btn admin-btn-success"><i class="fas fa-check"></i> Bevestigen + Bon</button>
                     <button onclick="updateResStatus('${res.id}','cancelled')" class="admin-btn admin-btn-danger"><i class="fas fa-times"></i> Annuleren</button>
+                    <button onclick="showBonOnly('${res.id}')" class="admin-btn admin-btn-info"><i class="fas fa-receipt"></i> Bon</button>
                     <button onclick="deleteReservation('${res.id}')" class="admin-btn admin-btn-secondary"><i class="fas fa-trash"></i> Verwijderen</button>
                 </div>
             `;
@@ -2316,17 +2860,13 @@ async function loadAdminContent(tab) {
         });
     } else if (tab === 'products') {
         c.innerHTML = '';
-        // Add product form
         const addForm = renderProductForm(null);
         c.appendChild(addForm);
-
-        // Existing products
         const snap = await db.collection('products').get();
         const header = document.createElement('div');
         header.style.cssText = 'font-family:Outfit,sans-serif;font-size:16px;font-weight:700;margin:18px 0 10px;';
         header.textContent = 'Bestaande producten';
         c.appendChild(header);
-
         snap.forEach(doc => {
             const p = { id: doc.id, ...doc.data() };
             const card = document.createElement('div');
@@ -2375,28 +2915,332 @@ async function loadAdminContent(tab) {
                 <div class="admin-stat" style="margin-bottom:4px;">${rv.productId}</div>
                 <p style="font-size:13px;color:var(--text-2);line-height:1.5;">${rv.text}</p>
                 <div class="admin-stat" style="margin-top:6px;">📅 ${date}</div>
-                <button onclick="deleteReview('${rv.id}')" class="admin-btn admin-btn-danger" style="margin-top:8px;">
-                    <i class="fas fa-trash"></i> Verwijderen
-                </button>
+                <button onclick="deleteReview('${rv.id}')" class="admin-btn admin-btn-danger" style="margin-top:8px;"><i class="fas fa-trash"></i> Verwijderen</button>
             `;
             c.appendChild(card);
         });
+    } else if (tab === 'discount') {
+        await renderAdminDiscountTab(c);
     }
 }
 
-// Build product add/edit form
+// ============================================================
+// ADMIN DISCOUNT TAB  (read-only overview + reset weekly product)
+// ============================================================
+async function renderAdminDiscountTab(c) {
+    const weekKey = getWeekKey();
+
+    // Get the weekly product document
+    let weekProd = null;
+    try {
+        const doc = await db.collection('weeklyDiscountProduct').doc(weekKey).get();
+        if (doc.exists) weekProd = { id: doc.id, ...doc.data() };
+    } catch(e) {}
+
+    // Count how many users have a code this week and how many used it
+    let totalCodes = 0, usedCodes = 0;
+    let userCodeDocs = [];
+    try {
+        const snap = await db.collection('userDiscount').where('weekKey', '==', weekKey).get();
+        totalCodes = snap.size;
+        snap.forEach(doc => {
+            const d = doc.data();
+            if (d.used) usedCodes++;
+            userCodeDocs.push({ id: doc.id, ...d });
+        });
+    } catch(e) {}
+
+    const prodOptions = products.map(p =>
+        `<option value="${p.id}" ${weekProd && weekProd.productId === p.id ? 'selected' : ''}>${p.name} (€${p.price?.toFixed(2)})</option>`
+    ).join('');
+
+    const expiryVal = weekProd && weekProd.validUntil
+        ? (() => { const d = weekProd.validUntil.toDate ? weekProd.validUntil.toDate() : new Date(weekProd.validUntil); return d.toISOString().split('T')[0]; })()
+        : getDefaultDiscountExpiry();
+
+    c.innerHTML = `
+        <div class="discount-admin-card">
+            <div class="discount-admin-title"><i class="fas fa-ticket-alt"></i> Week: ${weekKey}</div>
+            ${weekProd ? `
+                <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:4px;position:relative;z-index:1;">
+                    ${settings.language==='nl' ? 'Kortingsproduct deze week:' : 'Discount product this week:'}
+                </div>
+                <div class="discount-admin-code" style="font-size:20px;letter-spacing:2px;">${weekProd.productName}</div>
+                <div class="discount-admin-meta">
+                    Prijs: €${weekProd.productPrice?.toFixed(2)} · Korting: 10%<br>
+                    Geldig t/m: ${weekProd.validUntil ? new Date(weekProd.validUntil.toDate ? weekProd.validUntil.toDate() : weekProd.validUntil).toLocaleDateString('nl-NL') : '?'}<br>
+                    Codes uitgedeeld: <strong style="color:var(--primary);">${totalCodes}</strong> · Gebruikt: <strong style="color:#22c55e;">${usedCodes}</strong>
+                </div>
+            ` : `
+                <div style="color:rgba(255,255,255,0.7);font-size:14px;margin-bottom:14px;position:relative;z-index:1;">
+                    ${settings.language==='nl'
+                        ? 'Nog geen kortingsproduct voor deze week. Wordt automatisch gekozen wanneer de eerste gebruiker inlogt, of kies er hieronder zelf één.'
+                        : 'No discount product this week yet. Auto-selected when the first user logs in, or choose one below.'}
+                </div>
+            `}
+            <div style="display:flex;gap:8px;flex-wrap:wrap;position:relative;z-index:1;">
+                ${weekProd ? `<button onclick="adminResetWeeklyProduct('${weekKey}')" class="admin-btn admin-btn-danger"><i class="fas fa-random"></i> Reset product (nieuw random)</button>` : ''}
+            </div>
+        </div>
+
+        <div class="admin-form">
+            <div class="admin-form-title">
+                <i class="fas fa-cog" style="color:var(--primary);"></i>
+                ${weekProd ? 'Kortingsproduct handmatig wijzigen' : 'Kortingsproduct instellen'}
+            </div>
+            <div class="admin-form-group">
+                <label class="admin-input-label">Product *</label>
+                <select class="admin-input" id="discountProductSelect">
+                    <option value="">-- Kies een product --</option>
+                    ${prodOptions}
+                </select>
+            </div>
+            <div class="admin-form-group">
+                <label class="admin-input-label">Geldig t/m</label>
+                <input type="date" class="admin-input" id="discountValidUntil" value="${expiryVal}">
+            </div>
+            <div style="display:flex;gap:8px;margin-top:6px;">
+                <button onclick="adminSetWeeklyProduct()" class="admin-btn admin-btn-primary">
+                    <i class="fas fa-check"></i> ${weekProd ? 'Product wijzigen' : 'Product instellen'}
+                </button>
+            </div>
+            <div class="auth-alert error" id="discountAdminError" style="margin-top:10px;"></div>
+            <div class="auth-alert success" id="discountAdminSuccess" style="margin-top:10px;"></div>
+            <p style="font-size:12px;color:var(--text-3);margin-top:10px;">
+                <i class="fas fa-info-circle"></i>
+                ${settings.language==='nl'
+                    ? 'Elke gebruiker krijgt automatisch een eigen unieke code zodra ze inloggen. Codes worden opgeslagen per gebruiker per week.'
+                    : 'Each user automatically gets their own unique code when they log in. Codes are stored per user per week.'}
+            </p>
+        </div>
+
+        <div class="admin-form">
+            <div class="admin-form-title"><i class="fas fa-list" style="color:var(--primary);"></i> Kortingscodes deze week (${totalCodes})</div>
+            <div id="discountUsageList">
+                ${userCodeDocs.length === 0
+                    ? `<p style="font-size:13px;color:var(--text-3);">Nog geen codes uitgedeeld deze week.</p>`
+                    : userCodeDocs.map(u => `
+                        <div class="stat-row">
+                            <div class="stat-icon" style="background:${u.used ? '#f0fdf4' : '#fef3c7'};">
+                                <i class="fas fa-${u.used ? 'check-circle' : 'clock'}" style="color:${u.used ? '#16a34a' : '#d97706'};"></i>
+                            </div>
+                            <div style="flex:1;min-width:0;">
+                                <div style="font-size:12px;font-weight:700;font-family:monospace;letter-spacing:1px;">${u.code}</div>
+                                <div style="font-size:11px;color:var(--text-3);">${u.userId.slice(0,12)}... · ${u.used ? '✅ Gebruikt' : '⏳ Nog niet gebruikt'}${u.usedAt ? ' · ' + new Date(u.usedAt.toDate()).toLocaleString('nl-NL') : ''}</div>
+                            </div>
+                        </div>
+                    `).join('')
+                }
+            </div>
+        </div>
+    `;
+}
+
+function getDefaultDiscountExpiry() {
+    const now = new Date();
+    const day = now.getDay();
+    const diff = 7 - day; // days until next Sunday
+    const sunday = new Date(now);
+    sunday.setDate(now.getDate() + (diff === 7 ? 0 : diff));
+    return sunday.toISOString().split('T')[0];
+}
+
+window.generateDiscountCode = generateDiscountCode;
+
+window.adminSetWeeklyProduct = async function() {
+    const productId = document.getElementById('discountProductSelect')?.value;
+    const validUntilStr = document.getElementById('discountValidUntil')?.value;
+    const errEl = document.getElementById('discountAdminError');
+    const successEl = document.getElementById('discountAdminSuccess');
+
+    if (!productId) {
+        if (errEl) { errEl.textContent = 'Kies een product'; errEl.style.display = 'block'; }
+        return;
+    }
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    const weekKey = getWeekKey();
+    const validUntil = validUntilStr
+        ? new Date(validUntilStr + 'T23:59:59')
+        : (() => { const d = new Date(); d.setDate(d.getDate() + (7 - d.getDay()) % 7 || 7); d.setHours(23,59,59); return d; })();
+
+    try {
+        await db.collection('weeklyDiscountProduct').doc(weekKey).set({
+            productId,
+            productName: product.name,
+            productPrice: product.price,
+            weekKey,
+            validUntil: firebase.firestore.Timestamp.fromDate(validUntil),
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true });
+
+        if (successEl) { successEl.textContent = `Kortingsproduct ingesteld: ${product.name}`; successEl.style.display = 'block'; }
+        if (errEl) errEl.style.display = 'none';
+        showToast('Kortingsproduct ingesteld!');
+        setTimeout(() => loadAdminContent('discount'), 1200);
+    } catch(e) {
+        if (errEl) { errEl.textContent = 'Fout: ' + e.message; errEl.style.display = 'block'; }
+    }
+};
+
+window.adminResetWeeklyProduct = function(weekKey) {
+    showConfirm(
+        'Product resetten',
+        'Dit verwijdert het huidige kortingsproduct. Het wordt automatisch opnieuw random gekozen bij de volgende gebruikerslogin. Bestaande persoonlijke codes blijven geldig.',
+        'Resetten',
+        async () => {
+            await db.collection('weeklyDiscountProduct').doc(weekKey).delete();
+            showToast('Kortingsproduct gereset');
+            loadAdminContent('discount');
+        }
+    );
+};
+
+
+// ============================================================
+// BON / RECEIPT
+// ============================================================
+let currentBonData = null;
+
+async function getBonData(resId) {
+    const doc = await db.collection('reservations').doc(resId).get();
+    if (!doc.exists) return null;
+    return { id: doc.id, ...doc.data() };
+}
+
+function buildBonHTML(res) {
+    const date = res.createdAt ? new Date(res.createdAt.toDate ? res.createdAt.toDate() : res.createdAt).toLocaleString('nl-NL') : new Date().toLocaleString('nl-NL');
+    const hasDiscount = !!res.discountCode;
+    const finalPrice = res.finalPrice || res.productPrice;
+
+    return `
+        <div class="bon-preview" id="bonPreviewInner">
+            <h2>PrintSome</h2>
+            <div class="bon-sub">3D Printing Shop · printsome-webapp@outlook.com</div>
+            <hr class="bon-divider">
+            <div class="bon-row"><span>Reserveringsnr:</span><span>#${res.id.slice(-6).toUpperCase()}</span></div>
+            <div class="bon-row"><span>Datum:</span><span>${date}</span></div>
+            <div class="bon-row"><span>Klant:</span><span>${res.userName}</span></div>
+            <div class="bon-row"><span>Email:</span><span>${res.userEmail}</span></div>
+            <hr class="bon-divider">
+            <div class="bon-row"><span><strong>Product:</strong></span><span><strong>${res.productName}</strong></span></div>
+            ${res.color ? `<div class="bon-row"><span>Kleur:</span><span>${res.color.name}</span></div>` : ''}
+            ${res.note ? `<div class="bon-row"><span>Opmerking:</span><span>${res.note}</span></div>` : ''}
+            <hr class="bon-divider">
+            <div class="bon-row"><span>Originele prijs:</span><span>€${res.productPrice?.toFixed(2)}</span></div>
+            ${hasDiscount ? `
+                <div class="bon-row"><span>Kortingscode:</span><span>${res.discountCode}</span></div>
+                <div class="bon-row"><span>Korting (10%):</span><span>-€${res.discountAmount?.toFixed(2)}</span></div>
+            ` : ''}
+            <div class="bon-total"><span>TOTAAL</span><span>€${finalPrice?.toFixed(2)}</span></div>
+            <hr class="bon-divider">
+            <div class="bon-row"><span>Status:</span><span><strong>${res.status === 'confirmed' ? '✅ Bevestigd' : res.status}</strong></span></div>
+            <div class="bon-footer">
+                Bedankt voor je reservering!<br>
+                PrintSome · printsome-webapp@outlook.com<br>
+                printsome.pages.dev
+            </div>
+        </div>
+    `;
+}
+
+function buildBonText(res) {
+    const date = res.createdAt ? new Date(res.createdAt.toDate ? res.createdAt.toDate() : res.createdAt).toLocaleString('nl-NL') : new Date().toLocaleString('nl-NL');
+    const hasDiscount = !!res.discountCode;
+    const finalPrice = res.finalPrice || res.productPrice;
+    return `
+================================
+         PRINTSOME
+  3D Printing Shop
+  printsome-webapp@outlook.com
+================================
+Reserveringsnr: #${res.id.slice(-6).toUpperCase()}
+Datum:          ${date}
+Klant:          ${res.userName}
+Email:          ${res.userEmail}
+--------------------------------
+Product:        ${res.productName}
+${res.color ? `Kleur:          ${res.color.name}` : ''}
+${res.note ? `Opmerking:      ${res.note}` : ''}
+--------------------------------
+Originele prijs: €${res.productPrice?.toFixed(2)}
+${hasDiscount ? `Kortingscode:   ${res.discountCode}
+Korting (10%):  -€${res.discountAmount?.toFixed(2)}` : ''}
+================================
+TOTAAL:         €${finalPrice?.toFixed(2)}
+Status:         ${res.status === 'confirmed' ? 'BEVESTIGD' : res.status.toUpperCase()}
+================================
+Bedankt voor je reservering!
+PrintSome · printsome.pages.dev
+    `.trim();
+}
+
+window.confirmAndShowBon = async function(resId) {
+    await db.collection('reservations').doc(resId).update({ status: 'confirmed', updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
+    showToast('Reservering bevestigd!');
+    const res = await getBonData(resId);
+    if (!res) return;
+    currentBonData = res;
+    showBon(res);
+    loadAdminContent('reservations');
+};
+
+window.showBonOnly = async function(resId) {
+    const res = await getBonData(resId);
+    if (!res) return;
+    currentBonData = res;
+    showBon(res);
+};
+
+function showBon(res) {
+    document.getElementById('bonContent').innerHTML = buildBonHTML(res);
+    document.getElementById('bonOverlay').classList.add('show');
+}
+
+window.closeBon = function() {
+    document.getElementById('bonOverlay').classList.remove('show');
+    currentBonData = null;
+};
+
+window.copyBon = function() {
+    if (!currentBonData) return;
+    const text = buildBonText(currentBonData);
+    navigator.clipboard.writeText(text).then(() => {
+        showToast('Bon gekopieerd!');
+    }).catch(() => {
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('Bon gekopieerd!');
+    });
+};
+
+window.printBon = function() {
+    if (!currentBonData) return;
+    const printEl = document.getElementById('printBonContent');
+    printEl.innerHTML = buildBonHTML(currentBonData);
+    printEl.style.display = 'block';
+    window.print();
+    printEl.style.display = 'none';
+};
+
+// ============================================================
+// ADMIN PRODUCT FORM
+// ============================================================
 function renderProductForm(productData) {
     const isEdit = !!productData;
     const p = productData || {};
     const colors = (p.colors || []);
-
     const wrap = document.createElement('div');
     wrap.className = 'admin-form';
     const formId = isEdit ? `editProductForm_${p.id}` : 'newProductForm';
     const colorListId = isEdit ? `colorList_${p.id}` : 'colorListNew';
     const tempKey = isEdit ? `edit_${p.id}` : 'new';
-
-    // Initialize temp colors
     adminColorLists[tempKey] = [...colors];
 
     wrap.innerHTML = `
@@ -2464,7 +3308,6 @@ function renderProductForm(productData) {
             <label class="admin-input-label">Afbeelding URL</label>
             <input class="admin-input" id="${formId}_imageUrl" value="${p.imageUrl||''}" placeholder="https://...">
         </div>
-
         <div class="admin-form-group">
             <label class="admin-input-label">Kleuren</label>
             <div id="${colorListId}" style="margin-bottom:10px;"></div>
@@ -2482,7 +3325,6 @@ function renderProductForm(productData) {
                 </button>
             </div>
         </div>
-
         <div style="display:flex;gap:8px;margin-top:6px;">
             <button class="admin-btn admin-btn-primary" onclick="saveAdminProduct('${isEdit?p.id:''}','${formId}','${tempKey}')">
                 <i class="fas fa-save"></i> ${isEdit?'Opslaan':'Product toevoegen'}
@@ -2491,14 +3333,9 @@ function renderProductForm(productData) {
         </div>
         <div class="auth-alert error" id="${formId}_error" style="margin-top:10px;"></div>
     `;
-
-    // Render color list after inserting into DOM
     setTimeout(() => renderAdminColorList(tempKey, colorListId, formId), 0);
     return wrap;
 }
-
-// Color lists per form (keyed by tempKey)
-const adminColorLists = {};
 
 function renderAdminColorList(tempKey, colorListId, formId) {
     const container = document.getElementById(colorListId);
@@ -2513,9 +3350,7 @@ function renderAdminColorList(tempKey, colorListId, formId) {
             <div class="admin-color-circle" style="background:${c.hex};"></div>
             <span style="font-size:14px;font-weight:600;flex:1;">${c.name}</span>
             <span style="font-size:12px;color:var(--text-3);">${c.hex}</span>
-            <button onclick="adminRemoveColor('${tempKey}','${colorListId}','${formId}',${i})" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:14px;padding:4px 6px;">
-                <i class="fas fa-times"></i>
-            </button>
+            <button onclick="adminRemoveColor('${tempKey}','${colorListId}','${formId}',${i})" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:14px;padding:4px 6px;"><i class="fas fa-times"></i></button>
         `;
         container.appendChild(entry);
     });
@@ -2528,7 +3363,6 @@ window.adminAddColor = function(tempKey, colorListId, nameId, hexId) {
     if (!adminColorLists[tempKey]) adminColorLists[tempKey] = [];
     adminColorLists[tempKey].push({ name, hex });
     document.getElementById(nameId).value = '';
-    // find formId from nameId
     const formId = nameId.replace('_colorName', '');
     renderAdminColorList(tempKey, colorListId, formId);
 };
@@ -2575,43 +3409,31 @@ window.saveAdminProduct = async function(productId, formId, tempKey) {
         if (errEl) { errEl.textContent = 'Vul alle verplichte velden in'; errEl.style.display = 'block'; }
         return;
     }
-
     const price = parseFloat(priceStr);
     if (isNaN(price) || price < 0) {
         if (errEl) { errEl.textContent = 'Ongeldige prijs'; errEl.style.display = 'block'; }
         return;
     }
-
     const colors = adminColorLists[tempKey] || [];
     const data = { name, nameEn, description, descriptionEn, price, material, category, featured, imageUrl, colors };
     if (category2) data.category2 = category2; else data.category2 = '';
-
     try {
         if (productId) {
-            // Update existing
             await db.collection('products').doc(productId).update(data);
             showToast('Product bijgewerkt!');
         } else {
-            // Add new
             await db.collection('products').add(data);
             showToast('Product toegevoegd!');
         }
-        // Reload products and admin tab
         await loadProducts();
         loadAdminContent('products');
     } catch(e) {
-        console.error(e);
         if (errEl) { errEl.textContent = 'Fout: ' + e.message; errEl.style.display = 'block'; }
     }
 };
 
 window.confirmDeleteProduct = function(productId, productName) {
-    showConfirm(
-        'Product verwijderen',
-        `Weet je zeker dat je "${productName}" wilt verwijderen? Dit kan niet ongedaan gemaakt worden.`,
-        'Verwijderen',
-        () => deleteProduct(productId)
-    );
+    showConfirm('Product verwijderen', `Weet je zeker dat je "${productName}" wilt verwijderen?`, 'Verwijderen', () => deleteProduct(productId));
 };
 
 async function deleteProduct(productId) {
@@ -2632,18 +3454,13 @@ window.updateResStatus = async function(resId, status) {
 };
 
 window.deleteReservation = function(resId) {
-    showConfirm(
-        'Reservering verwijderen',
-        'Weet je zeker dat je deze reservering permanent wilt verwijderen?',
-        'Verwijderen',
-        async () => {
-            try {
-                await db.collection('reservations').doc(resId).delete();
-                showToast('Reservering verwijderd');
-                loadAdminContent('reservations');
-            } catch(e) { showToast('Fout bij verwijderen'); }
-        }
-    );
+    showConfirm('Reservering verwijderen', 'Weet je zeker dat je deze reservering permanent wilt verwijderen?', 'Verwijderen', async () => {
+        try {
+            await db.collection('reservations').doc(resId).delete();
+            showToast('Reservering verwijderd');
+            loadAdminContent('reservations');
+        } catch(e) { showToast('Fout bij verwijderen'); }
+    });
 };
 
 window.deleteReview = async function(reviewId) {
@@ -2660,31 +3477,27 @@ window.deleteReview = async function(reviewId) {
 window.showPage = function(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-
     const pageEl = document.getElementById(page + 'Page');
     if (pageEl) pageEl.classList.add('active');
-
     const navEl = document.querySelector(`.nav-item[data-page="${page}"]`);
     if (navEl) navEl.classList.add('active');
-
     currentPage = page;
-
     const headerMap = {
-        home: t('appName'),
-        products: t('products'),
-        favorites: t('favTitle'),
-        reservations: t('resTitle'),
-        settings: t('settings'),
+        home: t('appName'), products: t('products'), favorites: t('favTitle'),
+        reservations: t('resTitle'), settings: t('settings'),
         privacy: settings.language === 'nl' ? 'Privacybeleid' : 'Privacy Policy',
         admin: 'Admin'
     };
     const headerEl = document.getElementById('headerTitle');
     if (headerEl) headerEl.textContent = headerMap[page] || t('appName');
-
     if (page === 'favorites') updateFavoritesUI();
     if (page === 'reservations') updateReservationsUI();
     if (page === 'admin') loadAdminContent(currentAdminTab);
     if (page === 'privacy') buildPrivacyPage();
+    if (page === 'settings') {
+        renderDiscountCardInSettings();
+        if (currentUser && !currentWeeklyDiscount) loadWeeklyDiscount();
+    }
 };
 
 // ============================================================
@@ -2697,28 +3510,23 @@ window.closeModal = function(type) {
 };
 
 // ============================================================
-// COOKIE - FIX: properly hide banner and store preference
+// COOKIE
 // ============================================================
 window.acceptCookies = function() {
     localStorage.setItem('ps3_cookies', 'accepted');
     const banner = document.getElementById('cookieBanner');
-    banner.classList.remove('show');
-    banner.style.display = 'none';
+    banner.classList.remove('show'); banner.style.display = 'none';
 };
-
 window.rejectCookies = function() {
     localStorage.setItem('ps3_cookies', 'functional');
     const banner = document.getElementById('cookieBanner');
-    banner.classList.remove('show');
-    banner.style.display = 'none';
+    banner.classList.remove('show'); banner.style.display = 'none';
 };
-
 window.showCookieSettings = function() {
     const banner = document.getElementById('cookieBanner');
     banner.style.display = '';
     setTimeout(() => banner.classList.add('show'), 10);
 };
-
 function checkCookieBanner() {
     if (!localStorage.getItem('ps3_cookies')) {
         setTimeout(() => {
@@ -2728,12 +3536,10 @@ function checkCookieBanner() {
         }, 1500);
     }
 }
-
 window.acceptPrivacyPopup = function() {
     localStorage.setItem('ps3_privacy', 'accepted');
     document.getElementById('privacyPopupOverlay').classList.remove('show');
 };
-
 function checkPrivacyPopup() {
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
     if (isStandalone && !localStorage.getItem('ps3_privacy')) {
@@ -2749,33 +3555,25 @@ function checkInstall() {
     const installGroup = document.getElementById('installGroup');
     if (!isStandalone && installGroup) installGroup.style.display = 'block';
     else if (installGroup) installGroup.style.display = 'none';
-
     if (!isStandalone && !sessionStorage.getItem('ps3_install_shown')) {
         sessionStorage.setItem('ps3_install_shown', '1');
         setTimeout(() => showInstallSheet(), 2000);
     }
 }
-
 function showInstallSheet() {
     const isIphone = /iPhone|iPad|iPod/.test(navigator.userAgent);
     const steps = isIphone ? t('installIphone') : t('installAndroid');
     const stepsHtml = steps.map((s, i) => `
         <div class="install-step">
             <div class="install-step-num">${i+1}</div>
-            <div class="install-step-info">
-                <p>${s.title}</p>
-                <small>${s.desc}</small>
-            </div>
+            <div class="install-step-info"><p>${s.title}</p><small>${s.desc}</small></div>
         </div>
     `).join('');
     document.getElementById('installSteps').innerHTML = stepsHtml;
     document.getElementById('installOverlay').classList.add('show');
 }
-
 window.closeInstallSheet = function(e) {
-    if (e.target === document.getElementById('installOverlay')) {
-        document.getElementById('installOverlay').classList.remove('show');
-    }
+    if (e.target === document.getElementById('installOverlay')) document.getElementById('installOverlay').classList.remove('show');
 };
 
 // ============================================================
@@ -2802,22 +3600,19 @@ function setupEvents() {
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', e => { e.preventDefault(); showPage(item.dataset.page); });
     });
-
     document.getElementById('languageSelector')?.addEventListener('change', e => {
         settings.language = e.target.value;
         saveSettings();
         applyLanguageUI();
         displayFeaturedProducts(); displayAllProducts(); updateFavoritesUI(); updateReservationsUI();
+        renderDiscountCardInSettings();
         if (currentPage === 'admin') loadAdminContent(currentAdminTab);
     });
-
     document.getElementById('themeSelect')?.addEventListener('change', e => {
         applyTheme(e.target.value);
         saveSettings();
     });
-
     document.getElementById('allProductsLink')?.addEventListener('click', e => { e.preventDefault(); showPage('products'); });
-
     document.querySelectorAll('.filter-chips .chip').forEach(chip => {
         chip.addEventListener('click', () => {
             document.querySelectorAll('.filter-chips .chip').forEach(c => c.classList.remove('active'));
@@ -2825,19 +3620,15 @@ function setupEvents() {
             displayAllProducts(chip.dataset.filter, document.getElementById('searchInput')?.value || '');
         });
     });
-
     document.getElementById('searchInput')?.addEventListener('input', e => {
         const activeChip = document.querySelector('.filter-chips .chip.active');
         const filter = activeChip?.dataset.filter || 'all';
         displayAllProducts(filter, e.target.value.toLowerCase());
     });
-
     document.querySelectorAll('.admin-tab').forEach(tab => {
         tab.addEventListener('click', () => loadAdminContent(tab.dataset.atab));
     });
-
     document.getElementById('installBtn')?.addEventListener('click', showInstallSheet);
-
     document.getElementById('loginButton')?.addEventListener('click', function() {
         if (currentUser) logout();
         else openAuth();

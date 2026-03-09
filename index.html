@@ -172,7 +172,7 @@
             transition: transform var(--transition-bounce);
         }
         .nav-item.active .nav-icon { transform: translateY(-2px); }
-        .nav-label { font-size: 10px; font-weight: 600; letter-spacing: 0.3px; text-transform: uppercase; }
+        .nav-label { font-size: 8.5px; font-weight: 600; letter-spacing: 0; text-transform: uppercase; }
         .nav-badge {
             position: absolute; top: 6px; right: calc(50% - 18px);
             background: var(--danger); color: white;
@@ -403,10 +403,8 @@
         }
         .discount-copy-btn:hover { transform: scale(1.05); }
         .discount-expiry {
-            position: absolute; top: 16px; right: 16px;
-            background: rgba(255,255,255,0.1); border-radius: 8px;
-            padding: 4px 10px; font-size: 11px; color: rgba(255,255,255,0.7);
-            z-index: 1;
+            font-size: 11px; color: rgba(255,255,255,0.6);
+            margin-bottom: 6px; position: relative; z-index: 1;
         }
 
         .modal-overlay {
@@ -2117,7 +2115,7 @@ function renderDiscountCardInSettings() {
             <div class="discount-code-value" style="opacity:${d.used ? 0.45 : 1};">${d.code}</div>
             <div class="discount-code-info">
                 ${t('discountCardFor')} <strong style="color:#fff;">${d.productName || '?'}</strong><br>
-                ${t('discountCardAmount')} · ${settings.language === 'nl' ? 'Persoonlijke code · Eenmalig gebruik' : 'Personal code · One-time use'}
+                ${t('discountCardAmount')}
             </div>
             ${!d.used ? `
             <button class="discount-copy-btn" id="discountCopyBtn" onclick="copyDiscountCode('${d.code}')">
@@ -2134,7 +2132,7 @@ window.copyDiscountCode = function(code) {
     navigator.clipboard.writeText(code).then(() => {
         const btn = document.getElementById('discountCopyBtn');
         if (btn) {
-            btn.innerHTML = `<i class="fas fa-check"></i> ${t('discountCardCopied')}`;
+            btn.innerHTML = t('discountCardCopied');
             setTimeout(() => { btn.innerHTML = `<i class="fas fa-copy"></i> ${t('discountCardCopy')}`; }, 2000);
         }
         showToast(t('discountCardCopied'));

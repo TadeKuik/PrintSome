@@ -636,47 +636,6 @@
         .res-color { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-2); margin-bottom: 4px; }
         .res-color-dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--border); }
         .res-meta { font-size: 12px; color: var(--text-3); }
-        /* STOCK BADGE */
-        .stock-badge {
-            position: absolute; top: 8px; left: 8px; z-index: 3;
-            padding: 3px 9px; border-radius: 20px; font-size: 10px; font-weight: 800;
-            letter-spacing: 0.3px; pointer-events: none;
-        }
-        .stock-badge.out { background: rgba(239,68,68,0.92); color: #fff; }
-        .stock-badge.low { background: rgba(245,158,11,0.92); color: #fff; }
-        .product-card.out-of-stock { opacity: 0.72; }
-        .product-card.out-of-stock .product-img { filter: grayscale(40%); }
-
-        /* NOTIFICATIONS */
-        .notif-overlay {
-            position: fixed; inset: 0; z-index: 900;
-            background: var(--bg); display: none; flex-direction: column;
-            padding-top: var(--safe-top);
-        }
-        .notif-overlay.active { display: flex; }
-        .notif-header {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 18px 16px 12px; border-bottom: 1px solid var(--border);
-        }
-        .notif-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
-        .notif-item {
-            display: flex; align-items: flex-start; gap: 12px;
-            padding: 14px 16px; border-bottom: 1px solid var(--border);
-            transition: background var(--transition);
-        }
-        .notif-item.unread { background: var(--primary-light); }
-        .notif-icon {
-            width: 38px; height: 38px; border-radius: 12px; flex-shrink: 0;
-            display: flex; align-items: center; justify-content: center; font-size: 17px;
-        }
-        .notif-icon.confirmed { background: rgba(34,197,94,0.15); color: var(--success); }
-        .notif-icon.cancelled { background: rgba(239,68,68,0.15); color: var(--danger); }
-        .notif-icon.pending { background: rgba(245,158,11,0.15); color: var(--warning); }
-        .notif-body { flex: 1; min-width: 0; }
-        .notif-body strong { font-size: 14px; font-weight: 700; display: block; margin-bottom: 2px; }
-        .notif-body p { font-size: 13px; color: var(--text-2); margin: 0; line-height: 1.4; }
-        .notif-time { font-size: 11px; color: var(--text-3); margin-top: 3px; }
-
         .res-status {
             position: absolute; top: 14px; right: 14px;
             padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700;
@@ -1104,10 +1063,6 @@
         <div class="page" id="reservationsPage">
             <div class="section-header">
                 <h2 class="section-title" id="resTitle">Mijn Reserveringen</h2>
-                <button onclick="openNotifs()" style="background:none;border:none;cursor:pointer;position:relative;padding:6px;color:var(--text-2);font-size:18px;" id="notifBellBtn">
-                    <i class="fas fa-bell"></i>
-                    <span id="notifBellBadge" style="display:none;position:absolute;top:2px;right:2px;width:8px;height:8px;background:var(--info);border-radius:50%;border:1.5px solid var(--bg);"></span>
-                </button>
             </div>
             <div id="reservationsList">
                 <div class="loading"><div class="spinner"></div><span>Laden...</span></div>
@@ -1300,7 +1255,6 @@
             <span class="nav-dot"></span>
             <i class="fas fa-calendar-check nav-icon"></i>
             <span class="nav-badge" id="resBadge" style="display:none;">0</span>
-            <span class="nav-badge" id="notifBadge" style="display:none;background:var(--info);top:2px;right:calc(50% - 26px);">0</span>
             <span class="nav-label" id="navRes">Reserveringen</span>
         </a>
         <a href="#" class="nav-item" data-page="settings">
@@ -1309,20 +1263,6 @@
             <span class="nav-label" id="navSettings">Instellingen</span>
         </a>
     </nav>
-</div>
-
-<!-- NOTIFICATIONS OVERLAY -->
-<div class="notif-overlay" id="notifOverlay">
-    <div class="notif-header">
-        <span class="notif-title" id="notifTitle">Meldingen</span>
-        <div style="display:flex;gap:10px;align-items:center;">
-            <button onclick="markAllNotifsRead()" style="font-size:12px;color:var(--text-3);background:none;border:none;cursor:pointer;" id="markAllReadBtn">Alles gelezen</button>
-            <button onclick="closeNotifs()" style="background:none;border:none;cursor:pointer;font-size:20px;color:var(--text-2);">×</button>
-        </div>
-    </div>
-    <div style="flex:1;overflow-y:auto;" id="notifList">
-        <div class="empty-state"><i class="fas fa-bell-slash"></i><h3 id="noNotifsText">Geen meldingen</h3></div>
-    </div>
 </div>
 
 <!-- COOKIE BANNER -->
@@ -1508,7 +1448,6 @@ const T = {
         loginFav: 'Log in om favorieten op te slaan',
         resTitle: 'Mijn Reserveringen',
         noRes: 'Geen reserveringen', noResDesc: 'Reserveer een product via de productpagina',
-        notifTitle: 'Meldingen', noNotifs: 'Geen meldingen', markAllRead: 'Alles gelezen',
         reserveBtn: 'Reserveren',
         reserveSuccess: 'Reservering geplaatst!',
         reserveLogin: 'Log in om te reserveren',
@@ -1612,7 +1551,6 @@ const T = {
         loginFav: 'Log in to save favorites',
         resTitle: 'My Reservations',
         noRes: 'No reservations', noResDesc: 'Reserve a product via the product page',
-        notifTitle: 'Notifications', noNotifs: 'No notifications', markAllRead: 'Mark all read',
         reserveBtn: 'Reserve',
         reserveSuccess: 'Reservation placed!',
         reserveLogin: 'Log in to reserve',
@@ -1814,9 +1752,6 @@ function applyLanguageUI() {
     if(el('privacyPopOk')) el('privacyPopOk').textContent = t('privacyPopOk');
     if(el('installTitle')) el('installTitle').textContent = t('installTitle');
     if(el('installDoneBtn')) el('installDoneBtn').textContent = t('installDoneBtn');
-    if(el('notifTitle')) el('notifTitle').textContent = t('notifTitle');
-    if(el('markAllReadBtn')) el('markAllReadBtn').textContent = t('markAllRead');
-    if(el('noNotifsText')) el('noNotifsText').textContent = t('noNotifs');
     buildPrivacyPage();
 }
 
@@ -2312,9 +2247,7 @@ function isDiscountProduct(productId) {
 
 function createProductCard(product) {
     const card = document.createElement('div');
-    const outOfStock = product.stock !== null && product.stock !== undefined && product.stock <= 0;
-    const lowStock = product.stock !== null && product.stock !== undefined && product.stock > 0 && product.stock <= 3;
-    card.className = 'product-card' + (outOfStock ? ' out-of-stock' : '');
+    card.className = 'product-card';
     const isFav = userFavorites.includes(product.id);
     const rating = productRatings[product.id];
     const avg = rating ? rating.average.toFixed(1) : '–';
@@ -2324,16 +2257,9 @@ function createProductCard(product) {
 
     const starsHtml = [1,2,3,4,5].map(i => `<i class="fas fa-star" style="color:${rating && i <= Math.round(rating.average) ? 'var(--star)' : 'var(--star-off)'};font-size:10px;"></i>`).join('');
 
-    const stockBadge = outOfStock
-        ? `<div class="stock-badge out">${settings.language==='nl' ? 'Uitverkocht' : 'Sold out'}</div>`
-        : lowStock
-        ? `<div class="stock-badge low">${settings.language==='nl' ? `Nog ${product.stock}` : `${product.stock} left`}</div>`
-        : '';
-
     card.innerHTML = `
         <div class="product-img">
             ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${displayName}" onerror="this.onerror=null;this.parentElement.innerHTML='<i class=\\'fas fa-cube\\'></i>';">` : `<i class="fas fa-cube" style="font-size:28px;"></i>`}
-            ${stockBadge}
             ${isDiscount ? `<div class="discount-badge-card">🎟️ -10%</div>` : ''}
             <button class="fav-btn ${isFav?'active':''}" data-pid="${product.id}">
                 <i class="${isFav?'fas':'far'} fa-heart" style="color:${isFav?'#ef4444':'var(--text-3)'};"></i>
@@ -2547,12 +2473,6 @@ function openReserveModal(productId) {
     if (!currentUser) { showToast(t('reserveLogin')); openAuth(); return; }
     const product = products.find(p => p.id === productId);
     if (!product) return;
-    // Block if out of stock
-    const outOfStock = product.stock !== null && product.stock !== undefined && product.stock <= 0;
-    if (outOfStock) {
-        showToast(settings.language === 'nl' ? 'Dit product is uitverkocht' : 'This product is sold out');
-        return;
-    }
     closeModal('product');
     appliedDiscount = null;
     const colors = product.colors || [];
@@ -2728,10 +2648,6 @@ async function submitReservation(productId) {
             status: 'pending',
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
-        // Decrease stock if tracked
-        if (product.stock !== null && product.stock !== undefined && product.stock > 0) {
-            await db.collection('products').doc(productId).update({ stock: firebase.firestore.FieldValue.increment(-1) });
-        }
         appliedDiscount = null;
         showToast(t('reserveSuccess'));
         closeModal('reserve');
@@ -2775,7 +2691,6 @@ async function loadUserData(uid) {
         updateFavoritesUI();
         updateReservationsUI();
         updateResBadge();
-        loadNotifications(uid);
     } catch(e) { console.error('loadUserData error:', e); }
 }
 
@@ -3076,22 +2991,7 @@ PrintSome · printsome.pages.dev
 }
 
 window.confirmAndShowBon = async function(resId) {
-    const resDoc = await db.collection('reservations').doc(resId).get();
-    if (!resDoc.exists) return;
-    const resData = resDoc.data();
     await db.collection('reservations').doc(resId).update({ status: 'confirmed', updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
-    if (resData.userId) {
-        await db.collection('notifications').add({
-            userId: resData.userId,
-            type: 'confirmed',
-            productName: resData.productName,
-            reservationId: resId,
-            messageNl: `Je reservering voor "${resData.productName}" is bevestigd! 🎉`,
-            messageEn: `Your reservation for "${resData.productName}" has been confirmed! 🎉`,
-            read: false,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        });
-    }
     showToast('Reservering bevestigd!');
     const res = await getBonData(resId);
     if (!res) return;
@@ -3188,10 +3088,6 @@ function renderProductForm(productData) {
             <div class="admin-form-group">
                 <label class="admin-input-label">Materiaal *</label>
                 <input class="admin-input" id="${formId}_material" value="${p.material||'PLA Basic'}" placeholder="PLA Basic">
-            </div>
-            <div class="admin-form-group">
-                <label class="admin-input-label">Voorraad</label>
-                <input class="admin-input" type="number" min="0" id="${formId}_stock" value="${p.stock !== undefined ? p.stock : ''}" placeholder="∞ (onbeperkt)">
             </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
@@ -3321,7 +3217,6 @@ window.saveAdminProduct = async function(productId, formId, tempKey) {
     const category2 = get('category2')?.value || '';
     const featured = get('featured')?.value === 'true';
     const imageUrl = get('imageUrl')?.value?.trim() || '';
-    const stockStr = get('stock')?.value;
     const errEl = document.getElementById(`${formId}_error`);
 
     if (!name || !description || !priceStr || !material || !category) {
@@ -3333,9 +3228,8 @@ window.saveAdminProduct = async function(productId, formId, tempKey) {
         if (errEl) { errEl.textContent = 'Ongeldige prijs'; errEl.style.display = 'block'; }
         return;
     }
-    const stock = stockStr !== '' && stockStr !== undefined ? parseInt(stockStr) : null;
     const colors = adminColorLists[tempKey] || [];
-    const data = { name, nameEn, description, descriptionEn, price, material, category, featured, imageUrl, colors, stock };
+    const data = { name, nameEn, description, descriptionEn, price, material, category, featured, imageUrl, colors };
     if (category2) data.category2 = category2; else data.category2 = '';
     try {
         if (productId) {
@@ -3367,29 +3261,7 @@ async function deleteProduct(productId) {
 
 window.updateResStatus = async function(resId, status) {
     try {
-        const resDoc = await db.collection('reservations').doc(resId).get();
-        if (!resDoc.exists) return;
-        const res = resDoc.data();
         await db.collection('reservations').doc(resId).update({ status, updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
-        // Create notification for the customer
-        if (res.userId && (status === 'confirmed' || status === 'cancelled')) {
-            const msgNl = status === 'confirmed'
-                ? `Je reservering voor "${res.productName}" is bevestigd! 🎉`
-                : `Je reservering voor "${res.productName}" is helaas geannuleerd.`;
-            const msgEn = status === 'confirmed'
-                ? `Your reservation for "${res.productName}" has been confirmed! 🎉`
-                : `Your reservation for "${res.productName}" has been cancelled.`;
-            await db.collection('notifications').add({
-                userId: res.userId,
-                type: status,
-                productName: res.productName,
-                reservationId: resId,
-                messageNl: msgNl,
-                messageEn: msgEn,
-                read: false,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp()
-            });
-        }
         showToast('Status bijgewerkt');
         loadAdminContent('reservations');
     } catch(e) { showToast('Fout bij bijwerken'); }
@@ -3529,84 +3401,6 @@ function showToast(msg, dur = 2800) {
     toastTimer = setTimeout(() => document.getElementById('toast').classList.remove('show'), dur);
 }
 window.showToast = showToast;
-
-// ============================================================
-// NOTIFICATIONS
-// ============================================================
-let userNotifications = [];
-
-async function loadNotifications(uid) {
-    if (!uid) { userNotifications = []; updateNotifBadge(); return; }
-    try {
-        const snap = await db.collection('notifications')
-            .where('userId', '==', uid)
-            .orderBy('createdAt', 'desc')
-            .limit(30)
-            .get();
-        userNotifications = [];
-        snap.forEach(doc => userNotifications.push({ id: doc.id, ...doc.data() }));
-        updateNotifBadge();
-    } catch(e) { console.error('loadNotifications:', e); }
-}
-
-function updateNotifBadge() {
-    const unread = userNotifications.filter(n => !n.read).length;
-    const badge = document.getElementById('notifBadge');
-    const bellBadge = document.getElementById('notifBellBadge');
-    if (badge) { badge.textContent = unread; badge.style.display = unread > 0 ? 'flex' : 'none'; }
-    if (bellBadge) bellBadge.style.display = unread > 0 ? 'block' : 'none';
-}
-
-function openNotifs() {
-    const overlay = document.getElementById('notifOverlay');
-    if (overlay) overlay.classList.add('active');
-    renderNotifList();
-    markAllNotifsRead();
-}
-
-function closeNotifs() {
-    const overlay = document.getElementById('notifOverlay');
-    if (overlay) overlay.classList.remove('active');
-}
-window.closeNotifs = closeNotifs;
-
-function renderNotifList() {
-    const list = document.getElementById('notifList');
-    if (!list) return;
-    const isNL = settings.language === 'nl';
-    if (!userNotifications.length) {
-        list.innerHTML = `<div class="empty-state"><i class="fas fa-bell-slash"></i><h3>${isNL ? 'Geen meldingen' : 'No notifications'}</h3></div>`;
-        return;
-    }
-    list.innerHTML = userNotifications.map(n => {
-        const msg = isNL ? n.messageNl : n.messageEn;
-        const time = n.createdAt ? new Date(n.createdAt.toDate()).toLocaleString(isNL ? 'nl-NL' : 'en-GB', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' }) : '';
-        return `
-            <div class="notif-item ${n.read ? '' : 'unread'}">
-                <div class="notif-icon ${n.type}">
-                    <i class="fas fa-${n.type === 'confirmed' ? 'check-circle' : 'times-circle'}"></i>
-                </div>
-                <div class="notif-body">
-                    <strong>${n.type === 'confirmed' ? (isNL ? 'Reservering bevestigd' : 'Reservation confirmed') : (isNL ? 'Reservering geannuleerd' : 'Reservation cancelled')}</strong>
-                    <p>${msg || ''}</p>
-                    <div class="notif-time">${time}</div>
-                </div>
-            </div>
-        `;
-    }).join('');
-}
-
-window.markAllNotifsRead = async function() {
-    const unread = userNotifications.filter(n => !n.read);
-    if (!unread.length) return;
-    const batch = db.batch();
-    unread.forEach(n => batch.update(db.collection('notifications').doc(n.id), { read: true }));
-    await batch.commit();
-    userNotifications.forEach(n => n.read = true);
-    updateNotifBadge();
-    renderNotifList();
-};
-window.openNotifs = openNotifs;
 
 // ============================================================
 // VIEWPORT

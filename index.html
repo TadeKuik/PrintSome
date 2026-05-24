@@ -194,17 +194,18 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* =====================================================
+           WIJZIGING 1: Welcome card
+           - Gradient van geel naar licht oranje (geen donker oranje)
+           - Grijze stippen (::after met dot pattern) verwijderd
+           ===================================================== */
         .welcome-card {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            background: linear-gradient(135deg, #FFD700 0%, #FFAA33 100%);
             color: #000; border-radius: var(--radius-xl); padding: 24px;
             margin-bottom: 22px; box-shadow: var(--shadow-lg);
             position: relative; overflow: hidden;
         }
-        .welcome-card::after {
-            content: ''; position: absolute; inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") center;
-            pointer-events: none;
-        }
+        /* ::after met stippenpatroon is verwijderd */
         .welcome-card h1 {
             font-family: 'Outfit', sans-serif;
             font-size: 26px; font-weight: 800; margin-bottom: 6px;
@@ -359,6 +360,7 @@
             transition: var(--transition-bounce);
         }
         input:checked + .slider { background: var(--primary); }
+        input:checked + .slider { background: var(--primary); }
         input:checked + .slider:before { transform: translateX(22px); }
 
         /* DISCOUNT CODE CARD */
@@ -406,21 +408,42 @@
             margin-bottom: 6px; position: relative; z-index: 1;
         }
 
-        /* HOW DISCOUNT WORKS INFO BOX */
+        /* =====================================================
+           WIJZIGING 2: Inklapbare kortingscode-info box
+           Werkt net als de FAQ-items
+           ===================================================== */
         .discount-info-box {
-            margin: 0 16px 16px;
-            background: var(--bg-2);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 14px 16px;
+            margin: 0 0 0;
+            border-top: 1px solid var(--border);
         }
-        .discount-info-box-title {
+        .discount-info-toggle {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 16px; cursor: pointer;
             font-size: 12px; font-weight: 700; color: var(--text-2);
             text-transform: uppercase; letter-spacing: 0.8px;
-            margin-bottom: 10px;
+            transition: background var(--transition);
+            user-select: none;
+        }
+        .discount-info-toggle:hover { background: var(--bg-2); }
+        .discount-info-toggle-left {
             display: flex; align-items: center; gap: 6px;
         }
-        .discount-info-box-title i { color: var(--primary); font-size: 13px; }
+        .discount-info-toggle-left i.icon-label { color: var(--primary); font-size: 13px; }
+        .discount-info-toggle .chevron {
+            color: var(--primary); font-size: 12px;
+            transition: transform var(--transition);
+            flex-shrink: 0;
+        }
+        .discount-info-toggle.open .chevron { transform: rotate(180deg); }
+        .discount-info-body {
+            max-height: 0; overflow: hidden;
+            transition: max-height 300ms ease, padding 200ms ease;
+            padding: 0 16px;
+        }
+        .discount-info-body.open {
+            max-height: 500px;
+            padding: 0 16px 14px;
+        }
         .discount-info-list { list-style: none; padding: 0; margin: 0; }
         .discount-info-list li {
             display: flex; align-items: flex-start; gap: 8px;
@@ -1123,20 +1146,26 @@
                 <div id="discountCardWrap">
                     <div class="loading" style="height:100px;"><div class="spinner"></div></div>
                 </div>
-                <!-- HOW IT WORKS INFO BOX -->
+
+                <!-- WIJZIGING 2: Inklapbare "Hoe werkt de kortingscode?" sectie -->
                 <div class="discount-info-box">
-                    <div class="discount-info-box-title">
-                        <i class="fas fa-info-circle"></i>
-                        <span id="discountInfoTitle">Hoe werkt de kortingscode?</span>
+                    <div class="discount-info-toggle" id="discountInfoToggle" onclick="toggleDiscountInfo()">
+                        <div class="discount-info-toggle-left">
+                            <i class="fas fa-info-circle icon-label"></i>
+                            <span id="discountInfoTitle">Hoe werkt de kortingscode?</span>
+                        </div>
+                        <i class="fas fa-chevron-down chevron"></i>
                     </div>
-                    <ul class="discount-info-list" id="discountInfoList">
-                        <li><i class="fas fa-circle"></i><span>Elke week wordt automatisch één willekeurig product gekozen dat 10% korting krijgt.</span></li>
-                        <li><i class="fas fa-circle"></i><span>Jij krijgt een persoonlijke, unieke code die alleen voor jou geldig is.</span></li>
-                        <li><i class="fas fa-circle"></i><span><strong>Maximaal 1 keer per week</strong> te gebruiken — daarna vervalt de code.</span></li>
-                        <li><i class="fas fa-circle"></i><span><strong>Alleen geldig op het aangewezen product</strong> van die week; op andere producten werkt de code niet.</span></li>
-                        <li><i class="fas fa-circle"></i><span>De code vervalt automatisch aan het einde van de week (zondag 23:59).</span></li>
-                        <li><i class="fas fa-circle"></i><span>Kopieer de code en plak hem in het reserveringsformulier om de korting te activeren.</span></li>
-                    </ul>
+                    <div class="discount-info-body" id="discountInfoBody">
+                        <ul class="discount-info-list" id="discountInfoList">
+                            <li><i class="fas fa-circle"></i><span>Elke week wordt automatisch één willekeurig product gekozen dat 10% korting krijgt.</span></li>
+                            <li><i class="fas fa-circle"></i><span>Jij krijgt een persoonlijke, unieke code die alleen voor jou geldig is.</span></li>
+                            <li><i class="fas fa-circle"></i><span><strong>Maximaal 1 keer per week</strong> te gebruiken — daarna vervalt de code.</span></li>
+                            <li><i class="fas fa-circle"></i><span><strong>Alleen geldig op het aangewezen product</strong> van die week; op andere producten werkt de code niet.</span></li>
+                            <li><i class="fas fa-circle"></i><span>De code vervalt automatisch aan het einde van de week (zondag 23:59).</span></li>
+                            <li><i class="fas fa-circle"></i><span>Kopieer de code en plak hem in het reserveringsformulier om de korting te activeren.</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
@@ -1468,6 +1497,23 @@ let currentWeeklyDiscount = null;
 let appliedDiscount = null;
 
 let settings = { theme: 'system', language: 'nl' };
+
+// ============================================================
+// WIJZIGING 2: Toggle functie voor inklapbare kortingscode-info
+// ============================================================
+window.toggleDiscountInfo = function() {
+    const toggle = document.getElementById('discountInfoToggle');
+    const body = document.getElementById('discountInfoBody');
+    if (!toggle || !body) return;
+    const isOpen = toggle.classList.contains('open');
+    if (isOpen) {
+        toggle.classList.remove('open');
+        body.classList.remove('open');
+    } else {
+        toggle.classList.add('open');
+        body.classList.add('open');
+    }
+};
 
 // ============================================================
 // CONFIRM DIALOG
@@ -1854,7 +1900,7 @@ function applyLanguageUI() {
     if(el('installTitle')) el('installTitle').textContent = t('installTitle');
     if(el('installDoneBtn')) el('installDoneBtn').textContent = t('installDoneBtn');
 
-    // Update discount info box
+    // Update discount info toggle title
     if(el('discountInfoTitle')) el('discountInfoTitle').textContent = t('discountInfoTitle');
     const infoList = el('discountInfoList');
     if(infoList) {
@@ -1898,7 +1944,7 @@ function buildFAQ() {
 }
 
 // ============================================================
-// PRIVACY PAGE — updated with retention period + data rights
+// PRIVACY PAGE
 // ============================================================
 function buildPrivacyPage() {
     const c = document.getElementById('privacyContent');

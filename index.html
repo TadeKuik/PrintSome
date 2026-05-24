@@ -292,7 +292,6 @@
             font-size: 11px; color: var(--text-3); margin-bottom: 4px;
         }
         .product-stars i { font-size: 10px; color: var(--star); }
-        /* Discount badge on product card */
         .discount-badge-card {
             position: absolute; top: 8px; left: 8px;
             background: var(--danger); color: #fff;
@@ -362,7 +361,7 @@
         input:checked + .slider { background: var(--primary); }
         input:checked + .slider:before { transform: translateX(22px); }
 
-        /* DISCOUNT CODE CARD in settings */
+        /* DISCOUNT CODE CARD */
         .discount-code-card {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             border-radius: var(--radius-lg); padding: 20px;
@@ -406,6 +405,48 @@
             font-size: 11px; color: rgba(255,255,255,0.6);
             margin-bottom: 6px; position: relative; z-index: 1;
         }
+
+        /* HOW DISCOUNT WORKS INFO BOX */
+        .discount-info-box {
+            margin: 0 16px 16px;
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px 16px;
+        }
+        .discount-info-box-title {
+            font-size: 12px; font-weight: 700; color: var(--text-2);
+            text-transform: uppercase; letter-spacing: 0.8px;
+            margin-bottom: 10px;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .discount-info-box-title i { color: var(--primary); font-size: 13px; }
+        .discount-info-list { list-style: none; padding: 0; margin: 0; }
+        .discount-info-list li {
+            display: flex; align-items: flex-start; gap: 8px;
+            font-size: 12px; color: var(--text-2); line-height: 1.5;
+            padding: 5px 0; border-bottom: 1px solid var(--border);
+        }
+        .discount-info-list li:last-child { border-bottom: none; }
+        .discount-info-list li i { color: var(--primary); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+
+        /* DATA MANAGEMENT */
+        .data-btn-row {
+            display: flex; gap: 8px; flex-wrap: wrap;
+            padding: 12px 16px 16px;
+        }
+        .data-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 9px 14px; border-radius: var(--radius-sm);
+            font-size: 12px; font-weight: 700; cursor: pointer;
+            border: none; transition: all var(--transition);
+        }
+        .data-btn-export { background: var(--bg-3); color: var(--text-2); border: 1px solid var(--border); }
+        .data-btn-export:hover { background: var(--border); }
+        .data-btn-import { background: var(--bg-3); color: var(--text-2); border: 1px solid var(--border); }
+        .data-btn-import:hover { background: var(--border); }
+        .data-btn-delete { background: rgba(239,68,68,0.1); color: var(--danger); border: 1px solid rgba(239,68,68,0.25); }
+        .data-btn-delete:hover { background: rgba(239,68,68,0.2); }
 
         .modal-overlay {
             position: fixed; inset: 0; z-index: 1000;
@@ -502,7 +543,6 @@
             font-size: 30px; font-weight: 900; color: var(--primary);
             text-align: center; margin: 16px 0;
         }
-        /* Discount highlight on product modal */
         .discount-highlight {
             background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,140,0,0.1));
             border: 1.5px solid var(--primary); border-radius: var(--radius);
@@ -580,7 +620,6 @@
         .color-swatch.selected { border-color: var(--text); box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--text); }
         .color-label { font-size: 11px; text-align: center; color: var(--text-3); margin-top: 4px; }
 
-        /* Discount code input in reserve modal */
         .discount-input-wrap {
             background: var(--bg-2); border: 1.5px solid var(--border);
             border-radius: var(--radius); padding: 14px; margin-top: 16px;
@@ -667,7 +706,6 @@
         }
         .stat-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
 
-        /* Admin product form */
         .admin-form {
             background: var(--surface); border: 1px solid var(--border);
             border-radius: var(--radius); padding: 18px; margin-bottom: 16px;
@@ -710,7 +748,6 @@
             border: 2px solid var(--border); flex-shrink: 0;
         }
 
-        /* Admin discount code management */
         .discount-admin-card {
             background: linear-gradient(135deg, #1a1a2e, #16213e);
             border-radius: var(--radius-lg); padding: 20px; margin-bottom: 16px;
@@ -737,7 +774,6 @@
             position: relative; z-index: 1; line-height: 1.6;
         }
 
-        /* Receipt/Bon styles */
         .bon-preview {
             background: #fff; color: #000; border: 2px solid #000;
             border-radius: var(--radius); padding: 20px; margin-top: 14px;
@@ -768,11 +804,6 @@
         .privacy-p { font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 12px; }
         .privacy-ul { padding-left: 18px; margin-bottom: 14px; }
         .privacy-ul li { font-size: 14px; color: var(--text-2); margin-bottom: 6px; line-height: 1.5; }
-        .privacy-table-wrap { overflow-x: auto; margin: 14px 0; }
-        .privacy-table { width: 100%; min-width: 500px; border-collapse: collapse; font-size: 13px; }
-        .privacy-table th { background: var(--bg-3); color: var(--text); padding: 10px 8px; text-align: left; border: 1px solid var(--border); font-weight: 600; }
-        .privacy-table td { padding: 10px 8px; border: 1px solid var(--border); color: var(--text-2); }
-        .privacy-table tr:nth-child(even) td { background: var(--bg-2); }
         .contact-card {
             background: var(--bg-2); border: 1px solid var(--border);
             padding: 14px; border-radius: var(--radius); margin: 12px 0;
@@ -941,7 +972,6 @@
         }
         .selected-color-circle { width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--border); }
 
-        /* Confirm dialog */
         .confirm-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.6);
             z-index: 3000; display: none; justify-content: center; align-items: center;
@@ -960,7 +990,6 @@
         .confirm-cancel { background: var(--bg-3); color: var(--text-2); }
         .confirm-ok { background: var(--danger); color: #fff; }
 
-        /* Print bon overlay */
         .bon-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.7);
             z-index: 4000; display: none; justify-content: center; align-items: center;
@@ -1094,6 +1123,21 @@
                 <div id="discountCardWrap">
                     <div class="loading" style="height:100px;"><div class="spinner"></div></div>
                 </div>
+                <!-- HOW IT WORKS INFO BOX -->
+                <div class="discount-info-box">
+                    <div class="discount-info-box-title">
+                        <i class="fas fa-info-circle"></i>
+                        <span id="discountInfoTitle">Hoe werkt de kortingscode?</span>
+                    </div>
+                    <ul class="discount-info-list" id="discountInfoList">
+                        <li><i class="fas fa-circle"></i><span>Elke week wordt automatisch één willekeurig product gekozen dat 10% korting krijgt.</span></li>
+                        <li><i class="fas fa-circle"></i><span>Jij krijgt een persoonlijke, unieke code die alleen voor jou geldig is.</span></li>
+                        <li><i class="fas fa-circle"></i><span><strong>Maximaal 1 keer per week</strong> te gebruiken — daarna vervalt de code.</span></li>
+                        <li><i class="fas fa-circle"></i><span><strong>Alleen geldig op het aangewezen product</strong> van die week; op andere producten werkt de code niet.</span></li>
+                        <li><i class="fas fa-circle"></i><span>De code vervalt automatisch aan het einde van de week (zondag 23:59).</span></li>
+                        <li><i class="fas fa-circle"></i><span>Kopieer de code en plak hem in het reserveringsformulier om de korting te activeren.</span></li>
+                    </ul>
+                </div>
             </div>
 
             <div class="settings-group" id="installGroup" style="display:none;">
@@ -1147,6 +1191,32 @@
                         </select>
                     </div>
                 </div>
+            </div>
+
+            <!-- DATA MANAGEMENT (only when logged in) -->
+            <div class="settings-group" id="dataGroup" style="display:none;">
+                <div class="settings-group-title" id="sDataTitle">MIJN GEGEVENS</div>
+                <div class="settings-row" style="cursor:default;">
+                    <div class="settings-row-left">
+                        <div class="settings-row-icon" style="background:#f0fdf4;"><i class="fas fa-database" style="color:#16a34a;"></i></div>
+                        <div class="settings-row-info">
+                            <h4 id="sDataLabel">Exporteren, importeren of wissen</h4>
+                            <p id="sDataDesc">Beheer al jouw persoonlijke data</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-btn-row">
+                    <button class="data-btn data-btn-export" onclick="exportUserData()">
+                        <i class="fas fa-file-export"></i> <span id="sExportBtn">Exporteren</span>
+                    </button>
+                    <button class="data-btn data-btn-import" onclick="document.getElementById('importFileInput').click()">
+                        <i class="fas fa-file-import"></i> <span id="sImportBtn">Importeren</span>
+                    </button>
+                    <button class="data-btn data-btn-delete" onclick="confirmDeleteAllData()">
+                        <i class="fas fa-trash-alt"></i> <span id="sDeleteBtn">Alles wissen</span>
+                    </button>
+                </div>
+                <input type="file" id="importFileInput" accept=".json" style="display:none;" onchange="importUserData(event)">
             </div>
 
             <div class="settings-group">
@@ -1225,7 +1295,6 @@
                 <button class="admin-tab" data-atab="reservations">Reserveringen</button>
                 <button class="admin-tab" data-atab="products">Producten</button>
                 <button class="admin-tab" data-atab="reviews">Reviews</button>
-
             </div>
             <div id="adminContent">
                 <div class="loading"><div class="spinner"></div><span>Laden...</span></div>
@@ -1395,8 +1464,8 @@ let productReviews = {};
 let authMode = 'login';
 let currentAdminTab = 'overview';
 let isAdmin = false;
-let currentWeeklyDiscount = null; // { code, productId, productName, discount, validFrom, validUntil, createdBy }
-let appliedDiscount = null; // discount applied in current reservation modal
+let currentWeeklyDiscount = null;
+let appliedDiscount = null;
 
 let settings = { theme: 'system', language: 'nl' };
 
@@ -1474,6 +1543,7 @@ const T = {
         sLangTitle: 'TAAL', sPrivacyTitle: 'PRIVACY & BELEID', sAboutTitle: 'OVER',
         sInstallTitle: 'INSTALLATIE',
         sDiscountTitle: 'WEKELIJKSE KORTINGSCODE',
+        sDataTitle: 'MIJN GEGEVENS',
         sAccountStatus: 'Account status', sAccountDesc: 'Niet ingelogd',
         sDarkLabel: 'Donkere modus', sDarkDesc: 'Thema aanpassen',
         sLangLabel: 'Taal', sLangDesc: 'Nederlands',
@@ -1481,6 +1551,18 @@ const T = {
         sCookieLabel: 'Cookie-instellingen', sCookieDesc: 'Beheer jouw voorkeuren',
         sVersionLabel: 'Versie', sContactLabel: 'Contact',
         sInstallLabel: 'App installeren', sInstallDesc: 'Voeg toe aan beginscherm',
+        sDataLabel: 'Exporteren, importeren of wissen',
+        sDataDesc: 'Beheer al jouw persoonlijke data',
+        sExportBtn: 'Exporteren', sImportBtn: 'Importeren', sDeleteBtn: 'Alles wissen',
+        discountInfoTitle: 'Hoe werkt de kortingscode?',
+        discountInfoItems: [
+            'Elke week wordt automatisch één willekeurig product gekozen dat 10% korting krijgt.',
+            'Jij krijgt een persoonlijke, unieke code die alleen voor jou geldig is.',
+            'Maximaal 1 keer per week te gebruiken — daarna vervalt de code.',
+            'Alleen geldig op het aangewezen product van die week; op andere producten werkt de code niet.',
+            'De code vervalt automatisch aan het einde van de week (zondag 23:59).',
+            'Kopieer de code en plak hem in het reserveringsformulier om de korting te activeren.'
+        ],
         loggedOut: 'Succesvol uitgelogd', loggedInAs: 'Ingelogd als',
         privacyBackBtn: 'Terug naar Instellingen',
         faqTitle: 'Veelgestelde vragen',
@@ -1488,7 +1570,7 @@ const T = {
             { q: 'Hoe kan ik producten kopen?', a: 'Op dit moment is het nog niet mogelijk om online te kopen. Aankopen zijn wel offline (in real life) mogelijk.' },
             { q: 'Wat voor producten verkoopt PrintSome?', a: 'Op dit moment verkopen wij voornamelijk fidget toys. Ons assortiment wordt regelmatig uitgebreid.' },
             { q: 'Wat is een reservering?', a: 'Met een reservering geef je aan dat je een product wilt. Selecteer de gewenste kleur en wij nemen contact op om de aankoop te bevestigen.' },
-            { q: 'Hoe werkt de wekelijkse kortingscode?', a: 'Elke week wordt er automatisch een random product gekozen dat 10% korting krijgt. Als je bent ingelogd, krijg je automatisch jouw eigen persoonlijke kortingscode onder Instellingen → Wekelijkse kortingscode. Deze code is uniek voor jou en is eenmalig geldig voor dat product. Kopieer de code en plak hem in het reserveringsformulier — de eindprijs wordt automatisch berekend. Je kunt je persoonlijke code maar één keer gebruiken per week.' },
+            { q: 'Hoe werkt de wekelijkse kortingscode?', a: 'Elke week wordt er automatisch een random product gekozen dat 10% korting krijgt. Als je bent ingelogd, krijg je automatisch jouw eigen persoonlijke kortingscode onder Instellingen → Wekelijkse kortingscode. Deze code is uniek voor jou, maximaal 1 keer per week te gebruiken, en alleen geldig voor het aangewezen product van die week. Kopieer de code en plak hem in het reserveringsformulier — de eindprijs wordt automatisch berekend.' },
             { q: 'Hoe installeer ik de app?', a: 'Zie de installatie-instructies in Instellingen.' }
         ],
         cookieBannerTitle: 'We gebruiken cookies',
@@ -1577,6 +1659,7 @@ const T = {
         sLangTitle: 'LANGUAGE', sPrivacyTitle: 'PRIVACY & POLICY', sAboutTitle: 'ABOUT',
         sInstallTitle: 'INSTALLATION',
         sDiscountTitle: 'WEEKLY DISCOUNT CODE',
+        sDataTitle: 'MY DATA',
         sAccountStatus: 'Account status', sAccountDesc: 'Not logged in',
         sDarkLabel: 'Dark mode', sDarkDesc: 'Adjust theme',
         sLangLabel: 'Language', sLangDesc: 'English',
@@ -1584,6 +1667,18 @@ const T = {
         sCookieLabel: 'Cookie settings', sCookieDesc: 'Manage your preferences',
         sVersionLabel: 'Version', sContactLabel: 'Contact',
         sInstallLabel: 'Install app', sInstallDesc: 'Add to home screen',
+        sDataLabel: 'Export, import or delete',
+        sDataDesc: 'Manage all your personal data',
+        sExportBtn: 'Export', sImportBtn: 'Import', sDeleteBtn: 'Delete all',
+        discountInfoTitle: 'How does the discount code work?',
+        discountInfoItems: [
+            'Every week one random product is automatically selected for 10% off.',
+            'You receive a personal, unique code that is only valid for you.',
+            'Can be used a maximum of 1 time per week — after that the code expires.',
+            'Only valid for the designated product of that week; it does not work on other products.',
+            'The code automatically expires at the end of the week (Sunday 23:59).',
+            'Copy the code and paste it in the reservation form to activate the discount.'
+        ],
         loggedOut: 'Successfully logged out', loggedInAs: 'Logged in as',
         privacyBackBtn: 'Back to Settings',
         faqTitle: 'Frequently Asked Questions',
@@ -1591,7 +1686,7 @@ const T = {
             { q: 'How can I buy products?', a: 'At the moment it is not possible to buy online. Purchases are possible offline (in real life).' },
             { q: 'What products does PrintSome sell?', a: 'We currently sell mainly fidget toys. Our assortment is regularly expanded.' },
             { q: 'What is a reservation?', a: 'A reservation lets us know you want a product. Select your preferred color and we\'ll contact you to confirm the purchase.' },
-            { q: 'How does the weekly discount code work?', a: 'Every week a random product is automatically chosen that receives 10% off. When logged in, you automatically receive your own personal discount code under Settings → Weekly Discount Code. This code is unique to you and valid once for that product. Copy the code and paste it in the reservation form — the final price is calculated automatically. Your personal code can only be used once per week.' },
+            { q: 'How does the weekly discount code work?', a: 'Every week a random product is automatically chosen that receives 10% off. When logged in, you automatically receive your own personal discount code under Settings → Weekly Discount Code. This code is unique to you, can be used a maximum of once per week, and is only valid for the designated product of that week. Copy the code and paste it in the reservation form — the final price is calculated automatically.' },
             { q: 'How do I install the app?', a: 'See the installation instructions in Settings.' }
         ],
         cookieBannerTitle: 'We use cookies',
@@ -1731,6 +1826,7 @@ function applyLanguageUI() {
     if(el('sAboutTitle')) el('sAboutTitle').textContent = t('sAboutTitle');
     if(el('sInstallTitle')) el('sInstallTitle').textContent = t('sInstallTitle');
     if(el('sDiscountTitle')) el('sDiscountTitle').textContent = t('sDiscountTitle');
+    if(el('sDataTitle')) el('sDataTitle').textContent = t('sDataTitle');
     if(el('sDarkLabel')) el('sDarkLabel').textContent = t('sDarkLabel');
     if(el('sDarkDesc')) el('sDarkDesc').textContent = t('sDarkDesc');
     if(el('sLangLabel')) el('sLangLabel').textContent = t('sLangLabel');
@@ -1742,6 +1838,11 @@ function applyLanguageUI() {
     if(el('sContactLabel')) el('sContactLabel').textContent = t('sContactLabel');
     if(el('sInstallLabel')) el('sInstallLabel').textContent = t('sInstallLabel');
     if(el('sInstallDesc')) el('sInstallDesc').textContent = t('sInstallDesc');
+    if(el('sDataLabel')) el('sDataLabel').textContent = t('sDataLabel');
+    if(el('sDataDesc')) el('sDataDesc').textContent = t('sDataDesc');
+    if(el('sExportBtn')) el('sExportBtn').textContent = t('sExportBtn');
+    if(el('sImportBtn')) el('sImportBtn').textContent = t('sImportBtn');
+    if(el('sDeleteBtn')) el('sDeleteBtn').textContent = t('sDeleteBtn');
     if(el('privacyBackBtn')) el('privacyBackBtn').textContent = t('privacyBackBtn');
     if(el('languageSelector')) el('languageSelector').value = settings.language;
     if(el('cookieBannerTitle')) el('cookieBannerTitle').textContent = t('cookieBannerTitle');
@@ -1752,6 +1853,15 @@ function applyLanguageUI() {
     if(el('privacyPopOk')) el('privacyPopOk').textContent = t('privacyPopOk');
     if(el('installTitle')) el('installTitle').textContent = t('installTitle');
     if(el('installDoneBtn')) el('installDoneBtn').textContent = t('installDoneBtn');
+
+    // Update discount info box
+    if(el('discountInfoTitle')) el('discountInfoTitle').textContent = t('discountInfoTitle');
+    const infoList = el('discountInfoList');
+    if(infoList) {
+        const items = t('discountInfoItems');
+        infoList.innerHTML = items.map(item => `<li><i class="fas fa-circle"></i><span>${item}</span></li>`).join('');
+    }
+
     buildPrivacyPage();
 }
 
@@ -1788,7 +1898,7 @@ function buildFAQ() {
 }
 
 // ============================================================
-// PRIVACY PAGE
+// PRIVACY PAGE — updated with retention period + data rights
 // ============================================================
 function buildPrivacyPage() {
     const c = document.getElementById('privacyContent');
@@ -1797,34 +1907,194 @@ function buildPrivacyPage() {
     c.innerHTML = `
         <div class="privacy-h1"><i class="fas fa-shield-alt" style="color:var(--primary);"></i> ${isNL ? 'Privacyverklaring PrintSome' : 'Privacy Statement PrintSome'}</div>
         <p class="privacy-p">${isNL ? 'PrintSome is verantwoordelijk voor de verwerking van persoonsgegevens zoals weergegeven in deze privacyverklaring.' : 'PrintSome is responsible for the processing of personal data as shown in this privacy statement.'}</p>
+
         <div class="privacy-h2">${isNL ? 'Contactgegevens' : 'Contact details'}</div>
         <div class="contact-card">
             <p><strong>Website:</strong> <a href="https://printsome.pages.dev" target="_blank">https://printsome.pages.dev</a></p>
             <p><strong>E-mail:</strong> <a href="mailto:printsome-webapp@outlook.com">printsome-webapp@outlook.com</a></p>
         </div>
+
         <div class="privacy-h2">${isNL ? 'Persoonsgegevens die wij verwerken' : 'Personal data we process'}</div>
         <p class="privacy-p">${isNL ? 'PrintSome verwerkt uw persoonsgegevens doordat u gebruik maakt van onze diensten.' : 'PrintSome processes your personal data because you use our services.'}</p>
         <ul class="privacy-ul">
             <li>${isNL ? 'Voor- en achternaam' : 'First and last name'}</li>
             <li>${isNL ? 'E-mailadres' : 'Email address'}</li>
-            <li>${isNL ? 'Taalvoorkeur' : 'Language preference'}</li>
+            <li>${isNL ? 'Taalvoorkeur en thema-instelling' : 'Language preference and theme setting'}</li>
             <li>${isNL ? 'IP-adres' : 'IP address'}</li>
             <li>${isNL ? 'Gebruik van kortingscodes' : 'Use of discount codes'}</li>
+            <li>${isNL ? 'Reserveringen en favorieten' : 'Reservations and favorites'}</li>
+            <li>${isNL ? 'Beoordelingen en recensies' : 'Ratings and reviews'}</li>
         </ul>
+
         <div class="privacy-h2">${isNL ? 'Doelen en grondslagen' : 'Purposes and legal bases'}</div>
         <ul class="privacy-ul">
             <li>${isNL ? 'U de mogelijkheid te bieden een account aan te maken' : 'To provide you with the ability to create an account'}</li>
             <li>${isNL ? 'Het verwerken van reserveringen en kortingscodes' : 'Processing reservations and discount codes'}</li>
-            <li>${isNL ? 'Het technisch functioneren en verbeteren van de website' : 'For the technical functioning and improvement of the website'}</li>
+            <li>${isNL ? 'Het technisch functioneren en verbeteren van de app' : 'For the technical functioning and improvement of the app'}</li>
         </ul>
-        <div class="privacy-h2">${isNL ? 'Cookies' : 'Cookies'}</div>
-        <p class="privacy-p">${isNL ? 'PrintSome gebruikt zelf geen tracking cookies.' : 'PrintSome itself does not use tracking cookies.'}</p>
+
+        <div class="privacy-h2">${isNL ? 'Bewaartermijnen' : 'Retention periods'}</div>
+        <p class="privacy-p">${isNL
+            ? 'PrintSome bewaart uw persoonsgegevens niet langer dan noodzakelijk voor de doelen waarvoor ze zijn verzameld. Wij hanteren de volgende bewaartermijnen:'
+            : 'PrintSome does not retain your personal data longer than necessary for the purposes for which it was collected. We apply the following retention periods:'}</p>
+        <ul class="privacy-ul">
+            <li>${isNL
+                ? '<strong>Accountgegevens, reserveringen, favorieten, beoordelingen en recensies:</strong> 1 jaar na de laatste activiteit of na verwijdering van het account.'
+                : '<strong>Account data, reservations, favorites, ratings and reviews:</strong> 1 year after the last activity or after account deletion.'}</li>
+            <li>${isNL
+                ? '<strong>Kortingscodegebruik:</strong> 1 jaar na het einde van de betreffende week.'
+                : '<strong>Discount code usage:</strong> 1 year after the end of the relevant week.'}</li>
+            <li>${isNL
+                ? 'Na het verstrijken van de bewaartermijn worden uw gegevens automatisch verwijderd.'
+                : 'After the retention period expires, your data is automatically deleted.'}</li>
+        </ul>
+
         <div class="privacy-h2">${isNL ? 'Uw rechten' : 'Your rights'}</div>
-        <p class="privacy-p">${isNL ? 'U kunt een verzoek sturen naar:' : 'You can send a request to:'} <a href="mailto:printsome-webapp@outlook.com">printsome-webapp@outlook.com</a></p>
+        <p class="privacy-p">${isNL ? 'U heeft de volgende rechten met betrekking tot uw persoonsgegevens:' : 'You have the following rights regarding your personal data:'}</p>
+        <ul class="privacy-ul">
+            <li>${isNL
+                ? '<strong>Recht op inzage & gegevensoverdraagbaarheid:</strong> U kunt al uw gegevens exporteren als JSON-bestand via Instellingen → Mijn gegevens → Exporteren.'
+                : '<strong>Right of access & data portability:</strong> You can export all your data as a JSON file via Settings → My data → Export.'}</li>
+            <li>${isNL
+                ? '<strong>Recht op herstel (importeren):</strong> Eerder geëxporteerde gegevens kunt u terugzetten via Instellingen → Mijn gegevens → Importeren.'
+                : '<strong>Right to restore (import):</strong> Previously exported data can be restored via Settings → My data → Import.'}</li>
+            <li>${isNL
+                ? '<strong>Recht op verwijdering (recht om vergeten te worden):</strong> U kunt al uw gegevens direct en automatisch verwijderen via Instellingen → Mijn gegevens → Alles wissen. Hiermee worden uw reserveringen, favorieten, beoordelingen, recensies en kortingscodegeschiedenis direct uit onze database verwijderd. Uw account wordt eveneens verwijderd. U hoeft hiervoor geen contact op te nemen met ons.'
+                : '<strong>Right to erasure (right to be forgotten):</strong> You can delete all your data directly and automatically via Settings → My data → Delete all. This immediately removes your reservations, favorites, ratings, reviews and discount code history from our database. Your account is also deleted. You do not need to contact us for this.'}</li>
+            <li>${isNL
+                ? '<strong>Overige rechten (rectificatie, beperking van verwerking):</strong> Neem contact op via het e-mailadres hieronder.'
+                : '<strong>Other rights (rectification, restriction of processing):</strong> Please contact us via the email address below.'}</li>
+        </ul>
+        <div class="contact-card">
+            <p>${isNL ? 'Voor vragen of verzoeken kunt u contact opnemen via:' : 'For questions or requests, please contact us at:'} <a href="mailto:printsome-webapp@outlook.com">printsome-webapp@outlook.com</a></p>
+        </div>
+
+        <div class="privacy-h2">${isNL ? 'Cookies' : 'Cookies'}</div>
+        <p class="privacy-p">${isNL
+            ? 'PrintSome gebruikt zelf geen tracking cookies. Derde partijen zoals Firebase (Google) kunnen functionele cookies plaatsen die nodig zijn voor de werking van de app.'
+            : 'PrintSome itself does not use tracking cookies. Third parties such as Firebase (Google) may place functional cookies necessary for the app to work.'}</p>
+
         <div style="text-align:center;margin-top:24px;padding-top:16px;border-top:1px solid var(--border);">
-            <p style="font-size:12px;color:var(--text-3);"><i class="fas fa-calendar-alt"></i> ${isNL?'Laatst bijgewerkt: Februari 2026':'Last updated: February 2026'}</p>
+            <p style="font-size:12px;color:var(--text-3);"><i class="fas fa-calendar-alt"></i> ${isNL ? 'Laatst bijgewerkt: Mei 2026' : 'Last updated: May 2026'}</p>
         </div>
     `;
+}
+
+// ============================================================
+// DATA EXPORT / IMPORT / DELETE
+// ============================================================
+async function exportUserData() {
+    if (!currentUser) { showToast(settings.language === 'nl' ? 'Log eerst in' : 'Please log in first'); return; }
+    try {
+        const [favDoc, resSnap, ratingsSnap, reviewsSnap, discountSnap, settingsDoc] = await Promise.all([
+            db.collection('userFavorites').doc(currentUser.uid).get(),
+            db.collection('reservations').where('userId','==',currentUser.uid).get(),
+            db.collection('userRatings').where('userId','==',currentUser.uid).get(),
+            db.collection('productReviews').where('userId','==',currentUser.uid).get(),
+            db.collection('userDiscount').where('userId','==',currentUser.uid).get(),
+            db.collection('userSettings').doc(currentUser.uid).get()
+        ]);
+        const exportData = {
+            exportDate: new Date().toISOString(),
+            user: { uid: currentUser.uid, email: currentUser.email, displayName: currentUser.displayName },
+            settings: settingsDoc.exists ? settingsDoc.data() : {},
+            favorites: favDoc.exists ? favDoc.data() : {},
+            reservations: resSnap.docs.map(d => ({ id: d.id, ...d.data() })),
+            ratings: ratingsSnap.docs.map(d => ({ id: d.id, ...d.data() })),
+            reviews: reviewsSnap.docs.map(d => ({ id: d.id, ...d.data() })),
+            discountHistory: discountSnap.docs.map(d => ({ id: d.id, ...d.data() }))
+        };
+        const json = JSON.stringify(exportData, null, 2);
+        const blob = new Blob([json], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `printsome-data-${currentUser.uid.slice(0,8)}-${new Date().toISOString().slice(0,10)}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast(settings.language === 'nl' ? 'Data geëxporteerd!' : 'Data exported!');
+    } catch(e) {
+        showToast(settings.language === 'nl' ? 'Fout bij exporteren' : 'Export error');
+        console.error(e);
+    }
+}
+window.exportUserData = exportUserData;
+
+async function importUserData(event) {
+    const file = event.target.files[0];
+    if (!file || !currentUser) return;
+    try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        if (!data.user || !data.exportDate) {
+            showToast(settings.language === 'nl' ? 'Ongeldig bestand' : 'Invalid file');
+            return;
+        }
+        const batch = db.batch();
+        if (data.favorites && Object.keys(data.favorites).length) {
+            batch.set(db.collection('userFavorites').doc(currentUser.uid), data.favorites, { merge: true });
+        }
+        if (data.settings && Object.keys(data.settings).length) {
+            batch.set(db.collection('userSettings').doc(currentUser.uid), data.settings, { merge: true });
+        }
+        await batch.commit();
+        showToast(settings.language === 'nl' ? 'Data geïmporteerd!' : 'Data imported!');
+        await loadUserData(currentUser.uid);
+        event.target.value = '';
+    } catch(e) {
+        showToast(settings.language === 'nl' ? 'Fout bij importeren: ongeldig bestand' : 'Import error: invalid file');
+        console.error(e);
+        event.target.value = '';
+    }
+}
+window.importUserData = importUserData;
+
+function confirmDeleteAllData() {
+    if (!currentUser) return;
+    const isNL = settings.language === 'nl';
+    showConfirm(
+        isNL ? 'Alle gegevens wissen' : 'Delete all data',
+        isNL ? 'Weet je zeker dat je ALLE gegevens wilt verwijderen? Dit kan niet ongedaan worden gemaakt. Je account wordt ook verwijderd.' : 'Are you sure you want to delete ALL data? This cannot be undone. Your account will also be deleted.',
+        isNL ? 'Alles verwijderen' : 'Delete everything',
+        deleteAllUserData
+    );
+}
+window.confirmDeleteAllData = confirmDeleteAllData;
+
+async function deleteAllUserData() {
+    if (!currentUser) return;
+    const uid = currentUser.uid;
+    try {
+        showToast(settings.language === 'nl' ? 'Bezig met verwijderen...' : 'Deleting...', 5000);
+        const [resSnap, ratingsSnap, reviewsSnap, discountSnap] = await Promise.all([
+            db.collection('reservations').where('userId','==',uid).get(),
+            db.collection('userRatings').where('userId','==',uid).get(),
+            db.collection('productReviews').where('userId','==',uid).get(),
+            db.collection('userDiscount').where('userId','==',uid).get()
+        ]);
+        const batch = db.batch();
+        resSnap.docs.forEach(d => batch.delete(d.ref));
+        ratingsSnap.docs.forEach(d => batch.delete(d.ref));
+        reviewsSnap.docs.forEach(d => batch.delete(d.ref));
+        discountSnap.docs.forEach(d => batch.delete(d.ref));
+        batch.delete(db.collection('userFavorites').doc(uid));
+        batch.delete(db.collection('userSettings').doc(uid));
+        await batch.commit();
+        await auth.currentUser.delete();
+        currentUser = null; isAdmin = false;
+        userFavorites = []; userReservations = []; userRatings = {}; currentWeeklyDiscount = null;
+        updateAuthUI(); updateFavoritesUI(); updateReservationsUI();
+        document.getElementById('dataGroup').style.display = 'none';
+        document.getElementById('discountGroup').style.display = 'none';
+        showToast(settings.language === 'nl' ? 'Alle gegevens verwijderd.' : 'All data deleted.', 4000);
+    } catch(e) {
+        console.error(e);
+        if (e.code === 'auth/requires-recent-login') {
+            showToast(settings.language === 'nl' ? 'Log opnieuw in om je account te verwijderen.' : 'Please log in again to delete your account.', 4000);
+        } else {
+            showToast(settings.language === 'nl' ? 'Fout bij verwijderen.' : 'Error deleting data.', 4000);
+        }
+    }
 }
 
 // ============================================================
@@ -1970,6 +2240,8 @@ function updateAuthUI() {
         if (statusEl) statusEl.textContent = currentUser.email;
         const dg = document.getElementById('discountGroup');
         if (dg) dg.style.display = 'block';
+        const dataG = document.getElementById('dataGroup');
+        if (dataG) dataG.style.display = 'block';
     } else {
         av.innerHTML = '<i class="fas fa-user"></i>';
         if (wText) wText.textContent = t('welcomeDefault');
@@ -1977,6 +2249,8 @@ function updateAuthUI() {
         if (statusEl) statusEl.textContent = t('sAccountDesc');
         const dg = document.getElementById('discountGroup');
         if (dg) dg.style.display = 'none';
+        const dataG = document.getElementById('dataGroup');
+        if (dataG) dataG.style.display = 'none';
     }
 
     av.onclick = () => {
@@ -1992,7 +2266,7 @@ function openAuth() {
 window.openAuth = openAuth;
 
 // ============================================================
-// WEEKLY DISCOUNT CODE  (per-user individual codes, auto random product)
+// WEEKLY DISCOUNT CODE
 // ============================================================
 function getWeekKey() {
     const now = new Date();
@@ -2004,21 +2278,15 @@ function getWeekKey() {
 function generateDiscountCode() {
     const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
     let code = '';
-    for (let i = 0; i < 8; i++) {
-        code += chars[Math.floor(Math.random() * chars.length)];
-    }
+    for (let i = 0; i < 8; i++) code += chars[Math.floor(Math.random() * chars.length)];
     return code;
 }
 
-// Pick (or retrieve) the weekly product from weeklyDiscountProduct/{weekKey}
-// If it doesn't exist yet, auto-create by picking a random product.
 async function getOrCreateWeeklyProduct() {
     const weekKey = getWeekKey();
     try {
         const doc = await db.collection('weeklyDiscountProduct').doc(weekKey).get();
-        if (doc.exists) return doc.data(); // { productId, productName, productPrice, weekKey, validUntil }
-
-        // Auto-pick a random product from the loaded products list
+        if (doc.exists) return doc.data();
         if (!products.length) return null;
         const pick = products[Math.floor(Math.random() * products.length)];
         const sunday = (() => {
@@ -2028,48 +2296,32 @@ async function getOrCreateWeeklyProduct() {
             return d;
         })();
         const data = {
-            productId: pick.id,
-            productName: pick.name,
-            productPrice: pick.price,
-            weekKey,
+            productId: pick.id, productName: pick.name, productPrice: pick.price, weekKey,
             validUntil: firebase.firestore.Timestamp.fromDate(sunday),
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         };
         await db.collection('weeklyDiscountProduct').doc(weekKey).set(data);
         return data;
-    } catch(e) {
-        console.error('getOrCreateWeeklyProduct error:', e);
-        return null;
-    }
+    } catch(e) { console.error('getOrCreateWeeklyProduct error:', e); return null; }
 }
 
-// Load (or generate) the personal discount code for the current user this week
 async function loadWeeklyDiscount() {
     if (!currentUser) { currentWeeklyDiscount = null; renderDiscountCardInSettings(); return; }
     try {
         const weekKey = getWeekKey();
         const userDiscountRef = db.collection('userDiscount').doc(`${currentUser.uid}_${weekKey}`);
         const userDiscountDoc = await userDiscountRef.get();
-
         if (userDiscountDoc.exists) {
             currentWeeklyDiscount = { id: userDiscountDoc.id, ...userDiscountDoc.data() };
         } else {
-            // Get the weekly product (auto-created if needed)
             const weekProd = await getOrCreateWeeklyProduct();
             if (!weekProd) { currentWeeklyDiscount = null; renderDiscountCardInSettings(); return; }
-
-            // Generate a unique personal code for this user
             const personalCode = generateDiscountCode();
             const data = {
-                userId: currentUser.uid,
-                code: personalCode,
-                productId: weekProd.productId,
-                productName: weekProd.productName,
-                productPrice: weekProd.productPrice,
-                discount: 0.10,
-                weekKey,
-                validUntil: weekProd.validUntil,
-                used: false,
+                userId: currentUser.uid, code: personalCode,
+                productId: weekProd.productId, productName: weekProd.productName,
+                productPrice: weekProd.productPrice, discount: 0.10,
+                weekKey, validUntil: weekProd.validUntil, used: false,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp()
             };
             await userDiscountRef.set(data);
@@ -2086,28 +2338,16 @@ async function loadWeeklyDiscount() {
 function renderDiscountCardInSettings() {
     const wrap = document.getElementById('discountCardWrap');
     if (!wrap) return;
-
     if (!currentUser) { wrap.innerHTML = ''; return; }
-
     if (!currentWeeklyDiscount) {
-        wrap.innerHTML = `
-            <div style="padding:14px 16px;font-size:13px;color:var(--text-3);">
-                <i class="fas fa-ticket-alt" style="color:var(--primary);margin-right:6px;"></i>
-                ${t('discountCardNone')}
-            </div>
-        `;
+        wrap.innerHTML = `<div style="padding:14px 16px;font-size:13px;color:var(--text-3);"><i class="fas fa-ticket-alt" style="color:var(--primary);margin-right:6px;"></i>${t('discountCardNone')}</div>`;
         return;
     }
-
     const d = currentWeeklyDiscount;
     const expiryDate = d.validUntil
-        ? new Date(d.validUntil.toDate ? d.validUntil.toDate() : d.validUntil)
-            .toLocaleDateString(settings.language === 'nl' ? 'nl-NL' : 'en-GB')
+        ? new Date(d.validUntil.toDate ? d.validUntil.toDate() : d.validUntil).toLocaleDateString(settings.language === 'nl' ? 'nl-NL' : 'en-GB')
         : '';
-    const usedLabel = d.used
-        ? `<span style="background:rgba(239,68,68,0.2);color:#ef4444;font-size:11px;padding:2px 8px;border-radius:8px;margin-left:6px;">${settings.language === 'nl' ? 'Gebruikt' : 'Used'}</span>`
-        : '';
-
+    const usedLabel = d.used ? `<span style="background:rgba(239,68,68,0.2);color:#ef4444;font-size:11px;padding:2px 8px;border-radius:8px;margin-left:6px;">${settings.language === 'nl' ? 'Gebruikt' : 'Used'}</span>` : '';
     wrap.innerHTML = `
         <div class="discount-code-card">
             <div class="discount-expiry">${t('discountCardExpiry')}: ${expiryDate}</div>
@@ -2117,13 +2357,7 @@ function renderDiscountCardInSettings() {
                 ${t('discountCardFor')} <strong style="color:#fff;">${d.productName || '?'}</strong><br>
                 ${t('discountCardAmount')}
             </div>
-            ${!d.used ? `
-            <button class="discount-copy-btn" id="discountCopyBtn" onclick="copyDiscountCode('${d.code}')">
-                <i class="fas fa-copy"></i> ${t('discountCardCopy')}
-            </button>` : `
-            <span style="font-size:12px;color:rgba(255,255,255,0.5);position:relative;z-index:1;">
-                ${settings.language === 'nl' ? '✓ Al gebruikt deze week' : '✓ Already used this week'}
-            </span>`}
+            ${!d.used ? `<button class="discount-copy-btn" id="discountCopyBtn" onclick="copyDiscountCode('${d.code}')"><i class="fas fa-copy"></i> ${t('discountCardCopy')}</button>` : `<span style="font-size:12px;color:rgba(255,255,255,0.5);position:relative;z-index:1;">${settings.language === 'nl' ? '✓ Al gebruikt deze week' : '✓ Already used this week'}</span>`}
         </div>
     `;
 }
@@ -2131,15 +2365,11 @@ function renderDiscountCardInSettings() {
 window.copyDiscountCode = function(code) {
     navigator.clipboard.writeText(code).then(() => {
         const btn = document.getElementById('discountCopyBtn');
-        if (btn) {
-            btn.innerHTML = t('discountCardCopied');
-            setTimeout(() => { btn.innerHTML = `<i class="fas fa-copy"></i> ${t('discountCardCopy')}`; }, 2000);
-        }
+        if (btn) { btn.innerHTML = t('discountCardCopied'); setTimeout(() => { btn.innerHTML = `<i class="fas fa-copy"></i> ${t('discountCardCopy')}`; }, 2000); }
         showToast(t('discountCardCopied'));
     }).catch(() => showToast(code));
 };
 
-// Check if user has already used their discount code this week
 async function hasUserUsedDiscountThisWeek() {
     if (!currentUser) return false;
     const weekKey = getWeekKey();
@@ -2149,27 +2379,18 @@ async function hasUserUsedDiscountThisWeek() {
     } catch(e) { return false; }
 }
 
-// Mark the user's personal discount code as used
 async function markDiscountUsed(code) {
     if (!currentUser) return;
     const weekKey = getWeekKey();
-    await db.collection('userDiscount').doc(`${currentUser.uid}_${weekKey}`).update({
-        used: true,
-        usedAt: firebase.firestore.FieldValue.serverTimestamp()
-    });
+    await db.collection('userDiscount').doc(`${currentUser.uid}_${weekKey}`).update({ used: true, usedAt: firebase.firestore.FieldValue.serverTimestamp() });
     if (currentWeeklyDiscount) currentWeeklyDiscount.used = true;
 }
 
-// Validate the entered discount code for a given product
 async function validateDiscountCode(code, productId) {
     if (!currentUser) return { valid: false, reason: 'notLoggedIn' };
     if (!code) return { valid: false, reason: 'empty' };
-
-    // Check if user already used their code this week
     const alreadyUsed = await hasUserUsedDiscountThisWeek();
     if (alreadyUsed) return { valid: false, reason: 'alreadyUsed' };
-
-    // Check user's own personal code
     const weekKey = getWeekKey();
     try {
         const doc = await db.collection('userDiscount').doc(`${currentUser.uid}_${weekKey}`).get();
@@ -2178,15 +2399,12 @@ async function validateDiscountCode(code, productId) {
         if (d.code.toUpperCase() !== code.toUpperCase()) return { valid: false, reason: 'invalidCode' };
         if (d.productId !== productId) return { valid: false, reason: 'wrongProduct' };
         if (d.used) return { valid: false, reason: 'alreadyUsed' };
-        // Check expiry
         if (d.validUntil) {
             const expiry = d.validUntil.toDate ? d.validUntil.toDate() : new Date(d.validUntil);
             if (new Date() > expiry) return { valid: false, reason: 'expired' };
         }
         return { valid: true, discount: 0.10, discountData: d };
-    } catch(e) {
-        return { valid: false, reason: 'error' };
-    }
+    } catch(e) { return { valid: false, reason: 'error' }; }
 }
 
 // ============================================================
@@ -2254,9 +2472,7 @@ function createProductCard(product) {
     const cnt = rating ? rating.total : 0;
     const displayName = getProductField(product, 'name');
     const isDiscount = isDiscountProduct(product.id);
-
     const starsHtml = [1,2,3,4,5].map(i => `<i class="fas fa-star" style="color:${rating && i <= Math.round(rating.average) ? 'var(--star)' : 'var(--star-off)'};font-size:10px;"></i>`).join('');
-
     card.innerHTML = `
         <div class="product-img">
             ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${displayName}" onerror="this.onerror=null;this.parentElement.innerHTML='<i class=\\'fas fa-cube\\'></i>';">` : `<i class="fas fa-cube" style="font-size:28px;"></i>`}
@@ -2276,7 +2492,6 @@ function createProductCard(product) {
             <div class="product-price">€${product.price.toFixed(2)}</div>
         </div>
     `;
-
     card.querySelector('.fav-btn').addEventListener('click', (e) => { e.stopPropagation(); toggleFav(product.id); });
     card.addEventListener('click', () => openProductModal(product.id));
     return card;
@@ -2321,15 +2536,8 @@ async function openProductModal(productId) {
     const displayName = getProductField(product, 'name');
     const displayDesc = getProductField(product, 'description');
     const isDiscount = isDiscountProduct(productId);
-
-    const starsInput = [1,2,3,4,5].map(i => `
-        <i class="fas fa-star star-icon ${i <= userRating ? 'filled' : ''}" data-r="${i}" data-pid="${productId}"></i>
-    `).join('');
-
-    const starsDisplay = [1,2,3,4,5].map(i => `
-        <i class="${i <= Math.round(parseFloat(avg)) ? 'fas' : 'far'} fa-star" style="color:${i <= Math.round(parseFloat(avg)) ? 'var(--star)' : 'var(--star-off)'};font-size:16px;"></i>
-    `).join('');
-
+    const starsInput = [1,2,3,4,5].map(i => `<i class="fas fa-star star-icon ${i <= userRating ? 'filled' : ''}" data-r="${i}" data-pid="${productId}"></i>`).join('');
+    const starsDisplay = [1,2,3,4,5].map(i => `<i class="${i <= Math.round(parseFloat(avg)) ? 'fas' : 'far'} fa-star" style="color:${i <= Math.round(parseFloat(avg)) ? 'var(--star)' : 'var(--star-off)'};font-size:16px;"></i>`).join('');
     const reviewsHtml = reviews.length ? reviews.map(rv => `
         <div class="review-card">
             <div class="review-header">
@@ -2340,8 +2548,6 @@ async function openProductModal(productId) {
             <p class="review-text">${rv.text}</p>
         </div>
     `).join('') : `<p style="font-size:13px;color:var(--text-3);text-align:center;padding:12px;">${t('noReviews')}</p>`;
-
-    // Discount highlight if this is the discount product
     const discountHighlightHtml = isDiscount && currentWeeklyDiscount ? `
         <div class="discount-highlight">
             <div class="discount-highlight-icon">🎟️</div>
@@ -2351,7 +2557,6 @@ async function openProductModal(productId) {
             </div>
         </div>
     ` : '';
-
     document.getElementById('productModalContent').innerHTML = `
         <div class="product-modal-img">
             ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${displayName}">` : `<i class="fas fa-cube" style="font-size:48px;color:var(--text-3);"></i>`}
@@ -2360,14 +2565,8 @@ async function openProductModal(productId) {
         ${discountHighlightHtml}
         <p class="product-modal-desc">${displayDesc}</p>
         <div class="detail-grid">
-            <div class="detail-box">
-                <div class="detail-box-label">${t('material')}</div>
-                <div class="detail-box-value">${product.material}</div>
-            </div>
-            <div class="detail-box">
-                <div class="detail-box-label">${t('category')}</div>
-                <div class="detail-box-value">${product.category}${product.category2?', '+product.category2:''}</div>
-            </div>
+            <div class="detail-box"><div class="detail-box-label">${t('material')}</div><div class="detail-box-value">${product.material}</div></div>
+            <div class="detail-box"><div class="detail-box-label">${t('category')}</div><div class="detail-box-value">${product.category}${product.category2?', '+product.category2:''}</div></div>
         </div>
         <div class="modal-price">€${product.price.toFixed(2)}</div>
         <div class="rating-section">
@@ -2396,24 +2595,17 @@ async function openProductModal(productId) {
             <i class="fas fa-calendar-plus"></i> ${t('reserveBtn')}
         </button>
     `;
-
     document.querySelectorAll(`#starInput_${productId} .star-icon`).forEach(star => {
         star.addEventListener('mouseenter', () => {
             const r = parseInt(star.dataset.r);
-            document.querySelectorAll(`#starInput_${productId} .star-icon`).forEach((s, i) => {
-                s.style.color = i < r ? 'var(--star)' : 'var(--star-off)';
-            });
+            document.querySelectorAll(`#starInput_${productId} .star-icon`).forEach((s, i) => { s.style.color = i < r ? 'var(--star)' : 'var(--star-off)'; });
         });
         star.addEventListener('mouseleave', () => {
             const ur = userRatings[productId] || 0;
-            document.querySelectorAll(`#starInput_${productId} .star-icon`).forEach((s, i) => {
-                s.classList.toggle('filled', i < ur);
-                s.style.color = '';
-            });
+            document.querySelectorAll(`#starInput_${productId} .star-icon`).forEach((s, i) => { s.classList.toggle('filled', i < ur); s.style.color = ''; });
         });
         star.addEventListener('click', () => saveRating(productId, parseInt(star.dataset.r)));
     });
-
     document.getElementById('productModal').classList.add('active');
 }
 window.openProductModal = openProductModal;
@@ -2456,8 +2648,7 @@ async function submitReview(productId) {
         await db.collection('productReviews').add({
             productId, userId: currentUser.uid,
             authorName: currentUser.displayName || currentUser.email.split('@')[0],
-            text, rating,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            text, rating, createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
         showToast(t('reviewSaved'));
         delete productReviews[productId];
@@ -2478,49 +2669,29 @@ function openReserveModal(productId) {
     const colors = product.colors || [];
     const displayName = getProductField(product, 'name');
     const isDiscount = isDiscountProduct(productId);
-
     const colorSwatchesHtml = colors.length ? colors.map((c, i) => `
         <div style="text-align:center;">
             <div class="color-swatch" data-hex="${c.hex}" data-name="${c.name}" data-idx="${i}" style="background:${c.hex};" title="${c.name}"></div>
             <div class="color-label">${c.name}</div>
         </div>
     `).join('') : `<p style="font-size:13px;color:var(--text-3);">${settings.language==='nl'?'Geen kleuropties beschikbaar':'No color options available'}</p>`;
-
-    // Only show discount section if this is the discount product of the week
     const discountSectionHtml = isDiscount ? `
         <div class="discount-input-wrap">
-            <div class="discount-input-title">
-                <i class="fas fa-ticket-alt"></i>
-                ${t('discountInputTitle')}
-            </div>
+            <div class="discount-input-title"><i class="fas fa-ticket-alt"></i> ${t('discountInputTitle')}</div>
             <div class="discount-input-row">
-                <input type="text" class="discount-code-input" id="discountCodeInput_${productId}" 
-                    placeholder="XXXXXXXX" maxlength="8"
-                    oninput="this.value=this.value.toUpperCase()">
-                <button class="discount-apply-btn" onclick="applyDiscountCode('${productId}', ${product.price})">
-                    ${t('discountApply')}
-                </button>
+                <input type="text" class="discount-code-input" id="discountCodeInput_${productId}" placeholder="XXXXXXXX" maxlength="8" oninput="this.value=this.value.toUpperCase()">
+                <button class="discount-apply-btn" onclick="applyDiscountCode('${productId}', ${product.price})">${t('discountApply')}</button>
             </div>
             <div class="discount-result" id="discountResult_${productId}"></div>
             <div id="priceBreakdown_${productId}" style="display:none;">
                 <div class="price-breakdown">
-                    <div class="price-breakdown-row">
-                        <span>${t('priceOriginal')}</span>
-                        <span class="strikethrough">€${product.price.toFixed(2)}</span>
-                    </div>
-                    <div class="price-breakdown-row">
-                        <span>${t('priceDiscount')}</span>
-                        <span style="color:var(--success);">-€${(product.price * 0.10).toFixed(2)}</span>
-                    </div>
-                    <div class="price-breakdown-row">
-                        <span>${t('priceFinal')}</span>
-                        <span>€${(product.price * 0.90).toFixed(2)}</span>
-                    </div>
+                    <div class="price-breakdown-row"><span>${t('priceOriginal')}</span><span class="strikethrough">€${product.price.toFixed(2)}</span></div>
+                    <div class="price-breakdown-row"><span>${t('priceDiscount')}</span><span style="color:var(--success);">-€${(product.price * 0.10).toFixed(2)}</span></div>
+                    <div class="price-breakdown-row"><span>${t('priceFinal')}</span><span>€${(product.price * 0.90).toFixed(2)}</span></div>
                 </div>
             </div>
         </div>
     ` : '';
-
     document.getElementById('reserveModalContent').innerHTML = `
         <div class="reserve-form">
             <h2 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;">${displayName}</h2>
@@ -2544,7 +2715,6 @@ function openReserveModal(productId) {
             </button>
         </div>
     `;
-
     document.querySelectorAll(`#colorSwatches_${productId} .color-swatch`).forEach(swatch => {
         swatch.addEventListener('click', () => {
             document.querySelectorAll(`#colorSwatches_${productId} .color-swatch`).forEach(s => s.classList.remove('selected'));
@@ -2557,7 +2727,6 @@ function openReserveModal(productId) {
             if (preview) preview.style.display = 'flex';
         });
     });
-
     document.getElementById('reserveModal').dataset.productId = productId;
     document.getElementById('reserveModal').classList.add('active');
 }
@@ -2568,16 +2737,12 @@ window.applyDiscountCode = async function(productId, originalPrice) {
     const resultEl = document.getElementById(`discountResult_${productId}`);
     const breakdownEl = document.getElementById(`priceBreakdown_${productId}`);
     if (!input || !resultEl) return;
-
     const code = input.value.trim().toUpperCase();
     if (!code) return;
-
     resultEl.className = 'discount-result';
     resultEl.textContent = settings.language === 'nl' ? 'Controleren...' : 'Checking...';
     resultEl.style.display = 'block';
-
     const result = await validateDiscountCode(code, productId);
-
     if (result.valid) {
         appliedDiscount = { code, discount: 0.10, originalPrice, finalPrice: originalPrice * 0.90 };
         resultEl.className = 'discount-result valid';
@@ -2606,14 +2771,8 @@ async function submitReservation(productId) {
     }
     const color = selectedSwatch ? { name: selectedSwatch.dataset.name, hex: selectedSwatch.dataset.hex } : null;
     const note = document.getElementById('reserveNote')?.value?.trim() || '';
-
-    // Handle discount
-    let discountCode = null;
-    let discountAmount = 0;
-    let finalPrice = product.price;
-
+    let discountCode = null, discountAmount = 0, finalPrice = product.price;
     if (appliedDiscount) {
-        // Double-check server side before saving
         const recheck = await validateDiscountCode(appliedDiscount.code, productId);
         if (recheck.valid) {
             discountCode = appliedDiscount.code;
@@ -2621,31 +2780,19 @@ async function submitReservation(productId) {
             finalPrice = product.price * 0.90;
             await markDiscountUsed(appliedDiscount.code);
         } else {
-            // Discount no longer valid
             appliedDiscount = null;
             const errEl = document.getElementById('reserveError');
-            if (errEl) {
-                errEl.textContent = recheck.reason === 'alreadyUsed' ? t('discountAlreadyUsed') : t('discountInvalid');
-                errEl.style.display = 'block';
-                setTimeout(() => errEl.style.display = 'none', 4000);
-            }
+            if (errEl) { errEl.textContent = recheck.reason === 'alreadyUsed' ? t('discountAlreadyUsed') : t('discountInvalid'); errEl.style.display = 'block'; setTimeout(() => errEl.style.display = 'none', 4000); }
             return;
         }
     }
-
     try {
         await db.collection('reservations').add({
-            userId: currentUser.uid,
-            userEmail: currentUser.email,
+            userId: currentUser.uid, userEmail: currentUser.email,
             userName: currentUser.displayName || currentUser.email.split('@')[0],
-            productId,
-            productName: product.name,
-            productPrice: product.price,
-            discountCode: discountCode || null,
-            discountAmount: discountAmount,
-            finalPrice: finalPrice,
-            color, note,
-            status: 'pending',
+            productId, productName: product.name, productPrice: product.price,
+            discountCode: discountCode || null, discountAmount, finalPrice,
+            color, note, status: 'pending',
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
         appliedDiscount = null;
@@ -2668,15 +2815,11 @@ async function loadUserData(uid) {
             db.collection('reservations').where('userId', '==', uid).get(),
             db.collection('productRatings').get()
         ]);
-
         if (favDoc.exists) userFavorites = favDoc.data().productIds || [];
-
         userRatings = {};
         ratingsSnap.forEach(doc => { const d = doc.data(); userRatings[d.productId] = d.rating; });
-
         productRatings = {};
         ratingsAllSnap.forEach(doc => { productRatings[doc.id] = doc.data(); });
-
         userReservations = [];
         resSnap.forEach(doc => userReservations.push({ id: doc.id, ...doc.data() }));
         userReservations.sort((a, b) => {
@@ -2684,13 +2827,8 @@ async function loadUserData(uid) {
             const tb = b.createdAt ? b.createdAt.toMillis() : 0;
             return tb - ta;
         });
-
-        updateAuthUI();
-        displayFeaturedProducts();
-        displayAllProducts();
-        updateFavoritesUI();
-        updateReservationsUI();
-        updateResBadge();
+        updateAuthUI(); displayFeaturedProducts(); displayAllProducts();
+        updateFavoritesUI(); updateReservationsUI(); updateResBadge();
     } catch(e) { console.error('loadUserData error:', e); }
 }
 
@@ -2712,10 +2850,7 @@ window.toggleFav = toggleFav;
 function updateFavoritesUI() {
     const c = document.getElementById('favoritesProducts');
     if (!c) return;
-    if (!userFavorites.length) {
-        c.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-heart"></i><h3>${t('noFav')}</h3><p>${t('noFavDesc')}</p></div>`;
-        return;
-    }
+    if (!userFavorites.length) { c.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-heart"></i><h3>${t('noFav')}</h3><p>${t('noFavDesc')}</p></div>`; return; }
     const favProds = products.filter(p => userFavorites.includes(p.id));
     if (!favProds.length) { c.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-heart"></i><h3>${t('noFav')}</h3></div>`; return; }
     c.innerHTML = ''; favProds.forEach(p => c.appendChild(createProductCard(p)));
@@ -2724,14 +2859,8 @@ function updateFavoritesUI() {
 function updateReservationsUI() {
     const c = document.getElementById('reservationsList');
     if (!c) return;
-    if (!currentUser) {
-        c.innerHTML = `<div class="empty-state"><i class="fas fa-calendar-times"></i><h3>${t('noRes')}</h3><p><a href="#" onclick="openAuth();return false;">${t('login')}</a></p></div>`;
-        return;
-    }
-    if (!userReservations.length) {
-        c.innerHTML = `<div class="empty-state"><i class="fas fa-calendar-check"></i><h3>${t('noRes')}</h3><p>${t('noResDesc')}</p></div>`;
-        return;
-    }
+    if (!currentUser) { c.innerHTML = `<div class="empty-state"><i class="fas fa-calendar-times"></i><h3>${t('noRes')}</h3><p><a href="#" onclick="openAuth();return false;">${t('login')}</a></p></div>`; return; }
+    if (!userReservations.length) { c.innerHTML = `<div class="empty-state"><i class="fas fa-calendar-check"></i><h3>${t('noRes')}</h3><p>${t('noResDesc')}</p></div>`; return; }
     c.innerHTML = '';
     userReservations.forEach(res => {
         const card = document.createElement('div');
@@ -2742,9 +2871,7 @@ function updateReservationsUI() {
         const priceInfo = res.discountCode ? `€${res.finalPrice?.toFixed(2)} <span style="font-size:10px;background:rgba(34,197,94,0.15);color:var(--success);padding:2px 6px;border-radius:6px;margin-left:4px;">-10%</span>` : `€${res.productPrice?.toFixed(2)}`;
         card.innerHTML = `
             <div class="res-product">${res.productName}</div>
-            <div class="res-color">
-                ${res.color ? `<div class="res-color-dot" style="background:${res.color.hex};"></div>${res.color.name}` : t('noColorSelected')}
-            </div>
+            <div class="res-color">${res.color ? `<div class="res-color-dot" style="background:${res.color.hex};"></div>${res.color.name}` : t('noColorSelected')}</div>
             <div class="res-meta">${date}${res.note ? ` · ${res.note}` : ''} · ${priceInfo}</div>
             <span class="res-status ${res.status}">${statusLabel}</span>
         `;
@@ -2769,18 +2896,11 @@ async function checkAdminAccess() {
     if (!currentUser) { section.style.display = 'none'; isAdmin = false; return; }
     try {
         const doc = await db.collection('admins').doc(currentUser.uid).get();
-        if (doc.exists && doc.data().isAdmin) {
-            section.style.display = 'block';
-            isAdmin = true;
-        } else {
-            section.style.display = 'none';
-            isAdmin = false;
-        }
+        if (doc.exists && doc.data().isAdmin) { section.style.display = 'block'; isAdmin = true; }
+        else { section.style.display = 'none'; isAdmin = false; }
     } catch(e) { section.style.display = 'none'; isAdmin = false; }
 }
 
-let adminEditColors = [];
-let adminEditingProductId = null;
 const adminColorLists = {};
 
 async function loadAdminContent(tab) {
@@ -2797,29 +2917,16 @@ async function loadAdminContent(tab) {
             db.collection('productReviews').get()
         ]);
         c.innerHTML = `
-            <div class="stat-row">
-                <div class="stat-icon" style="background:#fef3c7;"><i class="fas fa-cube" style="color:#d97706;"></i></div>
-                <div><div style="font-weight:700;">${prodsSnap.size} producten</div><div class="admin-stat">In database</div></div>
-            </div>
-            <div class="stat-row">
-                <div class="stat-icon" style="background:#f0fdf4;"><i class="fas fa-calendar-check" style="color:#16a34a;"></i></div>
-                <div><div style="font-weight:700;">${resSnap.size} reserveringen</div><div class="admin-stat">${resSnap.docs.filter(d=>d.data().status==='pending').length} in behandeling</div></div>
-            </div>
-            <div class="stat-row">
-                <div class="stat-icon" style="background:#eff6ff;"><i class="fas fa-star" style="color:#2563eb;"></i></div>
-                <div><div style="font-weight:700;">${reviewsSnap.size} recensies</div></div>
-            </div>
+            <div class="stat-row"><div class="stat-icon" style="background:#fef3c7;"><i class="fas fa-cube" style="color:#d97706;"></i></div><div><div style="font-weight:700;">${prodsSnap.size} producten</div><div class="admin-stat">In database</div></div></div>
+            <div class="stat-row"><div class="stat-icon" style="background:#f0fdf4;"><i class="fas fa-calendar-check" style="color:#16a34a;"></i></div><div><div style="font-weight:700;">${resSnap.size} reserveringen</div><div class="admin-stat">${resSnap.docs.filter(d=>d.data().status==='pending').length} in behandeling</div></div></div>
+            <div class="stat-row"><div class="stat-icon" style="background:#eff6ff;"><i class="fas fa-star" style="color:#2563eb;"></i></div><div><div style="font-weight:700;">${reviewsSnap.size} recensies</div></div></div>
         `;
     } else if (tab === 'reservations') {
         const snap = await db.collection('reservations').get();
         if (!snap.size) { c.innerHTML = `<div class="empty-state"><i class="fas fa-calendar-times"></i><h3>Geen reserveringen</h3></div>`; return; }
         const allRes = [];
         snap.forEach(doc => allRes.push({ id: doc.id, ...doc.data() }));
-        allRes.sort((a, b) => {
-            const ta = a.createdAt ? a.createdAt.toMillis() : 0;
-            const tb = b.createdAt ? b.createdAt.toMillis() : 0;
-            return tb - ta;
-        });
+        allRes.sort((a, b) => (b.createdAt?.toMillis()||0) - (a.createdAt?.toMillis()||0));
         c.innerHTML = '';
         allRes.forEach(res => {
             const card = document.createElement('div');
@@ -2886,11 +2993,7 @@ async function loadAdminContent(tab) {
         if (!snap.size) { c.innerHTML = `<div class="empty-state"><i class="fas fa-star"></i><h3>Geen recensies</h3></div>`; return; }
         const allReviews = [];
         snap.forEach(doc => allReviews.push({ id: doc.id, ...doc.data() }));
-        allReviews.sort((a, b) => {
-            const ta = a.createdAt ? a.createdAt.toMillis() : 0;
-            const tb = b.createdAt ? b.createdAt.toMillis() : 0;
-            return tb - ta;
-        });
+        allReviews.sort((a, b) => (b.createdAt?.toMillis()||0) - (a.createdAt?.toMillis()||0));
         c.innerHTML = '';
         allReviews.forEach(rv => {
             const card = document.createElement('div');
@@ -2927,7 +3030,6 @@ function buildBonHTML(res) {
     const date = res.createdAt ? new Date(res.createdAt.toDate ? res.createdAt.toDate() : res.createdAt).toLocaleString('nl-NL') : new Date().toLocaleString('nl-NL');
     const hasDiscount = !!res.discountCode;
     const finalPrice = res.finalPrice || res.productPrice;
-
     return `
         <div class="bon-preview" id="bonPreviewInner">
             <h2>PrintSome</h2>
@@ -2943,18 +3045,11 @@ function buildBonHTML(res) {
             ${res.note ? `<div class="bon-row"><span>Opmerking:</span><span>${res.note}</span></div>` : ''}
             <hr class="bon-divider">
             <div class="bon-row"><span>Originele prijs:</span><span>€${res.productPrice?.toFixed(2)}</span></div>
-            ${hasDiscount ? `
-                <div class="bon-row"><span>Kortingscode:</span><span>${res.discountCode}</span></div>
-                <div class="bon-row"><span>Korting (10%):</span><span>-€${res.discountAmount?.toFixed(2)}</span></div>
-            ` : ''}
+            ${hasDiscount ? `<div class="bon-row"><span>Kortingscode:</span><span>${res.discountCode}</span></div><div class="bon-row"><span>Korting (10%):</span><span>-€${res.discountAmount?.toFixed(2)}</span></div>` : ''}
             <div class="bon-total"><span>TOTAAL</span><span>€${finalPrice?.toFixed(2)}</span></div>
             <hr class="bon-divider">
             <div class="bon-row"><span>Status:</span><span><strong>${res.status === 'confirmed' ? '✅ Bevestigd' : res.status}</strong></span></div>
-            <div class="bon-footer">
-                Bedankt voor je reservering!<br>
-                PrintSome · printsome-webapp@outlook.com<br>
-                printsome.pages.dev
-            </div>
+            <div class="bon-footer">Bedankt voor je reservering!<br>PrintSome · printsome-webapp@outlook.com<br>printsome.pages.dev</div>
         </div>
     `;
 }
@@ -2963,8 +3058,7 @@ function buildBonText(res) {
     const date = res.createdAt ? new Date(res.createdAt.toDate ? res.createdAt.toDate() : res.createdAt).toLocaleString('nl-NL') : new Date().toLocaleString('nl-NL');
     const hasDiscount = !!res.discountCode;
     const finalPrice = res.finalPrice || res.productPrice;
-    return `
-================================
+    return `================================
          PRINTSOME
   3D Printing Shop
   printsome-webapp@outlook.com
@@ -2979,15 +3073,13 @@ ${res.color ? `Kleur:          ${res.color.name}` : ''}
 ${res.note ? `Opmerking:      ${res.note}` : ''}
 --------------------------------
 Originele prijs: €${res.productPrice?.toFixed(2)}
-${hasDiscount ? `Kortingscode:   ${res.discountCode}
-Korting (10%):  -€${res.discountAmount?.toFixed(2)}` : ''}
+${hasDiscount ? `Kortingscode:   ${res.discountCode}\nKorting (10%):  -€${res.discountAmount?.toFixed(2)}` : ''}
 ================================
 TOTAAL:         €${finalPrice?.toFixed(2)}
 Status:         ${res.status === 'confirmed' ? 'BEVESTIGD' : res.status.toUpperCase()}
 ================================
 Bedankt voor je reservering!
-PrintSome · printsome.pages.dev
-    `.trim();
+PrintSome · printsome.pages.dev`.trim();
 }
 
 window.confirmAndShowBon = async function(resId) {
@@ -3012,28 +3104,17 @@ function showBon(res) {
     document.getElementById('bonOverlay').classList.add('show');
 }
 
-window.closeBon = function() {
-    document.getElementById('bonOverlay').classList.remove('show');
-    currentBonData = null;
-};
-
+window.closeBon = function() { document.getElementById('bonOverlay').classList.remove('show'); currentBonData = null; };
 window.copyBon = function() {
     if (!currentBonData) return;
     const text = buildBonText(currentBonData);
-    navigator.clipboard.writeText(text).then(() => {
-        showToast('Bon gekopieerd!');
-    }).catch(() => {
-        // Fallback
+    navigator.clipboard.writeText(text).then(() => showToast('Bon gekopieerd!')).catch(() => {
         const ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta);
         showToast('Bon gekopieerd!');
     });
 };
-
 window.printBon = function() {
     if (!currentBonData) return;
     const printEl = document.getElementById('printBonContent');
@@ -3218,7 +3299,6 @@ window.saveAdminProduct = async function(productId, formId, tempKey) {
     const featured = get('featured')?.value === 'true';
     const imageUrl = get('imageUrl')?.value?.trim() || '';
     const errEl = document.getElementById(`${formId}_error`);
-
     if (!name || !description || !priceStr || !material || !category) {
         if (errEl) { errEl.textContent = 'Vul alle verplichte velden in'; errEl.style.display = 'block'; }
         return;
@@ -3232,13 +3312,8 @@ window.saveAdminProduct = async function(productId, formId, tempKey) {
     const data = { name, nameEn, description, descriptionEn, price, material, category, featured, imageUrl, colors };
     if (category2) data.category2 = category2; else data.category2 = '';
     try {
-        if (productId) {
-            await db.collection('products').doc(productId).update(data);
-            showToast('Product bijgewerkt!');
-        } else {
-            await db.collection('products').add(data);
-            showToast('Product toegevoegd!');
-        }
+        if (productId) { await db.collection('products').doc(productId).update(data); showToast('Product bijgewerkt!'); }
+        else { await db.collection('products').add(data); showToast('Product toegevoegd!'); }
         await loadProducts();
         loadAdminContent('products');
     } catch(e) {

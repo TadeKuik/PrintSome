@@ -19,1028 +19,1020 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0; padding: 0; box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
 
-        :root {
-            --primary: #FFD700;
-            --primary-light: #FFF8DC;
-            --primary-dark: #FFC107;
-            --accent: #FF8C00;
-            --success: #22c55e;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --info: #3b82f6;
-            --bg: #ffffff;
-            --bg-2: #f8f9fa;
-            --bg-3: #f0f1f3;
-            --surface: #ffffff;
-            --surface-2: #f5f5f5;
-            --border: #e8e8e8;
-            --border-2: #d0d0d0;
-            --text: #0f0f0f;
-            --text-2: #4a4a4a;
-            --text-3: #8a8a8a;
-            --text-inv: #ffffff;
-            --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
-            --shadow: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-            --shadow-xl: 0 16px 48px rgba(0,0,0,0.16);
-            --radius-sm: 8px;
-            --radius: 14px;
-            --radius-lg: 20px;
-            --radius-xl: 28px;
-            --header-h: 60px;
-            --nav-h: 68px;
-            --transition: 200ms cubic-bezier(0.4,0,0.2,1);
-            --transition-bounce: 300ms cubic-bezier(0.34,1.56,0.64,1);
-            --safe-top: env(safe-area-inset-top);
-            --safe-bottom: env(safe-area-inset-bottom);
-            --link: #0066cc;
-            --star: #FFB800;
-            --star-off: #ddd;
-        }
+    /* ============================================================
+       === CSS: RESET & VARIABLES ===
+       ============================================================ */
+    * {
+        margin: 0; padding: 0; box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
 
-        .dark-theme {
-            --primary: #FFD700;
-            --primary-light: #2a2500;
-            --primary-dark: #FFC107;
-            --accent: #FF9F00;
-            --success: #16a34a;
-            --bg: #0d0d0d;
-            --bg-2: #161616;
-            --bg-3: #1e1e1e;
-            --surface: #1a1a1a;
-            --surface-2: #222222;
-            --border: #2a2a2a;
-            --border-2: #383838;
-            --text: #f5f5f5;
-            --text-2: #b0b0b0;
-            --text-3: #666666;
-            --text-inv: #000000;
-            --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
-            --shadow: 0 4px 16px rgba(0,0,0,0.4);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
-            --shadow-xl: 0 16px 48px rgba(0,0,0,0.6);
-            --link: #66b0ff;
-            --star-off: #333;
-        }
+    :root {
+        --primary: #FFD700;
+        --primary-light: #FFF8DC;
+        --primary-dark: #FFC107;
+        --accent: #FF8C00;
+        --success: #22c55e;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+        --info: #3b82f6;
+        --bg: #ffffff;
+        --bg-2: #f8f9fa;
+        --bg-3: #f0f1f3;
+        --surface: #ffffff;
+        --surface-2: #f5f5f5;
+        --border: #e8e8e8;
+        --border-2: #d0d0d0;
+        --text: #0f0f0f;
+        --text-2: #4a4a4a;
+        --text-3: #8a8a8a;
+        --text-inv: #ffffff;
+        --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
+        --shadow: 0 4px 16px rgba(0,0,0,0.08);
+        --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+        --shadow-xl: 0 16px 48px rgba(0,0,0,0.16);
+        --radius-sm: 8px;
+        --radius: 14px;
+        --radius-lg: 20px;
+        --radius-xl: 28px;
+        --header-h: 60px;
+        --nav-h: 68px;
+        --transition: 200ms cubic-bezier(0.4,0,0.2,1);
+        --transition-bounce: 300ms cubic-bezier(0.34,1.56,0.64,1);
+        --safe-top: env(safe-area-inset-top);
+        --safe-bottom: env(safe-area-inset-bottom);
+        --link: #0066cc;
+        --star: #FFB800;
+        --star-off: #ddd;
+    }
 
-        html { height: 100%; overflow: hidden; }
-        body {
-            background: var(--bg); color: var(--text);
-            height: 100vh; overflow: hidden; position: relative;
-            padding-top: var(--safe-top); padding-bottom: var(--safe-bottom);
-            display: flex; flex-direction: column;
-            transition: background var(--transition), color var(--transition);
-        }
-        .app-container {
-            flex: 1; display: flex; flex-direction: column;
-            max-width: 768px; margin: 0 auto; width: 100%;
-            height: 100%; overflow: hidden; background: var(--bg);
-        }
+    .dark-theme {
+        --primary: #FFD700;
+        --primary-light: #2a2500;
+        --primary-dark: #FFC107;
+        --accent: #FF9F00;
+        --success: #16a34a;
+        --bg: #0d0d0d;
+        --bg-2: #161616;
+        --bg-3: #1e1e1e;
+        --surface: #1a1a1a;
+        --surface-2: #222222;
+        --border: #2a2a2a;
+        --border-2: #383838;
+        --text: #f5f5f5;
+        --text-2: #b0b0b0;
+        --text-3: #666666;
+        --text-inv: #000000;
+        --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+        --shadow: 0 4px 16px rgba(0,0,0,0.4);
+        --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
+        --shadow-xl: 0 16px 48px rgba(0,0,0,0.6);
+        --link: #66b0ff;
+        --star-off: #333;
+    }
+    /* === END CSS: RESET & VARIABLES === */
 
-        .app-header {
-            height: var(--header-h);
-            background: var(--bg);
-            display: flex; align-items: center;
-            justify-content: space-between; padding: 0 18px;
-            border-bottom: 1px solid var(--border);
-            position: sticky; top: 0; z-index: 100;
-            backdrop-filter: blur(12px);
-            transition: all var(--transition);
-        }
-        .header-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 20px; font-weight: 800;
-            color: var(--primary);
-            display: flex; align-items: center; gap: 8px;
-            letter-spacing: -0.5px;
-        }
-        .logo-img {
-            width: 32px; height: 32px; border-radius: 8px;
-            background: url('https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png') center/cover no-repeat;
-        }
-        .header-actions { display: flex; align-items: center; gap: 10px; }
-        .header-btn {
-            background: var(--surface-2); border: 1px solid var(--border);
-            width: 38px; height: 38px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--text-2); font-size: 16px; cursor: pointer;
-            transition: all var(--transition-bounce);
-        }
-        .header-btn:hover { transform: scale(1.08); background: var(--bg-3); }
-        .user-avatar {
-            width: 38px; height: 38px; border-radius: 50%;
-            background: var(--primary); color: #000;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 14px; cursor: pointer;
-            border: 2px solid transparent; overflow: hidden;
-            transition: all var(--transition-bounce);
-        }
-        .user-avatar:hover { border-color: var(--accent); transform: scale(1.06); }
-        .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    /* ============================================================
+       === CSS: LAYOUT ===
+       ============================================================ */
+    html { height: 100%; overflow: hidden; }
+    body {
+        background: var(--bg); color: var(--text);
+        height: 100vh; overflow: hidden; position: relative;
+        padding-top: var(--safe-top); padding-bottom: var(--safe-bottom);
+        display: flex; flex-direction: column;
+        transition: background var(--transition), color var(--transition);
+    }
+    .app-container {
+        flex: 1; display: flex; flex-direction: column;
+        max-width: 768px; margin: 0 auto; width: 100%;
+        height: 100%; overflow: hidden; background: var(--bg);
+    }
+    .main-content {
+        flex: 1; overflow-y: auto; overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        padding: 16px; padding-bottom: calc(var(--nav-h) + 16px);
+    }
+    .page { display: none; animation: pageIn 250ms ease forwards; }
+    .page.active { display: block; }
+    @keyframes pageIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .hidden { display: none !important; }
+    .text-primary { color: var(--primary); }
+    .text-success { color: var(--success); }
+    .text-danger { color: var(--danger); }
+    .bold { font-weight: 700; }
+    a { color: var(--link); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
+    .dark-theme ::-webkit-scrollbar-thumb { background: var(--border); }
+    /* === END CSS: LAYOUT === */
 
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            height: var(--nav-h); background: var(--bg);
-            border-top: 1px solid var(--border);
-            display: flex; justify-content: space-around; align-items: center;
-            padding-bottom: var(--safe-bottom); z-index: 100;
-            max-width: 768px; margin: 0 auto;
-            backdrop-filter: blur(12px);
-        }
-        .nav-item {
-            display: flex; flex-direction: column; align-items: center;
-            justify-content: center; flex: 1; height: 100%;
-            text-decoration: none; color: var(--text-3);
-            transition: all var(--transition); position: relative;
-        }
-        .nav-item.active { color: var(--primary); }
-        .nav-dot {
-            position: absolute; top: 8px; width: 5px; height: 5px;
-            background: var(--primary); border-radius: 50%;
-            opacity: 0; transition: all var(--transition-bounce);
-            transform: translateY(-4px);
-        }
-        .nav-item.active .nav-dot { opacity: 1; transform: translateY(0); }
-        .nav-icon {
-            font-size: 20px; margin-bottom: 3px;
-            transition: transform var(--transition-bounce);
-        }
-        .nav-item.active .nav-icon { transform: translateY(-2px); }
-        .nav-label { font-size: 8.5px; font-weight: 600; letter-spacing: 0; text-transform: uppercase; }
-        .nav-badge {
-            position: absolute; top: 6px; right: calc(50% - 18px);
-            background: var(--danger); color: white;
-            width: 18px; height: 18px; border-radius: 50%;
-            font-size: 10px; font-weight: 700;
-            display: flex; align-items: center; justify-content: center;
-            border: 2px solid var(--bg);
-        }
+    /* ============================================================
+       === CSS: HEADER & NAV ===
+       ============================================================ */
+    .app-header {
+        height: var(--header-h);
+        background: var(--bg);
+        display: flex; align-items: center;
+        justify-content: space-between; padding: 0 18px;
+        border-bottom: 1px solid var(--border);
+        position: sticky; top: 0; z-index: 100;
+        backdrop-filter: blur(12px);
+        transition: all var(--transition);
+    }
+    .header-title {
+        font-family: 'Outfit', sans-serif;
+        font-size: 20px; font-weight: 800;
+        color: var(--primary);
+        display: flex; align-items: center; gap: 8px;
+        letter-spacing: -0.5px;
+    }
+    .logo-img {
+        width: 32px; height: 32px; border-radius: 8px;
+        background: url('https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png') center/cover no-repeat;
+    }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .header-btn {
+        background: var(--surface-2); border: 1px solid var(--border);
+        width: 38px; height: 38px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: var(--text-2); font-size: 16px; cursor: pointer;
+        transition: all var(--transition-bounce);
+    }
+    .header-btn:hover { transform: scale(1.08); background: var(--bg-3); }
+    .user-avatar {
+        width: 38px; height: 38px; border-radius: 50%;
+        background: var(--primary); color: #000;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 700; font-size: 14px; cursor: pointer;
+        border: 2px solid transparent; overflow: hidden;
+        transition: all var(--transition-bounce);
+    }
+    .user-avatar:hover { border-color: var(--accent); transform: scale(1.06); }
+    .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .bottom-nav {
+        position: fixed; bottom: 0; left: 0; right: 0;
+        height: var(--nav-h); background: var(--bg);
+        border-top: 1px solid var(--border);
+        display: flex; justify-content: space-around; align-items: center;
+        padding-bottom: var(--safe-bottom); z-index: 100;
+        max-width: 768px; margin: 0 auto;
+        backdrop-filter: blur(12px);
+    }
+    .nav-item {
+        display: flex; flex-direction: column; align-items: center;
+        justify-content: center; flex: 1; height: 100%;
+        text-decoration: none; color: var(--text-3);
+        transition: all var(--transition); position: relative;
+    }
+    .nav-item.active { color: var(--primary); }
+    .nav-dot {
+        position: absolute; top: 8px; width: 5px; height: 5px;
+        background: var(--primary); border-radius: 50%;
+        opacity: 0; transition: all var(--transition-bounce);
+        transform: translateY(-4px);
+    }
+    .nav-item.active .nav-dot { opacity: 1; transform: translateY(0); }
+    .nav-icon {
+        font-size: 20px; margin-bottom: 3px;
+        transition: transform var(--transition-bounce);
+    }
+    .nav-item.active .nav-icon { transform: translateY(-2px); }
+    .nav-label { font-size: 8.5px; font-weight: 600; letter-spacing: 0; text-transform: uppercase; }
+    .nav-badge {
+        position: absolute; top: 6px; right: calc(50% - 18px);
+        background: var(--danger); color: white;
+        width: 18px; height: 18px; border-radius: 50%;
+        font-size: 10px; font-weight: 700;
+        display: flex; align-items: center; justify-content: center;
+        border: 2px solid var(--bg);
+    }
+    /* === END CSS: HEADER & NAV === */
 
-        .main-content {
-            flex: 1; overflow-y: auto; overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
-            padding: 16px; padding-bottom: calc(var(--nav-h) + 16px);
-        }
-        .page { display: none; animation: pageIn 250ms ease forwards; }
-        .page.active { display: block; }
-        @keyframes pageIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    /* ============================================================
+       === CSS: HOME ===
+       ============================================================ */
+    .welcome-card {
+        background: linear-gradient(135deg, #FFD700 0%, #FFAA33 100%);
+        color: #000; border-radius: var(--radius-xl); padding: 24px;
+        margin-bottom: 22px; box-shadow: var(--shadow-lg);
+        position: relative; overflow: hidden;
+    }
+    .welcome-card h1 {
+        font-family: 'Outfit', sans-serif;
+        font-size: 26px; font-weight: 800; margin-bottom: 6px;
+        letter-spacing: -0.5px; position: relative; z-index: 1;
+    }
+    .welcome-subtitle { font-size: 14px; opacity: 0.8; margin-bottom: 16px; position: relative; z-index: 1; }
+    .welcome-badge {
+        display: inline-flex; align-items: center; gap: 6px;
+        background: rgba(0,0,0,0.15); padding: 6px 14px;
+        border-radius: 20px; font-size: 13px; font-weight: 600;
+        position: relative; z-index: 1;
+    }
+    .section-header {
+        display: flex; justify-content: space-between; align-items: center;
+        margin-bottom: 14px; margin-top: 24px;
+    }
+    .section-title {
+        font-family: 'Outfit', sans-serif;
+        font-size: 18px; font-weight: 700;
+        color: var(--text); letter-spacing: -0.3px;
+    }
+    .section-link {
+        font-size: 13px; color: var(--primary); text-decoration: none;
+        font-weight: 600; display: flex; align-items: center; gap: 4px;
+        background: var(--primary-light); padding: 5px 12px;
+        border-radius: 20px; transition: all var(--transition);
+    }
+    .section-link:hover { background: var(--primary); color: #000; }
+    .faq-section { margin-top: 24px; margin-bottom: 20px; }
+    .faq-header {
+        font-family: 'Outfit', sans-serif;
+        font-size: 18px; font-weight: 700; color: var(--text);
+        display: flex; align-items: center; gap: 8px; margin-bottom: 14px;
+    }
+    .faq-header i { color: var(--primary); }
+    .faq-item {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius); margin-bottom: 8px;
+        overflow: hidden; transition: box-shadow var(--transition);
+    }
+    .faq-item:hover { box-shadow: var(--shadow); }
+    .faq-q {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 16px; cursor: pointer; font-weight: 600; font-size: 14px;
+        color: var(--text);
+    }
+    .faq-q i { color: var(--primary); transition: transform var(--transition); flex-shrink: 0; margin-left: 8px; }
+    .faq-q.open i { transform: rotate(180deg); }
+    .faq-a {
+        max-height: 0; overflow: hidden;
+        transition: max-height 300ms ease, padding 200ms ease;
+        font-size: 14px; color: var(--text-2); line-height: 1.6;
+        padding: 0 16px;
+    }
+    .faq-a.open { max-height: 400px; padding: 0 16px 16px; }
+    /* === END CSS: HOME === */
 
-        /* =====================================================
-           WIJZIGING 1: Welcome card
-           - Gradient van geel naar licht oranje (geen donker oranje)
-           - Grijze stippen (::after met dot pattern) verwijderd
-           ===================================================== */
-        .welcome-card {
-            background: linear-gradient(135deg, #FFD700 0%, #FFAA33 100%);
-            color: #000; border-radius: var(--radius-xl); padding: 24px;
-            margin-bottom: 22px; box-shadow: var(--shadow-lg);
-            position: relative; overflow: hidden;
-        }
-        /* ::after met stippenpatroon is verwijderd */
-        .welcome-card h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 26px; font-weight: 800; margin-bottom: 6px;
-            letter-spacing: -0.5px; position: relative; z-index: 1;
-        }
-        .welcome-subtitle { font-size: 14px; opacity: 0.8; margin-bottom: 16px; position: relative; z-index: 1; }
-        .welcome-badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: rgba(0,0,0,0.15); padding: 6px 14px;
-            border-radius: 20px; font-size: 13px; font-weight: 600;
-            position: relative; z-index: 1;
-        }
+    /* ============================================================
+       === CSS: PRODUCTS ===
+       ============================================================ */
+    .products-grid {
+        display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+    }
+    @media(min-width: 480px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+    .product-card {
+        background: var(--surface); border-radius: var(--radius);
+        overflow: hidden; box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border); transition: all var(--transition-bounce);
+        cursor: pointer; position: relative;
+    }
+    .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .product-card:active { transform: scale(0.97); }
+    .product-img {
+        height: 130px; width: 100%; background: var(--bg-3);
+        display: flex; align-items: center; justify-content: center;
+        color: var(--text-3); position: relative; overflow: hidden;
+    }
+    .product-img img {
+        width: 100%; height: 100%; object-fit: cover;
+        transition: transform 300ms ease;
+    }
+    .product-card:hover .product-img img { transform: scale(1.06); }
+    .fav-btn {
+        position: absolute; bottom: 8px; right: 8px;
+        background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+        border: none; width: 32px; height: 32px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; font-size: 14px;
+        transition: all var(--transition-bounce); z-index: 2;
+        box-shadow: var(--shadow-sm);
+    }
+    .fav-btn:hover { transform: scale(1.2); }
+    .fav-btn.active { background: #fff0f0; color: #ef4444; }
+    .dark-theme .fav-btn { background: rgba(30,30,30,0.92); }
+    .product-info { padding: 10px 12px 12px; }
+    .product-name {
+        font-family: 'Outfit', sans-serif;
+        font-size: 13px; font-weight: 700; margin-bottom: 5px;
+        color: var(--text); white-space: nowrap; overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .product-tags {
+        display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 6px;
+    }
+    .tag {
+        font-size: 10px; color: var(--text-3); background: var(--bg-3);
+        padding: 2px 7px; border-radius: 6px;
+    }
+    .product-price {
+        font-family: 'Outfit', sans-serif;
+        font-size: 16px; font-weight: 800; color: var(--primary);
+    }
+    .product-stars {
+        display: flex; align-items: center; gap: 3px;
+        font-size: 11px; color: var(--text-3); margin-bottom: 4px;
+    }
+    .product-stars i { font-size: 10px; color: var(--star); }
+    .discount-badge-card {
+        position: absolute; top: 8px; left: 8px;
+        background: var(--danger); color: #fff;
+        font-size: 10px; font-weight: 800; padding: 3px 8px;
+        border-radius: 10px; z-index: 2; letter-spacing: 0.3px;
+    }
+    .search-bar { position: relative; margin-bottom: 14px; }
+    .search-input {
+        width: 100%; padding: 13px 16px 13px 44px;
+        background: var(--surface-2); border: 1.5px solid var(--border);
+        border-radius: var(--radius-lg); font-size: 15px; color: var(--text);
+        transition: all var(--transition);
+    }
+    .search-input:focus { outline: none; border-color: var(--primary); background: var(--surface); box-shadow: 0 0 0 3px rgba(255,215,0,0.15); }
+    .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-3); }
+    .filter-chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+    .filter-chips::-webkit-scrollbar { display: none; }
+    .chip {
+        padding: 8px 16px; background: var(--surface-2); border: 1.5px solid var(--border);
+        border-radius: 20px; font-size: 13px; font-weight: 600; color: var(--text-2);
+        white-space: nowrap; cursor: pointer; transition: all var(--transition); flex-shrink: 0;
+    }
+    .chip.active { background: var(--primary); color: #000; border-color: var(--primary); }
+    /* === END CSS: PRODUCTS === */
 
-        .section-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 14px; margin-top: 24px;
-        }
-        .section-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 18px; font-weight: 700;
-            color: var(--text); letter-spacing: -0.3px;
-        }
-        .section-link {
-            font-size: 13px; color: var(--primary); text-decoration: none;
-            font-weight: 600; display: flex; align-items: center; gap: 4px;
-            background: var(--primary-light); padding: 5px 12px;
-            border-radius: 20px; transition: all var(--transition);
-        }
-        .section-link:hover { background: var(--primary); color: #000; }
+    /* ============================================================
+       === CSS: PRODUCT MODAL ===
+       ============================================================ */
+    .product-modal-img {
+        width: 100%; max-height: 280px; object-fit: contain;
+        border-radius: var(--radius); background: var(--bg-3);
+        display: flex; align-items: center; justify-content: center;
+        overflow: hidden; margin-bottom: 18px;
+    }
+    .product-modal-img img { width: 100%; max-height: 280px; object-fit: contain; }
+    .product-modal-name {
+        font-family: 'Outfit', sans-serif;
+        font-size: 22px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.4px;
+    }
+    .product-modal-desc { font-size: 14px; color: var(--text-2); line-height: 1.6; margin-bottom: 16px; }
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+    .detail-box {
+        background: var(--bg-2); border: 1px solid var(--border);
+        padding: 12px; border-radius: var(--radius-sm);
+    }
+    .detail-box-label { font-size: 11px; color: var(--text-3); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .detail-box-value { font-size: 15px; font-weight: 600; color: var(--text); }
+    .modal-price {
+        font-family: 'Outfit', sans-serif;
+        font-size: 30px; font-weight: 900; color: var(--primary);
+        text-align: center; margin: 16px 0;
+    }
+    .discount-highlight {
+        background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,140,0,0.1));
+        border: 1.5px solid var(--primary); border-radius: var(--radius);
+        padding: 14px 16px; margin-bottom: 16px;
+        display: flex; align-items: center; gap: 12px;
+    }
+    .discount-highlight-icon {
+        width: 40px; height: 40px; background: var(--primary);
+        border-radius: 10px; display: flex; align-items: center; justify-content: center;
+        font-size: 18px; flex-shrink: 0;
+    }
+    .discount-highlight-text h4 {
+        font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; margin-bottom: 2px;
+    }
+    .discount-highlight-text p { font-size: 12px; color: var(--text-2); }
+    .rating-section {
+        background: var(--surface-2); border: 1px solid var(--border);
+        border-radius: var(--radius); padding: 16px; margin-bottom: 16px;
+    }
+    .rating-title { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+    .stars-display { display: flex; gap: 5px; margin-bottom: 6px; }
+    .star-icon {
+        font-size: 26px; color: var(--star-off);
+        cursor: pointer; transition: all var(--transition-bounce);
+    }
+    .star-icon.filled { color: var(--star); }
+    .star-icon:hover { transform: scale(1.2); }
+    .rating-count { font-size: 12px; color: var(--text-3); }
+    .review-form-toggle {
+        margin-top: 12px; font-size: 13px; color: var(--link);
+        cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 5px;
+    }
+    .review-form { margin-top: 12px; display: none; }
+    .review-form.show { display: block; }
+    .review-textarea {
+        width: 100%; padding: 12px; background: var(--surface);
+        border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+        font-size: 14px; color: var(--text); resize: none; height: 90px;
+        transition: all var(--transition); font-family: inherit;
+    }
+    .review-textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(255,215,0,0.15); }
+    .reviews-list { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+    .review-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius-sm); padding: 12px;
+        animation: fadeIn 200ms ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    .review-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .review-author { font-size: 13px; font-weight: 700; color: var(--text); }
+    .review-date { font-size: 11px; color: var(--text-3); }
+    .review-stars { display: flex; gap: 2px; margin-bottom: 6px; }
+    .review-stars i { font-size: 12px; color: var(--star); }
+    .review-text { font-size: 13px; color: var(--text-2); line-height: 1.5; }
+    .reserve-btn {
+        width: 100%; padding: 15px; background: var(--primary); color: #000;
+        border: none; border-radius: var(--radius); font-size: 15px;
+        font-weight: 700; cursor: pointer; transition: all var(--transition-bounce);
+        display: flex; align-items: center; justify-content: center; gap: 8px;
+        margin-top: 10px;
+    }
+    .reserve-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .reserve-btn:active { transform: scale(0.97); }
+    /* === END CSS: PRODUCT MODAL === */
 
-        .products-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
-        }
-        @media(min-width: 480px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
-        .product-card {
-            background: var(--surface); border-radius: var(--radius);
-            overflow: hidden; box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border); transition: all var(--transition-bounce);
-            cursor: pointer; position: relative;
-        }
-        .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-        .product-card:active { transform: scale(0.97); }
-        .product-img {
-            height: 130px; width: 100%; background: var(--bg-3);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--text-3); position: relative; overflow: hidden;
-        }
-        .product-img img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 300ms ease;
-        }
-        .product-card:hover .product-img img { transform: scale(1.06); }
-        .fav-btn {
-            position: absolute; bottom: 8px; right: 8px;
-            background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
-            border: none; width: 32px; height: 32px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; font-size: 14px;
-            transition: all var(--transition-bounce); z-index: 2;
-            box-shadow: var(--shadow-sm);
-        }
-        .fav-btn:hover { transform: scale(1.2); }
-        .fav-btn.active { background: #fff0f0; color: #ef4444; }
-        .dark-theme .fav-btn { background: rgba(30,30,30,0.92); }
-        .product-info { padding: 10px 12px 12px; }
-        .product-name {
-            font-family: 'Outfit', sans-serif;
-            font-size: 13px; font-weight: 700; margin-bottom: 5px;
-            color: var(--text); white-space: nowrap; overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .product-tags {
-            display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 6px;
-        }
-        .tag {
-            font-size: 10px; color: var(--text-3); background: var(--bg-3);
-            padding: 2px 7px; border-radius: 6px;
-        }
-        .product-price {
-            font-family: 'Outfit', sans-serif;
-            font-size: 16px; font-weight: 800; color: var(--primary);
-        }
-        .product-stars {
-            display: flex; align-items: center; gap: 3px;
-            font-size: 11px; color: var(--text-3); margin-bottom: 4px;
-        }
-        .product-stars i { font-size: 10px; color: var(--star); }
-        .discount-badge-card {
-            position: absolute; top: 8px; left: 8px;
-            background: var(--danger); color: #fff;
-            font-size: 10px; font-weight: 800; padding: 3px 8px;
-            border-radius: 10px; z-index: 2; letter-spacing: 0.3px;
-        }
+    /* ============================================================
+       === CSS: RESERVATIONS ===
+       ============================================================ */
+    .reservation-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius); padding: 16px; margin-bottom: 12px;
+        box-shadow: var(--shadow-sm); animation: fadeIn 200ms ease;
+        position: relative; overflow: hidden;
+    }
+    .reservation-card::before {
+        content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+        width: 4px; background: var(--primary);
+    }
+    .res-product { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .res-color { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-2); margin-bottom: 4px; }
+    .res-color-dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--border); }
+    .res-meta { font-size: 12px; color: var(--text-3); }
+    .res-status {
+        position: absolute; top: 14px; right: 14px;
+        padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700;
+    }
+    .res-status.pending { background: rgba(245,158,11,0.15); color: var(--warning); }
+    .res-status.confirmed { background: rgba(34,197,94,0.15); color: var(--success); }
+    .res-status.cancelled { background: rgba(239,68,68,0.15); color: var(--danger); }
+    .color-picker-section { margin-top: 16px; }
+    .color-picker-title { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+    .color-swatches { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .color-swatch {
+        width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+        border: 3px solid transparent; transition: all var(--transition-bounce);
+        position: relative;
+    }
+    .color-swatch:hover { transform: scale(1.15); }
+    .color-swatch.selected { border-color: var(--text); box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--text); }
+    .color-label { font-size: 11px; text-align: center; color: var(--text-3); margin-top: 4px; }
+    .reserve-form { padding: 4px 0; }
+    .reserve-form .form-group { margin-bottom: 14px; }
+    .note-input {
+        width: 100%; padding: 12px; background: var(--surface-2);
+        border: 1.5px solid var(--border); border-radius: var(--radius);
+        font-size: 14px; color: var(--text); resize: none; height: 80px;
+        transition: all var(--transition); font-family: inherit;
+    }
+    .note-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(255,215,0,0.15); }
+    .selected-color-preview {
+        display: flex; align-items: center; gap: 10px;
+        padding: 10px 14px; background: var(--bg-2); border-radius: var(--radius-sm);
+        margin-top: 6px; font-size: 13px; color: var(--text-2);
+    }
+    .selected-color-circle { width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--border); }
+    /* === END CSS: RESERVATIONS === */
 
-        .search-bar { position: relative; margin-bottom: 14px; }
-        .search-input {
-            width: 100%; padding: 13px 16px 13px 44px;
-            background: var(--surface-2); border: 1.5px solid var(--border);
-            border-radius: var(--radius-lg); font-size: 15px; color: var(--text);
-            transition: all var(--transition);
-        }
-        .search-input:focus { outline: none; border-color: var(--primary); background: var(--surface); box-shadow: 0 0 0 3px rgba(255,215,0,0.15); }
-        .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-3); }
-        .filter-chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
-        .filter-chips::-webkit-scrollbar { display: none; }
-        .chip {
-            padding: 8px 16px; background: var(--surface-2); border: 1.5px solid var(--border);
-            border-radius: 20px; font-size: 13px; font-weight: 600; color: var(--text-2);
-            white-space: nowrap; cursor: pointer; transition: all var(--transition); flex-shrink: 0;
-        }
-        .chip.active { background: var(--primary); color: #000; border-color: var(--primary); }
+    /* ============================================================
+       === CSS: DISCOUNT ===
+       ============================================================ */
+    .discount-code-card {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        border-radius: var(--radius-lg); padding: 20px;
+        margin: 0 16px 16px; position: relative; overflow: hidden;
+        box-shadow: var(--shadow-lg);
+    }
+    .discount-code-card::before {
+        content: ''; position: absolute; top: -20px; right: -20px;
+        width: 100px; height: 100px; border-radius: 50%;
+        background: rgba(255,215,0,0.1);
+    }
+    .discount-code-card::after {
+        content: ''; position: absolute; bottom: -30px; left: -10px;
+        width: 80px; height: 80px; border-radius: 50%;
+        background: rgba(255,140,0,0.08);
+    }
+    .discount-badge-label {
+        font-size: 11px; font-weight: 700; color: var(--primary);
+        text-transform: uppercase; letter-spacing: 1.5px;
+        margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+    }
+    .discount-code-value {
+        font-family: 'Outfit', monospace; font-size: 26px; font-weight: 900;
+        color: #fff; letter-spacing: 4px; margin-bottom: 8px;
+        position: relative; z-index: 1;
+    }
+    .discount-code-info {
+        font-size: 12px; color: rgba(255,255,255,0.6);
+        margin-bottom: 14px; position: relative; z-index: 1; line-height: 1.5;
+    }
+    .discount-copy-btn {
+        display: inline-flex; align-items: center; gap: 7px;
+        background: var(--primary); color: #000;
+        border: none; padding: 9px 18px; border-radius: 20px;
+        font-size: 13px; font-weight: 700; cursor: pointer;
+        transition: all var(--transition-bounce);
+        position: relative; z-index: 1;
+    }
+    .discount-copy-btn:hover { transform: scale(1.05); }
+    .discount-expiry {
+        font-size: 11px; color: rgba(255,255,255,0.6);
+        margin-bottom: 6px; position: relative; z-index: 1;
+    }
+    .discount-info-box {
+        margin: 0 0 0;
+        border-top: 1px solid var(--border);
+    }
+    .discount-info-toggle {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 14px 16px; cursor: pointer;
+        font-size: 12px; font-weight: 700; color: var(--text-2);
+        text-transform: uppercase; letter-spacing: 0.8px;
+        transition: background var(--transition);
+        user-select: none;
+    }
+    .discount-info-toggle:hover { background: var(--bg-2); }
+    .discount-info-toggle-left { display: flex; align-items: center; gap: 6px; }
+    .discount-info-toggle-left i.icon-label { color: var(--primary); font-size: 13px; }
+    .discount-info-toggle .chevron {
+        color: var(--primary); font-size: 12px;
+        transition: transform var(--transition); flex-shrink: 0;
+    }
+    .discount-info-toggle.open .chevron { transform: rotate(180deg); }
+    .discount-info-body {
+        max-height: 0; overflow: hidden;
+        transition: max-height 300ms ease, padding 200ms ease;
+        padding: 0 16px;
+    }
+    .discount-info-body.open { max-height: 500px; padding: 0 16px 14px; }
+    .discount-info-list { list-style: none; padding: 0; margin: 0; }
+    .discount-info-list li {
+        display: flex; align-items: flex-start; gap: 8px;
+        font-size: 12px; color: var(--text-2); line-height: 1.5;
+        padding: 5px 0; border-bottom: 1px solid var(--border);
+    }
+    .discount-info-list li:last-child { border-bottom: none; }
+    .discount-info-list li i { color: var(--primary); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+    .discount-input-wrap {
+        background: var(--bg-2); border: 1.5px solid var(--border);
+        border-radius: var(--radius); padding: 14px; margin-top: 16px;
+    }
+    .discount-input-title {
+        font-size: 13px; font-weight: 700; margin-bottom: 10px;
+        display: flex; align-items: center; gap: 7px;
+    }
+    .discount-input-title i { color: var(--primary); }
+    .discount-input-row { display: flex; gap: 8px; align-items: stretch; }
+    .discount-code-input {
+        flex: 1; padding: 11px 14px; background: var(--surface);
+        border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+        font-size: 14px; color: var(--text); font-family: 'Outfit', monospace;
+        font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+        transition: all var(--transition);
+    }
+    .discount-code-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(255,215,0,0.15); }
+    .discount-apply-btn {
+        padding: 11px 16px; background: var(--primary); color: #000;
+        border: none; border-radius: var(--radius-sm); font-size: 13px;
+        font-weight: 700; cursor: pointer; transition: all var(--transition); white-space: nowrap;
+    }
+    .discount-apply-btn:hover { background: var(--primary-dark); }
+    .discount-result {
+        margin-top: 10px; padding: 10px 12px; border-radius: var(--radius-sm);
+        font-size: 13px; display: none;
+    }
+    .discount-result.valid { background: rgba(34,197,94,0.1); border: 1px solid var(--success); color: var(--success); display: block; }
+    .discount-result.invalid { background: rgba(239,68,68,0.1); border: 1px solid var(--danger); color: var(--danger); display: block; }
+    .price-breakdown {
+        margin-top: 12px; padding: 12px; background: var(--surface);
+        border: 1px solid var(--border); border-radius: var(--radius-sm);
+    }
+    .price-breakdown-row {
+        display: flex; justify-content: space-between; align-items: center;
+        font-size: 13px; margin-bottom: 6px;
+    }
+    .price-breakdown-row:last-child { margin-bottom: 0; font-size: 16px; font-weight: 800; color: var(--primary); border-top: 1px solid var(--border); padding-top: 8px; margin-top: 4px; }
+    .price-breakdown-row .strikethrough { text-decoration: line-through; color: var(--text-3); }
+    /* === END CSS: DISCOUNT === */
 
-        .settings-group {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius-lg); overflow: hidden;
-            margin-bottom: 16px; box-shadow: var(--shadow-sm);
-        }
-        .settings-group-title {
-            padding: 12px 16px 8px;
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 1px; color: var(--text-3);
-        }
-        .settings-row {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 14px 16px; border-top: 1px solid var(--border);
-            cursor: pointer; transition: background var(--transition);
-        }
-        .settings-row:first-of-type { border-top: none; }
-        .settings-row:hover { background: var(--bg-2); }
-        .settings-row-icon {
-            width: 34px; height: 34px; border-radius: 9px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 15px; flex-shrink: 0; margin-right: 12px;
-        }
-        .settings-row-left { display: flex; align-items: center; flex: 1; min-width: 0; }
-        .settings-row-info { flex: 1; min-width: 0; }
-        .settings-row-info h4 { font-size: 15px; font-weight: 600; color: var(--text); }
-        .settings-row-info p { font-size: 12px; color: var(--text-3); margin-top: 1px; }
-        .settings-row-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    /* ============================================================
+       === CSS: SETTINGS ===
+       ============================================================ */
+    .settings-group {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius-lg); overflow: hidden;
+        margin-bottom: 16px; box-shadow: var(--shadow-sm);
+    }
+    .settings-group-title {
+        padding: 12px 16px 8px;
+        font-size: 11px; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 1px; color: var(--text-3);
+    }
+    .settings-row {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 14px 16px; border-top: 1px solid var(--border);
+        cursor: pointer; transition: background var(--transition);
+    }
+    .settings-row:first-of-type { border-top: none; }
+    .settings-row:hover { background: var(--bg-2); }
+    .settings-row-icon {
+        width: 34px; height: 34px; border-radius: 9px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 15px; flex-shrink: 0; margin-right: 12px;
+    }
+    .settings-row-left { display: flex; align-items: center; flex: 1; min-width: 0; }
+    .settings-row-info { flex: 1; min-width: 0; }
+    .settings-row-info h4 { font-size: 15px; font-weight: 600; color: var(--text); }
+    .settings-row-info p { font-size: 12px; color: var(--text-3); margin-top: 1px; }
+    .settings-row-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .toggle { position: relative; display: inline-block; width: 50px; height: 28px; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .slider {
+        position: absolute; cursor: pointer; inset: 0;
+        background: var(--border-2); border-radius: 34px; transition: var(--transition);
+    }
+    .slider:before {
+        content: ''; position: absolute;
+        height: 22px; width: 22px; left: 3px; bottom: 3px;
+        background: white; border-radius: 50%; box-shadow: var(--shadow-sm);
+        transition: var(--transition-bounce);
+    }
+    input:checked + .slider { background: var(--primary); }
+    input:checked + .slider:before { transform: translateX(22px); }
+    .lang-select {
+        padding: 8px 12px; background: var(--surface-2);
+        border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+        font-size: 14px; color: var(--text); cursor: pointer;
+        transition: all var(--transition);
+    }
+    .lang-select:focus { outline: none; border-color: var(--primary); }
+    .dark-theme .lang-select { background: var(--bg-2); }
+    .data-btn-row {
+        display: flex; gap: 8px; flex-wrap: wrap;
+        padding: 12px 16px 16px;
+    }
+    .data-btn {
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 9px 14px; border-radius: var(--radius-sm);
+        font-size: 12px; font-weight: 700; cursor: pointer;
+        border: none; transition: all var(--transition);
+    }
+    .data-btn-export { background: var(--bg-3); color: var(--text-2); border: 1px solid var(--border); }
+    .data-btn-export:hover { background: var(--border); }
+    .data-btn-import { background: var(--bg-3); color: var(--text-2); border: 1px solid var(--border); }
+    .data-btn-import:hover { background: var(--border); }
+    .data-btn-delete { background: rgba(239,68,68,0.1); color: var(--danger); border: 1px solid rgba(239,68,68,0.25); }
+    .data-btn-delete:hover { background: rgba(239,68,68,0.2); }
+    /* === END CSS: SETTINGS === */
 
-        .toggle { position: relative; display: inline-block; width: 50px; height: 28px; }
-        .toggle input { opacity: 0; width: 0; height: 0; }
-        .slider {
-            position: absolute; cursor: pointer; inset: 0;
-            background: var(--border-2); border-radius: 34px;
-            transition: var(--transition);
-        }
-        .slider:before {
-            content: ''; position: absolute;
-            height: 22px; width: 22px; left: 3px; bottom: 3px;
-            background: white; border-radius: 50%; box-shadow: var(--shadow-sm);
-            transition: var(--transition-bounce);
-        }
-        input:checked + .slider { background: var(--primary); }
-        input:checked + .slider { background: var(--primary); }
-        input:checked + .slider:before { transform: translateX(22px); }
+    /* ============================================================
+       === CSS: PRIVACY ===
+       ============================================================ */
+    .privacy-wrap { max-width: 100%; }
+    .privacy-h1 {
+        font-family: 'Outfit', sans-serif;
+        font-size: 24px; font-weight: 800; color: var(--text);
+        margin-bottom: 18px; display: flex; align-items: center; gap: 10px;
+    }
+    .privacy-h2 {
+        font-size: 16px; font-weight: 700; color: var(--text);
+        margin: 22px 0 10px; padding-bottom: 8px;
+        border-bottom: 2px solid var(--border);
+    }
+    .privacy-p { font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 12px; }
+    .privacy-ul { padding-left: 18px; margin-bottom: 14px; }
+    .privacy-ul li { font-size: 14px; color: var(--text-2); margin-bottom: 6px; line-height: 1.5; }
+    .contact-card {
+        background: var(--bg-2); border: 1px solid var(--border);
+        padding: 14px; border-radius: var(--radius); margin: 12px 0;
+    }
+    .contact-card p { font-size: 13px; color: var(--text-2); margin-bottom: 6px; line-height: 1.5; }
+    .contact-card a { color: var(--link); text-decoration: none; font-weight: 500; word-break: break-all; }
+    /* === END CSS: PRIVACY === */
 
-        /* DISCOUNT CODE CARD */
-        .discount-code-card {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border-radius: var(--radius-lg); padding: 20px;
-            margin: 0 16px 16px; position: relative; overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-        .discount-code-card::before {
-            content: ''; position: absolute; top: -20px; right: -20px;
-            width: 100px; height: 100px; border-radius: 50%;
-            background: rgba(255,215,0,0.1);
-        }
-        .discount-code-card::after {
-            content: ''; position: absolute; bottom: -30px; left: -10px;
-            width: 80px; height: 80px; border-radius: 50%;
-            background: rgba(255,140,0,0.08);
-        }
-        .discount-badge-label {
-            font-size: 11px; font-weight: 700; color: var(--primary);
-            text-transform: uppercase; letter-spacing: 1.5px;
-            margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
-        }
-        .discount-code-value {
-            font-family: 'Outfit', monospace; font-size: 26px; font-weight: 900;
-            color: #fff; letter-spacing: 4px; margin-bottom: 8px;
-            position: relative; z-index: 1;
-        }
-        .discount-code-info {
-            font-size: 12px; color: rgba(255,255,255,0.6);
-            margin-bottom: 14px; position: relative; z-index: 1; line-height: 1.5;
-        }
-        .discount-copy-btn {
-            display: inline-flex; align-items: center; gap: 7px;
-            background: var(--primary); color: #000;
-            border: none; padding: 9px 18px; border-radius: 20px;
-            font-size: 13px; font-weight: 700; cursor: pointer;
-            transition: all var(--transition-bounce);
-            position: relative; z-index: 1;
-        }
-        .discount-copy-btn:hover { transform: scale(1.05); }
-        .discount-expiry {
-            font-size: 11px; color: rgba(255,255,255,0.6);
-            margin-bottom: 6px; position: relative; z-index: 1;
-        }
+    /* ============================================================
+       === CSS: ADMIN ===
+       ============================================================ */
+    .admin-tabs { display: flex; gap: 6px; margin-bottom: 18px; overflow-x: auto; scrollbar-width: none; }
+    .admin-tabs::-webkit-scrollbar { display: none; }
+    .admin-tab {
+        padding: 9px 16px; background: var(--surface-2); border: 1.5px solid var(--border);
+        border-radius: 20px; font-size: 13px; font-weight: 600; color: var(--text-2);
+        cursor: pointer; white-space: nowrap; transition: all var(--transition);
+    }
+    .admin-tab.active { background: var(--primary); color: #000; border-color: var(--primary); }
+    .admin-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius); padding: 14px; margin-bottom: 10px;
+        box-shadow: var(--shadow-sm);
+    }
+    .admin-card-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .admin-stat { font-size: 12px; color: var(--text-3); }
+    .stat-row {
+        display: flex; align-items: center; gap: 10px;
+        padding: 10px; background: var(--bg-2); border-radius: var(--radius-sm);
+        margin-bottom: 8px;
+    }
+    .stat-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .admin-form {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius); padding: 18px; margin-bottom: 16px;
+    }
+    .admin-form-title {
+        font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700;
+        margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .admin-input {
+        width: 100%; padding: 10px 12px; background: var(--bg-2);
+        border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+        font-size: 14px; color: var(--text); transition: all var(--transition);
+        font-family: inherit;
+    }
+    .admin-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(255,215,0,0.15); }
+    .admin-input-label { font-size: 12px; font-weight: 600; color: var(--text-2); margin-bottom: 5px; display: block; }
+    .admin-form-group { margin-bottom: 12px; }
+    .admin-btn {
+        padding: 10px 18px; border: none; border-radius: var(--radius-sm);
+        font-size: 13px; font-weight: 700; cursor: pointer;
+        transition: all var(--transition); display: inline-flex;
+        align-items: center; gap: 6px;
+    }
+    .admin-btn-primary { background: var(--primary); color: #000; }
+    .admin-btn-primary:hover { background: var(--primary-dark); }
+    .admin-btn-danger { background: var(--danger); color: #fff; }
+    .admin-btn-danger:hover { opacity: 0.85; }
+    .admin-btn-secondary { background: var(--bg-3); color: var(--text-2); border: 1px solid var(--border); }
+    .admin-btn-secondary:hover { background: var(--border); }
+    .admin-btn-success { background: var(--success); color: #fff; }
+    .admin-btn-success:hover { opacity: 0.85; }
+    .admin-btn-info { background: var(--info); color: #fff; }
+    .admin-btn-info:hover { opacity: 0.85; }
+    .admin-color-entry {
+        display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+        padding: 8px; background: var(--bg-2); border-radius: var(--radius-sm);
+    }
+    .admin-color-circle { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; }
+    .bon-preview {
+        background: #fff; color: #000; border: 2px solid #000;
+        border-radius: var(--radius); padding: 20px; margin-top: 14px;
+        font-family: 'Courier New', monospace;
+    }
+    .bon-preview h2 {
+        font-size: 18px; font-weight: 900; text-align: center;
+        margin-bottom: 4px; font-family: 'Outfit', sans-serif;
+    }
+    .bon-preview .bon-sub { font-size: 11px; text-align: center; color: #555; margin-bottom: 12px; }
+    .bon-divider { border: none; border-top: 1px dashed #999; margin: 10px 0; }
+    .bon-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
+    .bon-total { display: flex; justify-content: space-between; font-size: 16px; font-weight: 900; margin-top: 8px; padding-top: 8px; border-top: 2px solid #000; }
+    .bon-footer { font-size: 10px; text-align: center; color: #777; margin-top: 12px; line-height: 1.6; }
+    /* === END CSS: ADMIN === */
 
-        /* =====================================================
-           WIJZIGING 2: Inklapbare kortingscode-info box
-           Werkt net als de FAQ-items
-           ===================================================== */
-        .discount-info-box {
-            margin: 0 0 0;
-            border-top: 1px solid var(--border);
-        }
-        .discount-info-toggle {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 14px 16px; cursor: pointer;
-            font-size: 12px; font-weight: 700; color: var(--text-2);
-            text-transform: uppercase; letter-spacing: 0.8px;
-            transition: background var(--transition);
-            user-select: none;
-        }
-        .discount-info-toggle:hover { background: var(--bg-2); }
-        .discount-info-toggle-left {
-            display: flex; align-items: center; gap: 6px;
-        }
-        .discount-info-toggle-left i.icon-label { color: var(--primary); font-size: 13px; }
-        .discount-info-toggle .chevron {
-            color: var(--primary); font-size: 12px;
-            transition: transform var(--transition);
-            flex-shrink: 0;
-        }
-        .discount-info-toggle.open .chevron { transform: rotate(180deg); }
-        .discount-info-body {
-            max-height: 0; overflow: hidden;
-            transition: max-height 300ms ease, padding 200ms ease;
-            padding: 0 16px;
-        }
-        .discount-info-body.open {
-            max-height: 500px;
-            padding: 0 16px 14px;
-        }
-        .discount-info-list { list-style: none; padding: 0; margin: 0; }
-        .discount-info-list li {
-            display: flex; align-items: flex-start; gap: 8px;
-            font-size: 12px; color: var(--text-2); line-height: 1.5;
-            padding: 5px 0; border-bottom: 1px solid var(--border);
-        }
-        .discount-info-list li:last-child { border-bottom: none; }
-        .discount-info-list li i { color: var(--primary); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+    /* ============================================================
+       === CSS: MODALS & OVERLAYS ===
+       ============================================================ */
+    .modal-overlay {
+        position: fixed; inset: 0; z-index: 1000;
+        background: var(--bg); display: none; flex-direction: column;
+        animation: slideUp 280ms cubic-bezier(0.34,1.56,0.64,1) forwards;
+        padding-top: var(--safe-top);
+    }
+    .modal-overlay.active { display: flex; }
+    @keyframes slideUp {
+        from { transform: translateY(100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    .modal-header {
+        height: var(--header-h); display: flex; align-items: center;
+        justify-content: space-between; padding: 0 18px;
+        border-bottom: 1px solid var(--border);
+    }
+    .modal-title { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; }
+    .modal-close {
+        background: var(--surface-2); border: none; width: 36px; height: 36px;
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        font-size: 16px; cursor: pointer; color: var(--text-2);
+        transition: all var(--transition-bounce);
+    }
+    .modal-close:hover { transform: scale(1.1); background: var(--bg-3); }
+    .modal-content { flex: 1; overflow-y: auto; padding: 24px 18px; }
+    .popup-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+        z-index: 2100; display: none; justify-content: center; align-items: flex-end;
+        padding: 0;
+    }
+    .popup-overlay.show { display: flex; }
+    .popup-sheet {
+        background: var(--surface); border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        padding: 24px 20px; width: 100%; max-width: 768px;
+        max-height: 85vh; overflow-y: auto;
+        animation: sheetUp 300ms cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes sheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    .popup-sheet-handle { width: 40px; height: 4px; background: var(--border-2); border-radius: 2px; margin: 0 auto 20px; }
+    .popup-sheet-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; margin-bottom: 16px; }
+    .confirm-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+        z-index: 3000; display: none; justify-content: center; align-items: center;
+        padding: 20px;
+    }
+    .confirm-overlay.show { display: flex; }
+    .confirm-box {
+        background: var(--surface); border-radius: var(--radius-lg);
+        padding: 24px; width: 100%; max-width: 320px;
+        box-shadow: var(--shadow-xl);
+    }
+    .confirm-title { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .confirm-msg { font-size: 14px; color: var(--text-2); margin-bottom: 20px; line-height: 1.5; }
+    .confirm-btns { display: flex; gap: 8px; }
+    .confirm-btns button { flex: 1; padding: 12px; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; transition: all var(--transition); }
+    .confirm-cancel { background: var(--bg-3); color: var(--text-2); }
+    .confirm-ok { background: var(--danger); color: #fff; }
+    .bon-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+        z-index: 4000; display: none; justify-content: center; align-items: center;
+        padding: 20px;
+    }
+    .bon-overlay.show { display: flex; }
+    .bon-box {
+        background: var(--surface); border-radius: var(--radius-lg);
+        padding: 20px; width: 100%; max-width: 400px;
+        max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-xl);
+    }
+    .bon-box-title {
+        font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700;
+        margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .bon-box-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+    /* === END CSS: MODALS & OVERLAYS === */
 
-        /* DATA MANAGEMENT */
-        .data-btn-row {
-            display: flex; gap: 8px; flex-wrap: wrap;
-            padding: 12px 16px 16px;
-        }
-        .data-btn {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 9px 14px; border-radius: var(--radius-sm);
-            font-size: 12px; font-weight: 700; cursor: pointer;
-            border: none; transition: all var(--transition);
-        }
-        .data-btn-export { background: var(--bg-3); color: var(--text-2); border: 1px solid var(--border); }
-        .data-btn-export:hover { background: var(--border); }
-        .data-btn-import { background: var(--bg-3); color: var(--text-2); border: 1px solid var(--border); }
-        .data-btn-import:hover { background: var(--border); }
-        .data-btn-delete { background: rgba(239,68,68,0.1); color: var(--danger); border: 1px solid rgba(239,68,68,0.25); }
-        .data-btn-delete:hover { background: rgba(239,68,68,0.2); }
+    /* ============================================================
+       === CSS: AUTH ===
+       ============================================================ */
+    .auth-tabs { display: flex; gap: 6px; margin-bottom: 24px; background: var(--bg-3); padding: 4px; border-radius: var(--radius); }
+    .auth-tab {
+        flex: 1; padding: 10px; background: transparent; border: none;
+        border-radius: var(--radius-sm); font-weight: 600; font-size: 14px;
+        color: var(--text-2); cursor: pointer; transition: all var(--transition);
+    }
+    .auth-tab.active { background: var(--primary); color: #000; box-shadow: var(--shadow-sm); }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-label { font-size: 13px; font-weight: 600; color: var(--text-2); }
+    .form-input {
+        padding: 13px 14px; background: var(--surface-2); border: 1.5px solid var(--border);
+        border-radius: var(--radius); font-size: 15px; color: var(--text);
+        transition: all var(--transition);
+    }
+    .form-input:focus { outline: none; border-color: var(--primary); background: var(--surface); box-shadow: 0 0 0 3px rgba(255,215,0,0.15); }
+    .btn-primary {
+        width: 100%; padding: 15px; background: var(--primary); color: #000;
+        border: none; border-radius: var(--radius); font-size: 15px;
+        font-weight: 700; cursor: pointer; transition: all var(--transition-bounce);
+        display: flex; align-items: center; justify-content: center; gap: 8px;
+        margin-top: 6px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow); background: var(--primary-dark); }
+    .btn-primary:active { transform: scale(0.97); }
+    .btn-secondary {
+        width: 100%; padding: 13px; background: var(--surface-2); color: var(--text);
+        border: 1.5px solid var(--border); border-radius: var(--radius);
+        font-size: 14px; font-weight: 600; cursor: pointer;
+        transition: all var(--transition); display: flex; align-items: center;
+        justify-content: center; gap: 8px;
+    }
+    .btn-secondary:hover { background: var(--bg-3); border-color: var(--border-2); }
+    .divider {
+        display: flex; align-items: center; gap: 12px;
+        margin: 18px 0; color: var(--text-3); font-size: 13px;
+    }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .auth-alert {
+        padding: 12px 14px; border-radius: var(--radius-sm);
+        font-size: 13px; margin-bottom: 14px; display: none;
+    }
+    .auth-alert.error { background: rgba(239,68,68,0.1); border: 1px solid var(--danger); color: var(--danger); }
+    .auth-alert.success { background: rgba(34,197,94,0.1); border: 1px solid var(--success); color: var(--success); }
+    .auth-alert.show { display: block; }
+    /* === END CSS: AUTH === */
 
-        .modal-overlay {
-            position: fixed; inset: 0; z-index: 1000;
-            background: var(--bg); display: none; flex-direction: column;
-            animation: slideUp 280ms cubic-bezier(0.34,1.56,0.64,1) forwards;
-            padding-top: var(--safe-top);
-        }
-        .modal-overlay.active { display: flex; }
-        @keyframes slideUp {
-            from { transform: translateY(100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .modal-header {
-            height: var(--header-h); display: flex; align-items: center;
-            justify-content: space-between; padding: 0 18px;
-            border-bottom: 1px solid var(--border);
-        }
-        .modal-title { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; }
-        .modal-close {
-            background: var(--surface-2); border: none; width: 36px; height: 36px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 16px; cursor: pointer; color: var(--text-2);
-            transition: all var(--transition-bounce);
-        }
-        .modal-close:hover { transform: scale(1.1); background: var(--bg-3); }
-        .modal-content { flex: 1; overflow-y: auto; padding: 24px 18px; }
+    /* ============================================================
+       === CSS: INSTALL ===
+       ============================================================ */
+    .install-sheet .install-step {
+        display: flex; align-items: center; gap: 14px;
+        padding: 12px; background: var(--bg-2); border-radius: var(--radius-sm); margin-bottom: 10px;
+    }
+    .install-step-num {
+        width: 34px; height: 34px; border-radius: 50%;
+        background: var(--primary); color: #000;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 800; font-size: 14px; flex-shrink: 0;
+    }
+    .install-step-info p { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .install-step-info small { font-size: 12px; color: var(--text-3); }
+    .privacy-popup-btns { display: flex; gap: 8px; margin-top: 16px; }
+    .privacy-popup-btns button {
+        flex: 1; padding: 13px; border-radius: var(--radius);
+        font-weight: 700; cursor: pointer; font-size: 14px; border: none;
+        transition: all var(--transition);
+    }
+    /* === END CSS: INSTALL === */
 
-        .auth-tabs { display: flex; gap: 6px; margin-bottom: 24px; background: var(--bg-3); padding: 4px; border-radius: var(--radius); }
-        .auth-tab {
-            flex: 1; padding: 10px; background: transparent; border: none;
-            border-radius: var(--radius-sm); font-weight: 600; font-size: 14px;
-            color: var(--text-2); cursor: pointer; transition: all var(--transition);
-        }
-        .auth-tab.active { background: var(--primary); color: #000; box-shadow: var(--shadow-sm); }
-        .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
-        .form-label { font-size: 13px; font-weight: 600; color: var(--text-2); }
-        .form-input {
-            padding: 13px 14px; background: var(--surface-2); border: 1.5px solid var(--border);
-            border-radius: var(--radius); font-size: 15px; color: var(--text);
-            transition: all var(--transition);
-        }
-        .form-input:focus { outline: none; border-color: var(--primary); background: var(--surface); box-shadow: 0 0 0 3px rgba(255,215,0,0.15); }
-        .btn-primary {
-            width: 100%; padding: 15px; background: var(--primary); color: #000;
-            border: none; border-radius: var(--radius); font-size: 15px;
-            font-weight: 700; cursor: pointer; transition: all var(--transition-bounce);
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            margin-top: 6px;
-        }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow); background: var(--primary-dark); }
-        .btn-primary:active { transform: scale(0.97); }
-        .btn-secondary {
-            width: 100%; padding: 13px; background: var(--surface-2); color: var(--text);
-            border: 1.5px solid var(--border); border-radius: var(--radius);
-            font-size: 14px; font-weight: 600; cursor: pointer;
-            transition: all var(--transition); display: flex; align-items: center;
-            justify-content: center; gap: 8px;
-        }
-        .btn-secondary:hover { background: var(--bg-3); border-color: var(--border-2); }
-        .divider {
-            display: flex; align-items: center; gap: 12px;
-            margin: 18px 0; color: var(--text-3); font-size: 13px;
-        }
-        .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-        .auth-alert {
-            padding: 12px 14px; border-radius: var(--radius-sm);
-            font-size: 13px; margin-bottom: 14px; display: none;
-        }
-        .auth-alert.error { background: rgba(239,68,68,0.1); border: 1px solid var(--danger); color: var(--danger); }
-        .auth-alert.success { background: rgba(34,197,94,0.1); border: 1px solid var(--success); color: var(--success); }
-        .auth-alert.show { display: block; }
+    /* ============================================================
+       === CSS: COOKIE BANNER ===
+       ============================================================ */
+    .cookie-banner {
+        position: fixed; bottom: calc(var(--nav-h) + 10px); left: 0; right: 0;
+        background: var(--surface); border-top: 1px solid var(--border);
+        padding: 16px 18px; z-index: 1500; display: none;
+        box-shadow: var(--shadow-xl);
+        animation: slideFromBottom 300ms ease;
+        max-width: 768px; margin: 0 auto; border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+    .cookie-banner.show { display: block; }
+    @keyframes slideFromBottom { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    .cookie-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+    .cookie-text { font-size: 13px; color: var(--text-2); line-height: 1.5; margin-bottom: 14px; }
+    .cookie-btns { display: flex; gap: 8px; }
+    .cookie-btns button {
+        flex: 1; padding: 11px; border-radius: var(--radius-sm);
+        font-size: 13px; font-weight: 700; cursor: pointer; border: none;
+        transition: all var(--transition);
+    }
+    .cookie-accept { background: var(--primary); color: #000; }
+    .cookie-accept:hover { background: var(--primary-dark); }
+    .cookie-reject { background: var(--bg-3); color: var(--text-2); }
+    .cookie-reject:hover { background: var(--border); }
+    .cookie-more { background: none; color: var(--link); font-weight: 600; font-size: 12px; flex: 0; padding: 11px 6px; text-decoration: underline; }
+    /* === END CSS: COOKIE BANNER === */
 
-        .product-modal-img {
-            width: 100%; max-height: 280px; object-fit: contain;
-            border-radius: var(--radius); background: var(--bg-3);
-            display: flex; align-items: center; justify-content: center;
-            overflow: hidden; margin-bottom: 18px;
-        }
-        .product-modal-img img { width: 100%; max-height: 280px; object-fit: contain; }
-        .product-modal-name {
-            font-family: 'Outfit', sans-serif;
-            font-size: 22px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.4px;
-        }
-        .product-modal-desc { font-size: 14px; color: var(--text-2); line-height: 1.6; margin-bottom: 16px; }
-        .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
-        .detail-box {
-            background: var(--bg-2); border: 1px solid var(--border);
-            padding: 12px; border-radius: var(--radius-sm);
-        }
-        .detail-box-label { font-size: 11px; color: var(--text-3); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .detail-box-value { font-size: 15px; font-weight: 600; color: var(--text); }
-        .modal-price {
-            font-family: 'Outfit', sans-serif;
-            font-size: 30px; font-weight: 900; color: var(--primary);
-            text-align: center; margin: 16px 0;
-        }
-        .discount-highlight {
-            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,140,0,0.1));
-            border: 1.5px solid var(--primary); border-radius: var(--radius);
-            padding: 14px 16px; margin-bottom: 16px;
-            display: flex; align-items: center; gap: 12px;
-        }
-        .discount-highlight-icon {
-            width: 40px; height: 40px; background: var(--primary);
-            border-radius: 10px; display: flex; align-items: center; justify-content: center;
-            font-size: 18px; flex-shrink: 0;
-        }
-        .discount-highlight-text h4 {
-            font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; margin-bottom: 2px;
-        }
-        .discount-highlight-text p { font-size: 12px; color: var(--text-2); }
+    /* ============================================================
+       === CSS: UTILITIES ===
+       ============================================================ */
+    .toast {
+        position: fixed; bottom: calc(var(--nav-h) + 16px); left: 50%;
+        transform: translateX(-50%) translateY(80px);
+        background: var(--text); color: var(--bg);
+        padding: 11px 20px; border-radius: var(--radius); z-index: 2000;
+        display: flex; align-items: center; gap: 8px;
+        font-size: 14px; font-weight: 500; max-width: 90%;
+        box-shadow: var(--shadow-xl); opacity: 0;
+        transition: all 250ms cubic-bezier(0.34,1.56,0.64,1);
+        pointer-events: none;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    .toast i { color: var(--primary); }
+    .loading {
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        height: 180px; color: var(--text-3); gap: 14px;
+    }
+    .spinner {
+        width: 36px; height: 36px; border: 3px solid var(--border);
+        border-top-color: var(--primary); border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .empty-state { text-align: center; padding: 50px 20px; color: var(--text-3); }
+    .empty-state i { font-size: 44px; margin-bottom: 14px; opacity: 0.4; display: block; }
+    .empty-state h3 { font-size: 17px; color: var(--text-2); margin-bottom: 6px; }
+    .empty-state p { font-size: 13px; }
+    @media print {
+        body * { visibility: hidden; }
+        #printBonContent, #printBonContent * { visibility: visible; }
+        #printBonContent { position: fixed; left: 0; top: 0; width: 100%; padding: 20px; }
+    }
+    /* === END CSS: UTILITIES === */
 
-        .rating-section {
-            background: var(--surface-2); border: 1px solid var(--border);
-            border-radius: var(--radius); padding: 16px; margin-bottom: 16px;
-        }
-        .rating-title { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
-        .stars-display { display: flex; gap: 5px; margin-bottom: 6px; }
-        .star-icon {
-            font-size: 26px; color: var(--star-off);
-            cursor: pointer; transition: all var(--transition-bounce);
-        }
-        .star-icon.filled { color: var(--star); }
-        .star-icon:hover { transform: scale(1.2); }
-        .rating-count { font-size: 12px; color: var(--text-3); }
-        .review-form-toggle {
-            margin-top: 12px; font-size: 13px; color: var(--link);
-            cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 5px;
-        }
-        .review-form { margin-top: 12px; display: none; }
-        .review-form.show { display: block; }
-        .review-textarea {
-            width: 100%; padding: 12px; background: var(--surface);
-            border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-            font-size: 14px; color: var(--text); resize: none; height: 90px;
-            transition: all var(--transition); font-family: inherit;
-        }
-        .review-textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(255,215,0,0.15); }
-        .reviews-list { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
-        .review-card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius-sm); padding: 12px;
-            animation: fadeIn 200ms ease;
-        }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-        .review-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
-        .review-author { font-size: 13px; font-weight: 700; color: var(--text); }
-        .review-date { font-size: 11px; color: var(--text-3); }
-        .review-stars { display: flex; gap: 2px; margin-bottom: 6px; }
-        .review-stars i { font-size: 12px; color: var(--star); }
-        .review-text { font-size: 13px; color: var(--text-2); line-height: 1.5; }
-
-        .reserve-btn {
-            width: 100%; padding: 15px; background: var(--primary); color: #000;
-            border: none; border-radius: var(--radius); font-size: 15px;
-            font-weight: 700; cursor: pointer; transition: all var(--transition-bounce);
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            margin-top: 10px;
-        }
-        .reserve-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-        .reserve-btn:active { transform: scale(0.97); }
-        .color-picker-section { margin-top: 16px; }
-        .color-picker-title { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
-        .color-swatches { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-        .color-swatch {
-            width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
-            border: 3px solid transparent; transition: all var(--transition-bounce);
-            position: relative;
-        }
-        .color-swatch:hover { transform: scale(1.15); }
-        .color-swatch.selected { border-color: var(--text); box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--text); }
-        .color-label { font-size: 11px; text-align: center; color: var(--text-3); margin-top: 4px; }
-
-        .discount-input-wrap {
-            background: var(--bg-2); border: 1.5px solid var(--border);
-            border-radius: var(--radius); padding: 14px; margin-top: 16px;
-        }
-        .discount-input-title {
-            font-size: 13px; font-weight: 700; margin-bottom: 10px;
-            display: flex; align-items: center; gap: 7px;
-        }
-        .discount-input-title i { color: var(--primary); }
-        .discount-input-row { display: flex; gap: 8px; align-items: stretch; }
-        .discount-code-input {
-            flex: 1; padding: 11px 14px; background: var(--surface);
-            border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-            font-size: 14px; color: var(--text); font-family: 'Outfit', monospace;
-            font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-            transition: all var(--transition);
-        }
-        .discount-code-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(255,215,0,0.15); }
-        .discount-apply-btn {
-            padding: 11px 16px; background: var(--primary); color: #000;
-            border: none; border-radius: var(--radius-sm); font-size: 13px;
-            font-weight: 700; cursor: pointer; transition: all var(--transition); white-space: nowrap;
-        }
-        .discount-apply-btn:hover { background: var(--primary-dark); }
-        .discount-result {
-            margin-top: 10px; padding: 10px 12px; border-radius: var(--radius-sm);
-            font-size: 13px; display: none;
-        }
-        .discount-result.valid { background: rgba(34,197,94,0.1); border: 1px solid var(--success); color: var(--success); display: block; }
-        .discount-result.invalid { background: rgba(239,68,68,0.1); border: 1px solid var(--danger); color: var(--danger); display: block; }
-        .price-breakdown {
-            margin-top: 12px; padding: 12px; background: var(--surface);
-            border: 1px solid var(--border); border-radius: var(--radius-sm);
-        }
-        .price-breakdown-row {
-            display: flex; justify-content: space-between; align-items: center;
-            font-size: 13px; margin-bottom: 6px;
-        }
-        .price-breakdown-row:last-child { margin-bottom: 0; font-size: 16px; font-weight: 800; color: var(--primary); border-top: 1px solid var(--border); padding-top: 8px; margin-top: 4px; }
-        .price-breakdown-row .strikethrough { text-decoration: line-through; color: var(--text-3); }
-
-        .reservation-card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius); padding: 16px; margin-bottom: 12px;
-            box-shadow: var(--shadow-sm); animation: fadeIn 200ms ease;
-            position: relative; overflow: hidden;
-        }
-        .reservation-card::before {
-            content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-            width: 4px; background: var(--primary);
-        }
-        .res-product { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-        .res-color { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-2); margin-bottom: 4px; }
-        .res-color-dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--border); }
-        .res-meta { font-size: 12px; color: var(--text-3); }
-        .res-status {
-            position: absolute; top: 14px; right: 14px;
-            padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700;
-        }
-        .res-status.pending { background: rgba(245,158,11,0.15); color: var(--warning); }
-        .res-status.confirmed { background: rgba(34,197,94,0.15); color: var(--success); }
-        .res-status.cancelled { background: rgba(239,68,68,0.15); color: var(--danger); }
-
-        /* ADMIN */
-        .admin-tabs { display: flex; gap: 6px; margin-bottom: 18px; overflow-x: auto; scrollbar-width: none; }
-        .admin-tabs::-webkit-scrollbar { display: none; }
-        .admin-tab {
-            padding: 9px 16px; background: var(--surface-2); border: 1.5px solid var(--border);
-            border-radius: 20px; font-size: 13px; font-weight: 600; color: var(--text-2);
-            cursor: pointer; white-space: nowrap; transition: all var(--transition);
-        }
-        .admin-tab.active { background: var(--primary); color: #000; border-color: var(--primary); }
-        .admin-card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius); padding: 14px; margin-bottom: 10px;
-            box-shadow: var(--shadow-sm);
-        }
-        .admin-card-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-        .admin-stat { font-size: 12px; color: var(--text-3); }
-        .stat-row {
-            display: flex; align-items: center; gap: 10px;
-            padding: 10px; background: var(--bg-2); border-radius: var(--radius-sm);
-            margin-bottom: 8px;
-        }
-        .stat-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
-
-        .admin-form {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius); padding: 18px; margin-bottom: 16px;
-        }
-        .admin-form-title {
-            font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700;
-            margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
-        }
-        .admin-input {
-            width: 100%; padding: 10px 12px; background: var(--bg-2);
-            border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-            font-size: 14px; color: var(--text); transition: all var(--transition);
-            font-family: inherit;
-        }
-        .admin-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(255,215,0,0.15); }
-        .admin-input-label { font-size: 12px; font-weight: 600; color: var(--text-2); margin-bottom: 5px; display: block; }
-        .admin-form-group { margin-bottom: 12px; }
-        .admin-btn {
-            padding: 10px 18px; border: none; border-radius: var(--radius-sm);
-            font-size: 13px; font-weight: 700; cursor: pointer;
-            transition: all var(--transition); display: inline-flex;
-            align-items: center; gap: 6px;
-        }
-        .admin-btn-primary { background: var(--primary); color: #000; }
-        .admin-btn-primary:hover { background: var(--primary-dark); }
-        .admin-btn-danger { background: var(--danger); color: #fff; }
-        .admin-btn-danger:hover { opacity: 0.85; }
-        .admin-btn-secondary { background: var(--bg-3); color: var(--text-2); border: 1px solid var(--border); }
-        .admin-btn-secondary:hover { background: var(--border); }
-        .admin-btn-success { background: var(--success); color: #fff; }
-        .admin-btn-success:hover { opacity: 0.85; }
-        .admin-btn-info { background: var(--info); color: #fff; }
-        .admin-btn-info:hover { opacity: 0.85; }
-        .admin-color-entry {
-            display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
-            padding: 8px; background: var(--bg-2); border-radius: var(--radius-sm);
-        }
-        .admin-color-circle {
-            width: 28px; height: 28px; border-radius: 50%;
-            border: 2px solid var(--border); flex-shrink: 0;
-        }
-
-        .discount-admin-card {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            border-radius: var(--radius-lg); padding: 20px; margin-bottom: 16px;
-            color: #fff; position: relative; overflow: hidden;
-        }
-        .discount-admin-card::before {
-            content: ''; position: absolute; top: -20px; right: -20px;
-            width: 120px; height: 120px; border-radius: 50%;
-            background: rgba(255,215,0,0.08);
-        }
-        .discount-admin-title {
-            font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800;
-            margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
-            position: relative; z-index: 1;
-        }
-        .discount-admin-title i { color: var(--primary); }
-        .discount-admin-code {
-            font-family: 'Outfit', monospace; font-size: 28px; font-weight: 900;
-            letter-spacing: 5px; color: var(--primary); margin-bottom: 8px;
-            position: relative; z-index: 1;
-        }
-        .discount-admin-meta {
-            font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 14px;
-            position: relative; z-index: 1; line-height: 1.6;
-        }
-
-        .bon-preview {
-            background: #fff; color: #000; border: 2px solid #000;
-            border-radius: var(--radius); padding: 20px; margin-top: 14px;
-            font-family: 'Courier New', monospace;
-        }
-        .bon-preview h2 {
-            font-size: 18px; font-weight: 900; text-align: center;
-            margin-bottom: 4px; font-family: 'Outfit', sans-serif;
-        }
-        .bon-preview .bon-sub { font-size: 11px; text-align: center; color: #555; margin-bottom: 12px; }
-        .bon-divider { border: none; border-top: 1px dashed #999; margin: 10px 0; }
-        .bon-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
-        .bon-total { display: flex; justify-content: space-between; font-size: 16px; font-weight: 900; margin-top: 8px; padding-top: 8px; border-top: 2px solid #000; }
-        .bon-footer { font-size: 10px; text-align: center; color: #777; margin-top: 12px; line-height: 1.6; }
-
-        /* PRIVACY */
-        .privacy-wrap { max-width: 100%; }
-        .privacy-h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 24px; font-weight: 800; color: var(--text);
-            margin-bottom: 18px; display: flex; align-items: center; gap: 10px;
-        }
-        .privacy-h2 {
-            font-size: 16px; font-weight: 700; color: var(--text);
-            margin: 22px 0 10px; padding-bottom: 8px;
-            border-bottom: 2px solid var(--border);
-        }
-        .privacy-p { font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 12px; }
-        .privacy-ul { padding-left: 18px; margin-bottom: 14px; }
-        .privacy-ul li { font-size: 14px; color: var(--text-2); margin-bottom: 6px; line-height: 1.5; }
-        .contact-card {
-            background: var(--bg-2); border: 1px solid var(--border);
-            padding: 14px; border-radius: var(--radius); margin: 12px 0;
-        }
-        .contact-card p { font-size: 13px; color: var(--text-2); margin-bottom: 6px; line-height: 1.5; }
-        .contact-card a { color: var(--link); text-decoration: none; font-weight: 500; word-break: break-all; }
-
-        /* FAQ */
-        .faq-section { margin-top: 24px; margin-bottom: 20px; }
-        .faq-header {
-            font-family: 'Outfit', sans-serif;
-            font-size: 18px; font-weight: 700; color: var(--text);
-            display: flex; align-items: center; gap: 8px; margin-bottom: 14px;
-        }
-        .faq-header i { color: var(--primary); }
-        .faq-item {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius); margin-bottom: 8px;
-            overflow: hidden; transition: box-shadow var(--transition);
-        }
-        .faq-item:hover { box-shadow: var(--shadow); }
-        .faq-q {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 16px; cursor: pointer; font-weight: 600; font-size: 14px;
-            color: var(--text);
-        }
-        .faq-q i { color: var(--primary); transition: transform var(--transition); flex-shrink: 0; margin-left: 8px; }
-        .faq-q.open i { transform: rotate(180deg); }
-        .faq-a {
-            max-height: 0; overflow: hidden;
-            transition: max-height 300ms ease, padding 200ms ease;
-            font-size: 14px; color: var(--text-2); line-height: 1.6;
-            padding: 0 16px;
-        }
-        .faq-a.open { max-height: 400px; padding: 0 16px 16px; }
-
-        /* TOAST */
-        .toast {
-            position: fixed; bottom: calc(var(--nav-h) + 16px); left: 50%;
-            transform: translateX(-50%) translateY(80px);
-            background: var(--text); color: var(--bg);
-            padding: 11px 20px; border-radius: var(--radius); z-index: 2000;
-            display: flex; align-items: center; gap: 8px;
-            font-size: 14px; font-weight: 500; max-width: 90%;
-            box-shadow: var(--shadow-xl); opacity: 0;
-            transition: all 250ms cubic-bezier(0.34,1.56,0.64,1);
-            pointer-events: none;
-        }
-        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-        .toast i { color: var(--primary); }
-
-        .loading {
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            height: 180px; color: var(--text-3); gap: 14px;
-        }
-        .spinner {
-            width: 36px; height: 36px; border: 3px solid var(--border);
-            border-top-color: var(--primary); border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .empty-state {
-            text-align: center; padding: 50px 20px; color: var(--text-3);
-        }
-        .empty-state i { font-size: 44px; margin-bottom: 14px; opacity: 0.4; display: block; }
-        .empty-state h3 { font-size: 17px; color: var(--text-2); margin-bottom: 6px; }
-        .empty-state p { font-size: 13px; }
-
-        /* COOKIE BANNER */
-        .cookie-banner {
-            position: fixed; bottom: calc(var(--nav-h) + 10px); left: 0; right: 0;
-            background: var(--surface); border-top: 1px solid var(--border);
-            padding: 16px 18px; z-index: 1500; display: none;
-            box-shadow: var(--shadow-xl);
-            animation: slideFromBottom 300ms ease;
-            max-width: 768px; margin: 0 auto; border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-        }
-        .cookie-banner.show { display: block; }
-        @keyframes slideFromBottom { from { transform: translateY(100%); } to { transform: translateY(0); } }
-        .cookie-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
-        .cookie-text { font-size: 13px; color: var(--text-2); line-height: 1.5; margin-bottom: 14px; }
-        .cookie-btns { display: flex; gap: 8px; }
-        .cookie-btns button {
-            flex: 1; padding: 11px; border-radius: var(--radius-sm);
-            font-size: 13px; font-weight: 700; cursor: pointer; border: none;
-            transition: all var(--transition);
-        }
-        .cookie-accept { background: var(--primary); color: #000; }
-        .cookie-accept:hover { background: var(--primary-dark); }
-        .cookie-reject { background: var(--bg-3); color: var(--text-2); }
-        .cookie-reject:hover { background: var(--border); }
-        .cookie-more { background: none; color: var(--link); font-weight: 600; font-size: 12px; flex: 0; padding: 11px 6px; text-decoration: underline; }
-
-        /* POPUP OVERLAYS */
-        .popup-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.5);
-            z-index: 2100; display: none; justify-content: center; align-items: flex-end;
-            padding: 0;
-        }
-        .popup-overlay.show { display: flex; }
-        .popup-sheet {
-            background: var(--surface); border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-            padding: 24px 20px; width: 100%; max-width: 768px;
-            max-height: 85vh; overflow-y: auto;
-            animation: sheetUp 300ms cubic-bezier(0.34,1.56,0.64,1);
-        }
-        @keyframes sheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-        .popup-sheet-handle { width: 40px; height: 4px; background: var(--border-2); border-radius: 2px; margin: 0 auto 20px; }
-        .popup-sheet-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; margin-bottom: 16px; }
-
-        .install-sheet .install-step {
-            display: flex; align-items: center; gap: 14px;
-            padding: 12px; background: var(--bg-2); border-radius: var(--radius-sm); margin-bottom: 10px;
-        }
-        .install-step-num {
-            width: 34px; height: 34px; border-radius: 50%;
-            background: var(--primary); color: #000;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 14px; flex-shrink: 0;
-        }
-        .install-step-info p { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
-        .install-step-info small { font-size: 12px; color: var(--text-3); }
-
-        .privacy-popup-btns { display: flex; gap: 8px; margin-top: 16px; }
-        .privacy-popup-btns button {
-            flex: 1; padding: 13px; border-radius: var(--radius);
-            font-weight: 700; cursor: pointer; font-size: 14px; border: none;
-            transition: all var(--transition);
-        }
-
-        .lang-select {
-            padding: 8px 12px; background: var(--surface-2);
-            border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-            font-size: 14px; color: var(--text); cursor: pointer;
-            transition: all var(--transition);
-        }
-        .lang-select:focus { outline: none; border-color: var(--primary); }
-        .dark-theme .lang-select { background: var(--bg-2); }
-
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
-        .dark-theme ::-webkit-scrollbar-thumb { background: var(--border); }
-
-        .hidden { display: none !important; }
-        .text-primary { color: var(--primary); }
-        .text-success { color: var(--success); }
-        .text-danger { color: var(--danger); }
-        .bold { font-weight: 700; }
-        a { color: var(--link); }
-
-        .reserve-form { padding: 4px 0; }
-        .reserve-form .form-group { margin-bottom: 14px; }
-        .note-input {
-            width: 100%; padding: 12px; background: var(--surface-2);
-            border: 1.5px solid var(--border); border-radius: var(--radius);
-            font-size: 14px; color: var(--text); resize: none; height: 80px;
-            transition: all var(--transition); font-family: inherit;
-        }
-        .note-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(255,215,0,0.15); }
-        .selected-color-preview {
-            display: flex; align-items: center; gap: 10px;
-            padding: 10px 14px; background: var(--bg-2); border-radius: var(--radius-sm);
-            margin-top: 6px; font-size: 13px; color: var(--text-2);
-        }
-        .selected-color-circle { width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--border); }
-
-        .confirm-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.6);
-            z-index: 3000; display: none; justify-content: center; align-items: center;
-            padding: 20px;
-        }
-        .confirm-overlay.show { display: flex; }
-        .confirm-box {
-            background: var(--surface); border-radius: var(--radius-lg);
-            padding: 24px; width: 100%; max-width: 320px;
-            box-shadow: var(--shadow-xl);
-        }
-        .confirm-title { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-        .confirm-msg { font-size: 14px; color: var(--text-2); margin-bottom: 20px; line-height: 1.5; }
-        .confirm-btns { display: flex; gap: 8px; }
-        .confirm-btns button { flex: 1; padding: 12px; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; transition: all var(--transition); }
-        .confirm-cancel { background: var(--bg-3); color: var(--text-2); }
-        .confirm-ok { background: var(--danger); color: #fff; }
-
-        .bon-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.7);
-            z-index: 4000; display: none; justify-content: center; align-items: center;
-            padding: 20px;
-        }
-        .bon-overlay.show { display: flex; }
-        .bon-box {
-            background: var(--surface); border-radius: var(--radius-lg);
-            padding: 20px; width: 100%; max-width: 400px;
-            max-height: 90vh; overflow-y: auto;
-            box-shadow: var(--shadow-xl);
-        }
-        .bon-box-title {
-            font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700;
-            margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
-        }
-        .bon-box-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
-        @media print {
-            body * { visibility: hidden; }
-            #printBonContent, #printBonContent * { visibility: visible; }
-            #printBonContent { position: fixed; left: 0; top: 0; width: 100%; padding: 20px; }
-        }
     </style>
 </head>
-
 <body>
+
+<!-- ============================================================
+     === HTML: APP CONTAINER ===
+     ============================================================ -->
 <div class="app-container" id="appContainer">
-    <!-- HEADER -->
+
+    <!-- ============================================================
+         === HTML: HEADER ===
+         ============================================================ -->
     <header class="app-header">
         <div class="header-title">
             <div class="logo-img"></div>
@@ -1052,11 +1044,16 @@
             </div>
         </div>
     </header>
+    <!-- === END HTML: HEADER === -->
 
-    <!-- MAIN -->
+    <!-- ============================================================
+         === HTML: MAIN CONTENT ===
+         ============================================================ -->
     <main class="main-content" id="mainContent">
 
-        <!-- HOME PAGE -->
+        <!-- ============================================================
+             === HTML: HOME PAGE ===
+             ============================================================ -->
         <div class="page active" id="homePage">
             <div class="welcome-card">
                 <h1 id="welcomeTitle">Welkom bij PrintSome!</h1>
@@ -1066,7 +1063,6 @@
                     <span id="welcomeUserText">Log in voor persoonlijke ervaring</span>
                 </div>
             </div>
-
             <div class="section-header">
                 <h2 class="section-title" id="featuredTitle">Uitgelichte Producten</h2>
                 <a href="#" class="section-link" id="allProductsLink">
@@ -1076,14 +1072,16 @@
             <div class="products-grid" id="featuredProducts">
                 <div class="loading" style="grid-column:1/-1;"><div class="spinner"></div><span>Laden...</span></div>
             </div>
-
             <div class="faq-section">
                 <div class="faq-header"><i class="fas fa-question-circle"></i> <span id="faqTitle">Veelgestelde vragen</span></div>
                 <div id="faqItems"></div>
             </div>
         </div>
+        <!-- === END HTML: HOME PAGE === -->
 
-        <!-- PRODUCTS PAGE -->
+        <!-- ============================================================
+             === HTML: PRODUCTS PAGE ===
+             ============================================================ -->
         <div class="page" id="productsPage">
             <div class="search-bar">
                 <i class="fas fa-search search-icon"></i>
@@ -1100,8 +1098,11 @@
                 <div class="loading" style="grid-column:1/-1;"><div class="spinner"></div><span>Laden...</span></div>
             </div>
         </div>
+        <!-- === END HTML: PRODUCTS PAGE === -->
 
-        <!-- FAVORITES PAGE -->
+        <!-- ============================================================
+             === HTML: FAVORITES PAGE ===
+             ============================================================ -->
         <div class="page" id="favoritesPage">
             <div class="section-header">
                 <h2 class="section-title" id="favTitle">Jouw Favorieten</h2>
@@ -1110,8 +1111,11 @@
                 <div class="loading" style="grid-column:1/-1;"><div class="spinner"></div><span>Laden...</span></div>
             </div>
         </div>
+        <!-- === END HTML: FAVORITES PAGE === -->
 
-        <!-- RESERVATIONS PAGE -->
+        <!-- ============================================================
+             === HTML: RESERVATIONS PAGE ===
+             ============================================================ -->
         <div class="page" id="reservationsPage">
             <div class="section-header">
                 <h2 class="section-title" id="resTitle">Mijn Reserveringen</h2>
@@ -1120,10 +1124,12 @@
                 <div class="loading"><div class="spinner"></div><span>Laden...</span></div>
             </div>
         </div>
+        <!-- === END HTML: RESERVATIONS PAGE === -->
 
-        <!-- SETTINGS PAGE -->
+        <!-- ============================================================
+             === HTML: SETTINGS PAGE ===
+             ============================================================ -->
         <div class="page" id="settingsPage">
-
             <div class="settings-group">
                 <div class="settings-group-title" id="sAccountTitle">ACCOUNT</div>
                 <div class="settings-row" id="loginSettingsRow">
@@ -1140,14 +1146,11 @@
                 </div>
             </div>
 
-            <!-- WEEKLY DISCOUNT CODE (only when logged in) -->
             <div class="settings-group" id="discountGroup" style="display:none;">
                 <div class="settings-group-title" id="sDiscountTitle">WEKELIJKSE KORTINGSCODE</div>
                 <div id="discountCardWrap">
                     <div class="loading" style="height:100px;"><div class="spinner"></div></div>
                 </div>
-
-                <!-- WIJZIGING 2: Inklapbare "Hoe werkt de kortingscode?" sectie -->
                 <div class="discount-info-box">
                     <div class="discount-info-toggle" id="discountInfoToggle" onclick="toggleDiscountInfo()">
                         <div class="discount-info-toggle-left">
@@ -1222,7 +1225,6 @@
                 </div>
             </div>
 
-            <!-- DATA MANAGEMENT (only when logged in) -->
             <div class="settings-group" id="dataGroup" style="display:none;">
                 <div class="settings-group-title" id="sDataTitle">MIJN GEGEVENS</div>
                 <div class="settings-row" style="cursor:default;">
@@ -1308,16 +1310,22 @@
                 </div>
             </div>
         </div>
+        <!-- === END HTML: SETTINGS PAGE === -->
 
-        <!-- PRIVACY PAGE -->
+        <!-- ============================================================
+             === HTML: PRIVACY PAGE ===
+             ============================================================ -->
         <div class="page" id="privacyPage">
             <div class="privacy-wrap" id="privacyContent"></div>
             <button class="btn-secondary" onclick="showPage('settings')" style="margin-top:16px;">
                 <i class="fas fa-arrow-left"></i> <span id="privacyBackBtn">Terug naar Instellingen</span>
             </button>
         </div>
+        <!-- === END HTML: PRIVACY PAGE === -->
 
-        <!-- ADMIN PAGE -->
+        <!-- ============================================================
+             === HTML: ADMIN PAGE ===
+             ============================================================ -->
         <div class="page" id="adminPage">
             <div class="admin-tabs">
                 <button class="admin-tab active" data-atab="overview">Overzicht</button>
@@ -1329,10 +1337,14 @@
                 <div class="loading"><div class="spinner"></div><span>Laden...</span></div>
             </div>
         </div>
+        <!-- === END HTML: ADMIN PAGE === -->
 
     </main>
+    <!-- === END HTML: MAIN CONTENT === -->
 
-    <!-- BOTTOM NAV -->
+    <!-- ============================================================
+         === HTML: BOTTOM NAV ===
+         ============================================================ -->
     <nav class="bottom-nav">
         <a href="#" class="nav-item active" data-page="home">
             <span class="nav-dot"></span>
@@ -1361,9 +1373,14 @@
             <span class="nav-label" id="navSettings">Instellingen</span>
         </a>
     </nav>
-</div>
+    <!-- === END HTML: BOTTOM NAV === -->
 
-<!-- COOKIE BANNER -->
+</div>
+<!-- === END HTML: APP CONTAINER === -->
+
+<!-- ============================================================
+     === HTML: COOKIE BANNER ===
+     ============================================================ -->
 <div class="cookie-banner" id="cookieBanner">
     <div class="cookie-title"><i class="fas fa-cookie-bite" style="color:var(--primary);"></i> <span id="cookieBannerTitle">We gebruiken cookies</span></div>
     <p class="cookie-text" id="cookieBannerText">PrintSome zelf gebruikt geen tracking cookies. Derde partijen zoals Firebase (Google) kunnen functionele cookies plaatsen die nodig zijn voor de werking van de app.</p>
@@ -1373,8 +1390,11 @@
         <button class="cookie-more" onclick="showPage('privacy')">Meer info</button>
     </div>
 </div>
+<!-- === END HTML: COOKIE BANNER === -->
 
-<!-- AUTH MODAL -->
+<!-- ============================================================
+     === HTML: AUTH MODAL ===
+     ============================================================ -->
 <div class="modal-overlay" id="authModal">
     <div class="modal-header">
         <span class="modal-title" id="authModalTitle">PrintSome Account</span>
@@ -1384,8 +1404,11 @@
         <div id="authContainer" style="max-width:420px;margin:0 auto;"></div>
     </div>
 </div>
+<!-- === END HTML: AUTH MODAL === -->
 
-<!-- PRODUCT DETAIL MODAL -->
+<!-- ============================================================
+     === HTML: PRODUCT DETAIL MODAL ===
+     ============================================================ -->
 <div class="modal-overlay" id="productModal">
     <div class="modal-header">
         <span class="modal-title" id="productModalTitle">Product details</span>
@@ -1393,8 +1416,11 @@
     </div>
     <div class="modal-content" id="productModalContent"></div>
 </div>
+<!-- === END HTML: PRODUCT DETAIL MODAL === -->
 
-<!-- RESERVATION MODAL -->
+<!-- ============================================================
+     === HTML: RESERVATION MODAL ===
+     ============================================================ -->
 <div class="modal-overlay" id="reserveModal">
     <div class="modal-header">
         <span class="modal-title" id="reserveModalTitle">Reserveren</span>
@@ -1402,8 +1428,11 @@
     </div>
     <div class="modal-content" id="reserveModalContent"></div>
 </div>
+<!-- === END HTML: RESERVATION MODAL === -->
 
-<!-- INSTALL SHEET -->
+<!-- ============================================================
+     === HTML: INSTALL SHEET ===
+     ============================================================ -->
 <div class="popup-overlay" id="installOverlay" onclick="closeInstallSheet(event)">
     <div class="popup-sheet install-sheet">
         <div class="popup-sheet-handle"></div>
@@ -1414,8 +1443,11 @@
         </button>
     </div>
 </div>
+<!-- === END HTML: INSTALL SHEET === -->
 
-<!-- PRIVACY POPUP -->
+<!-- ============================================================
+     === HTML: PRIVACY POPUP ===
+     ============================================================ -->
 <div class="popup-overlay" id="privacyPopupOverlay">
     <div class="popup-sheet">
         <div class="popup-sheet-handle"></div>
@@ -1430,8 +1462,11 @@
         </div>
     </div>
 </div>
+<!-- === END HTML: PRIVACY POPUP === -->
 
-<!-- CONFIRM DIALOG -->
+<!-- ============================================================
+     === HTML: CONFIRM DIALOG ===
+     ============================================================ -->
 <div class="confirm-overlay" id="confirmOverlay">
     <div class="confirm-box">
         <div class="confirm-title" id="confirmTitle">Bevestigen</div>
@@ -1442,8 +1477,11 @@
         </div>
     </div>
 </div>
+<!-- === END HTML: CONFIRM DIALOG === -->
 
-<!-- BON / RECEIPT OVERLAY -->
+<!-- ============================================================
+     === HTML: RECEIPT / BON OVERLAY ===
+     ============================================================ -->
 <div class="bon-overlay" id="bonOverlay">
     <div class="bon-box">
         <div class="bon-box-title"><i class="fas fa-receipt" style="color:var(--primary);"></i> Reserveringsbon</div>
@@ -1455,32 +1493,35 @@
         </div>
     </div>
 </div>
+<!-- === END HTML: RECEIPT / BON OVERLAY === -->
 
-<!-- TOAST -->
+<!-- ============================================================
+     === HTML: TOAST & PRINT AREA ===
+     ============================================================ -->
 <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg">Bericht</span></div>
-
-<!-- Hidden print area -->
 <div id="printBonContent" style="display:none;"></div>
+<!-- === END HTML: TOAST & PRINT AREA === -->
 
 <script>
 // ============================================================
-// FIREBASE CONFIG
+// === FIREBASE CONFIG ===
 // ============================================================
 const firebaseConfig = {
-  apiKey: "AIzaSyBHmq2hPEyb2z89XIR4y-FlKJYpSObh8Iw",
-  authDomain: "printsome-b5197.firebaseapp.com",
-  projectId: "printsome-b5197",
-  storageBucket: "printsome-b5197.firebasestorage.app",
-  messagingSenderId: "558794337754",
-  appId: "1:558794337754:web:324c537a347d6e0991a4e3",
-  measurementId: "G-TL2RN2TRLR"
+    apiKey: "AIzaSyBHmq2hPEyb2z89XIR4y-FlKJYpSObh8Iw",
+    authDomain: "printsome-b5197.firebaseapp.com",
+    projectId: "printsome-b5197",
+    storageBucket: "printsome-b5197.firebasestorage.app",
+    messagingSenderId: "558794337754",
+    appId: "1:558794337754:web:324c537a347d6e0991a4e3",
+    measurementId: "G-TL2RN2TRLR"
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
+// === END FIREBASE CONFIG ===
 
 // ============================================================
-// STATE
+// === STATE ===
 // ============================================================
 let currentUser = null;
 let currentPage = 'home';
@@ -1495,48 +1536,11 @@ let currentAdminTab = 'overview';
 let isAdmin = false;
 let currentWeeklyDiscount = null;
 let appliedDiscount = null;
-
 let settings = { theme: 'system', language: 'nl' };
+// === END STATE ===
 
 // ============================================================
-// WIJZIGING 2: Toggle functie voor inklapbare kortingscode-info
-// ============================================================
-window.toggleDiscountInfo = function() {
-    const toggle = document.getElementById('discountInfoToggle');
-    const body = document.getElementById('discountInfoBody');
-    if (!toggle || !body) return;
-    const isOpen = toggle.classList.contains('open');
-    if (isOpen) {
-        toggle.classList.remove('open');
-        body.classList.remove('open');
-    } else {
-        toggle.classList.add('open');
-        body.classList.add('open');
-    }
-};
-
-// ============================================================
-// CONFIRM DIALOG
-// ============================================================
-let confirmCallback = null;
-function showConfirm(title, msg, okLabel, cb) {
-    document.getElementById('confirmTitle').textContent = title;
-    document.getElementById('confirmMsg').textContent = msg;
-    document.getElementById('confirmOkBtn').textContent = okLabel || 'Verwijderen';
-    confirmCallback = cb;
-    document.getElementById('confirmOverlay').classList.add('show');
-}
-function closeConfirm() {
-    document.getElementById('confirmOverlay').classList.remove('show');
-    confirmCallback = null;
-}
-document.getElementById('confirmOkBtn').addEventListener('click', () => {
-    if (confirmCallback) confirmCallback();
-    closeConfirm();
-});
-
-// ============================================================
-// TRANSLATIONS
+// === TRANSLATIONS ===
 // ============================================================
 const T = {
     nl: {
@@ -1777,9 +1781,10 @@ function t(key) {
     const lang = settings.language;
     return (T[lang] && T[lang][key] !== undefined) ? T[lang][key] : (T.nl[key] || key);
 }
+// === END TRANSLATIONS ===
 
 // ============================================================
-// THEME
+// === THEME ===
 // ============================================================
 function applyTheme(themeValue) {
     settings.theme = themeValue;
@@ -1796,13 +1801,13 @@ function applyTheme(themeValue) {
     const sel = document.getElementById('themeSelect');
     if (sel) sel.value = themeValue;
 }
-
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
     if (settings.theme === 'system') applyTheme('system');
 });
+// === END THEME ===
 
 // ============================================================
-// SETTINGS
+// === SETTINGS ===
 // ============================================================
 function loadSettings() {
     try {
@@ -1837,9 +1842,10 @@ async function loadUserSettingsFromFirebase(uid) {
         }
     } catch(e) {}
 }
+// === END SETTINGS ===
 
 // ============================================================
-// LANGUAGE UI
+// === LANGUAGE UI ===
 // ============================================================
 function applyLanguageUI() {
     const el = (id) => document.getElementById(id);
@@ -1899,20 +1905,18 @@ function applyLanguageUI() {
     if(el('privacyPopOk')) el('privacyPopOk').textContent = t('privacyPopOk');
     if(el('installTitle')) el('installTitle').textContent = t('installTitle');
     if(el('installDoneBtn')) el('installDoneBtn').textContent = t('installDoneBtn');
-
-    // Update discount info toggle title
     if(el('discountInfoTitle')) el('discountInfoTitle').textContent = t('discountInfoTitle');
     const infoList = el('discountInfoList');
     if(infoList) {
         const items = t('discountInfoItems');
         infoList.innerHTML = items.map(item => `<li><i class="fas fa-circle"></i><span>${item}</span></li>`).join('');
     }
-
     buildPrivacyPage();
 }
+// === END LANGUAGE UI ===
 
 // ============================================================
-// FAQ
+// === FAQ ===
 // ============================================================
 function buildFAQ() {
     const container = document.getElementById('faqItems');
@@ -1942,9 +1946,10 @@ function buildFAQ() {
         container.appendChild(item);
     });
 }
+// === END FAQ ===
 
 // ============================================================
-// PRIVACY PAGE
+// === PRIVACY PAGE ===
 // ============================================================
 function buildPrivacyPage() {
     const c = document.getElementById('privacyContent');
@@ -1953,13 +1958,11 @@ function buildPrivacyPage() {
     c.innerHTML = `
         <div class="privacy-h1"><i class="fas fa-shield-alt" style="color:var(--primary);"></i> ${isNL ? 'Privacyverklaring PrintSome' : 'Privacy Statement PrintSome'}</div>
         <p class="privacy-p">${isNL ? 'PrintSome is verantwoordelijk voor de verwerking van persoonsgegevens zoals weergegeven in deze privacyverklaring.' : 'PrintSome is responsible for the processing of personal data as shown in this privacy statement.'}</p>
-
         <div class="privacy-h2">${isNL ? 'Contactgegevens' : 'Contact details'}</div>
         <div class="contact-card">
             <p><strong>Website:</strong> <a href="https://printsome.pages.dev" target="_blank">https://printsome.pages.dev</a></p>
             <p><strong>E-mail:</strong> <a href="mailto:printsome-webapp@outlook.com">printsome-webapp@outlook.com</a></p>
         </div>
-
         <div class="privacy-h2">${isNL ? 'Persoonsgegevens die wij verwerken' : 'Personal data we process'}</div>
         <p class="privacy-p">${isNL ? 'PrintSome verwerkt uw persoonsgegevens doordat u gebruik maakt van onze diensten.' : 'PrintSome processes your personal data because you use our services.'}</p>
         <ul class="privacy-ul">
@@ -1971,60 +1974,38 @@ function buildPrivacyPage() {
             <li>${isNL ? 'Reserveringen en favorieten' : 'Reservations and favorites'}</li>
             <li>${isNL ? 'Beoordelingen en recensies' : 'Ratings and reviews'}</li>
         </ul>
-
         <div class="privacy-h2">${isNL ? 'Doelen en grondslagen' : 'Purposes and legal bases'}</div>
         <ul class="privacy-ul">
             <li>${isNL ? 'U de mogelijkheid te bieden een account aan te maken' : 'To provide you with the ability to create an account'}</li>
             <li>${isNL ? 'Het verwerken van reserveringen en kortingscodes' : 'Processing reservations and discount codes'}</li>
             <li>${isNL ? 'Het technisch functioneren en verbeteren van de app' : 'For the technical functioning and improvement of the app'}</li>
         </ul>
-
         <div class="privacy-h2">${isNL ? 'Bewaartermijnen' : 'Retention periods'}</div>
-        <p class="privacy-p">${isNL
-            ? 'PrintSome bewaart uw persoonsgegevens niet langer dan noodzakelijk voor de doelen waarvoor ze zijn verzameld. Wij hanteren de volgende bewaartermijnen:'
-            : 'PrintSome does not retain your personal data longer than necessary for the purposes for which it was collected. We apply the following retention periods:'}</p>
         <ul class="privacy-ul">
-            <li>${isNL
-                ? '<strong>Accountgegevens, reserveringen, favorieten, beoordelingen en recensies:</strong> 1 jaar na de laatste activiteit of na verwijdering van het account.'
-                : '<strong>Account data, reservations, favorites, ratings and reviews:</strong> 1 year after the last activity or after account deletion.'}</li>
-            <li>${isNL
-                ? 'Na het verstrijken van de bewaartermijn worden uw gegevens automatisch verwijderd.'
-                : 'After the retention period expires, your data is automatically deleted.'}</li>
+            <li>${isNL ? '<strong>Accountgegevens, reserveringen, favorieten, beoordelingen en recensies:</strong> 1 jaar na de laatste activiteit of na verwijdering van het account.' : '<strong>Account data, reservations, favorites, ratings and reviews:</strong> 1 year after the last activity or after account deletion.'}</li>
+            <li>${isNL ? 'Na het verstrijken van de bewaartermijn worden uw gegevens automatisch verwijderd.' : 'After the retention period expires, your data is automatically deleted.'}</li>
         </ul>
-
         <div class="privacy-h2">${isNL ? 'Uw rechten' : 'Your rights'}</div>
-        <p class="privacy-p">${isNL ? 'U heeft de volgende rechten met betrekking tot uw persoonsgegevens:' : 'You have the following rights regarding your personal data:'}</p>
         <ul class="privacy-ul">
-            <li>${isNL
-                ? '<strong>Recht op inzage & gegevensoverdraagbaarheid:</strong> U kunt al uw gegevens exporteren als JSON-bestand via Instellingen → Mijn gegevens → Exporteren.'
-                : '<strong>Right of access & data portability:</strong> You can export all your data as a JSON file via Settings → My data → Export.'}</li>
-            <li>${isNL
-                ? '<strong>Recht op herstel (importeren):</strong> Eerder geëxporteerde gegevens kunt u terugzetten via Instellingen → Mijn gegevens → Importeren.'
-                : '<strong>Right to restore (import):</strong> Previously exported data can be restored via Settings → My data → Import.'}</li>
-            <li>${isNL
-                ? '<strong>Recht op verwijdering (recht om vergeten te worden):</strong> U kunt al uw gegevens direct en automatisch verwijderen via Instellingen → Mijn gegevens → Alles wissen. Hiermee worden uw reserveringen, favorieten, beoordelingen, recensies en kortingscodegeschiedenis direct uit onze database verwijderd. Uw account wordt eveneens verwijderd. U hoeft hiervoor geen contact op te nemen met ons.'
-                : '<strong>Right to erasure (right to be forgotten):</strong> You can delete all your data directly and automatically via Settings → My data → Delete all. This immediately removes your reservations, favorites, ratings, reviews and discount code history from our database. Your account is also deleted. You do not need to contact us for this.'}</li>
-            <li>${isNL
-                ? '<strong>Overige rechten (rectificatie, beperking van verwerking):</strong> Neem contact op via het e-mailadres hieronder.'
-                : '<strong>Other rights (rectification, restriction of processing):</strong> Please contact us via the email address below.'}</li>
+            <li>${isNL ? '<strong>Recht op inzage & gegevensoverdraagbaarheid:</strong> Exporteer via Instellingen → Mijn gegevens → Exporteren.' : '<strong>Right of access & data portability:</strong> Export via Settings → My data → Export.'}</li>
+            <li>${isNL ? '<strong>Recht op herstel (importeren):</strong> Via Instellingen → Mijn gegevens → Importeren.' : '<strong>Right to restore (import):</strong> Via Settings → My data → Import.'}</li>
+            <li>${isNL ? '<strong>Recht op verwijdering:</strong> Via Instellingen → Mijn gegevens → Alles wissen.' : '<strong>Right to erasure:</strong> Via Settings → My data → Delete all.'}</li>
+            <li>${isNL ? '<strong>Overige rechten:</strong> Neem contact op via het e-mailadres hieronder.' : '<strong>Other rights:</strong> Please contact us via the email address below.'}</li>
         </ul>
         <div class="contact-card">
-            <p>${isNL ? 'Voor vragen of verzoeken kunt u contact opnemen via:' : 'For questions or requests, please contact us at:'} <a href="mailto:printsome-webapp@outlook.com">printsome-webapp@outlook.com</a></p>
+            <p>${isNL ? 'Voor vragen of verzoeken:' : 'For questions or requests:'} <a href="mailto:printsome-webapp@outlook.com">printsome-webapp@outlook.com</a></p>
         </div>
-
         <div class="privacy-h2">${isNL ? 'Cookies' : 'Cookies'}</div>
-        <p class="privacy-p">${isNL
-            ? 'PrintSome gebruikt zelf geen tracking cookies. Derde partijen zoals Firebase (Google) kunnen functionele cookies plaatsen die nodig zijn voor de werking van de app.'
-            : 'PrintSome itself does not use tracking cookies. Third parties such as Firebase (Google) may place functional cookies necessary for the app to work.'}</p>
-
+        <p class="privacy-p">${isNL ? 'PrintSome gebruikt zelf geen tracking cookies. Derde partijen zoals Firebase (Google) kunnen functionele cookies plaatsen.' : 'PrintSome itself does not use tracking cookies. Third parties such as Firebase (Google) may place functional cookies.'}</p>
         <div style="text-align:center;margin-top:24px;padding-top:16px;border-top:1px solid var(--border);">
             <p style="font-size:12px;color:var(--text-3);"><i class="fas fa-calendar-alt"></i> ${isNL ? 'Laatst bijgewerkt: Mei 2026' : 'Last updated: May 2026'}</p>
         </div>
     `;
 }
+// === END PRIVACY PAGE ===
 
 // ============================================================
-// DATA EXPORT / IMPORT / DELETE
+// === DATA EXPORT / IMPORT / DELETE ===
 // ============================================================
 async function exportUserData() {
     if (!currentUser) { showToast(settings.language === 'nl' ? 'Log eerst in' : 'Please log in first'); return; }
@@ -2139,9 +2120,10 @@ async function deleteAllUserData() {
         }
     }
 }
+// === END DATA EXPORT / IMPORT / DELETE ===
 
 // ============================================================
-// AUTH
+// === AUTH ===
 // ============================================================
 function renderAuthForm() {
     const c = document.getElementById('authContainer');
@@ -2271,7 +2253,6 @@ function updateAuthUI() {
     const lBtn = document.getElementById('loginButton');
     const statusEl = document.getElementById('sAccountDesc');
     const wText = document.getElementById('welcomeUserText');
-
     if (currentUser) {
         if (currentUser.photoURL) av.innerHTML = `<img src="${currentUser.photoURL}" alt="">`;
         else {
@@ -2295,7 +2276,6 @@ function updateAuthUI() {
         const dataG = document.getElementById('dataGroup');
         if (dataG) dataG.style.display = 'none';
     }
-
     av.onclick = () => {
         if (currentUser) showToast(`${t('loggedInAs')}: ${currentUser.email}`, 3000);
         else openAuth();
@@ -2307,9 +2287,10 @@ function openAuth() {
     document.getElementById('authModal').classList.add('active');
 }
 window.openAuth = openAuth;
+// === END AUTH ===
 
 // ============================================================
-// WEEKLY DISCOUNT CODE
+// === DISCOUNT ===
 // ============================================================
 function getWeekKey() {
     const now = new Date();
@@ -2413,6 +2394,15 @@ window.copyDiscountCode = function(code) {
     }).catch(() => showToast(code));
 };
 
+window.toggleDiscountInfo = function() {
+    const toggle = document.getElementById('discountInfoToggle');
+    const body = document.getElementById('discountInfoBody');
+    if (!toggle || !body) return;
+    const isOpen = toggle.classList.contains('open');
+    if (isOpen) { toggle.classList.remove('open'); body.classList.remove('open'); }
+    else { toggle.classList.add('open'); body.classList.add('open'); }
+};
+
 async function hasUserUsedDiscountThisWeek() {
     if (!currentUser) return false;
     const weekKey = getWeekKey();
@@ -2449,9 +2439,10 @@ async function validateDiscountCode(code, productId) {
         return { valid: true, discount: 0.10, discountData: d };
     } catch(e) { return { valid: false, reason: 'error' }; }
 }
+// === END DISCOUNT ===
 
 // ============================================================
-// PRODUCTS
+// === PRODUCTS ===
 // ============================================================
 async function loadProducts() {
     try {
@@ -2563,9 +2554,10 @@ function displayAllProducts(filter = 'all', search = '') {
     c.innerHTML = '';
     list.forEach(p => c.appendChild(createProductCard(p)));
 }
+// === END PRODUCTS ===
 
 // ============================================================
-// PRODUCT MODAL
+// === PRODUCT MODAL ===
 // ============================================================
 async function openProductModal(productId) {
     const product = products.find(p => p.id === productId);
@@ -2699,9 +2691,10 @@ async function submitReview(productId) {
     } catch(e) { console.error(e); }
 }
 window.submitReview = submitReview;
+// === END PRODUCT MODAL ===
 
 // ============================================================
-// RESERVE MODAL
+// === RESERVATIONS ===
 // ============================================================
 function openReserveModal(productId) {
     if (!currentUser) { showToast(t('reserveLogin')); openAuth(); return; }
@@ -2846,9 +2839,10 @@ async function submitReservation(productId) {
     } catch(e) { console.error('submitReservation error:', e); showToast('Fout bij reservering: ' + e.message); }
 }
 window.submitReservation = submitReservation;
+// === END RESERVATIONS ===
 
 // ============================================================
-// USER DATA
+// === USER DATA ===
 // ============================================================
 async function loadUserData(uid) {
     try {
@@ -2929,9 +2923,10 @@ function updateResBadge() {
     if (pending > 0) { badge.textContent = pending; badge.style.display = 'flex'; }
     else badge.style.display = 'none';
 }
+// === END USER DATA ===
 
 // ============================================================
-// ADMIN
+// === ADMIN ===
 // ============================================================
 async function checkAdminAccess() {
     const section = document.getElementById('adminSection');
@@ -3057,9 +3052,10 @@ async function loadAdminContent(tab) {
         });
     }
 }
+// === END ADMIN ===
 
 // ============================================================
-// BON / RECEIPT
+// === ADMIN: BON / RECEIPT ===
 // ============================================================
 let currentBonData = null;
 
@@ -3166,9 +3162,10 @@ window.printBon = function() {
     window.print();
     printEl.style.display = 'none';
 };
+// === END ADMIN: BON / RECEIPT ===
 
 // ============================================================
-// ADMIN PRODUCT FORM
+// === ADMIN: PRODUCT FORM ===
 // ============================================================
 function renderProductForm(productData) {
     const isEdit = !!productData;
@@ -3402,9 +3399,10 @@ window.deleteReview = async function(reviewId) {
         loadAdminContent('reviews');
     } catch(e) { showToast('Fout bij verwijderen'); }
 };
+// === END ADMIN: PRODUCT FORM ===
 
 // ============================================================
-// PAGE NAVIGATION
+// === PAGE NAVIGATION ===
 // ============================================================
 window.showPage = function(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -3431,18 +3429,41 @@ window.showPage = function(page) {
         if (currentUser && !currentWeeklyDiscount) loadWeeklyDiscount();
     }
 };
+// === END PAGE NAVIGATION ===
 
 // ============================================================
-// MODALS
+// === MODALS ===
 // ============================================================
 window.closeModal = function(type) {
     const map = { auth: 'authModal', product: 'productModal', reserve: 'reserveModal' };
     const el = document.getElementById(map[type]);
     if (el) el.classList.remove('active');
 };
+// === END MODALS ===
 
 // ============================================================
-// COOKIE
+// === CONFIRM DIALOG ===
+// ============================================================
+let confirmCallback = null;
+function showConfirm(title, msg, okLabel, cb) {
+    document.getElementById('confirmTitle').textContent = title;
+    document.getElementById('confirmMsg').textContent = msg;
+    document.getElementById('confirmOkBtn').textContent = okLabel || 'Verwijderen';
+    confirmCallback = cb;
+    document.getElementById('confirmOverlay').classList.add('show');
+}
+function closeConfirm() {
+    document.getElementById('confirmOverlay').classList.remove('show');
+    confirmCallback = null;
+}
+document.getElementById('confirmOkBtn').addEventListener('click', () => {
+    if (confirmCallback) confirmCallback();
+    closeConfirm();
+});
+// === END CONFIRM DIALOG ===
+
+// ============================================================
+// === COOKIE & PRIVACY ===
 // ============================================================
 window.acceptCookies = function() {
     localStorage.setItem('ps3_cookies', 'accepted');
@@ -3478,9 +3499,10 @@ function checkPrivacyPopup() {
         setTimeout(() => document.getElementById('privacyPopupOverlay').classList.add('show'), 800);
     }
 }
+// === END COOKIE & PRIVACY ===
 
 // ============================================================
-// INSTALL
+// === INSTALL ===
 // ============================================================
 function checkInstall() {
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
@@ -3507,9 +3529,10 @@ function showInstallSheet() {
 window.closeInstallSheet = function(e) {
     if (e.target === document.getElementById('installOverlay')) document.getElementById('installOverlay').classList.remove('show');
 };
+// === END INSTALL ===
 
 // ============================================================
-// TOAST
+// === TOAST ===
 // ============================================================
 let toastTimer;
 function showToast(msg, dur = 2800) {
@@ -3519,15 +3542,13 @@ function showToast(msg, dur = 2800) {
     toastTimer = setTimeout(() => document.getElementById('toast').classList.remove('show'), dur);
 }
 window.showToast = showToast;
+// === END TOAST ===
 
 // ============================================================
-// VIEWPORT
+// === EVENTS & INIT ===
 // ============================================================
 function setVH() { document.documentElement.style.setProperty('--vh', `${window.innerHeight*0.01}px`); }
 
-// ============================================================
-// EVENT LISTENERS
-// ============================================================
 function setupEvents() {
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', e => { e.preventDefault(); showPage(item.dataset.page); });
@@ -3567,9 +3588,6 @@ function setupEvents() {
     });
 }
 
-// ============================================================
-// INIT
-// ============================================================
 document.addEventListener('DOMContentLoaded', async () => {
     setVH();
     window.addEventListener('resize', setVH);
@@ -3582,6 +3600,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     checkPrivacyPopup();
     checkInstall();
 });
+// === END EVENTS & INIT ===
+
 </script>
 </body>
 </html>

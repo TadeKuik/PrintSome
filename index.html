@@ -959,17 +959,23 @@
     /* ============================================================
        === CSS: COOKIE BANNER ===
        ============================================================ */
-    .cookie-banner {
+.cookie-banner {
         position: fixed; bottom: calc(var(--nav-h) + 10px); left: 0; right: 0;
         background: var(--surface); border-top: 1px solid var(--border);
-        padding: 16px 18px; z-index: 1500; display: none;
+        padding: 18px 20px; z-index: 1500; display: none;
         box-shadow: var(--shadow-xl);
-        animation: slideFromBottom 300ms ease;
+        opacity: 0; transform: translateY(24px) scale(0.98);
         max-width: 768px; margin: 0 auto; border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        transition: opacity 380ms cubic-bezier(0.34,1.56,0.64,1), transform 380ms cubic-bezier(0.34,1.56,0.64,1);
     }
-    .cookie-banner.show { display: block; }
-    @keyframes slideFromBottom { from { transform: translateY(100%); } to { transform: translateY(0); } }
-    .cookie-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+    .cookie-banner.show { display: block; opacity: 1; transform: translateY(0) scale(1); }
+    .cookie-icon-badge {
+        width: 34px; height: 34px; border-radius: 10px;
+        background: var(--primary-light); color: var(--primary-dark);
+        display: inline-flex; align-items: center; justify-content: center;
+        font-size: 15px; flex-shrink: 0;
+    }
+    .cookie-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
     .cookie-text { font-size: 13px; color: var(--text-2); line-height: 1.5; margin-bottom: 14px; }
     .cookie-btns { display: flex; gap: 8px; }
     .cookie-btns button {
@@ -1441,7 +1447,7 @@
      === HTML: COOKIE BANNER ===
      ============================================================ -->
 <div class="cookie-banner" id="cookieBanner">
-    <div class="cookie-title"><i class="fas fa-cookie-bite" style="color:var(--primary);"></i> <span id="cookieBannerTitle">We gebruiken cookies</span></div>
+ <div class="cookie-title"><span class="cookie-icon-badge"><i class="fas fa-cookie-bite"></i></span> <span id="cookieBannerTitle">We gebruiken cookies</span></div>
     <p class="cookie-text" id="cookieBannerText">PrintSome zelf gebruikt geen tracking cookies. Derde partijen zoals Firebase (Google) kunnen functionele cookies plaatsen die nodig zijn voor de werking van de app.</p>
     <div class="cookie-btns">
         <button class="cookie-accept" onclick="acceptCookies()">Accepteren</button>
@@ -3524,29 +3530,31 @@ document.getElementById('confirmOkBtn').addEventListener('click', () => {
 // ============================================================
 // === COOKIE & PRIVACY ===
 // ============================================================
+let onCookieBannerResolved = null;
+
+function hideCookieBanner() {
+    const banner = document.getElementById('cookieBanner');
+    banner.classList.remove('show');
+    setTimeout(() => { banner.style.display = 'none'; }, 380);
+    if (onCookieBannerResolved) { const fn = onCookieBannerResolved; onCookieBannerResolved = null; fn(); }
+}
 window.acceptCookies = function() {
     localStorage.setItem('ps3_cookies', 'accepted');
-    const banner = document.getElementById('cookieBanner');
-    banner.classList.remove('show'); banner.style.display = 'none';
+    hideCookieBanner();
 };
 window.rejectCookies = function() {
     localStorage.setItem('ps3_cookies', 'functional');
-    const banner = document.getElementById('cookieBanner');
-    banner.classList.remove('show'); banner.style.display = 'none';
+    hideCookieBanner();
 };
 window.showCookieSettings = function() {
     const banner = document.getElementById('cookieBanner');
     banner.style.display = '';
-    setTimeout(() => banner.classList.add('show'), 10);
+    requestAnimationFrame(() => requestAnimationFrame(() => banner.classList.add('show')));
 };
-function checkCookieBanner() {
-    if (!localStorage.getItem('ps3_cookies')) {
-        setTimeout(() => {
-            const banner = document.getElementById('cookieBanner');
-            banner.style.display = '';
-            banner.classList.add('show');
-        }, 1500);
-    }
+function showCookieBannerFirstTime() {
+    const banner = document.getElementById('cookieBanner');
+    banner.style.display = '';
+    requestAnimationFrame(() => requestAnimationFrame(() => banner.classList.add('show')));
 }
 window.acceptPrivacyPopup = function() {
     localStorage.setItem('ps3_privacy', 'accepted');
@@ -3568,9 +3576,21 @@ function checkInstall() {
     const installGroup = document.getElementById('installGroup');
     if (!isStandalone && installGroup) installGroup.style.display = 'block';
     else if (installGroup) installGroup.style.display = 'none';
-    if (!isStandalone && !sessionStorage.getItem('ps3_install_shown')) {
-        sessionStorage.setItem('ps3_install_shown', '1');
-        setTimeout(() => showInstallSheet(), 2000);
+}
+
+function runOnboardingSequence() {
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    const maybeShowInstall = () => {
+        if (!isStandalone && !sessionStorage.getItem('ps3_install_shown')) {
+            sessionStorage.setItem('ps3_install_shown', '1');
+            setTimeout(showInstallSheet, 700);
+        }
+    };
+    if (!localStorage.getItem('ps3_cookies')) {
+        onCookieBannerResolved = maybeShowInstall;
+        setTimeout(showCookieBannerFirstTime, 500);
+    } else {
+        maybeShowInstall();
     }
 }
 function showInstallSheet() {
@@ -3645,6 +3665,50 @@ async function initAppWithSplash() {
     setTimeout(hideSplashScreen, 250);
 }
 // === END SPLASH SCREEN ===
+
+    // ============================================================
+// === BACK BUTTON (ANDROID) ===
+// ============================================================
+let backPressedOnce = false;
+let backPressedTimer = null;
+
+function pushBackGuard() {
+    try { history.pushState({ psGuard: true }, '', location.href); } catch(e) {}
+}
+
+function closeTopMostOverlay() {
+    const bon = document.getElementById('bonOverlay');
+    if (bon && bon.classList.contains('show')) { closeBon(); return true; }
+    const confirmOv = document.getElementById('confirmOverlay');
+    if (confirmOv && confirmOv.classList.contains('show')) { closeConfirm(); return true; }
+    const installOv = document.getElementById('installOverlay');
+    if (installOv && installOv.classList.contains('show')) { installOv.classList.remove('show'); return true; }
+    const privacyPopOv = document.getElementById('privacyPopupOverlay');
+    if (privacyPopOv && privacyPopOv.classList.contains('show')) { privacyPopOv.classList.remove('show'); return true; }
+    const reserveModal = document.getElementById('reserveModal');
+    if (reserveModal && reserveModal.classList.contains('active')) { closeModal('reserve'); return true; }
+    const productModal = document.getElementById('productModal');
+    if (productModal && productModal.classList.contains('active')) { closeModal('product'); return true; }
+    const authModal = document.getElementById('authModal');
+    if (authModal && authModal.classList.contains('active')) { closeModal('auth'); return true; }
+    return false;
+}
+
+function handlePopState() {
+    if (closeTopMostOverlay()) { pushBackGuard(); return; }
+    if (currentPage !== 'home') { showPage('home'); pushBackGuard(); return; }
+    if (backPressedOnce) {
+        clearTimeout(backPressedTimer);
+        backPressedOnce = false;
+        return;
+    }
+    backPressedOnce = true;
+    showToast(settings.language === 'nl' ? 'Druk nogmaals op terug om te sluiten' : 'Press back again to exit', 2000);
+    backPressedTimer = setTimeout(() => { backPressedOnce = false; }, 2000);
+    pushBackGuard();
+}
+window.addEventListener('popstate', handlePopState);
+// === END BACK BUTTON (ANDROID) ===
     
 // ============================================================
 // === EVENTS & INIT ===
@@ -3702,9 +3766,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     await initAppWithSplash();
     clearTimeout(splashFallback);
 
-    checkCookieBanner();
-    checkPrivacyPopup();
     checkInstall();
+    checkPrivacyPopup();
+    runOnboardingSequence();
+    pushBackGuard();
 });
 // === END EVENTS & INIT ===
 

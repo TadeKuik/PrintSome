@@ -11,6 +11,7 @@
     <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22PrintSome%22,%22short_name%22:%22PrintSome%22,%22start_url%22:%22/%22,%22display%22:%22standalone%22,%22background_color%22:%22%23FFD700%22,%22theme_color%22:%22%23FFD700%22,%22icons%22:[{%22src%22:%22https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png%22,%22sizes%22:%22192x192%22,%22type%22:%22image/png%22}]}">
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png">
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png">
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -984,6 +985,51 @@
     /* === END CSS: COOKIE BANNER === */
 
     /* ============================================================
+   === CSS: SPLASH SCREEN ===
+   ============================================================ */
+.splash-screen {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--bg);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 18px;
+    transition: opacity 450ms ease, visibility 450ms ease;
+}
+.splash-screen.splash-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.splash-logo-wrap {
+    width: 96px; height: 96px; border-radius: 26px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--shadow-xl);
+    animation: splashPulse 1.8s ease-in-out infinite;
+}
+.splash-logo {
+    width: 62px; height: 62px; border-radius: 16px;
+    background: url('https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png') center/cover no-repeat;
+}
+@keyframes splashPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+.splash-title {
+    font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800;
+    color: var(--text); letter-spacing: -0.4px;
+}
+.splash-bar-track {
+    width: 160px; height: 5px; border-radius: 3px;
+    background: var(--bg-3); overflow: hidden;
+}
+.splash-bar-fill {
+    height: 100%; width: 5%; border-radius: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 400ms ease;
+}
+.splash-status {
+    font-size: 12.5px; color: var(--text-3); font-weight: 500;
+}
+/* === END CSS: SPLASH SCREEN === */
+        
+    /* ============================================================
        === CSS: UTILITIES ===
        ============================================================ */
     .toast {
@@ -1024,6 +1070,19 @@
     </style>
 </head>
 <body>
+
+<!-- ============================================================
+     === HTML: SPLASH SCREEN ===
+     ============================================================ -->
+<div class="splash-screen" id="splashScreen">
+    <div class="splash-logo-wrap">
+        <div class="splash-logo"></div>
+    </div>
+    <div class="splash-title">PrintSome</div>
+    <div class="splash-bar-track"><div class="splash-bar-fill" id="splashBarFill"></div></div>
+    <div class="splash-status" id="splashStatus">Laden...</div>
+</div>
+<!-- === END HTML: SPLASH SCREEN === -->
 
 <!-- ============================================================
      === HTML: APP CONTAINER ===
@@ -3545,6 +3604,49 @@ window.showToast = showToast;
 // === END TOAST ===
 
 // ============================================================
+// === SPLASH SCREEN ===
+// ============================================================
+function preloadImage(url, timeout = 4000) {
+    return new Promise(resolve => {
+        if (!url) { resolve(); return; }
+        const img = new Image();
+        let done = false;
+        const finish = () => { if (!done) { done = true; resolve(); } };
+        img.onload = finish;
+        img.onerror = finish;
+        img.src = url;
+        setTimeout(finish, timeout);
+    });
+}
+
+function updateSplashProgress(percent, statusText) {
+    const fill = document.getElementById('splashBarFill');
+    const status = document.getElementById('splashStatus');
+    if (fill) fill.style.width = percent + '%';
+    if (status && statusText) status.textContent = statusText;
+}
+
+function hideSplashScreen() {
+    const splash = document.getElementById('splashScreen');
+    if (!splash || splash.classList.contains('splash-hidden')) return;
+    splash.classList.add('splash-hidden');
+    setTimeout(() => { splash.style.display = 'none'; }, 500);
+}
+
+async function initAppWithSplash() {
+    const isNL = settings.language === 'nl';
+    updateSplashProgress(15, isNL ? 'Producten laden...' : 'Loading products...');
+    await loadProducts();
+    updateSplashProgress(60, isNL ? 'Afbeeldingen laden...' : 'Loading images...');
+    const featured = products.filter(p => p.featured).slice(0, 6);
+    const toPreload = (featured.length ? featured : products.slice(0, 6)).map(p => p.imageUrl).filter(Boolean);
+    await Promise.all(toPreload.map(url => preloadImage(url)));
+    updateSplashProgress(100, isNL ? 'Klaar!' : 'Ready!');
+    setTimeout(hideSplashScreen, 250);
+}
+// === END SPLASH SCREEN ===
+    
+// ============================================================
 // === EVENTS & INIT ===
 // ============================================================
 function setVH() { document.documentElement.style.setProperty('--vh', `${window.innerHeight*0.01}px`); }
@@ -3595,7 +3697,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupEvents();
     buildFAQ();
     buildPrivacyPage();
-    await loadProducts();
+
+    const splashFallback = setTimeout(hideSplashScreen, 8000);
+    await initAppWithSplash();
+    clearTimeout(splashFallback);
+
     checkCookieBanner();
     checkPrivacyPopup();
     checkInstall();

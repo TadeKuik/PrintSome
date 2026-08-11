@@ -3820,6 +3820,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     runOnboardingSequence();
     pushBackGuard();
 });
+    if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+    });
+}
 // === END EVENTS & INIT ===
 
 </script>

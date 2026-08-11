@@ -848,6 +848,8 @@
         box-shadow: 0 -8px 40px rgba(0,0,0,0.25);
     }
     @keyframes sheetUp { from { transform: translateY(100%); opacity: 0.4; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes privacyPopIn { from { opacity: 0; transform: translateY(14px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .privacy-popup-sheet { animation: privacyPopIn 280ms cubic-bezier(0.16,1,0.3,1) !important; }
     .popup-sheet-handle { width: 40px; height: 4px; background: var(--border-2); border-radius: 2px; margin: 0 auto 20px; }
     .popup-sheet-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; margin-bottom: 16px; }
     .confirm-overlay {
@@ -985,9 +987,10 @@
         transition: opacity 380ms ease;
     }
     .cookie-scrim.show { opacity: 1; pointer-events: auto; }
-    .cookie-banner {
-        position: fixed; bottom: calc(var(--nav-h) + 10px); left: 0; right: 0;
+.cookie-banner {
+        position: fixed; bottom: 0; left: 0; right: 0;
         background: var(--surface);
+        padding-bottom: calc(20px + var(--safe-bottom));
         padding: 22px 20px 20px; z-index: 1500; display: none;
         box-shadow: var(--shadow-xl);
         opacity: 0; transform: translateY(30px) scale(0.96);
@@ -1555,7 +1558,7 @@
      === HTML: PRIVACY POPUP ===
      ============================================================ -->
 <div class="popup-overlay" id="privacyPopupOverlay">
-    <div class="popup-sheet">
+    <div class="popup-sheet privacy-popup-sheet">
         <div class="popup-sheet-handle"></div>
         <div style="text-align:center; margin-bottom:16px;">
             <i class="fas fa-shield-alt" style="font-size:40px;color:var(--primary);"></i>

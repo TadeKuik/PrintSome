@@ -8,6 +8,17 @@
     <meta name="apple-mobile-web-app-title" content="PrintSome">
     <meta name="theme-color" content="#FFD700">
     <meta name="description" content="PrintSome - 3D printing shop">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PrintSome">
+    <meta property="og:title" content="PrintSome - 3D Printing Shop">
+    <meta property="og:description" content="Ontdek onze 3D geprinte producten, van fidget toys tot custom items.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png">
+    <meta property="og:url" content="https://printsome.pages.dev">
+    <meta property="og:locale" content="nl_NL">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PrintSome - 3D Printing Shop">
+    <meta name="twitter:description" content="Ontdek onze 3D geprinte producten, van fidget toys tot custom items.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png">
     <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22PrintSome%22,%22short_name%22:%22PrintSome%22,%22start_url%22:%22/%22,%22display%22:%22standalone%22,%22background_color%22:%22%23FFD700%22,%22theme_color%22:%22%23FFD700%22,%22icons%22:[{%22src%22:%22https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png%22,%22sizes%22:%22192x192%22,%22type%22:%22image/png%22}]}">
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png">
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png">
@@ -1141,8 +1152,8 @@
             <span id="headerTitle">PrintSome</span>
         </div>
         <div class="header-actions">
-            <div class="user-avatar" id="userAvatar">
-                <i class="fas fa-user"></i>
+            <div class="user-avatar" id="userAvatar" role="button" tabindex="0" aria-label="Account">
+                <i class="fas fa-user" aria-hidden="true"></i>
             </div>
         </div>
     </header>
@@ -1501,7 +1512,7 @@
 <div class="modal-overlay" id="authModal">
     <div class="modal-header">
         <span class="modal-title" id="authModalTitle">PrintSome Account</span>
-        <button class="modal-close" onclick="closeModal('auth')"><i class="fas fa-times"></i></button>
+        <button class="modal-close" onclick="closeModal('auth')" aria-label="Sluiten"><i class="fas fa-times" aria-hidden="true"></i></button>
     </div>
     <div class="modal-content">
         <div id="authContainer" style="max-width:420px;margin:0 auto;"></div>
@@ -1515,7 +1526,7 @@
 <div class="modal-overlay" id="productModal">
     <div class="modal-header">
         <span class="modal-title" id="productModalTitle">Product details</span>
-        <button class="modal-close" onclick="closeModal('product')"><i class="fas fa-times"></i></button>
+        <button class="modal-close" onclick="closeModal('product')" aria-label="Sluiten"><i class="fas fa-times" aria-hidden="true"></i></button>
     </div>
     <div class="modal-content" id="productModalContent"></div>
 </div>
@@ -1527,7 +1538,7 @@
 <div class="modal-overlay" id="reserveModal">
     <div class="modal-header">
         <span class="modal-title" id="reserveModalTitle">Reserveren</span>
-        <button class="modal-close" onclick="closeModal('reserve')"><i class="fas fa-times"></i></button>
+        <button class="modal-close" onclick="closeModal('reserve')" aria-label="Sluiten"><i class="fas fa-times" aria-hidden="true"></i></button>
     </div>
     <div class="modal-content" id="reserveModalContent"></div>
 </div>
@@ -2385,6 +2396,9 @@ function updateAuthUI() {
         const dataG = document.getElementById('dataGroup');
         if (dataG) dataG.style.display = 'none';
     }
+    av.setAttribute('aria-label', currentUser
+        ? (settings.language==='nl' ? `Account: ${currentUser.email}` : `Account: ${currentUser.email}`)
+        : (settings.language==='nl' ? 'Inloggen' : 'Log in'));
     av.onclick = () => {
         if (currentUser) showToast(`${t('loggedInAs')}: ${currentUser.email}`, 3000);
         else openAuth();
@@ -2620,8 +2634,8 @@ function createProductCard(product) {
         <div class="product-img">
             ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${displayName}" onerror="this.onerror=null;this.parentElement.innerHTML='<i class=\\'fas fa-cube\\'></i>';">` : `<i class="fas fa-cube" style="font-size:28px;"></i>`}
             ${isDiscount ? `<div class="discount-badge-card">🎟️ -10%</div>` : ''}
-            <button class="fav-btn ${isFav?'active':''}" data-pid="${product.id}">
-                <i class="${isFav?'fas':'far'} fa-heart" style="color:${isFav?'#ef4444':'var(--text-3)'};"></i>
+            <button class="fav-btn ${isFav?'active':''}" data-pid="${product.id}" aria-label="${settings.language==='nl' ? (isFav?'Verwijder van favorieten':'Voeg toe aan favorieten') : (isFav?'Remove from favorites':'Add to favorites')}">
+                <i class="${isFav?'fas':'far'} fa-heart" style="color:${isFav?'#ef4444':'var(--text-3)'};" aria-hidden="true"></i>
             </button>
         </div>
         <div class="product-info">
@@ -3800,6 +3814,9 @@ function setupEvents() {
     document.getElementById('loginButton')?.addEventListener('click', function() {
         if (currentUser) logout();
         else openAuth();
+    });
+    document.getElementById('userAvatar')?.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
     });
 }
 

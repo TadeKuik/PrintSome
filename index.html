@@ -385,9 +385,30 @@
         width: 100%; max-height: 280px; object-fit: contain;
         border-radius: var(--radius); background: var(--bg-3);
         display: flex; align-items: center; justify-content: center;
-        overflow: hidden; margin-bottom: 18px;
+        overflow: hidden; margin-bottom: 18px; position: relative;
     }
     .product-modal-img img { width: 100%; max-height: 280px; object-fit: contain; }
+    .gallery-arrow {
+        position: absolute; top: 50%; transform: translateY(-50%);
+        width: 34px; height: 34px; border-radius: 50%;
+        background: rgba(0,0,0,0.45); color: #fff; border: none;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; font-size: 14px; z-index: 2;
+        transition: background var(--transition);
+    }
+    .gallery-arrow:hover { background: rgba(0,0,0,0.65); }
+    .gallery-prev { left: 10px; }
+    .gallery-next { right: 10px; }
+    .gallery-dots {
+        position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+        display: flex; gap: 6px; z-index: 2;
+    }
+    .gallery-dot {
+        width: 7px; height: 7px; border-radius: 50%;
+        background: rgba(255,255,255,0.5); cursor: pointer;
+        transition: all var(--transition);
+    }
+    .gallery-dot.active { background: #fff; width: 18px; border-radius: 4px; }
     .product-modal-name {
         font-family: 'Outfit', sans-serif;
         font-size: 22px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.4px;
@@ -1395,8 +1416,12 @@
                         <div class="settings-row-icon" style="background:#f0f9ff;"><i class="fas fa-info-circle" style="color:#0284c7;"></i></div>
                         <div class="settings-row-info">
                             <h4 id="sVersionLabel">Versie</h4>
-                            <p>PrintSome App v3.3</p>
+                            <p id="appVersionText">PrintSome App v3.3</p>
                         </div>
+                    </div>
+                    <div class="settings-row-right" id="versionAdminControls" style="display:none;gap:4px;">
+                        <button class="header-btn" onclick="changeAppVersion(-0.1)" aria-label="Verlaag versie" style="width:30px;height:30px;font-size:14px;">−</button>
+                        <button class="header-btn" onclick="changeAppVersion(0.1)" aria-label="Verhoog versie" style="width:30px;height:30px;font-size:14px;">+</button>
                     </div>
                 </div>
                 <div class="settings-row" style="cursor:default;">
@@ -2624,6 +2649,29 @@ function getProductField(product, field) {
     return product[field] || '';
 }
 
+function getProductImages(product) {
+    if (product.images && product.images.length) return product.images;
+    if (product.imageUrl) return [product.imageUrl];
+    return [];
+}
+
+function renderGalleryImage() {
+    const img = document.getElementById('productModalMainImg');
+    if (img && modalGalleryImages[modalGalleryIndex]) img.src = modalGalleryImages[modalGalleryIndex];
+    document.querySelectorAll('#galleryDots .gallery-dot').forEach((dot, i) => dot.classList.toggle('active', i === modalGalleryIndex));
+}
+
+window.nextGalleryImage = function() {
+    if (!modalGalleryImages.length) return;
+    modalGalleryIndex = (modalGalleryIndex + 1) % modalGalleryImages.length;
+    renderGalleryImage();
+};
+window.prevGalleryImage = function() {
+    if (!modalGalleryImages.length) return;
+    modalGalleryIndex = (modalGalleryIndex - 1 + modalGalleryImages.length) % modalGalleryImages.length;
+    renderGalleryImage();
+};
+
 function isDiscountProduct(productId) {
     return currentWeeklyDiscount && currentWeeklyDiscount.productId === productId;
 }
@@ -2638,9 +2686,10 @@ function createProductCard(product) {
     const displayName = getProductField(product, 'name');
     const isDiscount = isDiscountProduct(product.id);
     const starsHtml = [1,2,3,4,5].map(i => `<i class="fas fa-star" style="color:${rating && i <= Math.round(rating.average) ? 'var(--star)' : 'var(--star-off)'};font-size:10px;"></i>`).join('');
+    const cardImg = getProductImages(product)[0];
     card.innerHTML = `
         <div class="product-img">
-            ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${displayName}" onerror="this.onerror=null;this.parentElement.innerHTML='<i class=\\'fas fa-cube\\'></i>';">` : `<i class="fas fa-cube" style="font-size:28px;"></i>`}
+            ${cardImg ? `<img src="${cardImg}" alt="${displayName}" onerror="this.onerror=null;this.parentElement.innerHTML='<i class=\\'fas fa-cube\\'></i>';">` : `<i class="fas fa-cube" style="font-size:28px;"></i>`}
             ${isDiscount ? `<div class="discount-badge-card">🎟️ -10%</div>` : ''}
             <button class="fav-btn ${isFav?'active':''}" data-pid="${product.id}" aria-label="${settings.language==='nl' ? (isFav?'Verwijder van favorieten':'Voeg toe aan favorieten') : (isFav?'Remove from favorites':'Add to favorites')}">
                 <i class="${isFav?'fas':'far'} fa-heart" style="color:${isFav?'#ef4444':'var(--text-3)'};" aria-hidden="true"></i>
@@ -2703,6 +2752,9 @@ async function openProductModal(productId) {
     const displayName = getProductField(product, 'name');
     const displayDesc = getProductField(product, 'description');
     const isDiscount = isDiscountProduct(productId);
+    const galleryImages = getProductImages(product);
+    modalGalleryImages = galleryImages;
+    modalGalleryIndex = 0;
     const starsInput = [1,2,3,4,5].map(i => `<i class="fas fa-star star-icon ${i <= userRating ? 'filled' : ''}" data-r="${i}" data-pid="${productId}"></i>`).join('');
     const starsDisplay = [1,2,3,4,5].map(i => `<i class="${i <= Math.round(parseFloat(avg)) ? 'fas' : 'far'} fa-star" style="color:${i <= Math.round(parseFloat(avg)) ? 'var(--star)' : 'var(--star-off)'};font-size:16px;"></i>`).join('');
     const reviewsHtml = reviews.length ? reviews.map(rv => `
@@ -2726,7 +2778,14 @@ async function openProductModal(productId) {
     ` : '';
     document.getElementById('productModalContent').innerHTML = `
         <div class="product-modal-img">
-            ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${displayName}">` : `<i class="fas fa-cube" style="font-size:48px;color:var(--text-3);"></i>`}
+            ${galleryImages.length ? `
+                <img id="productModalMainImg" src="${galleryImages[0]}" alt="${displayName}">
+                ${galleryImages.length > 1 ? `
+                    <button class="gallery-arrow gallery-prev" onclick="prevGalleryImage()" aria-label="${settings.language==='nl'?'Vorige afbeelding':'Previous image'}"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                    <button class="gallery-arrow gallery-next" onclick="nextGalleryImage()" aria-label="${settings.language==='nl'?'Volgende afbeelding':'Next image'}"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                    <div class="gallery-dots" id="galleryDots">${galleryImages.map((_, i) => `<span class="gallery-dot ${i===0?'active':''}" data-idx="${i}"></span>`).join('')}</div>
+                ` : ''}
+            ` : `<i class="fas fa-cube" style="font-size:48px;color:var(--text-3);"></i>`}
         </div>
         <h1 class="product-modal-name">${displayName}</h1>
         ${discountHighlightHtml}
@@ -2772,6 +2831,9 @@ async function openProductModal(productId) {
             document.querySelectorAll(`#starInput_${productId} .star-icon`).forEach((s, i) => { s.classList.toggle('filled', i < ur); s.style.color = ''; });
         });
         star.addEventListener('click', () => saveRating(productId, parseInt(star.dataset.r)));
+    });
+    document.querySelectorAll('#galleryDots .gallery-dot').forEach(dot => {
+        dot.addEventListener('click', () => { modalGalleryIndex = parseInt(dot.dataset.idx); renderGalleryImage(); });
     });
     document.getElementById('productModal').classList.add('active');
 }
@@ -3062,16 +3124,49 @@ function updateResBadge() {
 // ============================================================
 async function checkAdminAccess() {
     const section = document.getElementById('adminSection');
-    if (!section) return;
-    if (!currentUser) { section.style.display = 'none'; isAdmin = false; return; }
+    if (!section) { renderVersionUI(); return; }
+    if (!currentUser) { section.style.display = 'none'; isAdmin = false; renderVersionUI(); return; }
     try {
         const doc = await db.collection('admins').doc(currentUser.uid).get();
         if (doc.exists && doc.data().isAdmin) { section.style.display = 'block'; isAdmin = true; }
         else { section.style.display = 'none'; isAdmin = false; }
     } catch(e) { section.style.display = 'none'; isAdmin = false; }
+    renderVersionUI();
 }
 
+async function loadAppVersion() {
+    try {
+        const doc = await db.collection('appConfig').doc('main').get();
+        if (doc.exists && typeof doc.data().version === 'number') {
+            appVersion = doc.data().version;
+        } else {
+            await db.collection('appConfig').doc('main').set({ version: appVersion }, { merge: true });
+        }
+    } catch(e) { console.error('loadAppVersion error:', e); }
+    renderVersionUI();
+}
+
+function renderVersionUI() {
+    const textEl = document.getElementById('appVersionText');
+    if (textEl) textEl.textContent = `PrintSome App v${appVersion.toFixed(1)}`;
+    const controls = document.getElementById('versionAdminControls');
+    if (controls) controls.style.display = isAdmin ? 'flex' : 'none';
+}
+
+window.changeAppVersion = async function(delta) {
+    if (!isAdmin) return;
+    appVersion = Math.max(0.1, Math.round((appVersion + delta) * 10) / 10);
+    renderVersionUI();
+    try {
+        await db.collection('appConfig').doc('main').set({ version: appVersion, updatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
+        showToast(settings.language === 'nl' ? `Versie bijgewerkt naar v${appVersion.toFixed(1)}` : `Version updated to v${appVersion.toFixed(1)}`);
+    } catch(e) {
+        showToast(settings.language === 'nl' ? 'Fout bij bijwerken versie' : 'Error updating version');
+    }
+};
+
 const adminColorLists = {};
+const adminImageLists = {};
 
 async function loadAdminContent(tab) {
     currentAdminTab = tab;
@@ -3307,8 +3402,10 @@ function renderProductForm(productData) {
     wrap.className = 'admin-form';
     const formId = isEdit ? `editProductForm_${p.id}` : 'newProductForm';
     const colorListId = isEdit ? `colorList_${p.id}` : 'colorListNew';
+    const imageListId = isEdit ? `imageList_${p.id}` : 'imageListNew';
     const tempKey = isEdit ? `edit_${p.id}` : 'new';
     adminColorLists[tempKey] = [...colors];
+    adminImageLists[tempKey] = p.images && p.images.length ? [...p.images] : (p.imageUrl ? [p.imageUrl] : []);
 
     wrap.innerHTML = `
         <div class="admin-form-title">
@@ -3372,8 +3469,17 @@ function renderProductForm(productData) {
             </div>
         </div>
         <div class="admin-form-group">
-            <label class="admin-input-label">Afbeelding URL</label>
-            <input class="admin-input" id="${formId}_imageUrl" value="${p.imageUrl||''}" placeholder="https://...">
+            <label class="admin-input-label">Afbeeldingen</label>
+            <div id="${imageListId}" style="margin-bottom:10px;"></div>
+            <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;">
+                <div style="flex:1;min-width:180px;">
+                    <label class="admin-input-label" style="margin-bottom:4px;">Afbeelding URL</label>
+                    <input class="admin-input" id="${formId}_imageUrlNew" placeholder="https://...">
+                </div>
+                <button class="admin-btn admin-btn-primary" onclick="adminAddImage('${tempKey}','${imageListId}','${formId}_imageUrlNew')">
+                    <i class="fas fa-plus"></i> Afbeelding toevoegen
+                </button>
+            </div>
         </div>
         <div class="admin-form-group">
             <label class="admin-input-label">Kleuren</label>
@@ -3400,7 +3506,10 @@ function renderProductForm(productData) {
         </div>
         <div class="auth-alert error" id="${formId}_error" style="margin-top:10px;"></div>
     `;
-    setTimeout(() => renderAdminColorList(tempKey, colorListId, formId), 0);
+    setTimeout(() => {
+        renderAdminColorList(tempKey, colorListId, formId);
+        renderAdminImageList(tempKey, imageListId);
+    }, 0);
     return wrap;
 }
 
@@ -3440,6 +3549,41 @@ window.adminRemoveColor = function(tempKey, colorListId, formId, idx) {
     renderAdminColorList(tempKey, colorListId, formId);
 };
 
+function renderAdminImageList(tempKey, imageListId) {
+    const container = document.getElementById(imageListId);
+    if (!container) return;
+    const images = adminImageLists[tempKey] || [];
+    if (!images.length) { container.innerHTML = `<p style="font-size:12px;color:var(--text-3);">Nog geen afbeeldingen</p>`; return; }
+    container.innerHTML = '';
+    images.forEach((url, i) => {
+        const entry = document.createElement('div');
+        entry.className = 'admin-color-entry';
+        entry.innerHTML = `
+            <img src="${url}" style="width:36px;height:36px;object-fit:cover;border-radius:6px;flex-shrink:0;" onerror="this.style.opacity='0.3'">
+            <span style="font-size:12px;color:var(--text-2);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${url}</span>
+            ${i===0 ? `<span style="font-size:10px;background:var(--primary-light);color:var(--primary-dark);padding:2px 6px;border-radius:6px;font-weight:700;flex-shrink:0;">${settings.language==='nl'?'Hoofd':'Main'}</span>` : ''}
+            <button onclick="adminRemoveImage('${tempKey}','${imageListId}',${i})" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:14px;padding:4px 6px;"><i class="fas fa-times"></i></button>
+        `;
+        container.appendChild(entry);
+    });
+}
+
+window.adminAddImage = function(tempKey, imageListId, inputId) {
+    const input = document.getElementById(inputId);
+    const url = input?.value?.trim();
+    if (!url) { showToast(settings.language==='nl'?'Voer een afbeelding-URL in':'Enter an image URL'); return; }
+    if (!adminImageLists[tempKey]) adminImageLists[tempKey] = [];
+    adminImageLists[tempKey].push(url);
+    input.value = '';
+    renderAdminImageList(tempKey, imageListId);
+};
+
+window.adminRemoveImage = function(tempKey, imageListId, idx) {
+    if (!adminImageLists[tempKey]) return;
+    adminImageLists[tempKey].splice(idx, 1);
+    renderAdminImageList(tempKey, imageListId);
+};
+
 window.showEditProductForm = function(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
@@ -3469,7 +3613,6 @@ window.saveAdminProduct = async function(productId, formId, tempKey) {
     const category = get('category')?.value;
     const category2 = get('category2')?.value || '';
     const featured = get('featured')?.value === 'true';
-    const imageUrl = get('imageUrl')?.value?.trim() || '';
     const errEl = document.getElementById(`${formId}_error`);
     if (!name || !description || !priceStr || !material || !category) {
         if (errEl) { errEl.textContent = 'Vul alle verplichte velden in'; errEl.style.display = 'block'; }
@@ -3481,7 +3624,9 @@ window.saveAdminProduct = async function(productId, formId, tempKey) {
         return;
     }
     const colors = adminColorLists[tempKey] || [];
-    const data = { name, nameEn, description, descriptionEn, price, material, category, featured, imageUrl, colors };
+    const images = adminImageLists[tempKey] || [];
+    const imageUrl = images[0] || '';
+    const data = { name, nameEn, description, descriptionEn, price, material, category, featured, imageUrl, images, colors };
     if (category2) data.category2 = category2; else data.category2 = '';
     try {
         if (productId) { await db.collection('products').doc(productId).update(data); showToast('Product bijgewerkt!'); }
@@ -3839,7 +3984,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     buildPrivacyPage();
 
     const splashFallback = setTimeout(hideSplashScreen, 8000);
-    await initAppWithSplash();
+    await Promise.all([initAppWithSplash(), loadAppVersion()]);
     clearTimeout(splashFallback);
 
     checkInstall();

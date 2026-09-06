@@ -827,6 +827,7 @@
         padding-top: var(--safe-top);
     }
     .modal-overlay.active { display: flex; }
+    #authModal { z-index: 1100; }
     @keyframes slideUp {
         from { transform: translateY(100%); opacity: 0; }
         to { transform: translateY(0); opacity: 1; }
@@ -1656,6 +1657,10 @@ let currentAdminTab = 'overview';
 let isAdmin = false;
 let currentWeeklyDiscount = null;
 let appliedDiscount = null;
+let currentOpenProductId = null;
+let modalGalleryImages = [];
+let modalGalleryIndex = 0;
+let appVersion = 3.3;
 let settings = { theme: 'system', language: 'nl' };
 // === END STATE ===
 
@@ -2301,6 +2306,7 @@ async function signInGoogle() {
         closeModal('auth');
         showToast(`${t('welcomeBack')} ${result.user.displayName || result.user.email}!`);
         await loadUserData(currentUser.uid);
+        if (currentOpenProductId) await openProductModal(currentOpenProductId);
     } catch(e) { showAuthError(e.message); }
 }
 window.signInGoogle = signInGoogle;
@@ -2314,6 +2320,7 @@ async function signUpEmail(email, pass, name) {
         closeModal('auth');
         showToast(t('welcomeTitle'));
         await loadUserData(currentUser.uid);
+        if (currentOpenProductId) await openProductModal(currentOpenProductId);
     } catch(e) {
         let msg = e.message;
         if (e.code === 'auth/email-already-in-use') msg = settings.language==='nl'?'Dit emailadres is al in gebruik':'This email address is already in use';
@@ -2330,6 +2337,7 @@ async function signInEmail(email, pass) {
         showToast(`${t('welcomeBack')} ${cred.user.displayName || cred.user.email}!`);
         await loadUserSettingsFromFirebase(currentUser.uid);
         await loadUserData(currentUser.uid);
+        if (currentOpenProductId) await openProductModal(currentOpenProductId);
     } catch(e) {
         let msg = e.message;
         if (e.code === 'auth/user-not-found' || e.code === 'auth/wrong-password' || e.code === 'auth/invalid-credential') msg = settings.language==='nl'?'Onjuist emailadres of wachtwoord':'Incorrect email or password';
@@ -2685,6 +2693,7 @@ function displayAllProducts(filter = 'all', search = '') {
 async function openProductModal(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
+    currentOpenProductId = productId;
     await loadProductReviews(productId);
     const rating = productRatings[productId];
     const avg = rating ? rating.average.toFixed(1) : '0.0';
@@ -3561,6 +3570,7 @@ window.closeModal = function(type) {
     const map = { auth: 'authModal', product: 'productModal', reserve: 'reserveModal' };
     const el = document.getElementById(map[type]);
     if (el) el.classList.remove('active');
+    if (type === 'product') currentOpenProductId = null;
 };
 // === END MODALS ===
 

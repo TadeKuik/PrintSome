@@ -29,7 +29,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
@@ -236,29 +235,36 @@
        === CSS: HOME ===
        ============================================================ */
     .welcome-card {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-        color: #fff; border-radius: var(--radius-xl); padding: 26px 24px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        color: var(--text); border-radius: var(--radius-xl); padding: 28px 24px;
         margin-bottom: 22px; box-shadow: var(--shadow-lg);
         position: relative; overflow: hidden;
     }
-    .welcome-card::after {
-        content: ''; position: absolute; inset: 0;
-        background: linear-gradient(135deg, rgba(255,215,0,0.12), transparent 60%);
+    .welcome-card::before {
+        content: ''; position: absolute; top: -60px; right: -40px;
+        width: 220px; height: 220px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,215,0,0.22), transparent 70%);
         pointer-events: none;
+    }
+    .welcome-card::after {
+        content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+        background: linear-gradient(180deg, var(--primary), var(--accent));
     }
     .welcome-card h1 {
         font-family: 'Outfit', sans-serif;
         font-size: 26px; font-weight: 800; margin-bottom: 6px;
-        letter-spacing: -0.5px; position: relative; z-index: 1;
+        letter-spacing: -0.5px; position: relative; z-index: 1; color: var(--text);
     }
-    .welcome-subtitle { font-size: 14px; opacity: 0.8; margin-bottom: 16px; position: relative; z-index: 1; }
+    .welcome-subtitle { font-size: 14px; color: var(--text-2); margin-bottom: 16px; position: relative; z-index: 1; }
     .welcome-badge {
         display: inline-flex; align-items: center; gap: 6px;
-        background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.14);
+        background: var(--bg-2); border: 1px solid var(--border);
         padding: 6px 14px;
-        border-radius: 20px; font-size: 13px; font-weight: 600;
+        border-radius: 20px; font-size: 13px; font-weight: 600; color: var(--text-2);
         position: relative; z-index: 1;
     }
+    .welcome-badge i { color: var(--primary-dark); }
     .section-header {
         display: flex; justify-content: space-between; align-items: center;
         margin-bottom: 14px; margin-top: 24px;
@@ -269,7 +275,7 @@
         color: var(--text); letter-spacing: -0.3px;
     }
     .section-link {
-        font-size: 13px; color: var(--primary); text-decoration: none;
+        font-size: 13px; color: var(--primary-dark); text-decoration: none;
         font-weight: 600; display: flex; align-items: center; gap: 4px;
         background: var(--primary-light); padding: 5px 12px;
         border-radius: 20px; transition: all var(--transition);
@@ -945,6 +951,11 @@
     }
     .crop-zoom-row { display: flex; align-items: center; gap: 12px; color: var(--text-3); font-size: 14px; }
     .crop-zoom-row input[type=range] { flex: 1; accent-color: var(--primary); }
+    .crop-free-note {
+        font-size: 12px; color: var(--text-2); background: var(--bg-2);
+        border: 1px solid var(--border); border-radius: var(--radius-sm);
+        padding: 10px 12px; line-height: 1.5;
+    }
     /* === END CSS: CROP MODAL === */
 
     /* ============================================================
@@ -1606,6 +1617,10 @@
     </div>
     <div class="modal-content" style="padding:20px 18px;">
         <div class="crop-source-row" id="cropSourceRow">
+            <div class="crop-free-note">
+                <i class="fas fa-circle-info" style="color:var(--primary-dark);margin-right:4px;"></i>
+                Dit bijsnijden gebeurt volledig lokaal in je browser — gratis, geen account nodig. Na het bijsnijden download je de foto en upload je hem zelf naar je afbeeldingen-host (bijv. je GitHub-repo), waarna je de link hieronder plakt.
+            </div>
             <label class="btn-secondary" style="cursor:pointer;">
                 <i class="fas fa-upload"></i> Upload foto
                 <input type="file" accept="image/*" id="cropFileInput" style="display:none;" onchange="handleCropFileSelect(event)">
@@ -1624,10 +1639,9 @@
                 <i class="fas fa-search-plus"></i>
             </div>
             <button class="btn-primary" onclick="applyCrop()" id="cropApplyBtn">
-                <i class="fas fa-check"></i> Toepassen
+                <i class="fas fa-download"></i> Downloaden
             </button>
         </div>
-        <div class="loading" id="cropUploading" style="display:none;"><div class="spinner"></div><span>Uploaden...</span></div>
     </div>
 </div>
 <!-- === END HTML: CROP MODAL === -->
@@ -1749,9 +1763,6 @@ let modalGalleryImages = [];
 let modalGalleryIndex = 0;
 let appVersion = 3.3;
 let cropperInstance = null;
-let cropTargetTempKey = null;
-let cropTargetImageListId = null;
-let cropTargetEditIndex = null;
 let lastZoomVal = 0;
 let settings = { theme: 'system', language: 'nl' };
 // === END STATE ===
@@ -3547,9 +3558,19 @@ function renderProductForm(productData) {
         <div class="admin-form-group">
             <label class="admin-input-label">Afbeeldingen</label>
             <div id="${imageListId}" style="margin-bottom:10px;"></div>
-            <button class="admin-btn admin-btn-primary" onclick="openCropModal('${tempKey}','${imageListId}')">
-                <i class="fas fa-crop-alt"></i> Foto toevoegen (bijsnijden)
+            <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;margin-bottom:10px;">
+                <div style="flex:1;min-width:180px;">
+                    <label class="admin-input-label" style="margin-bottom:4px;">Afbeelding URL</label>
+                    <input class="admin-input" id="${formId}_imageUrlNew" placeholder="https://raw.githubusercontent.com/...">
+                </div>
+                <button class="admin-btn admin-btn-primary" onclick="adminAddImage('${tempKey}','${imageListId}','${formId}_imageUrlNew')">
+                    <i class="fas fa-plus"></i> Toevoegen
+                </button>
+            </div>
+            <button class="admin-btn admin-btn-secondary" onclick="openCropModal()">
+                <i class="fas fa-crop-alt"></i> Nieuwe foto bijsnijden
             </button>
+            <p style="font-size:11px;color:var(--text-3);margin-top:6px;line-height:1.5;">Snijdt gratis bij in je browser en downloadt de foto. Upload die daarna naar je afbeeldingen-host (bijv. je GitHub-repo) en plak de link hierboven.</p>
         </div>
         <div class="admin-form-group">
             <label class="admin-input-label">Kleuren</label>
@@ -3632,7 +3653,7 @@ function renderAdminImageList(tempKey, imageListId) {
             <img src="${url}" style="width:36px;height:36px;object-fit:cover;border-radius:6px;flex-shrink:0;" onerror="this.style.opacity='0.3'">
             <span style="font-size:12px;color:var(--text-2);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${url}</span>
             ${i===0 ? `<span style="font-size:10px;background:var(--primary-light);color:var(--primary-dark);padding:2px 6px;border-radius:6px;font-weight:700;flex-shrink:0;">${settings.language==='nl'?'Hoofd':'Main'}</span>` : ''}
-            <button onclick="openCropModal('${tempKey}','${imageListId}','${url}',${i})" style="background:none;border:none;color:var(--text-2);cursor:pointer;font-size:14px;padding:4px 6px;" aria-label="Herpositioneren"><i class="fas fa-crop-alt"></i></button>
+            <button onclick="openCropModal('${url}')" style="background:none;border:none;color:var(--text-2);cursor:pointer;font-size:14px;padding:4px 6px;" aria-label="Opnieuw bijsnijden"><i class="fas fa-crop-alt"></i></button>
             <button onclick="adminRemoveImage('${tempKey}','${imageListId}',${i})" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:14px;padding:4px 6px;"><i class="fas fa-times"></i></button>
         `;
         container.appendChild(entry);
@@ -3656,15 +3677,11 @@ window.adminRemoveImage = function(tempKey, imageListId, idx) {
 };
 
 // ============================================================
-// === CROP TOOL ===
+// === CROP TOOL (fully client-side, no Firebase cost) ===
 // ============================================================
-window.openCropModal = function(tempKey, imageListId, editUrl, editIndex) {
-    cropTargetTempKey = tempKey;
-    cropTargetImageListId = imageListId;
-    cropTargetEditIndex = (typeof editIndex === 'number') ? editIndex : null;
+window.openCropModal = function(editUrl) {
     document.getElementById('cropSourceRow').style.display = 'flex';
     document.getElementById('cropStage').style.display = 'none';
-    document.getElementById('cropUploading').style.display = 'none';
     document.getElementById('cropUrlInput').value = '';
     document.getElementById('cropFileInput').value = '';
     document.getElementById('cropApplyBtn').disabled = false;
@@ -3719,30 +3736,19 @@ window.setCropZoom = function(val) {
 window.applyCrop = function() {
     if (!cropperInstance) return;
     document.getElementById('cropApplyBtn').disabled = true;
-    document.getElementById('cropStage').style.display = 'none';
-    document.getElementById('cropUploading').style.display = 'flex';
-    cropperInstance.getCroppedCanvas({ width: 900, height: 900, imageSmoothingQuality: 'high' }).toBlob(async (blob) => {
-        try {
-            const filename = `products/${Date.now()}_${Math.random().toString(36).slice(2,8)}.jpg`;
-            const ref = firebase.storage().ref().child(filename);
-            await ref.put(blob, { contentType: 'image/jpeg' });
-            const url = await ref.getDownloadURL();
-            if (cropTargetEditIndex !== null) {
-                adminImageLists[cropTargetTempKey][cropTargetEditIndex] = url;
-            } else {
-                if (!adminImageLists[cropTargetTempKey]) adminImageLists[cropTargetTempKey] = [];
-                adminImageLists[cropTargetTempKey].push(url);
-            }
-            renderAdminImageList(cropTargetTempKey, cropTargetImageListId);
-            showToast(settings.language === 'nl' ? 'Foto toegevoegd!' : 'Photo added!');
-            closeCropModal();
-        } catch(e) {
-            console.error(e);
-            showToast(settings.language === 'nl' ? 'Fout bij uploaden' : 'Upload error');
-            document.getElementById('cropStage').style.display = 'flex';
-            document.getElementById('cropUploading').style.display = 'none';
-            document.getElementById('cropApplyBtn').disabled = false;
-        }
+    cropperInstance.getCroppedCanvas({ width: 900, height: 900, imageSmoothingQuality: 'high' }).toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `printsome-foto-${Date.now()}.jpg`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+        showToast(settings.language === 'nl'
+            ? 'Bijgesneden foto gedownload! Upload hem naar je afbeeldingen-host en plak de link.'
+            : 'Cropped photo downloaded! Upload it to your image host and paste the link.', 5000);
+        closeCropModal();
     }, 'image/jpeg', 0.9);
 };
 // === END CROP TOOL ===

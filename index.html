@@ -13,6 +13,9 @@
     <meta property="og:title" content="PrintSome - 3D Printing Shop">
     <meta property="og:description" content="Ontdek onze 3D geprinte producten, van fidget toys tot custom items.">
     <meta property="og:image" content="https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png">
+    <meta property="og:image:width" content="192">
+    <meta property="og:image:height" content="192">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:url" content="https://printsome.pages.dev">
     <meta property="og:locale" content="nl_NL">
     <meta name="twitter:card" content="summary_large_image">
@@ -28,6 +31,8 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
@@ -61,10 +66,10 @@
         --text-2: #4a4a4a;
         --text-3: #8a8a8a;
         --text-inv: #ffffff;
-        --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
-        --shadow: 0 4px 16px rgba(0,0,0,0.08);
-        --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-        --shadow-xl: 0 16px 48px rgba(0,0,0,0.16);
+        --shadow-sm: 0 1px 3px rgba(15,15,15,0.05), 0 1px 2px rgba(15,15,15,0.04);
+        --shadow: 0 2px 10px rgba(15,15,15,0.06), 0 1px 3px rgba(15,15,15,0.05);
+        --shadow-lg: 0 8px 28px rgba(15,15,15,0.10), 0 2px 8px rgba(15,15,15,0.06);
+        --shadow-xl: 0 20px 50px rgba(15,15,15,0.14), 0 4px 14px rgba(15,15,15,0.08);
         --radius-sm: 8px;
         --radius: 14px;
         --radius-lg: 20px;
@@ -231,10 +236,15 @@
        === CSS: HOME ===
        ============================================================ */
     .welcome-card {
-        background: linear-gradient(135deg, #FFD700 0%, #FFAA33 100%);
-        color: #000; border-radius: var(--radius-xl); padding: 24px;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        color: #fff; border-radius: var(--radius-xl); padding: 26px 24px;
         margin-bottom: 22px; box-shadow: var(--shadow-lg);
         position: relative; overflow: hidden;
+    }
+    .welcome-card::after {
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(135deg, rgba(255,215,0,0.12), transparent 60%);
+        pointer-events: none;
     }
     .welcome-card h1 {
         font-family: 'Outfit', sans-serif;
@@ -244,7 +254,8 @@
     .welcome-subtitle { font-size: 14px; opacity: 0.8; margin-bottom: 16px; position: relative; z-index: 1; }
     .welcome-badge {
         display: inline-flex; align-items: center; gap: 6px;
-        background: rgba(0,0,0,0.15); padding: 6px 14px;
+        background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.14);
+        padding: 6px 14px;
         border-radius: 20px; font-size: 13px; font-weight: 600;
         position: relative; z-index: 1;
     }
@@ -303,11 +314,11 @@
     .product-card {
         background: var(--surface); border-radius: var(--radius);
         overflow: hidden; box-shadow: var(--shadow-sm);
-        border: 1px solid var(--border); transition: all var(--transition-bounce);
+        border: 1px solid var(--border); transition: all 220ms cubic-bezier(0.2,0.8,0.2,1);
         cursor: pointer; position: relative;
     }
-    .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    .product-card:active { transform: scale(0.97); }
+    .product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--border-2); }
+    .product-card:active { transform: scale(0.98); }
     .product-img {
         height: 130px; width: 100%; background: var(--bg-3);
         display: flex; align-items: center; justify-content: center;
@@ -341,12 +352,14 @@
         display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 6px;
     }
     .tag {
-        font-size: 10px; color: var(--text-3); background: var(--bg-3);
-        padding: 2px 7px; border-radius: 6px;
+        font-size: 9.5px; color: var(--text-2); background: var(--bg-3);
+        padding: 3px 8px; border-radius: 6px; font-weight: 600;
+        text-transform: uppercase; letter-spacing: 0.3px;
     }
     .product-price {
         font-family: 'Outfit', sans-serif;
-        font-size: 16px; font-weight: 800; color: var(--primary);
+        font-size: 16px; font-weight: 800; color: var(--text);
+        letter-spacing: -0.2px;
     }
     .product-stars {
         display: flex; align-items: center; gap: 3px;
@@ -386,6 +399,7 @@
         border-radius: var(--radius); background: var(--bg-3);
         display: flex; align-items: center; justify-content: center;
         overflow: hidden; margin-bottom: 18px; position: relative;
+        touch-action: pan-y;
     }
     .product-modal-img img { width: 100%; max-height: 280px; object-fit: contain; }
     .gallery-arrow {
@@ -867,7 +881,7 @@
     }
     .modal-close:hover { transform: scale(1.1); background: var(--bg-3); }
     .modal-content { flex: 1; overflow-y: auto; padding: 24px 18px; }
-.popup-overlay {
+    .popup-overlay {
         position: fixed; inset: 0; background: rgba(0,0,0,0.55); backdrop-filter: blur(3px);
         z-index: 2100; display: none; justify-content: center; align-items: flex-end;
         padding: 0; opacity: 0; transition: opacity 320ms ease;
@@ -921,6 +935,19 @@
     /* === END CSS: MODALS & OVERLAYS === */
 
     /* ============================================================
+       === CSS: CROP MODAL ===
+       ============================================================ */
+    .crop-source-row { display: flex; flex-direction: column; gap: 14px; }
+    .crop-stage { display: flex; flex-direction: column; gap: 16px; }
+    .crop-image-wrap {
+        max-height: 50vh; overflow: hidden; background: #000;
+        border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
+    }
+    .crop-zoom-row { display: flex; align-items: center; gap: 12px; color: var(--text-3); font-size: 14px; }
+    .crop-zoom-row input[type=range] { flex: 1; accent-color: var(--primary); }
+    /* === END CSS: CROP MODAL === */
+
+    /* ============================================================
        === CSS: AUTH ===
        ============================================================ */
     .auth-tabs { display: flex; gap: 6px; margin-bottom: 24px; background: var(--bg-3); padding: 4px; border-radius: var(--radius); }
@@ -969,7 +996,7 @@
     .auth-alert.show { display: block; }
     /* === END CSS: AUTH === */
 
-/* ============================================================
+    /* ============================================================
        === CSS: INSTALL ===
        ============================================================ */
     .install-sheet-header {
@@ -1013,18 +1040,17 @@
     /* ============================================================
        === CSS: COOKIE BANNER ===
        ============================================================ */
-.cookie-scrim {
+    .cookie-scrim {
         position: fixed; inset: 0; z-index: 1499;
         background: rgba(0,0,0,0.35); backdrop-filter: blur(2px);
         opacity: 0; pointer-events: none;
         transition: opacity 380ms ease;
     }
     .cookie-scrim.show { opacity: 1; pointer-events: auto; }
-.cookie-banner {
+    .cookie-banner {
         position: fixed; bottom: 0; left: 0; right: 0;
         background: var(--surface);
-        padding-bottom: calc(20px + var(--safe-bottom));
-        padding: 22px 20px 20px; z-index: 1500; display: none;
+        padding: 22px 20px calc(20px + var(--safe-bottom)); z-index: 1500; display: none;
         box-shadow: var(--shadow-xl);
         opacity: 0; transform: translateY(30px) scale(0.96);
         max-width: 768px; margin: 0 auto; border-radius: var(--radius-xl) var(--radius-xl) 0 0;
@@ -1061,50 +1087,50 @@
     /* === END CSS: COOKIE BANNER === */
 
     /* ============================================================
-   === CSS: SPLASH SCREEN ===
-   ============================================================ */
-.splash-screen {
-    position: fixed; inset: 0; z-index: 9999;
-    background: var(--bg);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 18px;
-    transition: opacity 450ms ease, visibility 450ms ease;
-}
-.splash-screen.splash-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-.splash-logo-wrap {
-    width: 96px; height: 96px; border-radius: 26px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: var(--shadow-xl);
-    animation: splashPulse 1.8s ease-in-out infinite;
-}
-.splash-logo {
-    width: 62px; height: 62px; border-radius: 16px;
-    background: url('https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png') center/cover no-repeat;
-}
-@keyframes splashPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-.splash-title {
-    font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800;
-    color: var(--text); letter-spacing: -0.4px;
-}
-.splash-bar-track {
-    width: 160px; height: 5px; border-radius: 3px;
-    background: var(--bg-3); overflow: hidden;
-}
-.splash-bar-fill {
-    height: 100%; width: 5%; border-radius: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    transition: width 400ms ease;
-}
-.splash-status {
-    font-size: 12.5px; color: var(--text-3); font-weight: 500;
-}
-/* === END CSS: SPLASH SCREEN === */
-        
+       === CSS: SPLASH SCREEN ===
+       ============================================================ */
+    .splash-screen {
+        position: fixed; inset: 0; z-index: 9999;
+        background: var(--bg);
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        gap: 18px;
+        transition: opacity 450ms ease, visibility 450ms ease;
+    }
+    .splash-screen.splash-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .splash-logo-wrap {
+        width: 96px; height: 96px; border-radius: 26px;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: var(--shadow-xl);
+        animation: splashPulse 1.8s ease-in-out infinite;
+    }
+    .splash-logo {
+        width: 62px; height: 62px; border-radius: 16px;
+        background: url('https://raw.githubusercontent.com/TadeKuik/PrintSome-images/refs/heads/main/PrintSome%20logo.png') center/cover no-repeat;
+    }
+    @keyframes splashPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+    .splash-title {
+        font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800;
+        color: var(--text); letter-spacing: -0.4px;
+    }
+    .splash-bar-track {
+        width: 160px; height: 5px; border-radius: 3px;
+        background: var(--bg-3); overflow: hidden;
+    }
+    .splash-bar-fill {
+        height: 100%; width: 5%; border-radius: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        transition: width 400ms ease;
+    }
+    .splash-status {
+        font-size: 12.5px; color: var(--text-3); font-weight: 500;
+    }
+    /* === END CSS: SPLASH SCREEN === */
+
     /* ============================================================
        === CSS: UTILITIES ===
        ============================================================ */
@@ -1571,6 +1597,42 @@
 <!-- === END HTML: RESERVATION MODAL === -->
 
 <!-- ============================================================
+     === HTML: CROP MODAL ===
+     ============================================================ -->
+<div class="modal-overlay" id="cropModal">
+    <div class="modal-header">
+        <span class="modal-title">Foto bijsnijden</span>
+        <button class="modal-close" onclick="closeCropModal()" aria-label="Sluiten"><i class="fas fa-times" aria-hidden="true"></i></button>
+    </div>
+    <div class="modal-content" style="padding:20px 18px;">
+        <div class="crop-source-row" id="cropSourceRow">
+            <label class="btn-secondary" style="cursor:pointer;">
+                <i class="fas fa-upload"></i> Upload foto
+                <input type="file" accept="image/*" id="cropFileInput" style="display:none;" onchange="handleCropFileSelect(event)">
+            </label>
+            <div class="divider"><span>of</span></div>
+            <div style="display:flex;gap:8px;">
+                <input type="text" class="form-input" id="cropUrlInput" placeholder="https://...">
+                <button class="btn-secondary" onclick="loadCropFromUrl()" style="width:auto;padding:0 18px;">Laden</button>
+            </div>
+        </div>
+        <div class="crop-stage" id="cropStage" style="display:none;">
+            <div class="crop-image-wrap"><img id="cropImageEl" style="max-width:100%;display:block;"></div>
+            <div class="crop-zoom-row">
+                <i class="fas fa-search-minus"></i>
+                <input type="range" id="cropZoomSlider" min="0" max="100" value="0" oninput="setCropZoom(this.value)">
+                <i class="fas fa-search-plus"></i>
+            </div>
+            <button class="btn-primary" onclick="applyCrop()" id="cropApplyBtn">
+                <i class="fas fa-check"></i> Toepassen
+            </button>
+        </div>
+        <div class="loading" id="cropUploading" style="display:none;"><div class="spinner"></div><span>Uploaden...</span></div>
+    </div>
+</div>
+<!-- === END HTML: CROP MODAL === -->
+
+<!-- ============================================================
      === HTML: INSTALL SHEET ===
      ============================================================ -->
 <div class="popup-overlay" id="installOverlay" onclick="closeInstallSheet(event)">
@@ -1686,6 +1748,11 @@ let currentOpenProductId = null;
 let modalGalleryImages = [];
 let modalGalleryIndex = 0;
 let appVersion = 3.3;
+let cropperInstance = null;
+let cropTargetTempKey = null;
+let cropTargetImageListId = null;
+let cropTargetEditIndex = null;
+let lastZoomVal = 0;
 let settings = { theme: 'system', language: 'nl' };
 // === END STATE ===
 
@@ -2835,6 +2902,15 @@ async function openProductModal(productId) {
     document.querySelectorAll('#galleryDots .gallery-dot').forEach(dot => {
         dot.addEventListener('click', () => { modalGalleryIndex = parseInt(dot.dataset.idx); renderGalleryImage(); });
     });
+    const imgWrap = document.querySelector('.product-modal-img');
+    if (imgWrap && galleryImages.length > 1) {
+        let swipeStartX = 0;
+        imgWrap.addEventListener('touchstart', e => { swipeStartX = e.changedTouches[0].clientX; }, { passive: true });
+        imgWrap.addEventListener('touchend', e => {
+            const dx = e.changedTouches[0].clientX - swipeStartX;
+            if (Math.abs(dx) > 40) { dx < 0 ? nextGalleryImage() : prevGalleryImage(); }
+        }, { passive: true });
+    }
     document.getElementById('productModal').classList.add('active');
 }
 window.openProductModal = openProductModal;
@@ -3471,15 +3547,9 @@ function renderProductForm(productData) {
         <div class="admin-form-group">
             <label class="admin-input-label">Afbeeldingen</label>
             <div id="${imageListId}" style="margin-bottom:10px;"></div>
-            <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;">
-                <div style="flex:1;min-width:180px;">
-                    <label class="admin-input-label" style="margin-bottom:4px;">Afbeelding URL</label>
-                    <input class="admin-input" id="${formId}_imageUrlNew" placeholder="https://...">
-                </div>
-                <button class="admin-btn admin-btn-primary" onclick="adminAddImage('${tempKey}','${imageListId}','${formId}_imageUrlNew')">
-                    <i class="fas fa-plus"></i> Afbeelding toevoegen
-                </button>
-            </div>
+            <button class="admin-btn admin-btn-primary" onclick="openCropModal('${tempKey}','${imageListId}')">
+                <i class="fas fa-crop-alt"></i> Foto toevoegen (bijsnijden)
+            </button>
         </div>
         <div class="admin-form-group">
             <label class="admin-input-label">Kleuren</label>
@@ -3562,6 +3632,7 @@ function renderAdminImageList(tempKey, imageListId) {
             <img src="${url}" style="width:36px;height:36px;object-fit:cover;border-radius:6px;flex-shrink:0;" onerror="this.style.opacity='0.3'">
             <span style="font-size:12px;color:var(--text-2);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${url}</span>
             ${i===0 ? `<span style="font-size:10px;background:var(--primary-light);color:var(--primary-dark);padding:2px 6px;border-radius:6px;font-weight:700;flex-shrink:0;">${settings.language==='nl'?'Hoofd':'Main'}</span>` : ''}
+            <button onclick="openCropModal('${tempKey}','${imageListId}','${url}',${i})" style="background:none;border:none;color:var(--text-2);cursor:pointer;font-size:14px;padding:4px 6px;" aria-label="Herpositioneren"><i class="fas fa-crop-alt"></i></button>
             <button onclick="adminRemoveImage('${tempKey}','${imageListId}',${i})" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:14px;padding:4px 6px;"><i class="fas fa-times"></i></button>
         `;
         container.appendChild(entry);
@@ -3583,6 +3654,98 @@ window.adminRemoveImage = function(tempKey, imageListId, idx) {
     adminImageLists[tempKey].splice(idx, 1);
     renderAdminImageList(tempKey, imageListId);
 };
+
+// ============================================================
+// === CROP TOOL ===
+// ============================================================
+window.openCropModal = function(tempKey, imageListId, editUrl, editIndex) {
+    cropTargetTempKey = tempKey;
+    cropTargetImageListId = imageListId;
+    cropTargetEditIndex = (typeof editIndex === 'number') ? editIndex : null;
+    document.getElementById('cropSourceRow').style.display = 'flex';
+    document.getElementById('cropStage').style.display = 'none';
+    document.getElementById('cropUploading').style.display = 'none';
+    document.getElementById('cropUrlInput').value = '';
+    document.getElementById('cropFileInput').value = '';
+    document.getElementById('cropApplyBtn').disabled = false;
+    document.getElementById('cropModal').classList.add('active');
+    if (editUrl) beginCropWithSrc(editUrl, true);
+};
+
+window.closeCropModal = function() {
+    if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
+    document.getElementById('cropModal').classList.remove('active');
+};
+
+function beginCropWithSrc(src, isRemote) {
+    const img = document.getElementById('cropImageEl');
+    document.getElementById('cropSourceRow').style.display = 'none';
+    document.getElementById('cropStage').style.display = 'flex';
+    lastZoomVal = 0;
+    document.getElementById('cropZoomSlider').value = 0;
+    if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
+    if (isRemote) img.crossOrigin = 'anonymous'; else img.removeAttribute('crossorigin');
+    img.onload = () => {
+        cropperInstance = new Cropper(img, {
+            aspectRatio: 1, viewMode: 1, dragMode: 'move', autoCropArea: 1,
+            cropBoxResizable: false, cropBoxMovable: false, guides: false,
+            center: true, highlight: false, background: false, responsive: true
+        });
+    };
+    img.src = src;
+}
+
+window.handleCropFileSelect = function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => beginCropWithSrc(e.target.result, false);
+    reader.readAsDataURL(file);
+};
+
+window.loadCropFromUrl = function() {
+    const url = document.getElementById('cropUrlInput')?.value?.trim();
+    if (!url) return;
+    beginCropWithSrc(url, true);
+};
+
+window.setCropZoom = function(val) {
+    if (!cropperInstance) return;
+    const delta = (val - lastZoomVal) / 100 * 2;
+    cropperInstance.zoom(delta);
+    lastZoomVal = val;
+};
+
+window.applyCrop = function() {
+    if (!cropperInstance) return;
+    document.getElementById('cropApplyBtn').disabled = true;
+    document.getElementById('cropStage').style.display = 'none';
+    document.getElementById('cropUploading').style.display = 'flex';
+    cropperInstance.getCroppedCanvas({ width: 900, height: 900, imageSmoothingQuality: 'high' }).toBlob(async (blob) => {
+        try {
+            const filename = `products/${Date.now()}_${Math.random().toString(36).slice(2,8)}.jpg`;
+            const ref = firebase.storage().ref().child(filename);
+            await ref.put(blob, { contentType: 'image/jpeg' });
+            const url = await ref.getDownloadURL();
+            if (cropTargetEditIndex !== null) {
+                adminImageLists[cropTargetTempKey][cropTargetEditIndex] = url;
+            } else {
+                if (!adminImageLists[cropTargetTempKey]) adminImageLists[cropTargetTempKey] = [];
+                adminImageLists[cropTargetTempKey].push(url);
+            }
+            renderAdminImageList(cropTargetTempKey, cropTargetImageListId);
+            showToast(settings.language === 'nl' ? 'Foto toegevoegd!' : 'Photo added!');
+            closeCropModal();
+        } catch(e) {
+            console.error(e);
+            showToast(settings.language === 'nl' ? 'Fout bij uploaden' : 'Upload error');
+            document.getElementById('cropStage').style.display = 'flex';
+            document.getElementById('cropUploading').style.display = 'none';
+            document.getElementById('cropApplyBtn').disabled = false;
+        }
+    }, 'image/jpeg', 0.9);
+};
+// === END CROP TOOL ===
 
 window.showEditProductForm = function(productId) {
     const product = products.find(p => p.id === productId);
@@ -3703,6 +3866,7 @@ window.showPage = function(page) {
     if (page === 'privacy') buildPrivacyPage();
     if (page === 'settings') {
         renderDiscountCardInSettings();
+        renderVersionUI();
         if (currentUser && !currentWeeklyDiscount) loadWeeklyDiscount();
     }
 };
@@ -3884,7 +4048,7 @@ async function initAppWithSplash() {
 }
 // === END SPLASH SCREEN ===
 
-    // ============================================================
+// ============================================================
 // === BACK BUTTON (ANDROID) ===
 // ============================================================
 let backPressedOnce = false;
@@ -3903,6 +4067,8 @@ function closeTopMostOverlay() {
     if (installOv && installOv.classList.contains('show')) { installOv.classList.remove('show'); return true; }
     const privacyPopOv = document.getElementById('privacyPopupOverlay');
     if (privacyPopOv && privacyPopOv.classList.contains('show')) { privacyPopOv.classList.remove('show'); return true; }
+    const cropModal = document.getElementById('cropModal');
+    if (cropModal && cropModal.classList.contains('active')) { closeCropModal(); return true; }
     const reserveModal = document.getElementById('reserveModal');
     if (reserveModal && reserveModal.classList.contains('active')) { closeModal('reserve'); return true; }
     const productModal = document.getElementById('productModal');
@@ -3927,7 +4093,7 @@ function handlePopState() {
 }
 window.addEventListener('popstate', handlePopState);
 // === END BACK BUTTON (ANDROID) ===
-    
+
 // ============================================================
 // === EVENTS & INIT ===
 // ============================================================
@@ -3992,7 +4158,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     runOnboardingSequence();
     pushBackGuard();
 });
-    if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js').catch(() => {});
     });
